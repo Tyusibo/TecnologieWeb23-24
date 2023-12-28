@@ -10,6 +10,11 @@ header {
     height: 30px;
 }
 
+img{
+    height:125px;
+    width: 125px;  
+}
+
 nav ul {
     list-style: none;
     margin: 0;

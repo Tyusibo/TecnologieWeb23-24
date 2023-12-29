@@ -27,6 +27,7 @@
         z-index: 100;
     }
     .overlay{
+        top: 154px;
         width: 100%;
         height: 100vh;
         position: absolute;
@@ -37,11 +38,11 @@
 </style>
 
 <body>
-    
+<iframe style="margin-bottom:-5px;" src="header.html" width="100%" height="154px" frameborder="0"></iframe>
 
     <section class="home" id="home" >
         <div class="div_home">
-            <div class="overlay"></div> 
+            <div class="overlay"></div>
             <h1 id="welcome">Benvenuto da Gentlemn's Cut</h1>
             
         </div>

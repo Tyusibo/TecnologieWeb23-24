@@ -1,6 +1,7 @@
 body {
     background-color: transparent;
     margin: 0px !important;
+    transition-duration: 0.4s;
 }
 
 .sticky {
@@ -8,6 +9,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    transition-duration: 0.4s;
 }
 
 .centeredflexrow {
@@ -15,6 +17,11 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+}
+
+#logo {
+    height: 100px;
+    width: 100px;
 }
 
 nav ul {

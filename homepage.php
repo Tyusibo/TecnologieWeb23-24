@@ -21,7 +21,7 @@ session_start();
 
 <script src="script/caricaHeader.js"></script>
 <script src="script/caricaMappa.js"></script>
-    <section style="margin-top: -120px;" class="home" id="home" >
+    <section style="margin-top: -100px;" class="home" id="home" >
         <div class="div_home">
             <h1 id="welcome">Benvenuto da Gentlemen's Cut</h1>
             <a href="#" class="btn">

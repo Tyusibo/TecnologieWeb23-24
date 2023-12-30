@@ -12,11 +12,6 @@ body {
     transition-duration: 0.4s;
 }
 
-.transparent{
-    background-color: transparent;
-    transition-duration: 0.4s;
-}
-
 .centeredflexrow {
     display: flex;
     flex-wrap: nowrap;

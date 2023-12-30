@@ -1,5 +1,6 @@
 function caricaHeader() {
     var divHeader = document.createElement('div');
+    divHeader.setAttribute('id', 'headerContainer');
     divHeader.setAttribute('include-html', 'header.html');
     divHeader.load = function () {
         var includeHTML = this.getAttribute('include-html');

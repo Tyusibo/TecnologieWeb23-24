@@ -8,6 +8,11 @@
 </head>
 <body>
     <script src="script/caricaHeader.js"></script>
+    <div id="dati">
+        <section>
+            
+        </section>
+    </div>
     <script src="script/caricaFooter.js"></script>
 </body>
 </html>

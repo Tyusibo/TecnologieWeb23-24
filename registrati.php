@@ -56,10 +56,13 @@
             <form onSubmit="return validaModulo(this);" ACTION='<?php echo $_SERVER['PHP_SELF'] ?>' name="inspwd">
                  <label>Inserisci l'email: 
                 <input type="text" name="email">
+                </br>
                 </label>
                 <label>Inserisci la password:
                 <input type="password" name="pwd1"></label>
+                </br>
                 <input type="submit" value="Invia">
+                </br>
                 <input type="reset" value="Annulla">
             </form>
         </div>
@@ -67,11 +70,16 @@
             <form onSubmit="return validaModulo(this);" ACTION='<?php echo $_SERVER['PHP_SELF'] ?>' name="inspwd">
                 <label>Inserisci il tuo nome:<input type="text" size="30" name="nome"></label>
                 <label>Inserisci il tuo cognome:<input type="text" size="30" name="cognome"></label>
+                </br>
+                <label>Inserisci l'email: 
+                <input type="text" name="email">
                 <label>Inserisci il numero: 
-                <input type="text" name="codice" size="10" maxlength="10" onkeydown="return soloNumeri(event)" title="Il codice contiene solo numeri">
+                <input type="text" name="numero" size="10" maxlength="10" onkeydown="return soloNumeri(event)" title="Il codice contiene solo numeri">
                 </label>
+                </br>
                 <label>Scegli una password:<input type="password" name="pwd1"></label>
                 <label>Inseriscila nuovamente:<input type="password" name="pwd2"></label>
+                </br>
                 <input type="submit" value="Invia">
                 <input type="reset" value="Annulla">
             </form>

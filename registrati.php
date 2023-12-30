@@ -70,7 +70,7 @@
             <input type="reset" value="Annulla">
         </form>
         
-        <iframe src="footer.html" width="100%" height="200px" frameborder="0"></iframe> 
+        <iframe src="footer.html" width="100%" height="200px" frameborder="0" id="foot"></iframe> 
         
 </body>
 </html>

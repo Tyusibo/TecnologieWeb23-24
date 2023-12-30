@@ -74,6 +74,7 @@
     }
     .chiSiamo h1{
         text-align: center;
+        margin: 0;
     }
     .chiSiamo .row{
         display: flex;
@@ -136,7 +137,7 @@
         </div>
     </section>
 
-    <section class="chiSiamo">
+    <section class="chiSiamo" id="chiSiamo">
         <h1>About us</h1>
         <div class="row">
             <div class="mapImg">
@@ -152,7 +153,7 @@
         </div>
     </section>
 
-    <section class="servizi">
+    <section class="servizi" id="servizi">
         <div class="cut" id="cut">
             <h2>Taglio $40</h2>
             <p>Solo stili tradizionali a taglio corto che includono: dissolvenze e rastremazioni che iniziano da 1 o più con un leggero 
@@ -179,6 +180,6 @@
     </section>
 
 
-    <iframe src="footer.html" width="100%" height="200px" frameborder="0"></iframe>
+    <iframe src="footer.html" width="100%" height="200px" frameborder="0" id="foot"></iframe>
 </body>
 </html>

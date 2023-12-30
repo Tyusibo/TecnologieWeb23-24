@@ -1,6 +1,7 @@
 body {
     background-color: transparent;
     margin: 0px !important;
+    transition-duration: 0.4s;
 }
 
 .sticky {
@@ -8,6 +9,11 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    transition-duration: 0.4s;
+}
+
+.transparent{
+    background-color: transparent;
     transition-duration: 0.4s;
 }
 

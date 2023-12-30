@@ -26,11 +26,10 @@
 
 </head>
 
-<body>
+<body style="padding: 0px;">
 <script src="script/caricaHeader.js"></script>
     <section class="home" id="home" >
         <div class="div_home">
-            <div class="overlay"></div>
             <h1 id="welcome">Benvenuto da Gentlemn's Cut</h1>
             <a href="#" class="btn">
                 <span>Prenota Subito</span>

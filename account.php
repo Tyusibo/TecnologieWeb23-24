@@ -5,10 +5,7 @@ session_start();
 // Controlla se è stato inviato un modulo con il metodo POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera il nuovo valore dal campo di input del modulo
-    $nuovo_valore = $_POST['username'];
-
-    // Modifica il campo nella variabile di sessione
-    $_SESSION['username'] = $nuovo_valore;
+    $_SESSION['username']  = $_POST['username'];
 
     // Reindirizza o fai altre azioni necessarie
     header('Location: account.php');

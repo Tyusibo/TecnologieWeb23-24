@@ -9,29 +9,18 @@
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=initMap">
     </script>
-    <script>
-        function initMap() {
-        // The location of Uluru
-        var uluru = {lat: 40.77248001098633, lng: 14.789327621459961};
-        // The map, centered at Uluru
-        var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 10, center: uluru});
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: uluru, map: map});
-        }
 
-        initMap();
-    </script>
     
 
 </head>
 
 <body>
 <script src="script/caricaHeader.js"></script>
+<script src="script/caricaMappa.js"></script>
     <section class="home" id="home" >
         <div class="div_home">
-            <div class="overlay"></div>
-            <h1 id="welcome">Benvenuto da Gentlemn's Cut</h1>
+        <div class="overlay"></div>
+            <h1 id="welcome">Benvenuto da Gentlemen's Cut</h1>
             <a href="#" class="btn">
                 <span>Prenota Subito</span>
             </a>
@@ -80,6 +69,20 @@
             <p>Shoulder length or longer chopped off for a whole new look. Styled with product upon request. Shampoo included upon request.</p>
         </div>
     </section>
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var header = document.getElementById("headerContainer");
+        var sticky = header.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+    </script> 
 
 
     <script src="script/caricaFooter.js"></script>

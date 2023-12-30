@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="it">
 <head>
     <meta charset="UTF-8">

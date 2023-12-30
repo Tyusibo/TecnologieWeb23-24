@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gentlemen's Cut Registrati</title>
-    <link rel="stylesheet" type="text/css" href="css/registrati.css">
-</head>
-<body>
-    <script src="script/caricaHeader.js"></script>
+ 
     <script>
         /*
         function attiva(){
@@ -52,10 +43,12 @@
         }
 
         </script>
+        
         <div id=accedi>Accedi
-            <form onSubmit="return validaModulo(this);" ACTION='<?php echo $_SERVER['PHP_SELF'] ?>' name="inspwd">
-                 <label>Inserisci l'email: 
-                <input type="text" name="email">
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+            <label for="username">Username
+			<input type="text" name="username" id="username"/>
+		</label>
                 </br>
                 </label>
                 <label>Inserisci la password:
@@ -67,7 +60,7 @@
             </form>
         </div>
         <div id=registrati>Registrati
-            <form onSubmit="return validaModulo(this);" ACTION='<?php echo $_SERVER['PHP_SELF'] ?>' name="inspwd">
+            <form method="POST" action="prenota.php">
                 <label>Inserisci il tuo nome:<input type="text" size="30" name="nome"></label>
                 <label>Inserisci il tuo cognome:<input type="text" size="30" name="cognome"></label>
                 </br>
@@ -83,8 +76,4 @@
                 <input type="submit" value="Invia">
                 <input type="reset" value="Annulla">
             </form>
-        </div>
-        
-        <script src="script/caricaFooter.js"></script>       
-</body>
-</html>
+        </div>        

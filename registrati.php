@@ -70,8 +70,6 @@
             <input type="reset" value="Annulla">
         </form>
         
-    <div id="foot">
-    <iframe src="footer.html" width="100%" height="200px" frameborder="0"></iframe>
-    </div>         
+        <script src="script/caricaFooter.js"></script>       
 </body>
 </html>

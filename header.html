@@ -5,24 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/header.css">
 </head>
-<body style="margin: 0px;">
+<body>
     <header class="centeredflexrow" id="myHeader">
         <a href="homepage.php" target="_top">
-            <img src="img/logoQuadrato.jpg" alt="Gentlemen's Cut" width="130" height="130">
+            <img src="img/logoQuadrato.jpg" alt="Gentlemen's Cut" width="100" height="100">
         </a>
         <nav>
             <ul class="centeredflexrow">
-                <li><a href="homepage.php#home" target="_top">Homepage</a></li>
+                <li><a href="homepage.php" target="_top">Homepage</a></li>
                 <li><a href="homepage.php#servizi" target="_top">Servizi</a></li>
                 <li><a href="homepage.php#chiSiamo" target="_top">Chi Siamo</a></li>
-                <li><a href="#foot" target="_top">Contattaci</a></li>
+                <li><a href="javascript:void(0);" onclick="document.getElementById('foot').scrollIntoView();">Contattaci</a></li>
                 <li><a href="galleria.php" target="_top">Galleria</a></li>
                 <li><a href="prenota.php" target="_top">Prenota</a></li>
                 <li><a href="account.php" target="_top"></a><img src="img/account-transformed.png" alt="Account" width="40" height="40"></a></li>
             </ul>
         </nav>
     </header>
-    
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+    </script>
 </body>
 </html>
 

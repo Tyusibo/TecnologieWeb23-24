@@ -52,23 +52,30 @@
         }
 
         </script>
-
-        <form onSubmit="return validaModulo(this);" ACTION='<?php echo $_SERVER['PHP_SELF'] ?>' name="inspwd">
-            <label>Inserisci il tuo nome:
-            <input type="text" size="30" name="nome">
-            <label>Inserisci il tuo cognome:
-            <input type="text" size="30" name="cognome">
-            </label>
-            <label>Inserisci il numero: 
-            <input type="text" name="codice" size="5" maxlength="5" onkeydown="return soloNumeri(event)" title="Il codice contiene solo numeri">
-            </label>
-            <label>Scegli una password:
-            <input type="password" name="pwd1"></label>
-            <label>Inseriscila nuovamente:
-            <input type="password" name="pwd2"></label>
-            <input type="submit" value="Invia">
-            <input type="reset" value="Annulla">
-        </form>
+        <div id=accedi>Accedi
+            <form onSubmit="return validaModulo(this);" ACTION='<?php echo $_SERVER['PHP_SELF'] ?>' name="inspwd">
+                 <label>Inserisci l'email: 
+                <input type="text" name="email">
+                </label>
+                <label>Inserisci la password:
+                <input type="password" name="pwd1"></label>
+                <input type="submit" value="Invia">
+                <input type="reset" value="Annulla">
+            </form>
+        </div>
+        <div id=registrati>Registrati
+            <form onSubmit="return validaModulo(this);" ACTION='<?php echo $_SERVER['PHP_SELF'] ?>' name="inspwd">
+                <label>Inserisci il tuo nome:<input type="text" size="30" name="nome"></label>
+                <label>Inserisci il tuo cognome:<input type="text" size="30" name="cognome"></label>
+                <label>Inserisci il numero: 
+                <input type="text" name="codice" size="10" maxlength="10" onkeydown="return soloNumeri(event)" title="Il codice contiene solo numeri">
+                </label>
+                <label>Scegli una password:<input type="password" name="pwd1"></label>
+                <label>Inseriscila nuovamente:<input type="password" name="pwd2"></label>
+                <input type="submit" value="Invia">
+                <input type="reset" value="Annulla">
+            </form>
+        </div>
         
         <script src="script/caricaFooter.js"></script>       
 </body>

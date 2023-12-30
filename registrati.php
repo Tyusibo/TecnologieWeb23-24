@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Registrati</title>
-    <link rel="stylesheet" type="text/css" href="CSS/registrati.css">
+    <link rel="stylesheet" type="text/css" href="css/registrati.css">
 </head>
 <body>
-    <iframe src="header.html" width="100%" height="200px" frameborder="0"></iframe>
+    <script src="script/caricaHeader.js"></script>
     <script>
         /*
         function attiva(){
@@ -70,7 +70,8 @@
             <input type="reset" value="Annulla">
         </form>
         
-        <iframe src="footer.html" width="100%" height="200px" frameborder="0" id="foot"></iframe> 
-        
+    <div id="foot">
+    <iframe src="footer.html" width="100%" height="200px" frameborder="0"></iframe>
+    </div>         
 </body>
 </html>

@@ -3,14 +3,7 @@
 session_start();
 
 // Controlla se è stato inviato un modulo con il metodo POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera il nuovo valore dal campo di input del modulo
-    $_SESSION['username']  = $_POST['username'];
 
-    // Reindirizza o fai altre azioni necessarie
-    header('Location: account.php');
-    exit();
-}
 ?>
 <html lang="it">
 <head>
@@ -22,12 +15,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <script src="script/caricaHeader.js"></script>
     <?php 
-    if(empty($_SESSION['username']))
-        include 'pagine_ausiliarie/registrati.php';
+    if(empty($_SESSION['username'])){
+        header("Location: registrati.php");
+        exit();
+    }
     else{
         $username = $_SESSION["username"];
         echo "<p> Benvenuto $username!</p>";
-        echo "<a href=pagine_ausiliarie/esci.php>Esci</a>";
+        ?>
+        <a href=pagine_ausiliarie/esci.php>Esci</a>;
+        <?php 
     }
     ?>
     

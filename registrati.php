@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera il nuovo valore dal campo di input del modulo
+    $_SESSION['username']  = $_POST['username'];
+
+    // Reindirizza o fai altre azioni necessarie
+    header('Location: account.php');
+    exit();
+}
+?>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gentlemen's Cut Registrati</title>
+    <link rel="stylesheet" type="text/css" href="css/registrati.css">
+<body>
+<script src="script/caricaHeader.js"></script>
 <script>
     /*
     function attiva(){
@@ -74,4 +94,7 @@
                 <input type="submit" value="Invia">
                 <input type="reset" value="Annulla">
             </form>
-</div>        
+</div> 
+<script src="script/caricaFooter.js"></script>
+</body>
+</html>       

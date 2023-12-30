@@ -19,12 +19,8 @@
 <script src="script/caricaMappa.js"></script>
     <section class="home" id="home" >
         <div class="div_home">
-<<<<<<< HEAD
         <div class="overlay"></div>
             <h1 id="welcome">Benvenuto da Gentlemen's Cut</h1>
-=======
-            <h1 id="welcome">Benvenuto da Gentlemn's Cut</h1>
->>>>>>> dffb85f28c6f4f895f6ca80fc2d77a39fbcccb34
             <a href="#" class="btn">
                 <span>Prenota Subito</span>
             </a>

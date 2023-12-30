@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +18,7 @@
 </head>
 
 <body style="padding: 0px;">
+
 <script src="script/caricaHeader.js"></script>
 <script src="script/caricaMappa.js"></script>
     <section style="margin-top: -100px;" class="home" id="home" >

@@ -13,8 +13,8 @@ session_start();
     <script src="script/caricaHeader.js"></script>
     <?php
     if(empty($_SESSION['username'])){
-        echo "<p>Pagina riservata agli utenti registrati. <br/> Effettua il <a
-        href=\"login.html\">Login</a> oppure <a href=\"registra1.php\">Registrati</a> per continuare</p>";
+        echo "<p>Pagina riservata agli utenti registrati. <br/> Effettua <a
+        href=\"account.php\">qui </a> il Login oppure la registrazione per continuare</p>";
         } else {
             include 'pagine_ausiliarie/prenotazione.php';
         }

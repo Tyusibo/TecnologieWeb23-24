@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else{
         $username = $_SESSION["username"];
         echo "<p> Benvenuto $username!</p>";
+        include 'pagine_ausiliarie/esci.php';
     }
     ?>
     

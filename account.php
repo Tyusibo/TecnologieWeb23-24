@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="script/account.js" defer></script>
 </head>
 <body>
-    <script src="script/caricaHeader.js"></script>
+    <?php include "header.html"; ?>
+    <script src="script/StickyHeader.js"></script>
     <div id=accedi>Accesso
         <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="username">Username

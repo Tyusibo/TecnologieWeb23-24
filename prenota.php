@@ -25,7 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <script src="script/caricaHeader.js"></script>
+    <?php include "header.html"; ?>
+    <script src="script/StickyHeader.js"></script>
     <?php
     if(empty($_SESSION['username'])){
     ?>

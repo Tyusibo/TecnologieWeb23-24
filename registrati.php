@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" type="text/css" href="css/registrati.css">
     <script src="script/registrati.js" defer></script>
 <body>
-    <script src="script/caricaHeader.js"></script>
+    <?php include "header.html"; ?>
+    <script src="script/StickyHeader.js"></script>
     
         <div id=registrati>Registrati
             <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">

@@ -10,7 +10,8 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/galleria.css">
 </head>
 <body>
-    <script src="script/caricaHeader.js"></script>
+    <?php include "header.html"; ?>
+    <script src="script/StickyHeader.js"></script>
     <script src="script/caricaFooter.js"></script>
 </body>
 </html>

@@ -9,10 +9,10 @@ placeholder.style.backgroundColor = 'transparent';
 
 function myFunction() {
   if (window.scrollY > sticky) {
+    header.style.backgroundColor = 'black';
     header.classList.add("sticky");
     document.body.insertBefore(placeholder, document.body.firstChild);
   } else {
-    header.classList.remove("sticky");
-    document.body.removeChild(placeholder);
+    header.style.backgroundColor = 'transparent';
   }
 }

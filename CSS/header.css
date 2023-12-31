@@ -20,6 +20,12 @@ body {
     align-items: center;
 }
 
+#placeholder {
+    height: 100px;
+    width: 100%;
+    background-color: transparent;
+}
+
 #logo {
     height: 100px;
     width: 200px;

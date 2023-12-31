@@ -8,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Homepage</title>
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
-
+    <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=initMap">
     </script>
@@ -41,18 +41,27 @@ session_start();
         </p>
 
         <hr>
-        
+
         <div class="row">
+
+            <div class="content">
+                <h3>IL TUO LOOK IMPECCABILE INIZIA QUI</h3>
+                <p style="text-align: left">Da Gentlemen's Cut, troverai persone cordiali e talentuose, un'ampia offerta di servizi di grooming e un bar completamente fornito.</p>
+                <ul>
+                    <li><i class="fa-sharp fa-solid fa-location-dot icona"></i><span class="lista">Viale della Conoscenza, Fisciano, 84084</span></li>
+                    <li><i class="fa-sharp fa-solid fa-phone icona"></i><span class="lista">0828 371360</span></li>
+                    <li><i class="fa-sharp fa-solid fa-clock icona"></i><span class="lista"></span></li>
+                </ul>
+                <a href="#" class="btn"><span>Contattaci</span></a>
+            </div>
+
             <div class="mapImg">
                 <div id="map"></div>
             </div>
-
-            <div class="content">
-                <h3>Cosa ci rende speciali?</h3>
-                   <a href="#" class="btn"><span>Contattaci</span></a>
-            </div>
+            
         </div>
     </section>
+
 
     <section class="servizi" id="servizi">
         <div class="cut" id="cut">

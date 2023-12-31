@@ -25,92 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Registrati</title>
     <link rel="stylesheet" type="text/css" href="css/registrati.css">
+    <script src="script/registrati.js" defer></script>
 <body>
-<script src="script/caricaHeader.js"></script>
-<script>
-    /*
-    function attiva(){
-          document.info.stato.focus();
-    }
-    function cambia(ogg){
-        ogg.style.backgroundColor="yellow";
-    }
-    */
-    function validaModulo(nomeModulo) {
-            if (nomeModulo.nome.value == "") {
-                alert("Devi inserire un nome");
-                nomeModulo.nome.focus();
-            return false;
-            }
-            if (nomeModulo.cognome.value == "") {
-                alert("Devi inserire un cognome");
-                nomeModulo.cognome.focus();
-            return false;
-            }
-            if (nomeModulo.numero.value == "") {
-                alert("Devi inserire un numero");
-                nomeModulo.numero.focus();
-            return false;
-            }
-            if (nomeModulo.numero.value.length<8) {
-                alert("Il numero deve contenere almeno 8 caratteri");
-                nomeModulo.numero.focus();
-            return false;
-            }
-            if (nomeModulo.pwd1.value == "") {
-                alert("Devi inserire una password");
-                nomeModulo.pwd1.focus();
-            return false;
-            }
-            if (nomeModulo.pwd1.value.length<8) {
-                alert("La password deve essere almeno lunga 8 caratteri");
-                nomeModulo.pwd1.focus();
-            return false;
-            }
-            if (nomeModulo.pwd1.value.length>20) {
-                alert("La password non deve essere più lunga di 20 caratteri");
-                nomeModulo.pwd1.focus();
-            return false;
-            }
-
-            if (nomeModulo.pwd2.value == "") {
-                alert("Devi inserire la password di conferma");
-                nomeModulo.pwd1.focus();
-            return false;
-            }
-            if (nomeModulo.pwd1.value != nomeModulo.pwd2.value) {
-                alert("Le due password non corrispondono");
-                nomeModulo.pwd2.focus();    
-                nomeModulo.pwd2.select();
-            return false;
-            }
-            return true
-        }
-        
-    function soloNumeri(event){
-            var tasto;
-            tasto = event.key;
-            var campo = event.target.value;
-            if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control") || ((tasto=="+") && (campo.indexOf("+") === -1))){
-                return true;
-            } else if (("0123456789").indexOf(tasto) > -1){
-                if (campo.length < 12 ) {
-                    return true;
-            } else {
-                alert("Il numero di telefono non può superare i 12 caratteri");
-                return false;
-            }
-                }
-                else {
-                    alert("il campo accetta solo numeri e il carattere + come primo carattere");
-                    return false;
-                }
-        }
-
-</script>
-        
-
-    <div id=registrati>Registrati
+    <script src="script/caricaHeader.js"></script>
+    
+        <div id=registrati>Registrati
             <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                 <label>Inserisci il tuo nome:<input type="text" size="30" name="nome" value="<?php echo $nome?>"></label>
                 <label>Inserisci il tuo cognome:<input type="text" size="30" name="cognome" value="<?php echo $cognome?>"></label>
@@ -124,8 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </br>
                 <label>Scegli una password, deve contenere almeno: </br>
                 una lettera maiuscola, un carattere speciale e  </br>
-                essere lunga minimo 8 caratteri e non più di 20:<input type="password" name="pwd1"value="<?php echo $password1?>"></label>
-                <label>Inseriscila la password di conferma:<input type="password" name="pwd2" value="<?php echo $password2?>"></label>
+                essere lunga minimo 8 caratteri e non più di 20:<input type="password" id="pwd1" name="pwd1" value="<?php echo $password1?>"></label>
+                <input type="checkbox" id="mostra1" onchange="mostraPassword(1)"> Mostra password </br>
+                <label>Inseriscila la password di conferma:<input type="password" id="pwd2"name="pwd2" value="<?php echo $password2?>"></label>
+                <input type="checkbox" id="mostra2" onchange="mostraPassword(2)"> Mostra password </br>
                 </br>
                 <input type="submit" value="Invia">
                 <input type="reset" value="Annulla">

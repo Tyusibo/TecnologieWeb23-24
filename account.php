@@ -17,11 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Account</title>
     <link rel="stylesheet" type="text/css" href="css/account.css">
+    <script src="script/account.js" defer></script>
 </head>
 <body>
     <script src="script/caricaHeader.js"></script>
     <div id=accedi>Accesso
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+        <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="username">Username
 			<input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
             </br>

@@ -50,9 +50,11 @@ session_start();
                 <ul>
                     <li><i class="fa-sharp fa-solid fa-location-dot icona"></i><span class="lista">Viale della Conoscenza, Fisciano, 84084</span></li>
                     <li><i class="fa-sharp fa-solid fa-phone icona"></i><span class="lista">0828 371360</span></li>
-                    <li><i class="fa-sharp fa-solid fa-clock icona"></i><span class="lista"></span></li>
+                    <li><i class="fa-sharp fa-solid fa-clock icona"></i><span class="lista">Lunedì: Chiuso <br>
+                                                                                            Martedì-Sabato: 9:00 - 19:00 <br>
+                                                                                            Domenica: Chiuso</span></li>
                 </ul>
-                <a href="#" class="btn"><span>Contattaci</span></a>
+                <a href="#" class="bottone"><span>Contattaci Ora</span></a>
             </div>
 
             <div class="mapImg">

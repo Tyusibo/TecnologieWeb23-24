@@ -99,8 +99,7 @@ session_start();
     </section>
     
 
-
-    <?php include "footer.html"; ?>
+    <div id="footerContainer"><?php include "footer.html"; ?></div>
     
 </body>
 </html>

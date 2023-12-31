@@ -12,6 +12,6 @@ session_start();
 <body>
     <?php include "header.html"; ?>
     <script src="script/StickyHeader.js"></script>
-    <script src="script/caricaFooter.js"></script>
+    <div id="footerContainer"><?php include "footer.html"; ?></div>
 </body>
 </html>

@@ -61,6 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
     }
     ?>
-    <script src="script/caricaFooter.js"></script>
+    <div id="footerContainer"><?php include "footer.html"; ?></div>
 </body>
 </html>       

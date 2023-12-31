@@ -13,13 +13,18 @@ session_start();
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=initMap">
     </script>
 
+
     
 </head>
 
 <body style="padding: 0px;">
 
-<script src="script/caricaHeader.js"></script>
-<script src="script/caricaMappa.js"></script>
+<?php include "header.html"; ?>
+
+    <script src="script/StickyHeader.js"></script>
+    <script src="script/caricaMappa.js"></script>
+
+
     <section style="margin-top: -100px;" class="home" id="home" >
         <div class="overlay"></div>
         <div class="div_home">
@@ -95,7 +100,7 @@ session_start();
     
 
 
-    <script src="script/caricaFooter.js"></script>
+    <?php include "footer.html"; ?>
     
 </body>
 </html>

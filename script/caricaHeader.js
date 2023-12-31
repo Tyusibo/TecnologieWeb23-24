@@ -2,6 +2,7 @@ function caricaHeader() {
     var divHeader = document.createElement('div');
     divHeader.setAttribute('id', 'headerContainer');
     divHeader.setAttribute('include-html', 'header.html');
+    divHeader.classList.add("headertransition");
     divHeader.load = function () {
         var includeHTML = this.getAttribute('include-html');
         var xhttp = new XMLHttpRequest();
@@ -30,10 +31,10 @@ caricaHeader();
         
         function myFunction() {
           if (window.scrollY > sticky) {
+            header.style.backgroundColor = 'black';
             header.classList.add("sticky");
             document.body.insertBefore(placeholder, document.body.firstChild);
           } else {
-            header.classList.remove("sticky");
-            document.body.removeChild(placeholder);
+            header.style.backgroundColor = 'transparent';
           }
         }

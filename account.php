@@ -3,11 +3,12 @@
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera il nuovo valore dal campo di input del modulo
-    $_SESSION['username']  = $_POST['username'];
-
-    // Reindirizza o fai altre azioni necessarie
-    header('Location: account.php');
-    exit();
+    $_SESSION['username'] = $_POST['username'];  //mi serve solo questo di globale per sapere nelle altre pagine se sono loggato
+    $username=$_SESSION['username'];
+    $password=$_POST['pwd']; 
+} else {
+    $username=null;
+    $password=null;
 }
 ?>
 <html lang="it">
@@ -19,22 +20,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <script src="script/caricaHeader.js"></script>
-    <?php 
-    if(empty($_SESSION['username'])){
-        ?>
-        <div id=accedi>Accedi
+    <div id=accedi>Accesso
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="username">Username
-			<input type="text" name="username" id="username"/></label>
+			<input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
             </br>
             </label>
             <label>Inserisci la password:
-            <input type="password" name="pwd1"></label>
+            <input type="password" name="pwd" value="<?php echo $password?>"></label>
             </br>
             <input type="submit" value="Invia">
             </br>
-            <input type="reset" value="Annulla">
         </form>
+    <?php 
+    if(empty($_SESSION['username'])){
+        ?>   
         <p>Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
     </div>
     <?php

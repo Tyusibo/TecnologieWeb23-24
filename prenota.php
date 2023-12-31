@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <?php
 session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera il nuovo valore dal campo di input del modulo
+    $data = $_POST['data'];
+    $orario = $_POST['orario'];
+    $message = $_POST['message'];
+    $file = $_POST['file'];
+
+} else {
+    //li setto null per non generare errori
+    $data=null; 
+    $orario=null;
+    $message=null;
+    $file=null;
+}
 ?>
 <html lang="it">
 <head>
@@ -9,49 +23,54 @@ session_start();
     <title>Gentlemen's Cut Prenota</title>
     <link rel="stylesheet" type="text/css" href="css/prenota.css">
 </head>
+
 <body>
     <script src="script/caricaHeader.js"></script>
     <?php
     if(empty($_SESSION['username'])){
     ?>
-    <p>Pagina riservata agli utenti registrati. <br/> Effettua <a
-    href="account.php">qui </a> il Login oppure la registrazione per continuare</p>
-    <?php } else {?>
-        <form action="/process-form" method="post">
-        <label for="data">Seleziona una data:</label>
-        <input type="date" id="data" name="data" required>
+    <p>Pagina riservata agli utenti registrati. <br/> Effettua il <a href="account.php">login</a> oppure 
+    <a href="registrati.php">registrati</a> per continuare</p>
+    <?php } else {?>    
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype=“multipart/form-data”>
+            <label for="data">Seleziona una data:</label>
+            <input type="date" id="data" value="<?php echo $data ?>" name="data" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 week')); ?>" required>
 
-        <br>
+            <br>
 
-        <label for="ora">Seleziona un'ora:</label>
-        <select id="ora" name="ora" required>
-            <!-- Genera le opzioni per le ore -->
-            <?php
-            for ($hour = 0; $hour < 24; $hour++) {
-                printf('<option value="%02d">%02d</option>', $hour, $hour);
-            }
-            ?>
-        </select>
+            <label for="orario">Seleziona un orario:</label>
+            <select id="orario" name="orario" value="<?php echo $orario ?>" required>
+                <?php
+                    $orario_inizio = strtotime('09:00');
+                    $orario_fine = strtotime('18:00');
+                    $intervallo = 30 * 60; // 30 minuti in secondi
 
-        <!-- Aggiungi i due punti tra l'ora e i minuti -->
-        <span>:</span>
+                    for ($ora = $orario_inizio; $ora <= $orario_fine; $ora += $intervallo) {
+                        $ora_selezionata = date('H:i', $ora);
+                        
+                        // Verifica se la data selezionata non è domenica o lunedì
+                        if (date('N', strtotime($_POST['data'])) >= 3) {
+                            // Aggiungi solo gli orari validi
+                            echo '<option value="' . $ora_selezionata . '">' . $ora_selezionata . '</option>';
+                        }
+                    }
+                ?>
+            </select>
 
-        <label for="minuti">Seleziona i minuti:</label>
-        <select id="minuti" name="minuti" required>
-            <!-- Genera le opzioni per i minuti (ogni 30 minuti) -->
-            <?php
-            for ($minute = 0; $minute < 60; $minute += 30) {
-                printf('<option value="%02d">%02d</option>', $minute, $minute);
-            }
-            ?>
-        </select>
+            <br>
+            <label>Se hai qualche particolare preferenza, lasciaci un messaggio:
+            <input type="text" name="message" value="<?php echo $message ?>"></label>
+            <label>Puoi anche inviarci un'immagine del taglio che desideri fare:
+            <input type="file" name="file" value="<?php echo $file ?>"></label>
 
-        <br>
-
-        <input type="submit" value="Invia">
-</form>
+            <input type="submit" value="Invia">
+        </form>
             
-        <?php   }
+        <?php
+        if (!is_null($data)) {
+            printf("hello");
+            }   
+        }
     ?>
     
     <script src="script/caricaFooter.js"></script> 

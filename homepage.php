@@ -64,7 +64,9 @@ session_start();
 
 
     <section class="servizi" id="servizi">
+        
         <div class="cut" id="cut">
+        <h1>SERVIZI</h1>
             <h2>Taglio $40</h2>
             <p>Solo stili tradizionali a taglio corto che includono: dissolvenze e rastremazioni che iniziano da 1 o più con un leggero 
                 lavoro a forbice sulla parte superiore; pettinati; tagli all'equipaggio; pompadour. Rasatura della nuca con schiuma calda 

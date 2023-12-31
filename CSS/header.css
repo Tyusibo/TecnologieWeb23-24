@@ -43,3 +43,12 @@ nav ul li a {
     text-decoration: none;
     z-index: 2;
 }
+
+#galleria{
+    border: 3px double yellow;
+}
+
+#prenota{
+    border: 2px solid #3498db;
+    background-color: #2ecc71;
+}

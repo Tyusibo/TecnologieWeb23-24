@@ -63,27 +63,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </script>
         
-<div id=accedi>Accedi
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-            <label for="username">Username
-			<input type="text" name="username" id="username"/></label>
-            </br>
-            </label>
-            <label>Inserisci la password:
-            <input type="password" name="pwd1"></label>
-            </br>
-            <input type="submit" value="Invia">
-            </br>
-            <input type="reset" value="Annulla">
-        </form>
-</div>
+
 <div id=registrati>Registrati
-            <form method="POST" action="prenota.php">
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                 <label>Inserisci il tuo nome:<input type="text" size="30" name="nome"></label>
                 <label>Inserisci il tuo cognome:<input type="text" size="30" name="cognome"></label>
                 </br>
                 <label>Inserisci l'email: 
-                <input type="text" name="email">
+                <input type="text" name="username">
                 <label>Inserisci il numero: 
                 <input type="text" name="numero" size="10" maxlength="10" onkeydown="return soloNumeri(event)" title="Il codice contiene solo numeri">
                 </label>

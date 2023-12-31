@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera il nuovo valore dal campo di input del modulo
+    $_SESSION['username']  = $_POST['username'];
 
-// Controlla se è stato inviato un modulo con il metodo POST
-
+    // Reindirizza o fai altre azioni necessarie
+    header('Location: account.php');
+    exit();
+}
 ?>
 <html lang="it">
 <head>
@@ -16,8 +21,23 @@ session_start();
     <script src="script/caricaHeader.js"></script>
     <?php 
     if(empty($_SESSION['username'])){
-        header("Location: registrati.php");
-        exit();
+        ?>
+        <div id=accedi>Accedi
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+            <label for="username">Username
+			<input type="text" name="username" id="username"/></label>
+            </br>
+            </label>
+            <label>Inserisci la password:
+            <input type="password" name="pwd1"></label>
+            </br>
+            <input type="submit" value="Invia">
+            </br>
+            <input type="reset" value="Annulla">
+        </form>
+        <p>Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
+    </div>
+    <?php
     }
     else{
         $username = $_SESSION["username"];

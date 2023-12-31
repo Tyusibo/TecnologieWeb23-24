@@ -21,16 +21,27 @@ session_start();
 <script src="script/caricaHeader.js"></script>
 <script src="script/caricaMappa.js"></script>
     <section style="margin-top: -100px;" class="home" id="home" >
+        <div class="overlay"></div>
         <div class="div_home">
             <h1 id="welcome">Benvenuto da Gentlemen's Cut</h1>
+            <h2 class="welcome2">"Dove l'eleganza incontra la precisione"</h2>
             <a href="#" class="btn">
                 <span>Prenota Subito</span>
             </a>
         </div>
     </section>
 
+    
     <section class="chiSiamo" id="chiSiamo">
-        <h1>Chi Siamo</h1>
+        <h1>CHI SIAMO</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </p>
+
+        <hr>
+        
         <div class="row">
             <div class="mapImg">
                 <div id="map"></div>
@@ -38,9 +49,6 @@ session_start();
 
             <div class="content">
                 <h3>Cosa ci rende speciali?</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                   in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                    <a href="#" class="btn"><span>Contattaci</span></a>
             </div>
         </div>

@@ -1,7 +1,9 @@
 body {
-    background-color: transparent;
     margin: 0px !important;
-    transition-duration: 0.4s;
+}
+
+.headertransition{
+    transition: all ease 0.5s;
 }
 
 .sticky {
@@ -10,7 +12,6 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    transition-duration: 0.4s;
 }
 
 .centeredflexrow {

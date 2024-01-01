@@ -14,6 +14,12 @@ function validaModulo(nomeModulo) {
         nomeModulo.username.focus();
     return false;
     }
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(nomeModulo.username.value)) {
+        alert("L'indirizzo email non è valido");
+        document.getElementById("username").focus();
+    return false;
+        }
     if (nomeModulo.numero.value == "") {
         alert("Devi inserire un numero");
         nomeModulo.numero.focus();

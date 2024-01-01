@@ -12,3 +12,9 @@ function validaModulo(nomeModulo) {
 
     return true
 }
+
+function mostraPassword() {
+    var mostraPasswordCheckbox = document.getElementById("mostra");
+    var passwordInput = document.getElementById("pwd");
+    passwordInput.type = mostraPasswordCheckbox.checked ? "text" : "password";
+}

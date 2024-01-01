@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </br>
             </label>
             <label>Inserisci la password:
-            <input type="password" name="pwd" value="<?php echo $password?>"></label>
+            <input type="password" id="pwd" name="pwd" value="<?php echo $password?>"></label>
+            <input type="checkbox" id="mostra" onchange="mostraPassword()"> Mostra password </br>
             </br>
             <input type="submit" value="Invia">
             </br>

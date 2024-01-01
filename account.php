@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
 session_start();
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    session_destroy();
+    unset($_SESSION['username']);
+    session_start();
+} 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username'] = $_POST['username'];  //mi serve solo questo di globale per sapere nelle altre pagine se sono loggato
@@ -46,7 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_SESSION["username"];
         echo "<p> Benvenuto $username!</p>";
         ?>
-        <a href=pagine_ausiliarie/esci.php>Esci</a>;
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">
+			Esci<input type="submit" value="Invia">
+        </form>
         <?php 
     }
     ?>

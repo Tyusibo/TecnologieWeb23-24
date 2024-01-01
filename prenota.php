@@ -25,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include "header.html"; ?>
-    <script src="script/StickyHeader.js"></script>
+    <?php require "header.html"; ?>
     <?php
     if(empty($_SESSION['username'])){
     ?>
@@ -74,6 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     ?>
     
-    <div id="footerContainer"><?php include "footer.html"; ?></div>
+    <?php require "footer.html"; ?>
 </body>
 </html>

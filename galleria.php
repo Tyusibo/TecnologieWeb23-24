@@ -10,8 +10,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/galleria.css">
 </head>
 <body>
-    <?php include "header.html"; ?>
-    <script src="script/StickyHeader.js"></script>
-    <div id="footerContainer"><?php include "footer.html"; ?></div>
+    <?php require "header.html"; ?>
+    <?php require "footer.html"; ?>
 </body>
 </html>

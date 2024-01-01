@@ -1,3 +1,11 @@
+// Crea un elemento script
+var scriptTag = document.createElement("script");
+
+// Imposta l'attributo src con il percorso della libreria
+scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js";
+
+// Aggiungi l'elemento script all'elemento head del documento
+document.head.appendChild(scriptTag);
 function validaModulo(nomeModulo) {
     if (nomeModulo.nome.value == "") {
         alert("Devi inserire un nome");
@@ -14,12 +22,13 @@ function validaModulo(nomeModulo) {
         nomeModulo.username.focus();
     return false;
     }
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(nomeModulo.username.value)) {
+    if (!validator.isEmail(nomeModulo.username.value)) {
         alert("L'indirizzo email non è valido");
-        document.getElementById("username").focus();
-    return false;
-        }
+        setTimeout(function() {
+            nomeModulo.username.focus();
+        }, 0);
+        return false;
+    }
     if (nomeModulo.numero.value == "") {
         alert("Devi inserire un numero");
         nomeModulo.numero.focus();
@@ -69,6 +78,7 @@ function validaModulo(nomeModulo) {
     return true
 }
 
+
 function soloNumeri(event){
     var tasto;
     tasto = event.key;
@@ -92,4 +102,5 @@ function mostraPassword(number) {
     var mostraPasswordCheckbox = document.getElementById("mostra"+number);
     var passwordInput = document.getElementById("pwd"+number);
     passwordInput.type = mostraPasswordCheckbox.checked ? "text" : "password";
+    passwordInput.focus();
 }

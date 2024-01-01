@@ -19,9 +19,8 @@ session_start();
 
 <body style="padding: 0px;">
 
-<?php include "header.html"; ?>
+<?php require "header.html"; ?>
 
-    <script src="script/StickyHeader.js"></script>
     <script src="script/caricaMappa.js"></script>
 
 
@@ -99,7 +98,7 @@ session_start();
     </section>
     
 
-    <div id="footerContainer"><?php include "footer.html"; ?></div>
+    <?php require "footer.html"; ?>
     
 </body>
 </html>

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    session_destroy();
-    unset($_SESSION['username']);
-    session_start();
+
+if ($_SERVER["REQUEST_METHOD"] === 'GET') {
+    if (isset($_GET['submit'])) {
+        session_destroy();
+        unset($_SESSION['username']);
+        session_start();
+    }
+    
 } 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera il nuovo valore dal campo di input del modulo
@@ -52,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p> Benvenuto $username!</p>";
         ?>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">
-			Esci<input type="submit" value="Invia">
+			<input type="submit" name="submit" value="Esci">
         </form>
         <?php 
     }

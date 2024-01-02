@@ -25,7 +25,6 @@ session_start();
 
 
     <section style="margin-top: -100px;" class="home" id="home" >
-        <div class="overlay"></div>
         <div class="div_home">
             <h1 id="welcome">Benvenuto da Gentlemen's Cut</h1>
             <h2 class="welcome2">"Dove l'eleganza incontra la precisione"</h2>
@@ -69,7 +68,7 @@ session_start();
     </section>
 
 
-    <section class="servizi">
+    <section class="servizi" id="servizi">
         <h1>SERVIZI</h1>
         <div class="div_serv">
             <div class="col-1">

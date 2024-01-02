@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Gentlemen's Cut Registrati</title>
     <link rel="stylesheet" type="text/css" href="css/registrati.css">
     <script src="script/registrati.js" defer></script>
-    <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/latest.js" crossorigin="anonymous"></script>
 <body>
     <?php require "header.html"; ?>
     
@@ -44,12 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </br>
                 <label><small>Scegli una password, deve contenere almeno: </br>
                 una lettera maiuscola, un carattere speciale e  </br>
-                essere lunga minimo 8 caratteri e non più di 20:</small><input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" ></label>
+                essere lunga minimo 8 caratteri e non più di 20:</small><input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" >
+                <i class="fa-sharp fa-solid fa-mustache" onclick="mostraPassword(1)" id="mostra1"></i></label>
                 <div id="errorePassword1" class="errore"></div>
-                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i>
-                <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>"></label>
+                <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
+                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>
                 <div id="errorePassword2" class="errore"></div>
-                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i>
                 </br>
                 <input type="submit" value="Invia">
                 <input type="reset" value="Annulla">

@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </br>
             </label>
             <label>Inserisci la password:
-            <input type="password" id="pwd" name="pwd" value="<?php echo $password?>"></label>
-            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i>
+            <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
+            <i class="fa-sharp fa-solid fa-mustache" onclick="mostraPassword()" id="mostra"></i></label>
             <div id="errorePassword" class="errore"></div>
             <input type="submit" value="Invia">
             </br>

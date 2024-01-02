@@ -123,44 +123,6 @@ body{
     margin-left: 20px;
     display: inline-flex;
 }
-
-.servizi {
-    background-color: orange;
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* Due colonne di larghezza uguale */
-    gap: 20px; /* Spazio tra i servizi */
-    justify-content: center; /* Allinea la griglia al centro della section */
-}
-
-.servizi > div {
-    margin-left: 100px;
-    border: none; /* Stile di esempio per i bordi */
-    padding: 10px; /* Spaziatura interna di esempio */
-    max-width: 500px;
-    font-size: 20px;
-}
-
-/* Imposta le posizioni dei singoli servizi nella griglia */
-.cut {
-    grid-column: 1; /* Prima colonna */
-    grid-row: 1; /* Prima riga */
-}
-
-.beradcut {
-    grid-column: 2; /* Seconda colonna */
-    grid-row: 1; /* Prima riga */
-}
-
-.buzzcut {
-    grid-column: 1; /* Prima colonna */
-    grid-row: 2; /* Seconda riga */
-}
-
-.shave {
-    grid-column: 2; /* Seconda colonna */
-    grid-row: 2; /* Seconda riga */
-}
-
 #headerContainer {
     z-index: 10;
 }
@@ -189,4 +151,54 @@ hr {
     color: white;
     background-color: #fa6400;
     transition: all 0.3s ease;
+}
+
+
+
+
+
+.servizi{
+    background-color: #000000;
+    padding: 100px;
+    text-align: center;
+}
+.servizi h1{
+    color: white;
+    font-size: 48px;
+    margin-block-start: 0;
+}
+
+
+.div_serv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.col-1{
+    width: 45%;
+    flex-direction: column;
+}
+.col-2{
+    width: 45%;
+    flex-direction: column;
+}
+.div_serv h2,h3{
+    color: white;
+    font-weight: 500;
+    margin-block-end: 10px;
+}
+.div_serv p {
+    color: #848788;
+    float: inline-end;
+    margin: 0;
+    text-align: left;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #848788;
+    margin-bottom: 50px;
+}
+.name{
+    float: left;
+}
+.price{
+    float: right;
 }

@@ -69,33 +69,54 @@ session_start();
     </section>
 
 
-    <section class="servizi" id="servizi">
-        
-        <div class="cut" id="cut">
+    <section class="servizi">
         <h1>SERVIZI</h1>
-            <h2>Taglio $40</h2>
-            <p>Solo stili tradizionali a taglio corto che includono: dissolvenze e rastremazioni che iniziano da 1 o più con un leggero 
-                lavoro a forbice sulla parte superiore; pettinati; tagli all'equipaggio; pompadour. Rasatura della nuca con schiuma calda 
-                inclusa e abbinata al prodotto su richiesta. Non include lo shampoo.</p>
-        </div>
-        <div class="beradcut" id="beardcut">
-            <h2>Taglio Barba $40</h2>
-                <p>Barba tagliata e modellata; linea di schiuma calda e rasoio a mano libera, rasatura del collo e della nuca. Include un trattamento 
-                    rilassante con asciugamano caldo e l'applicazione del prodotto.</p>
-        </div>
-        <div class="buzzcut">
-            <h2>Buzz Cut $25</h2>
-            <p>Same clipper length all the way around. No blending or scissor work. Hot lather nape shave included. Does not include shampoo.</p>
-        </div>
-        <div class="shave" id="shave">
-            <h2>Shave $40</h2>
-            <p>Full face or scalp straight razor shave with hot lather. Includes a relaxing hot towel treatment and product application.</p>
-        </div>
-        <div class="trasformation" id="trasformation">
-            <h2>Trasformation $80</h2>
-            <p>Shoulder length or longer chopped off for a whole new look. Styled with product upon request. Shampoo included upon request.</p>
+        <div class="div_serv">
+            <div class="col-1">
+                <div class="single_service">
+                    <h2 class="name">Taglio Classico</h2>
+                    <h2 class="price">$30.00</h2>br
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                </div>
+
+                <div class="single_service">
+                    <h2 class="name">Taglio Classico</h2>
+                    <h2 class="price">$30.00</h2>br
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                </div>
+
+                <div class="single_service">
+                    <h2 class="name">Taglio Classico</h2>
+                    <h2 class="price">$30.00</h2>br
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                </div>
+
+            </div>
+            <div class="col-2">
+                <div class="single_service">
+                    <h2 class="name">Taglio Classico</h2>
+                    <h2 class="price">$30.00</h2>br
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                </div>
+
+                <div class="single_service">
+                    <h2 class="name">Taglio Classico</h2>
+                    <h2 class="price">$30.00</h2>br
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                </div>
+
+                <div class="single_service">
+                    <h2 class="name">Taglio Classico</h2>
+                    <h2 class="price">$30.00</h2>br
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                </div>
+
+            </div>
+
         </div>
     </section>
+
+
     
 
     <?php require "footer.html"; ?>

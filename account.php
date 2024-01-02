@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Gentlemen's Cut Account</title>
     <link rel="stylesheet" type="text/css" href="css/account.css">
     <script src="script/account.js" defer></script>
+    <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php require "header.html"; ?>
@@ -34,12 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="username">Username
 			<input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
+            <div id="erroreEmail" class="errore"></div>
             </br>
             </label>
             <label>Inserisci la password:
-            <input type="password" id="pwd" name="pwd" value="<?php echo $password?>"></label>
-            <input type="checkbox" id="mostra" onchange="mostraPassword()"> Mostra password </br>
-            </br>
+            <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
+            <i class="fa-sharp fa-solid fa-mustache" onclick="mostraPassword()" id="mostra"></i></label>
+            <div id="errorePassword" class="errore"></div>
             <input type="submit" value="Invia">
             </br>
         </form>

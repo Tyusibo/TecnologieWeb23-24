@@ -12,16 +12,14 @@ session_start();
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=initMap">
     </script>
-
-
-    
+    <script src="script/caricaMappa.js"></script>
 </head>
 
 <body style="padding: 0px;">
 
 <?php require "header2.html"; ?>
 
-    <script src="script/caricaMappa.js"></script>
+    
 
 
     <section style="margin-top: -100px;" class="home" id="home" >
@@ -118,7 +116,6 @@ session_start();
 
     
 
-    <?php require "footer.html"; ?>
-    
+    <?php require "footer.html"; ?> 
 </body>
 </html>

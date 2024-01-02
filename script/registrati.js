@@ -115,8 +115,7 @@ function soloCaratteri(event){
         return true;
     if ((/^[a-zA-Z]+$/.test(tasto)) && tasto.length==1){
         if(campo.length==0 || campo[campo.length-1]===" "){
-            console.log(tasto);
-            event.target.value = tasto.toUpperCase();
+            event.target.value += tasto.toUpperCase();
             event.preventDefault();
     } else {
         if (typeof event.target.value === 'string') {

@@ -1,57 +1,111 @@
 body{
     margin: 0;
-    background-color: white;
-    padding: 25px;
-    height: 100vh;
+    padding: 100px;
 }
-.footer-flex{
+.footer{
+  background-color: black;
+  margin-top: 100px;
+}
+.footer ul{
+  color: white;
+  list-style: none;
+  padding: 0;
+}
+.footer li{
+  margin-bottom: 20px;
+}
+.footer ul span{
+  color: #848788;
+}
+
+.copy{
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  color: #848788;
+  padding: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-weight: 200;
+  border-top: 1px solid #848788;
+}
+
+a{
+  text-decoration: none;
+  color: #848788
+}
+
+.fa.ficon{
+  margin-left: 15px;
+  font-size: 24px;
+}
+
+
+.fprinc{
+  padding: 100px;
+  display: flex;
   flex-direction: row;
-  align-content: start;
-  justify-content: start;
+  justify-content: space-between;
 }
-.column-flex{
+
+.coll-1{
   display: flex;
-  flex-wrap: nowrap;
   flex-direction: column;
+  width: 15%;
 }
-.logo{
-  width: 200px;
-  height: 200px;
+.coll-2{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
-.logo img{
+.coll-3{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+.coll-4{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.fform{
+  color: white;
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 10px;
+  margin-bottom: 20px;
 }
-.nav-content{
-  font-size: 25px;
-  display: inline;
-  width: 260px;
-  height: 260px;
-}
-
-.social-icons{
-  display: inline-block;
-}
-.fa {
-    padding: 5px;
-    font-size: 30px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-  }
-  /* Facebook */
-.fa-facebook {
-    background: #3B5998;
-    color: white;
-}
-.fa-instagram {
-  background: #125688;
+.fform::placeholder{
   color: white;
 }
-.fa-twitter {
-  background: #55ACEE;
-  color: white;
+.footer form{
+  margin-block-start: 1em;
 }
 
+a:hover{
+  color: #fa6400;
+  transition: all 0.5s ease;
+}
+
+.bottone{
+  cursor: pointer;
+  font-family: Times;
+  background-color: transparent;
+  z-index: 2;
+  font-size: 18px !important;
+  font-weight: 600;
+  justify-content: center;
+  color: #fa6400;
+  border: 1px solid #fa6400;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.bottone:hover{
+  z-index: 2;
+  color: white;
+  background-color: #fa6400;
+  transition: all 0.3s ease;
+}

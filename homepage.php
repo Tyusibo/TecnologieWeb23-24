@@ -68,7 +68,7 @@ session_start();
     </section>
 
 
-    <section class="servizi">
+    <section class="servizi" id="servizi">
         <h1>SERVIZI</h1>
         <div class="div_serv">
             <div class="col-1">

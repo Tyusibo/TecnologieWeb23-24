@@ -8,6 +8,7 @@ scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validat
 document.head.appendChild(scriptTag);
 
 function validaModulo(nomeModulo) {
+    var error=false;
     document.getElementById("erroreNome").innerText ="";
     document.getElementById("erroreCognome").innerText ="";
     document.getElementById("erroreEmail").innerText ="";
@@ -17,71 +18,66 @@ function validaModulo(nomeModulo) {
     if (nomeModulo.nome.value == "") {
         document.getElementById("erroreNome").innerText ="Devi inserire un nome";
         nomeModulo.nome.focus();
-        return false;
+        error=true;
     }
     if (nomeModulo.cognome.value == "") {
         document.getElementById("erroreCognome").innerText = "Devi inserire un cognome";
         nomeModulo.cognome.focus();
-        return false;
+        error=true;
     }
     if (nomeModulo.username.value == "") {
         document.getElementById("erroreEmail").innerText = "Devi inserire un'email";
         nomeModulo.username.focus();
-        return false;
-    }
-    if (!(validator.isEmail(nomeModulo.username.value))) {
-        document.getElementById("erroreEmail").innerText = "L'indirizzo email non è valido";
-        nomeModulo.username.focus();
-        return false;
-    }
+        error=true;
+    } else if (!(validator.isEmail(nomeModulo.username.value))) {
+            document.getElementById("erroreEmail").innerText = "L'indirizzo email non è valido";
+            nomeModulo.username.focus();
+            error=true;
+        }
+    
     if (nomeModulo.numero.value == "") {
         document.getElementById("erroreNumero").innerText = "Devi inserire un numero" ;
         nomeModulo.numero.focus();
-        return false;
-    }
-    if (nomeModulo.numero.value.length<10) {
-        document.getElementById("erroreNumero").innerText = "Il numero deve contenere almeno 10 caratteri";
-        nomeModulo.numero.focus();
-        return false;
-    }
+        error=true;
+    } else if (nomeModulo.numero.value.length<10) {
+            document.getElementById("erroreNumero").innerText = "Il numero deve contenere almeno 10 caratteri";
+            nomeModulo.numero.focus();
+            error=true;
+        }
+    
     if (nomeModulo.pwd1.value == "") {
         document.getElementById("errorePassword1").innerText = "Devi inserire una password";
         nomeModulo.pwd1.focus();
-        return false;
-    }
-    if (nomeModulo.pwd1.value.length<8) {
-        document.getElementById("errorePassword1").innerText = "La password deve essere almeno lunga 8 caratteri";
-        nomeModulo.pwd1.focus();
-        return false;
-    }
-    if (nomeModulo.pwd1.value.length>20) {
-        document.getElementById("errorePassword1").innerText = "La password non deve essere più lunga di 20 caratteri";
-        nomeModulo.pwd1.focus();
-        return false;
-    }
-    if (!/[A-Z]/.test(nomeModulo.pwd1.value)) {
-        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno una lettera maiuscola";
-        nomeModulo.pwd1.focus();
-        return false;
-    }
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(nomeModulo.pwd1.value)) {
-        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un carattere speciale";
-        nomeModulo.pwd1.focus();
-        return false;
-    }
-    
+        error=true;
+    } else if (nomeModulo.pwd1.value.length<8) {
+            document.getElementById("errorePassword1").innerText = "La password deve essere almeno lunga 8 caratteri";
+            nomeModulo.pwd1.focus();
+            error=true;
+            } else if (nomeModulo.pwd1.value.length>20) {
+                document.getElementById("errorePassword1").innerText = "La password non deve essere più lunga di 20 caratteri";
+                nomeModulo.pwd1.focus();
+                error=true;
+                } else if (!/[A-Z]/.test(nomeModulo.pwd1.value)) {
+                    document.getElementById("errorePassword1").innerText = "La password deve contenere almeno una lettera maiuscola";
+                    nomeModulo.pwd1.focus();
+                    error=true;
+                    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(nomeModulo.pwd1.value)) {
+                        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un carattere speciale";
+                        nomeModulo.pwd1.focus();
+                        error=true;
+                    }
     if (nomeModulo.pwd2.value == "") {
         document.getElementById("errorePassword2").innerText = "Devi inserire la password di conferma";
         nomeModulo.pwd2.focus();
-        return false;
-    }
-    if (nomeModulo.pwd1.value != nomeModulo.pwd2.value) {
-        document.getElementById("errorePassword2").innerText = "Le due password non corrispondono";
-        nomeModulo.pwd2.focus();    
-        nomeModulo.pwd2.select();
-        return false;
-    }
-    return true
+        error=true;
+    } else if (nomeModulo.pwd1.value != nomeModulo.pwd2.value) {
+            document.getElementById("errorePassword2").innerText = "Le due password non corrispondono";
+            nomeModulo.pwd2.focus();    
+            nomeModulo.pwd2.select();
+            error=true;
+        }
+    
+    return !error;
 }
 
 function soloNumeri(event){
@@ -137,8 +133,17 @@ function soloCaratteri(event){
 }
 
 function mostraPassword(number) {
-    var mostraPasswordCheckbox = document.getElementById("mostra"+number);
+    var icona=document.getElementById("mostra"+number);
     var passwordInput = document.getElementById("pwd"+number);
-    passwordInput.type = mostraPasswordCheckbox.checked ? "text" : "password";
+    if(passwordInput.type =="text"){
+        passwordInput.type="password";
+        icona.classList.remove("fa-mask-face");
+        icona.classList.add("fa-mustache"); 
+    }
+    else{
+        passwordInput.type="text";
+        icona.classList.remove("fa-mustache"); 
+        icona.classList.add("fa-mask-face");
+    }
     passwordInput.focus();
 }

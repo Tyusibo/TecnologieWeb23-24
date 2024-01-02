@@ -1,7 +1,4 @@
-body{
-    background-color: aqua;
-}
-
-form{
-    background-color: aqua;
-}
+.errore {
+    color: red;
+    font-weight: bold;
+  }

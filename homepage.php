@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+$_SESSION['redirect']=null;
 ?>
 <html lang="it">
 <head>
@@ -18,9 +19,6 @@ session_start();
 <body style="padding: 0px;">
 
 <?php require "header2.html"; ?>
-
-    
-
 
     <section style="margin-top: -100px;" class="home" id="home" >
         <div class="div_home">

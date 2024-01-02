@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+$_SESSION['redirect']=null;
 ?>
 <html lang="it">
 <head>

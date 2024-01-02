@@ -1,0 +1,89 @@
+body {
+    margin: 0px !important;
+}
+
+.headertransition{
+    transition: all ease 0.5s;
+}
+
+.sticky {
+    z-index: 200;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#placeholder {
+    height: 100px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.header{
+    display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
+.logo {
+    height: 100px;
+    width: 200px;
+    z-index: 2;
+    margin-right: 100px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    z-index: 2;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.colonna1{
+    width: 25%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.colonna2{
+    width: 50%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.colonna3{
+    width: 25%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.fa-user:before {
+    content: "\f007";
+    vertical-align: -webkit-baseline-middle;
+    color: white;
+    margin-left: 30px;
+}
+
+.account{
+    align-self: center;
+}

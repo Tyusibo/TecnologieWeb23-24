@@ -19,7 +19,7 @@ session_start();
 
 <body style="padding: 0px;">
 
-<?php require "header.html"; ?>
+<?php require "header2.html"; ?>
 
     <script src="script/caricaMappa.js"></script>
 

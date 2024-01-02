@@ -6,90 +6,95 @@ scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validat
 
 // Aggiungi l'elemento script all'elemento head del documento
 document.head.appendChild(scriptTag);
+
 function validaModulo(nomeModulo) {
+    document.getElementById("erroreNome").innerText ="";
+    document.getElementById("erroreCognome").innerText ="";
+    document.getElementById("erroreEmail").innerText ="";
+    document.getElementById("erroreNumero").innerText ="";
+    document.getElementById("errorePassword1").innerText ="";
+    document.getElementById("errorePassword2").innerText ="";
     if (nomeModulo.nome.value == "") {
-        alert("Devi inserire un nome");
+        document.getElementById("erroreNome").innerText ="Devi inserire un nome";
         nomeModulo.nome.focus();
-    return false;
+        return false;
     }
     if (nomeModulo.cognome.value == "") {
-        alert("Devi inserire un cognome");
+        document.getElementById("erroreCognome").innerText = "Devi inserire un cognome";
         nomeModulo.cognome.focus();
-    return false;
+        return false;
     }
     if (nomeModulo.username.value == "") {
-        alert("Devi inserire un'email");
+        document.getElementById("erroreEmail").innerText = "Devi inserire un'email";
         nomeModulo.username.focus();
-    return false;
+        return false;
     }
-    if (!validator.isEmail(nomeModulo.username.value)) {
-        alert("L'indirizzo email non è valido");
-        setTimeout(function() {
-            nomeModulo.username.focus();
-        }, 0);
+    if (!(validator.isEmail(nomeModulo.username.value))) {
+        document.getElementById("erroreEmail").innerText = "L'indirizzo email non è valido";
+        nomeModulo.username.focus();
         return false;
     }
     if (nomeModulo.numero.value == "") {
-        alert("Devi inserire un numero");
+        document.getElementById("erroreNumero").innerText = "Devi inserire un numero" ;
         nomeModulo.numero.focus();
-    return false;
+        return false;
     }
-    if (nomeModulo.numero.value.length<8) {
-        alert("Il numero deve contenere almeno 8 caratteri");
+    if (nomeModulo.numero.value.length<10) {
+        document.getElementById("erroreNumero").innerText = "Il numero deve contenere almeno 10 caratteri";
         nomeModulo.numero.focus();
-    return false;
+        return false;
     }
     if (nomeModulo.pwd1.value == "") {
-        alert("Devi inserire una password");
+        document.getElementById("errorePassword1").innerText = "Devi inserire una password";
         nomeModulo.pwd1.focus();
-    return false;
+        return false;
     }
     if (nomeModulo.pwd1.value.length<8) {
-        alert("La password deve essere almeno lunga 8 caratteri");
+        document.getElementById("errorePassword1").innerText = "La password deve essere almeno lunga 8 caratteri";
         nomeModulo.pwd1.focus();
-    return false;
+        return false;
     }
     if (nomeModulo.pwd1.value.length>20) {
-        alert("La password non deve essere più lunga di 20 caratteri");
+        document.getElementById("errorePassword1").innerText = "La password non deve essere più lunga di 20 caratteri";
         nomeModulo.pwd1.focus();
-    return false;
+        return false;
     }
     if (!/[A-Z]/.test(nomeModulo.pwd1.value)) {
-        alert("La password deve contenere almeno una lettera maiuscola");
-        document.getElementById("pwd1").focus();
+        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno una lettera maiuscola";
+        nomeModulo.pwd1.focus();
         return false;
     }
     if (!/[!@#$%^&*(),.?":{}|<>]/.test(nomeModulo.pwd1.value)) {
-        alert("La password deve contenere almeno un carattere speciale");
-        document.getElementById("pwd1").focus();
+        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un carattere speciale";
+        nomeModulo.pwd1.focus();
         return false;
     }
+    
     if (nomeModulo.pwd2.value == "") {
-        alert("Devi inserire la password di conferma");
+        document.getElementById("errorePassword2").innerText = "Devi inserire la password di conferma";
         nomeModulo.pwd2.focus();
-    return false;
+        return false;
     }
     if (nomeModulo.pwd1.value != nomeModulo.pwd2.value) {
-        alert("Le due password non corrispondono");
+        document.getElementById("errorePassword2").innerText = "Le due password non corrispondono";
         nomeModulo.pwd2.focus();    
         nomeModulo.pwd2.select();
-    return false;
+        return false;
     }
     return true
 }
-
 
 function soloNumeri(event){
     var tasto;
     tasto = event.key;
     var campo = event.target.value;
-    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control") || ((tasto=="+") && (campo.indexOf("+") === -1))){
+    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control") || ((tasto=="+") && (campo.indexOf("+") === -1)))
         return true;
-    } else if (("0123456789").indexOf(tasto) > -1){
-        if (campo.length < 12 ) {
+    if (("0123456789").indexOf(tasto) > -1){
+        if (campo.length < 13) {
             return true;
     } else {
-        alert("Il numero di telefono non può superare i 12 caratteri");
+        alert("Il numero di telefono non può superare i 13 caratteri");
         return false;
     }
         }
@@ -97,7 +102,40 @@ function soloNumeri(event){
             alert("il campo accetta solo numeri e il carattere + come primo carattere");
             return false;
         }
+    if(campo.length===0){
+
+        event.target.value = tasto.toUpperCase();
+
+        event.preventDefault();aaaa
+    }
 }
+
+
+
+function soloCaratteri(event){
+    var tasto = event.key;
+    var campo = event.target.value;
+    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control")|| (tasto==" "))
+        return true;
+    if ((/^[a-zA-Z]+$/.test(tasto)) && tasto.length==1){
+        if(campo.length==0 || campo[campo.length-1]===" "){
+            console.log(tasto);
+            event.target.value = tasto.toUpperCase();
+            event.preventDefault();
+    } else {
+        if (typeof event.target.value === 'string') {
+            console.log(tasto + tasto);
+            // Rendi il carattere minuscolo e aggiungilo al valore esistente
+            event.target.value += tasto.toLowerCase();
+            event.preventDefault();
+        }
+    }
+    return true;
+    }
+       
+    return false;
+}
+
 function mostraPassword(number) {
     var mostraPasswordCheckbox = document.getElementById("mostra"+number);
     var passwordInput = document.getElementById("pwd"+number);

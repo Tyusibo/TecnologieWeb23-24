@@ -25,25 +25,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Registrati</title>
     <link rel="stylesheet" type="text/css" href="css/registrati.css">
-    <script src="script/registrati2.js" defer></script>
+    <script src="script/registrati3.js" defer></script>
 <body>
-    <?php require "header.html"; ?>
+    <?php include "header.html"; ?>
+    <script src="script/StickyHeader.js"></script>
     
         <div id=registrati>Registrati
             <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label>Inserisci il tuo nome:<input type="text" size="30" name="nome" value="<?php echo $nome?>"onkeydown="return soloCaratteri(event)"></label>
-                <label>Inserisci il tuo cognome:<input type="text" size="30" name="cognome" value="<?php echo $cognome?>"onkeydown="return soloCaratteri(event)"></label>
+                <label>Inserisci il tuo nome:<input type="text" size="30" name="nome" value="<?php echo $nome?>"></label>
+                <label>Inserisci il tuo cognome:<input type="text" size="30" name="cognome" value="<?php echo $cognome?>"></label>
                 </br>
                 <label>Inserisci l'email: 
-                <input type="text" name="username" value="<?php echo $username?>" onblur="return verificaEmail(event)" >
+                <input type="text" name="username" value="<?php echo $username?>">
                 <label>Inserisci il numero: 
-                <input type="tel" name="numero" value="<?php echo $numero?>"
-                 size="13" onkeydown="return soloNumeri(event)" onblur="return lunghezzaNumero(event)"Il codice contiene solo numeri">
+                <input type="text" name="numero" value="<?php echo $numero?>"
+                 size="12"onkeydown="return soloNumeri(event)" title="Il codice contiene solo numeri">
                 </label>
                 </br>
-                <label><small>Scegli una password, deve contenere almeno: </br>
+                <label>Scegli una password, deve contenere almeno: </br>
                 una lettera maiuscola, un carattere speciale e  </br>
-                essere lunga minimo 8 caratteri e non più di 20:</small><input type="password" id="pwd1" name="pwd1" value="<?php echo $password1?>" onblur="return verificaPassword(event)" ></label>
+                essere lunga minimo 8 caratteri e non più di 20:<input type="password" id="pwd1" name="pwd1" value="<?php echo $password1?>"></label>
                 <input type="checkbox" id="mostra1" onchange="mostraPassword(1)"> Mostra password </br>
                 <label>Inseriscila la password di conferma:<input type="password" id="pwd2"name="pwd2" value="<?php echo $password2?>"></label>
                 <input type="checkbox" id="mostra2" onchange="mostraPassword(2)"> Mostra password </br>
@@ -60,6 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
     }
     ?>
-    <?php require "footer.html"; ?>
+    <div id="footerContainer"><?php include "footer.html"; ?></div>
 </body>
 </html>       

@@ -12,6 +12,7 @@ $_SESSION['redirect']=null;
 </head>
 <body>
     <?php require "header.html"; ?>
+    <div style="height: 100px"></div>
     <?php require "footer.html"; ?>
 </body>
 </html>

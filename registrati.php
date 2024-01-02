@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
 <body style="padding: 0px;">
     <?php require "header.html"; ?>
+    <div style="height: 100px"></div>
     
         <div id=registrati>Registrati
             <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">

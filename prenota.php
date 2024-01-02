@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 
 <body>
     <?php require "header.html"; ?>
+    <div style="height: 100px"></div>
     <?php
     if(empty($_SESSION['username'])){
         ?>

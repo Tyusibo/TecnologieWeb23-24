@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <?php require "header.html"; ?>
+    <div style="height: 100px"></div>
     <div id=accedi>Accesso
         <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="username">Username

@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" type="text/css" href="css/registrati.css">
     <script src="script/registrati.js" defer></script>
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
-<body>
+<body style="padding: 0px;">
     <?php require "header.html"; ?>
     
         <div id=registrati>Registrati

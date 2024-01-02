@@ -16,7 +16,7 @@ $_SESSION['redirect']=null;
     <script src="script/caricaMappa.js"></script>
 </head>
 
-<body style="padding: 0px;">
+<body>
 
 <?php require "header.html"; ?>
 

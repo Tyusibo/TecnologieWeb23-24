@@ -206,3 +206,16 @@ hr {
 .price{
     float: right;
 }
+.test img {
+    width: 30%;
+    margin-right: 10px;
+}
+
+.test {
+    display: inline-flex;
+    overflow: auto;
+}
+.galleria{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

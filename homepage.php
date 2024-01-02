@@ -70,19 +70,19 @@ $_SESSION['redirect']=null;
             <div class="col-1">
                 <div class="single_service">
                     <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>br
+                    <h2 class="price">$30.00</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
                 </div>
 
                 <div class="single_service">
                     <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>br
+                    <h2 class="price">$30.00</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
                 </div>
 
                 <div class="single_service">
                     <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>br
+                    <h2 class="price">$30.00</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
                 </div>
 
@@ -90,24 +90,39 @@ $_SESSION['redirect']=null;
             <div class="col-2">
                 <div class="single_service">
                     <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>br
+                    <h2 class="price">$30.00</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
                 </div>
 
                 <div class="single_service">
                     <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>br
+                    <h2 class="price">$30.00</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
                 </div>
 
                 <div class="single_service">
                     <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>br
+                    <h2 class="price">$30.00</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
                 </div>
 
             </div>
 
+        </div>
+    </section>
+
+    <section class="galleria">
+        <h1>GALLERIA</h1>
+        <div class="test">
+            <img src="img/barber_bg.jpeg" alt="Immagine 1">
+            <img src="img/barber_bg.jpeg" alt="Immagine 2">
+            <img src="img/barber_bg.jpeg" alt="Immagine 3">
+            <img src="img/barber_bg.jpeg" alt="Immagine 4">
+            <img src="img/barber_bg.jpeg" alt="Immagine 5">
+            <img src="img/barber_bg.jpeg" alt="Immagine 6">
+            <img src="img/barber_bg.jpeg" alt="Immagine 7">
+            <img src="img/barber_bg.jpeg" alt="Immagine 8">
+            <img src="img/barber_bg.jpeg" alt="Immagine 9">
         </div>
     </section>
 

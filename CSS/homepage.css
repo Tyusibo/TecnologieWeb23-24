@@ -70,6 +70,9 @@ body{
     vertical-align: baseline;
     width: auto;
 }
+.btn:hover{
+    color: white;
+}
 .chiSiamo{
     background-image: url(../img/white\ background.svg);
     background-position: center center;
@@ -138,24 +141,6 @@ hr {
     width: 400px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.bottone{
-    z-index: 2;
-    font-size: 18px;
-    font-weight: 600;
-    justify-content: center;
-    color: #fa6400;
-    border: 1px solid #fa6400;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-.bottone:hover{
-    z-index: 2;
-    color: white;
-    background-color: #fa6400;
-    transition: all 0.3s ease;
 }
 
 

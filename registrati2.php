@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" name="username" value="<?php echo $username?>" onblur="return verificaEmail(event)" >
                 <label>Inserisci il numero: 
                 <input type="tel" name="numero" value="<?php echo $numero?>"
-                 size="12" onkeydown="return soloNumeri(event)" onblur="return lunghezzaNumero(event)"Il codice contiene solo numeri">
+                 size="13" onkeydown="return soloNumeri(event)" onblur="return lunghezzaNumero(event)"Il codice contiene solo numeri">
                 </label>
                 </br>
                 <label><small>Scegli una password, deve contenere almeno: </br>

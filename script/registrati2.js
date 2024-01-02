@@ -58,10 +58,10 @@ function soloNumeri(event){
     if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control") || ((tasto=="+") && (campo.indexOf("+") === -1)))
         return true;
     if (("0123456789").indexOf(tasto) > -1){
-        if (campo.length < 12 ) {
+        if (campo.length < 13) {
             return true;
     } else {
-        alert("Il numero di telefono non può superare i 12 caratteri");
+        alert("Il numero di telefono non può superare i 13 caratteri");
         return false;
     }
         }
@@ -69,17 +69,14 @@ function soloNumeri(event){
             alert("il campo accetta solo numeri e il carattere + come primo carattere");
             return false;
         }
+    if(campo.length===0){
+
+        event.target.value = tasto.toUpperCase();
+
+        event.preventDefault();
+    }
 }
 
-function soloCaratteri(event){
-    var tasto;
-    tasto = event.key;
-    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control"))
-        return true;
-
-    if (!(/^[a-zA-Z]+$/.test(tasto))) 
-        return false;
-}
 
 function lunghezzaNumero(event){
     if (
@@ -88,14 +85,33 @@ function lunghezzaNumero(event){
     ) {
         return;
     }
-    if (event.target.value.length<8) {
-        alert("Il numero deve contenere almeno 8 caratteri");
+    if (event.target.value.length<10) {
+        alert("Il numero deve contenere almeno 10 caratteri");
         setTimeout(function() {
             event.target.focus();
         }, 0);
     return false;
 }
 }
+
+function soloCaratteri(event){
+    var tasto = event.key;
+    var campo = event.target.value;
+    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control"))
+        return true;
+    if ((/^[A-Z]+$/.test(tasto)) && (campo.length===0))
+        return true;
+    if (!(/^[a-z]+$/.test(tasto)))
+        return false;
+    if(campo.length===0){
+
+            event.target.value = tasto.toUpperCase();
+
+            event.preventDefault();
+    }
+}
+
+
 
 function verificaEmail(event) {
     if (

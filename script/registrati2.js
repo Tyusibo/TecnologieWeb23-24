@@ -73,7 +73,7 @@ function soloNumeri(event){
 
         event.target.value = tasto.toUpperCase();
 
-        event.preventDefault();
+        event.preventDefault();aaaa
     }
 }
 

@@ -13,12 +13,6 @@ body {
     width: 100%;
 }
 
-#placeholder {
-    height: 100px;
-    width: 100%;
-    background-color: transparent;
-}
-
 .header{
     display: flex;
     padding-left: 30px;

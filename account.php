@@ -9,16 +9,21 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
         session_start();
     }
     
-} 
+}
+    
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username'] = $_POST['username'];  //mi serve solo questo di globale per sapere nelle altre pagine se sono loggato
     $username=$_SESSION['username'];
     $password=$_POST['pwd']; 
+    if($_SESSION['redirect']!=null){
+        header("Location: prenota.php");
+    }
 } else {
     $username=null;
-    $password=null;
+    $password=null;  
 }
+
 ?>
 <html lang="it">
 <head>
@@ -40,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </label>
             <label>Inserisci la password:
             <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
-            <i class="fa-sharp fa-solid fa-mustache" onclick="mostraPassword()" id="mostra"></i></label>
+            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i></label>
             <div id="errorePassword" class="errore"></div>
             <input type="submit" value="Invia">
             </br>

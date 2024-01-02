@@ -13,20 +13,21 @@ body {
     width: 100%;
 }
 
-.centeredflexrow {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-}
-
 #placeholder {
     height: 100px;
     width: 100%;
     background-color: transparent;
 }
 
-#logo {
+.header{
+    display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
+.logo {
     height: 100px;
     width: 200px;
     z-index: 2;
@@ -44,6 +45,8 @@ nav ul li {
     margin-left: 10px;
     margin-right: 10px;
     z-index: 2;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 nav ul li a {
@@ -52,15 +55,35 @@ nav ul li a {
     z-index: 2;
 }
 
-#galleria{
-    border: 3px double yellow;
+.colonna1{
+    width: 25%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.colonna2{
+    width: 50%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.colonna3{
+    width: 25%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
-#prenota{
-    border: 2px solid #3498db;
-    background-color: #2ecc71;
-}
-
-#sezioni_homepage{
+.fa-user:before {
+    content: "\f007";
+    vertical-align: -webkit-baseline-middle;
     color: white;
+    margin-left: 30px;
+}
+
+.account{
+    align-self: center;
 }

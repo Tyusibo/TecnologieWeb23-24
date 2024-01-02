@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username']  = $_POST['username'];
@@ -9,7 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username=$_SESSION['username'];
     $numero=$_POST['numero']; 
     $password1=$_POST['pwd1']; 
-    $password2=$_POST['pwd2']; 
+    $password2=$_POST['pwd2'];
+    if($_SESSION['redirect']!=null){
+        header("Location: prenota.php");
+    } 
 } else {
     $nome=null; 
     $cognome=null; 
@@ -18,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password1=null; 
     $password2=null;  
 }
+
 ?>
 <html lang="it">
 <head>
@@ -26,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Gentlemen's Cut Registrati</title>
     <link rel="stylesheet" type="text/css" href="css/registrati.css">
     <script src="script/registrati.js" defer></script>
-    <script src="https://kit.fontawesome.com/latest.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
 <body>
     <?php require "header.html"; ?>
     
@@ -43,9 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div id="erroreNumero" class="errore"></div>
                 </br>
                 <label><small>Scegli una password, deve contenere almeno: </br>
-                una lettera maiuscola, un carattere speciale e  </br>
+                una lettera maiuscola, una lettera minuscola,un numero, un carattere speciale tra [!@#$%^&*(),.?":{}|<>] e</br>
                 essere lunga minimo 8 caratteri e non più di 20:</small><input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" >
-                <i class="fa-sharp fa-solid fa-mustache" onclick="mostraPassword(1)" id="mostra1"></i></label>
+                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i></label>
                 <div id="errorePassword1" class="errore"></div>
                 <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
                 <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>

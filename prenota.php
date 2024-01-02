@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera il nuovo valore dal campo di input del modulo
-    $data = $_POST['data'];
-    $orario = $_POST['orario'];
-    $message = $_POST['message'];
-    $file = $_POST['file'];
-
-} else {
-    //li setto null per non generare errori
-    $data=null; 
-    $orario=null;
-    $message=null;
-    $file=null;
+$_SESSION['redirect']=null;
+if ($_SERVER["REQUEST_METHOD"] === 'GET') {
+    if (isset($_GET['accedi'])) {
+           $_SESSION['redirect']="prenota.php"; 
+            header("Location: account.php");
+    } 
+    if (isset($_GET['registrati'])) {
+        $_SESSION['redirect']="prenota.php"; 
+         header("Location: registrati.php");
+ }    
 }
+
 ?>
 <html lang="it">
 <head>
@@ -28,10 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require "header.html"; ?>
     <?php
     if(empty($_SESSION['username'])){
-    ?>
-    <p>Pagina riservata agli utenti registrati. <br/> Effettua il <a href="account.php">login</a> oppure 
-    <a href="registrati.php">registrati</a> per continuare</p>
-    <?php } else {?>    
+        ?>
+        <p>Pagina riservata agli utenti autenticati. <br/> 
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET">
+			    <label>Effettua l'<input type="submit" id="accedi" name="accedi" value="accesso"></form>oppure</label>
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET">
+                <label><input type="submit" id="registrati" name="registrati" value="registrati">per continuare</p></label>
+            </form>
+        <?php } else {?>    
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype=“multipart/form-data”>
             <label for="data">Seleziona una data:</label>
             <input type="date" id="data" value="<?php echo $data ?>" name="data" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 week')); ?>" required>
@@ -39,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <br>
 
             <label for="orario">Seleziona un orario:</label>
-            <select id="orario" name="orario" value="<?php echo $orario ?>" required>
+            <select id="orario" name="orario" required>
                 <?php
                     $orario_inizio = strtotime('09:00');
                     $orario_fine = strtotime('18:00');
@@ -59,19 +61,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <br>
             <label>Se hai qualche particolare preferenza, lasciaci un messaggio:
-            <input type="text" name="message" value="<?php echo $message ?>"></label>
+            <input type="text" name="message"></label>
             <label>Puoi anche inviarci un'immagine del taglio che desideri fare:
-            <input type="file" name="file" value="<?php echo $file ?>"></label>
+            <input type="file" name="file"></label>
 
             <input type="submit" value="Invia">
         </form>
             
-        <?php
-        if (!is_null($data)) {
-            printf("hello");
-            }   
-        }
-    ?>
+        <?php } ?>
     
     <?php require "footer.html"; ?>
 </body>

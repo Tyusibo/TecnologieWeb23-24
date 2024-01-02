@@ -61,11 +61,19 @@ function validaModulo(nomeModulo) {
                     document.getElementById("errorePassword1").innerText = "La password deve contenere almeno una lettera maiuscola";
                     nomeModulo.pwd1.focus();
                     error=true;
-                    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(nomeModulo.pwd1.value)) {
-                        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un carattere speciale";
+                    } else if (!/[a-z]/.test(nomeModulo.pwd1.value)) {
+                        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno una lettera minuscola";
                         nomeModulo.pwd1.focus();
                         error=true;
-                    }
+                        } else if (!/[0-9]/.test(nomeModulo.pwd1.value)) {
+                            document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un numero";
+                            nomeModulo.pwd1.focus();
+                            error=true;
+                            } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(nomeModulo.pwd1.value)) {
+                                document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un carattere speciale";
+                                nomeModulo.pwd1.focus();
+                                error=true;
+                            }
     if (nomeModulo.pwd2.value == "") {
         document.getElementById("errorePassword2").innerText = "Devi inserire la password di conferma";
         nomeModulo.pwd2.focus();

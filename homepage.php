@@ -18,7 +18,7 @@ $_SESSION['redirect']=null;
 
 <body style="padding: 0px;">
 
-<?php require "header2.html"; ?>
+<?php require "header.html"; ?>
 
     <section style="margin-top: -100px;" class="home" id="home" >
         <div class="div_home">

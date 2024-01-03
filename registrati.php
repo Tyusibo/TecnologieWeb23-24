@@ -68,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
                     <input type="submit" value="Registrati">
                 </form>
     <?php 
-    if(isset($_SESSION['username'])){  //se sei loggato 
-        ?>   
+    if(!(empty($_SESSION['username']))){  //se sei loggato 
+        echo "<p>Benvenuto $_SESSION[username] !";?>
         <p>Per andare al tuo account clicca <a href="account.php">qui</a>.</p>
     <?php
     } else {   //se non sei loggato

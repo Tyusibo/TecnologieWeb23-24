@@ -54,9 +54,12 @@ function validaModulo(nomeModulo) {
         document.getElementById("errorePassword1").innerText = "Devi inserire una password";
         nomeModulo.pwd1.focus();
         error=true;
-    } else 
+    } else{
         // Chiamare verificaPassword con l'oggetto evento simulato
         error=verificaPassword(simulatedEvent);
+        if(error)
+            document.getElementById("errorePassword1").innerText = "Controlla il formato da rispettare per la password";
+    }
 
     if (nomeModulo.pwd2.value == "") {
         document.getElementById("errorePassword2").innerText = "Devi inserire la password di conferma";

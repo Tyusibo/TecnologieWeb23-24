@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisc
     
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo di input del modulo
+if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $username=$_SESSION['username'];
     $pwd=$_POST['pwd']; 
@@ -60,8 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     <?php
     }
     else{  //se loggato
-        echo "<p> Benvenuto $username!</p>";
-        ?>
+        echo "<p>Benvenuto $_SESSION[username] !";?>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">
 			<input type="submit"  name="submit" id="submit" value="Esci">
         </form>

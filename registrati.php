@@ -34,8 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
 <body>
     <?php require "header.html"; ?>
-    <div style="height: 100px;"></div>
-    <div style="height: 100px; background-color: black"></div> <!--lo stile per mostrare il contenuto dopo l'header e perchè i cazzoni mettono il css nei documenti php-->    <div class="container">
+    <div style="height: 100px; background-color: black"></div>
     <div class="container">    
         <div id="logobox">
             <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">

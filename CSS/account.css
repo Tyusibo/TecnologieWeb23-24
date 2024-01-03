@@ -16,9 +16,17 @@ label{
 .container{
     height: 500px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url(../img/homebackg.jpg);
+}
+
+#logobox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .whitebox{

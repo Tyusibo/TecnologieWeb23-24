@@ -28,31 +28,7 @@ function validaModulo(nomeModulo) {
         document.getElementById("errorePassword").innerText = "Devi inserire una password";
         nomeModulo.pwd.focus();
         error=true;
-    } else if (nomeModulo.pwd.value.length<8) {
-            document.getElementById("errorePassword").innerText = "La password deve essere almeno lunga 8 caratteri";
-            nomeModulo.pwd.focus();
-            error=true;
-            } else if (nomeModulo.pwd.value.length>20) {
-                document.getElementById("errorePassword").innerText = "La password non deve essere più lunga di 20 caratteri";
-                nomeModulo.pwd.focus();
-                error=true;
-                } else if (!/[A-Z]/.test(nomeModulo.pwd.value)) {
-                    document.getElementById("errorePassword").innerText = "La password deve contenere almeno una lettera maiuscola";
-                    nomeModulo.pwd.focus();
-                    error=true;
-                    } else if (!/[a-z]/.test(nomeModulo.pwd.value)) {
-                        document.getElementById("errorePassword").innerText = "La password deve contenere almeno una lettera minuscola";
-                        nomeModulo.pwd.focus();
-                        error=true;
-                        } else if (!/[0-9]/.test(nomeModulo.pwd.value)) {
-                            document.getElementById("errorePassword").innerText = "La password deve contenere almeno un numero";
-                            nomeModulo.pwd.focus();
-                            error=true; 
-                            } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(nomeModulo.pwd.value)) {
-                                document.getElementById("errorePassword").innerText = "La password deve contenere almeno un carattere speciale";
-                                nomeModulo.pwd.focus();
-                                error=true;
-                            }
+    } 
    
     return !error;
 }
@@ -71,4 +47,14 @@ function mostraPassword() {
         icona.classList.add("fa-mask-face");
     }
     passwordInput.focus();
+}
+
+// Get the modal
+var modal = document.getElementById('accedi');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }

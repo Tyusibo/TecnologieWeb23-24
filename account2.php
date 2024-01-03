@@ -4,7 +4,6 @@ session_start();
 if(!(isset($_SESSION['redirect'])))
     $_SESSION['redirect']=null;
 
-
 if ($_SERVER["REQUEST_METHOD"] === 'GET') {
     if (isset($_GET['submit'])) {
         session_destroy();
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['username'] = $_POST['username'];  //mi serve solo questo di globale per sapere nelle altre pagine se sono loggato
     $username=$_SESSION['username'];
     $password=$_POST['pwd']; 
-    if($_SESSION['redirect']!=null){
+    if($_SESSION['redirect']!=null){    //valido solo se si è reindirizzati da prenota.php
         header("Location: prenota.php");
     }
 } else {
@@ -39,31 +38,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <?php require "header.html"; ?>
-    <div style="height: 100px; background-color: black"></div>
-    <div class="container">
-        <div id="logobox">
-            <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
-        </div>
-        <div class="whitebox">
-            <div id="accedi">Accedi</div>
-            <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label for="username">Username
-                <input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
-                <div id="erroreEmail" class="errore"></div>
-                </br>
-                </label>
-                <label>Inserisci la password:
-                <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
-                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i></label>
-                <div id="errorePassword" class="errore"></div>
-                <input type="submit" value="Invia">
-                </br>
-            </form>
-        <?php 
-        if(empty($_SESSION['username'])){
-            ?>   
-            <p id="notregistered">Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
-        </div>
+    <div style="height: 100px"></div>
+    <button onclick="document.getElementById('accedi').style.display='block'">Login</button>    
+    <div id="accedi" class="modal">Accesso
+        <span onclick="document.getElementById('accedi').style.display='none'"
+        class="close" title="Close Modal">&times;</span>
+        <form class="modal-content animate" onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+            <label for="username">Username
+			<input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
+            <div id="erroreEmail" class="errore"></div>
+            </br>
+            </label>
+            <label>Inserisci la password:
+            <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
+            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i></label>
+            <div id="errorePassword" class="errore"></div>
+            <input type="submit" value="Invia">
+            </br>
+        </form>
+    <?php 
+    if(empty($_SESSION['username'])){
+        ?>   
+        <p>Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
     </div>
     <?php
     }

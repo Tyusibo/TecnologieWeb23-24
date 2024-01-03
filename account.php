@@ -39,25 +39,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <?php require "header.html"; ?>
-    <div style="height: 100px"></div>
-    <div id=accedi>Accesso
-        <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-            <label for="username">Username
-			<input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
-            <div id="erroreEmail" class="errore"></div>
-            </br>
-            </label>
-            <label>Inserisci la password:
-            <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
-            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i></label>
-            <div id="errorePassword" class="errore"></div>
-            <input type="submit" value="Invia">
-            </br>
-        </form>
-    <?php 
-    if(empty($_SESSION['username'])){
-        ?>   
-        <p>Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
+    <div style="height: 100px; background-color: black"></div>
+    <div class="container">
+        <div class="whitebox">
+            <div id="accedi">Accedi</div>
+            <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                <label for="username">Username
+                <input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
+                <div id="erroreEmail" class="errore"></div>
+                </br>
+                </label>
+                <label>Inserisci la password:
+                <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
+                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i></label>
+                <div id="errorePassword" class="errore"></div>
+                <input type="submit" value="Invia">
+                </br>
+            </form>
+        <?php 
+        if(empty($_SESSION['username'])){
+            ?>   
+            <p id="notregistered">Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
+        </div>
     </div>
     <?php
     }

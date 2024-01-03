@@ -56,8 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
         if(!(isset($_SESSION['username']))){  //se non loggato
             ?>   
             <p id="notregistered">Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
-        </div>  <!--Devo chiudere i 2 div-->
-    </div>
+        
     <?php
     }
     else{  //se loggato
@@ -66,11 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">
 			<input type="submit"  name="submit" id="submit" value="Esci">
         </form>
-        </div>  <!--Devo chiudere i 2 div-->
-    </div>
         <?php 
     }
     ?>
+        </div>  <!--Devo chiudere i 2 div-->
+    </div>
     
     <?php require "footer.html"; ?>
 </body>

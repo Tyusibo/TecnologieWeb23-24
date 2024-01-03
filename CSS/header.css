@@ -13,9 +13,8 @@
     display: flex;
     padding-left: 30px;
     padding-right: 30px;
+    height: 100px;
 }
-
-
 
 .logo {
     height: 100px;
@@ -32,8 +31,8 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 0px;
+    margin-right: 20px;
     z-index: 2;
     font-weight: 600;
     font-size: 18px;
@@ -46,25 +45,28 @@ nav ul li a {
 }
 
 .colonna1{
-    width: 25%;
+    width: 15%;
     display: flex;
-    align-content: center;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: flex-start;
 }
 .colonna2{
-    width: 50%;
+    width: 70%;
+    flex: 1;
     display: flex;
-    align-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: nowrap;
     justify-content: center;
 }
 .colonna3{
-    width: 25%;
+    width: 15%;
     display: flex;
-    align-content: center;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: flex-end;
+}
+
+#navlist{
+    white-space: nowrap;
 }
 
 .fa-user:before {
@@ -76,4 +78,28 @@ nav ul li a {
 
 .account{
     align-self: center;
+}
+
+@media (max-width: 1150px) {
+    .colonna1 {
+        width: 230px;
+    }
+}
+
+@media (max-width: 940px) {
+    #chisiamo {
+        display: none;
+    }
+}
+
+@media (max-width: 835px) {
+    #contattaci {
+        display: none;
+    }
+}
+
+@media (max-width: 730px) {
+    #servizi {
+        display: none;
+    }
 }

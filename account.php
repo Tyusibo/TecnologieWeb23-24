@@ -38,6 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require "header.html"; ?>
     <div style="height: 100px; background-color: black"></div>
     <div class="container">
+        <div id="logobox">
+            <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
+        </div>
         <div class="whitebox">
             <div id="accedi">Accedi</div>
             <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">

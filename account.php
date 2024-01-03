@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisc
     if (isset($_GET['submit'])) {
         session_destroy();
         unset($_SESSION['username']);  //rimuovo gli attributi legati all'autenticazione
-        header("Location: account.php");  //per ricreare la sessione
+        header("Location: account.php");  //per ricreare la sessione e inizializzare i valori
     }
     
 }

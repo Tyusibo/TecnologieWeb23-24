@@ -34,45 +34,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
 <body>
     <?php require "header.html"; ?>
-    <div style="height: 100px"></div>  <!--lo stile per mostrare il contenuto dopo l'header-->
-        <div id="registrati">Registrati
-            <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label>Inserisci il tuo nome: <input type="text" size="15" name="nome" value="<?php echo $nome?>"onkeydown="return soloCaratteri(event)"></label>
-                <div id="erroreNome" class="errore"></div>
-                <label>Inserisci il tuo cognome: <input type="text" size="15" name="cognome" value="<?php echo $cognome?>"onkeydown="return soloCaratteri(event)"></label>
-                <div id="erroreCognome" class="errore"></div>
-                <label>Inserisci la tua email: <input type="text" size="30" name="username" value="<?php echo $username?>"></label>
-                <div id="erroreEmail" class="errore"></div>
-                <label>Inserisci il tuo numero <small>(Includi il prefisso)</small>: <input type="text" size="13" name="numero" value="<?php echo $numero?>" onkeydown="return soloNumeri(event)"></label>
-                <div id="erroreNumero" class="errore"></div>
-                <label>Scegli una password, deve contenere almeno: </br><small>
-                    <ul>
-                            <li>Una lettera maiuscola</li>
-                            <li>Una lettera minuscola</li>
-                            <li>Un numero</li>
-                            <li>Un carattere speciale tra [!@#$%^&*(),.?":{}|<>]</li>
-                            <li>Essere lunga minimo 8 caratteri</li>
-                            <li>Essere lunga massimo 20 caratteri</li>
-                    </ul></small>
-                <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>">
-                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i></label>
-                <div id="errorePassword1" class="errore"></div>
-                <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
-                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>
-                <div id="errorePassword2" class="errore"></div>
-                <input type="submit" value="Registrati">
-            </form>
-    </div> 
+    <div style="height: 100px; background-color: black"></div> <!--lo stile per mostrare il contenuto dopo l'header e perchè i cazzoni mettono il css nei documenti php-->    <div class="container">
+    <div class="container">    
+        <div id="logobox">
+            <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
+        </div>
+        <div class="whitebox">
+            <div id="registrati">Registrati</div>
+                <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                    <label>Inserisci il tuo nome: <input type="text" size="15" name="nome" value="<?php echo $nome?>"onkeydown="return soloCaratteri(event)"></label>
+                    <div id="erroreNome" class="errore"></div>
+                    <label>Inserisci il tuo cognome: <input type="text" size="15" name="cognome" value="<?php echo $cognome?>"onkeydown="return soloCaratteri(event)"></label>
+                    <div id="erroreCognome" class="errore"></div>
+                    <label>Inserisci la tua email: <input type="text" size="30" name="username" value="<?php echo $username?>"></label>
+                    <div id="erroreEmail" class="errore"></div>
+                    <label>Inserisci il tuo numero <small>(Includi il prefisso)</small>: <input type="text" size="13" name="numero" value="<?php echo $numero?>" onkeydown="return soloNumeri(event)"></label>
+                    <div id="erroreNumero" class="errore"></div>
+                    <label>Scegli una password, deve contenere almeno: </br><small>
+                        <ul>
+                                <li>Una lettera maiuscola</li>
+                                <li>Una lettera minuscola</li>
+                                <li>Un numero</li>
+                                <li>Un carattere speciale tra [!@#$%^&*(),.?":{}|<>]</li>
+                                <li>Essere lunga minimo 8 caratteri</li>
+                                <li>Essere lunga massimo 20 caratteri</li>
+                        </ul></small>
+                    <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>">
+                    <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i></label>
+                    <div id="errorePassword1" class="errore"></div>
+                    <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
+                    <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>
+                    <div id="errorePassword2" class="errore"></div>
+                    <input type="submit" value="Registrati">
+                </form>
     <?php 
     if(isset($_SESSION['username'])){  //se sei loggato 
         ?>   
         <p>Per andare al tuo account clicca <a href="account.php">qui</a>.</p>
-    </div>
     <?php
     } else {   //se non sei loggato
-        echo "<p>Sei già registrato? Premi <a href=account.php>qui</a> per effettuare l'accesso.</p>";
+        echo "<p id=registered>Sei già registrato? Premi <a href=account.php>qui</a> per effettuare l'accesso.</p>";
     }
     ?>
+        </div>  <!--Devo chiudere i 2 div-->
+    </div>
     <?php require "footer.html"; ?>
 </body>
 </html>       

@@ -8,8 +8,37 @@ body{
     font-weight: bold;
 }
 
-label{
-    border: 1px solid #333;
-    border-radius: 5px; 
+.container{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/homebackg.jpg);
 }
 
+#logobox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.whitebox{
+    margin: 25px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 10px 10px 30px;
+}
+
+#registrati{
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+#registered{
+    font-size: 15px;
+    font-weight: 400;
+}

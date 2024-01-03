@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     $password1=$_POST['pwd1']; 
     $password2=$_POST['pwd2'];
     if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
-        header("Location: prenota.php");
+        header("Location: $_SESSION[redirect]");
     } 
 } else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
     $nome=null; 

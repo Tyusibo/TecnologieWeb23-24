@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal camp
         setcookie('password', $pwd, time() + (30 * 24 * 60 * 60));
     }
     if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
-        header("Location: prenota.php");
+        header("Location: $_SESSION[redirect]");
     } 
 } else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
     $username=null;
@@ -61,8 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal camp
                 <label>Ricordami<input type="checkbox" id="ricordami" name="ricordami"></label>
                 <input type="submit" value="Invia">
             </form>
-            <p id="notregistered">Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
-        
+            <p id="notregistered">Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>  
     <?php
     }
     else{  //se loggato

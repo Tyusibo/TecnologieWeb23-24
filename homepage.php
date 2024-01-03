@@ -2,6 +2,17 @@
 <?php
 session_start();
 $_SESSION['redirect']=null;
+if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capisco se reindirizzare al login o
+    alla registrazione e imposto redirect per tornare alla homepage dopo il login/la registrazione*/
+    if (isset($_GET['accedi'])) {
+           $_SESSION['redirect']="homepage.php#galleria"; 
+            header("Location: account.php");
+    } 
+    if (isset($_GET['registrati'])) {
+        $_SESSION['redirect']="homepage.php#galleria"; 
+         header("Location: registrati.php");
+ }    
+}
 ?>
 <html lang="it">
 <head>
@@ -111,9 +122,28 @@ $_SESSION['redirect']=null;
         </div>
     </section>
 
-    <section class="galleria">
-        <h1>GALLERIA</h1>
-        <div class="test">
+    <section id="galleria" class="galleria">
+        <?php if(empty($_SESSION['username'])){ /* se non sei loggato vedi i contenuti di default */
+            echo "<p>Ciao, per una galleria personalizzata accedi al tuo"; ?> 
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET"><input type="submit" id="accedi" name="accedi" value="account"></form>oppure
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET"><input type="submit" id="registrati" name="registrati" value="registrati">  
+            </form>
+            <h1>GALLERIA</h1>
+            <div class="test">
+                <img src="img/barber_bg.jpeg" alt="Immagine 1">
+                <img src="img/barber_bg.jpeg" alt="Immagine 2">
+                <img src="img/barber_bg.jpeg" alt="Immagine 3">
+                <img src="img/barber_bg.jpeg" alt="Immagine 4">
+                <img src="img/barber_bg.jpeg" alt="Immagine 5">
+                <img src="img/barber_bg.jpeg" alt="Immagine 6">
+                <img src="img/barber_bg.jpeg" alt="Immagine 7">
+                <img src="img/barber_bg.jpeg" alt="Immagine 8">
+                <img src="img/barber_bg.jpeg" alt="Immagine 9">
+            </div>
+        <?php } else { /* se sei loggato vedi i contenuti personalizzati */
+            echo "<p>Ciao $_SESSION[username]! Ecco di seguito i tuoi contenuti personalizzati, puoi esprimere le tue preferenze sulla
+            pagina dedicata al tuo <a href=account.php>account</a>"; ?>
+            <div class="test">
             <img src="img/barber_bg.jpeg" alt="Immagine 1">
             <img src="img/barber_bg.jpeg" alt="Immagine 2">
             <img src="img/barber_bg.jpeg" alt="Immagine 3">
@@ -124,11 +154,8 @@ $_SESSION['redirect']=null;
             <img src="img/barber_bg.jpeg" alt="Immagine 8">
             <img src="img/barber_bg.jpeg" alt="Immagine 9">
         </div>
+        <?php } /* chiudo la parentesi dell'else */ ?> 
     </section>
-
-
-    
-
     <?php require "footer.html"; ?> 
 </body>
 </html>

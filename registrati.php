@@ -40,7 +40,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
             <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
         </div>
         <div class="whitebox">
-            <div id="registrati">Registrati</div>
+    <?php 
+    if(!(empty($_SESSION['username']))){  //se sei loggato 
+        echo "<p>Benvenuto $_SESSION[username] !";?>
+        <p>Per andare al tuo account clicca <a href="account.php">qui</a>.</p>
+    <?php
+    } else {   //se non sei loggato
+        ?>
+        <div id="registrati">Registrati</div>
                 <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <label>Inserisci il tuo nome: <input type="text" size="15" name="nome" value="<?php echo $nome?>"onkeydown="return soloCaratteri(event)"></label>
                     <div id="erroreNome" class="errore"></div>
@@ -67,12 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
                     <div id="errorePassword2" class="errore"></div>
                     <input type="submit" value="Registrati">
                 </form>
-    <?php 
-    if(!(empty($_SESSION['username']))){  //se sei loggato 
-        echo "<p>Benvenuto $_SESSION[username] !";?>
-        <p>Per andare al tuo account clicca <a href="account.php">qui</a>.</p>
-    <?php
-    } else {   //se non sei loggato
+        <?php
         echo "<p id=registered>Sei già registrato? Premi <a href=account.php>qui</a> per effettuare l'accesso.</p>";
     }
     ?>

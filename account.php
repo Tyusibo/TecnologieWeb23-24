@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!(isset($_SESSION['redirect'])))
+if(!(isset($_SESSION['redirect']))) //lo faccio per non mettere sempre $_SESSION['redirect']=null; annullando il reindirizzamento di prenota
     $_SESSION['redirect']=null;
 
-
-if ($_SERVER["REQUEST_METHOD"] === 'GET') {
+ 
+if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisco se è stata effettuata una richiesta di logout e la gestisco*/
     if (isset($_GET['submit'])) {
         session_destroy();
-        unset($_SESSION['username']);
-        session_start();
+        unset($_SESSION['username']);  //rimuovo gli attributi legati all'autenticazione
+        header("Location: account.php");  //per ricreare la sessione
     }
     
-}
-    
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera il nuovo valore dal campo di input del modulo
-    $_SESSION['username'] = $_POST['username'];  //mi serve solo questo di globale per sapere nelle altre pagine se sono loggato
-    $username=$_SESSION['username'];
-    $password=$_POST['pwd']; 
-    if($_SESSION['redirect']!=null){
-        header("Location: prenota.php");
-    }
-} else {
-    $username=null;
-    $password=null;  
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo di input del modulo
+    $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
+    $username=$_SESSION['username'];
+    $pwd=$_POST['pwd']; 
+    if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
+        header("Location: prenota.php");
+    } 
+} else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
+    $username=null;
+    $pwd=null; 
+}
 ?>
 <html lang="it">
 <head>
@@ -39,38 +37,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <?php require "header.html"; ?>
-    <div style="height: 100px; background-color: black"></div>
+    <div style="height: 100px; background-color: black"></div> <!--lo stile per mostrare il contenuto dopo l'header e perchè i cazzoni mettono il css nei documenti php-->
     <div class="container">
         <div class="whitebox">
             <div id="accedi">Accedi</div>
             <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label for="username">Username
-                <input type="text" name="username" id="username" value="<?php echo $username ?>"/></label>
+                <label>Inserisci la tua email<input type="text" size="30" id="username" name="username" value="<?php echo $username ?>"/></label>
                 <div id="erroreEmail" class="errore"></div>
-                </br>
-                </label>
-                <label>Inserisci la password:
-                <input type="password" id="pwd" name="pwd" value="<?php echo $password?>">
+                <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="<?php echo $pwd?>">
                 <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i></label>
                 <div id="errorePassword" class="errore"></div>
                 <input type="submit" value="Invia">
-                </br>
             </form>
         <?php 
-        if(empty($_SESSION['username'])){
+        if(!(isset($_SESSION['username']))){  //se non loggato
             ?>   
             <p id="notregistered">Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>
-        </div>
+        </div>  <!--Devo chiudere i 2 div-->
     </div>
     <?php
     }
-    else{
-        $username = $_SESSION["username"];
+    else{  //se loggato
         echo "<p> Benvenuto $username!</p>";
         ?>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">
-			<input type="submit" name="submit" value="Esci">
+			<input type="submit"  name="submit" id="submit" value="Esci">
         </form>
+        </div>  <!--Devo chiudere i 2 div-->
+    </div>
         <?php 
     }
     ?>

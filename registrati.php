@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
         header("Location: prenota.php");
     } 
-} else {   //altrimenti se si è caricata la pagina per la priam volta, inizializzo il valore dei campi per non generare errori
+} else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
     $nome=null; 
     $cognome=null; 
     $username=null;
@@ -60,17 +60,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
                 <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
                 <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>
                 <div id="errorePassword2" class="errore"></div>
-                <input type="submit" value="Invia">
-                <input type="reset" value="Annulla">
+                <input type="submit" value="Registrati">
             </form>
     </div> 
-    <p>Sei già registrato? Premi <a href="account.php">qui</a> per effettuare l'accesso.</p>
     <?php 
-    if(isset($_SESSION['username'])){
+    if(isset($_SESSION['username'])){  //se sei loggato 
         ?>   
         <p>Per andare al tuo account clicca <a href="account.php">qui</a>.</p>
     </div>
     <?php
+    } else {   //se non sei loggato
+        echo "<p>Sei già registrato? Premi <a href=account.php>qui</a> per effettuare l'accesso.</p>";
     }
     ?>
     <?php require "footer.html"; ?>

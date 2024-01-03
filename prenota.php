@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$_SESSION['redirect']=null;
-if ($_SERVER["REQUEST_METHOD"] === 'GET') {
+$_SESSION['redirect']=null;   //tutte le pagine devono rendere redirect=null
+if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capisco se reindirizzare al login o
+    alla registrazione e imposto redirect per tornare a prenota dopo il login/la registrazione*/
     if (isset($_GET['accedi'])) {
            $_SESSION['redirect']="prenota.php"; 
             header("Location: account.php");
@@ -24,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 
 <body>
     <?php require "header.html"; ?>
-    <div style="height: 100px"></div>
+    <div style="height: 100px"></div>  <!--lo stile per mostrare il contenuto dopo l'header-->
     <?php
-    if(empty($_SESSION['username'])){
+    if(empty($_SESSION['username'])){  //se non loggato
         ?>
         <p>Pagina riservata agli utenti autenticati. <br/> 
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET">
@@ -62,14 +63,13 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 
             <br>
             <label>Se hai qualche particolare preferenza, lasciaci un messaggio:
-            <input type="text" name="message"></label>
+            <input type="text" id="message" name="message" value="Massimo 100 parole..."></label>
             <label>Puoi anche inviarci un'immagine del taglio che desideri fare:
-            <input type="file" name="file"></label>
-
+            <input type="file" id="file" name="file" value="File"></label>
             <input type="submit" value="Invia">
         </form>
             
-        <?php } ?>
+        <?php } //parentesi dell'else ?>  
     
     <?php require "footer.html"; ?>
 </body>

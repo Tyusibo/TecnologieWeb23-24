@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
     if (isset($_GET['registrati'])) {
         $_SESSION['redirect']="prenota.php"; 
          header("Location: registrati.php");
- }    
+    }    
 }
 ?>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gentlemen's Cut Prenota</title>
+    <title>Gentlemen's Cut Prenota</title>  
     <link rel="stylesheet" type="text/css" href="css/prenota.css">
 </head>
 <body>
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
     if(empty($_SESSION['username'])){  //se non loggato ?>
         <p>Pagina riservata agli utenti autenticati. <br/> 
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET">
-			    <label>Effettua l'<input type="submit" id="accedi" name="accedi" value="accesso"></form>oppure</label>
+			    <label>Effettua l'<input type="submit" id="accedi" name="accedi" value="accesso">oppure</label></form>
             </br>
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET">
                 <label><input type="submit" id="registrati" name="registrati" value="registrati">per continuare</label>

@@ -14,21 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisc
     
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal campo di input del modulo
-    $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
-    $username=$_SESSION['username'];
-    $pwd=$_POST['pwd']; 
-    if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {
-        setcookie('nome_utente', $username, time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
-        setcookie('password', $pwd, time() + (30 * 24 * 60 * 60));
-    }
-    if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
-        header("Location: $_SESSION[redirect]");
-    } 
-} else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
-    $username=null;
-    $pwd=null; 
-}
+
 ?>
 <html lang="it">
 <head>
@@ -49,20 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal camp
         </div>
         <div class="whitebox">
         <?php 
-        if(!(isset($_SESSION['username']))){  //se non loggato
-            ?>   
-            <div id="accedi">Accedi</div>
-            <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label>Inserisci la tua email<input type="text" size="30" id="username" name="username" value=""/></label>
-                <div id="erroreEmail" class="errore"></div>
-                <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="">
-                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword()" id="mostra"></i></label>
-                <div id="errorePassword" class="errore"></div>
-                <label>Ricordami<input type="checkbox" id="ricordami" name="ricordami"></label>
-                <input type="submit" value="Invia">
-            </form>
-            <p id="notregistered">Non sei registrato? Premi <a href="registrati.php">qui</a> per registrarti.</p>  
-    <?php
+        if(!(isset($_SESSION['username']))){  //se non loggato  
+           header("Location: autenticazione.php"); 
     }
     else{  //se loggato
         echo "<p>Benvenuto $_SESSION[username] !";?>

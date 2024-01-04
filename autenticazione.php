@@ -4,6 +4,7 @@ session_start();
 if(!(isset($_SESSION['redirect'])))  //lo faccio per non mettere sempre $_SESSION['redirect']=null; annullando il reindirizzamento di prenota
     $_SESSION['redirect']=null;
 
+     
 if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
@@ -14,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     $password2=$_POST['pwd2'];
     if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
         header("Location: $_SESSION[redirect]");
-    } 
+    } else 
+        header("Location: account.php");
 } else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
     $nome=null; 
     $cognome=null; 
@@ -23,14 +25,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     $password1=null; 
     $password2=null;  
 }
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal campo di input del modulo
+    $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
+    $username=$_SESSION['username'];
+    $pwd=$_POST['pwd']; 
+    if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {
+        setcookie('nome_utente', $username, time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
+        setcookie('password', $pwd, time() + (30 * 24 * 60 * 60));
+    }
+    if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
+        header("Location: $_SESSION[redirect]");
+    } 
+} else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
+    $username=null;
+    $pwd=null; 
+}
 ?>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Registrati</title>
-    <link rel="stylesheet" type="text/css" href="css/registrati.css">
-    <script src="script/registrati.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/autenticazione.css">
+    <script src="script/autenticazione.js" defer></script>
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
 <body>
     <?php require "header.html"; ?>
@@ -40,15 +58,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
             <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
         </div>
         <div class="whitebox">
-    <?php 
-    if(!(empty($_SESSION['username']))){  //se sei loggato 
-        echo "<p>Benvenuto $_SESSION[username] !";?>
-        <p>Per andare al tuo account clicca <a href="account.php">qui</a>.</p>
-    <?php
-    } else {   //se non sei loggato
-        ?>
-        <div id="registrati">Registrati</div>
-                <form onSubmit="return validaModulo(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+        <div id="accedi">Accedi
+            <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                <label>Inserisci la tua email<input type="text" size="30" id="username" name="username" value=""/></label>
+                <div id="erroreEmail" class="errore"></div>
+                <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="">
+                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPasswordAccedi()" id="mostra"></i></label>
+                <div id="errorePassword" class="errore"></div>
+                <label>Ricordami<input type="checkbox" id="ricordami" name="ricordami"></label>
+                <input type="submit" value="Invia">
+            </form>
+            <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>
+        </div>
+
+        <div id="registrati" style="display: none";>Registrati
+                <form onSubmit="return validaModuloRegistrati(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <label>Inserisci il tuo nome: <input type="text" size="15" name="nome" value="<?php echo $nome?>"onkeydown="return soloCaratteri(event)"></label>
                     <div id="erroreNome" class="errore"></div>
                     <label>Inserisci il tuo cognome: <input type="text" size="15" name="cognome" value="<?php echo $cognome?>"onkeydown="return soloCaratteri(event)"></label>
@@ -67,17 +91,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
                                 <li id="lun_max">Essere lunga massimo 20 caratteri</li>
                         </ul></small>
                     <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" oninput="verificaPassword(event)">
-                    <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i></label>
+                    <i class="fa-sharp fa-solid fa-eye" onclick="mostraPasswordRegistrati(1)" id="mostra1"></i></label>
                     <div id="errorePassword1" class="errore"></div>
                     <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
-                    <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>
+                    <i class="fa-sharp fa-solid fa-eye" onclick="mostraPasswordRegistrati(2)" id="mostra2"></i></label>
                     <div id="errorePassword2" class="errore"></div>
                     <input type="submit" value="Registrati">
                 </form>
-        <?php
-        echo "<p id=registered>Sei già registrato? Premi <a href=account.php>qui</a> per effettuare l'accesso.</p>";
-    }
-    ?>
+                <p id="registered">Sei già registrato? Premi <button onClick="cambiaModalità(true)">qui</button> per registrati</p>
+            </div>
+
         </div>  <!--Devo chiudere i 2 div-->
     </div>
     <?php require "footer.html"; ?>

@@ -6,8 +6,62 @@ scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validat
 
 // Aggiungi l'elemento script all'elemento head del documento
 document.head.appendChild(scriptTag);
+function cambiaModalità(mod){
+    var accedi=document.getElementById("accedi");
+    var registrati=document.getElementById("registrati");
+    if(mod){
+        accedi.style.display = "block";
+        registrati.style.display = "none";
+    } else {
+        accedi.style.display = "none";
+        registrati.style.display = "block";
+    }
+}
+function validaModuloAccedi(nomeModulo) {
+    var error=false;
 
-function validaModulo(nomeModulo) {
+    document.getElementById("erroreEmail").innerText ="";
+    document.getElementById("errorePassword").innerText ="";
+
+    if (nomeModulo.username.value == "") {
+        document.getElementById("erroreEmail").innerText = "Devi inserire un'email";
+        nomeModulo.username.focus();
+        error=true;
+    } else if (!(validator.isEmail(nomeModulo.username.value))) {
+            document.getElementById("erroreEmail").innerText = "L'indirizzo email non è valido";
+            nomeModulo.username.focus();
+            error=true;
+        }
+    
+    
+    if (nomeModulo.pwd.value == "") {
+        document.getElementById("errorePassword").innerText = "Devi inserire una password";
+        nomeModulo.pwd.focus();
+        error=true;
+    } 
+   
+    return !error;
+}
+
+function mostraPasswordAccedi() {
+    var icona=document.getElementById("mostra");
+    var passwordInput = document.getElementById("pwd");
+    if(passwordInput.type =="text"){
+        passwordInput.type="password";
+        icona.classList.remove("fa-mask-face");
+        icona.classList.add("fa-mustache"); 
+    }
+    else{
+        passwordInput.type="text";
+        icona.classList.remove("fa-mustache"); 
+        icona.classList.add("fa-mask-face");
+    }
+    passwordInput.focus();
+}
+
+
+
+function validaModuloRegistrati(nomeModulo) {
     var error=false;
     var simulatedEvent = {
         target: {
@@ -169,7 +223,7 @@ function soloCaratteri(event){
 
 
 
-function mostraPassword(number) {
+function mostraPasswordRegistrati(number) {
     var icona=document.getElementById("mostra"+number);
     var passwordInput = document.getElementById("pwd"+number);
     if(passwordInput.type =="text"){

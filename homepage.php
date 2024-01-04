@@ -55,16 +55,22 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
         <div class="row">
 
             <div class="content">
-                <h3>IL TUO LOOK IMPECCABILE INIZIA QUI</h3>
-                <p style="text-align: left">Da Gentlemen's Cut, troverai persone cordiali e talentuose, un'ampia offerta di servizi di grooming e un bar completamente fornito.</p>
-                <ul>
-                    <li><i class="fa-sharp fa-solid fa-location-dot icona"></i><span class="lista">Viale della Conoscenza, Fisciano, 84084</span></li>
-                    <li><i class="fa-sharp fa-solid fa-phone icona"></i><span class="lista">0828 371360</span></li>
-                    <li><i class="fa-sharp fa-solid fa-clock icona"></i><span class="lista">Lunedì: Chiuso <br>
-                                                                                            Martedì-Sabato: 9:00 - 19:00 <br>
-                                                                                            Domenica: Chiuso</span></li>
-                </ul>
-                <a href="#" class="bottone"><span>Contattaci Ora</span></a>
+
+                <div class="verticalflex">
+                    <h3>IL TUO LOOK IMPECCABILE INIZIA QUI</h3>
+                    <p style="text-align: left">Da Gentlemen's Cut, troverai persone cordiali e talentuose, un'ampia offerta di servizi di grooming e un bar completamente fornito.</p>
+                </div>
+
+                <div class="verticalflex">
+                    <ul>
+                        <li><i class="fa-sharp fa-solid fa-location-dot icona"></i><span class="lista">Viale della Conoscenza, Fisciano, 84084</span></li>
+                        <li><i class="fa-sharp fa-solid fa-phone icona"></i><span class="lista">0828 371360</span></li>
+                        <li><i class="fa-sharp fa-solid fa-clock icona"></i><span class="lista">Lunedì: Chiuso <br>
+                                                                                                Martedì-Sabato: 9:00 - 19:00 <br>
+                                                                                                Domenica: Chiuso</span></li>
+                    </ul>
+                    <a href="#" class="bottone"><span>Contattaci Ora</span></a>
+                </div>
             </div>
 
             <div class="mapImg">

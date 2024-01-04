@@ -12,6 +12,10 @@
 .footer ul span{
   color: #848788;
 }
+.footer h3{
+  color: white;
+  font-weight: 500;
+}
 
 .copy{
   display: flex;
@@ -110,5 +114,22 @@ a:hover{
 @media (max-width: 1350px) {
   .coll-1 {
       width: 200px;
+  }
+}
+@media (max-width: 1000px) {
+  .fprinc{
+    flex-wrap: wrap;
+  }
+  .coll-1 {
+      width: 50%;
+  }
+  .coll-2 {
+    width: 50%;
+  }
+  .coll-3 {
+    width: 50%;
+  }
+  .coll-4 {
+    width: 50%;
   }
 }

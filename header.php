@@ -13,25 +13,30 @@
 
             <div class="colonna2">
                 <nav>
-                    <ul>
-                        <li><a href="homepage.php" target="_top">Homepage</a></li>
-                        <li><a href="<?php if($currentPage=== 'homepage.php')
+                    <ul id="navlist">
+                        <li id="home"><a href="homepage.php" target="_top">Homepage</a></li>
+                        <li id="chisiamo"><a href="<?php if($currentPage=== 'homepage.php')
                                                 echo '#chiSiamo';
                                             else
                                                 echo 'homepage.php#chiSiamo'            
                                     ?>" 
                         target="_top">Chi Siamo</a></li>
-                        <li><a href="<?php if($currentPage=== 'homepage.php')
+                        <li id="servizi"><a href="<?php if($currentPage=== 'homepage.php')
                                                 echo '#servizi';
                                             else
                                                 echo 'homepage.php#servizi'            
                                     ?>" 
                          target="_top">Servizi</a></li>
-                        <li><a href="#footerplaceholder" target="_top">Contattaci</a></li>
-                        <li><a href="galleria.php" target="_top">Galleria</a></li>
-                        <li><a href="prenota.php" target="_top" class="bottone">Prenota</a></li>
+                        <li id="contattaci"><a href="#footerplaceholder" target="_top">Contattaci</a></li>
+                        <li id="galleria"><a href="galleria.php" target="_top">Galleria</a></li>
+                        <li id="prenota"><a href="prenota.php" target="_top" class="bottone">Prenota</a></li>
                     </ul>
                 </nav>  
+            </div>
+            <div class="colonna3">
+                
+                <a href="account.php" target="_top" class="account"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
+                <!--30 px a sinistra perchè la foto è ritagliata male-->
             </div>
         </div>
          <!--Se si potrà mettere qualcosa che non da fastidio al contenuto delle pagine che caricano l'header -->

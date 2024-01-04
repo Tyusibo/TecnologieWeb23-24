@@ -36,26 +36,29 @@ if (isset($_POST['accedi'])) {// Recupera i valori dai campi di input del form a
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
 <body>
     <?php require "header.php"; ?>
-    <div style="height: 100px; background-color: black"></div>
     <div class="container">    
-        <div id="logobox">
-            <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
-        </div>
         <div class="whitebox">
-        <div id="accedi">Accedi
-            <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label>Inserisci la tua email<input type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>"></label>
-                <div id="erroreEmailAccedi" class="errore"></div>
-                <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
-                <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i></label>
-                <div id="errorePassword" class="errore"></div>
-                <label>Ricorda la mia email: <input type="checkbox" id="ricordami" name="ricordami"></label>
-                <input type="submit" id="accedi" name="accedi" value="Accedi">
-            </form>
-            <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>
-        </div>
+            <div id="accedi">
+                <h3 id="text_accedi">Accedi</h3>
+                <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                    <div class="verticalflex">   
+                        <label for="usernameAccedi">Email</label>
+                        <input type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
+                        <div id="erroreEmailAccedi" class="errore"></div>
+                        <label for="pwd">Password</label>
+                        <div class="horizontalflex">
+                            <input type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
+                            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i>
+                        </div>
+                        <div id="errorePassword" class="errore"></div>
+                        <label>Ricorda la mia email: <input type="checkbox" id="ricordami" name="ricordami"></label>
+                        <input type="submit" id="accedi" name="accedi" value="Accedi">
+                    </div> 
+                </form>
+                <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>
+            </div>
 
-        <div id="registrati" style="display: none";>Registrati
+            <div id="registrati" style="display: none";>Registrati
                 <form onSubmit="return validaModuloRegistrati(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <label>Inserisci il tuo nome: <input type="text" size="15" name="nome" value="<?php echo (isset($nome)) ? $nome : ""; ?>"onkeydown="return soloCaratteri(event)"></label>
                     <div id="erroreNome" class="errore"></div>

@@ -43,22 +43,22 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                 <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">   
                         <label for="usernameAccedi">Email</label>
-                        <input type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
+                        <input class="textinput" type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
                         <div id="erroreEmailAccedi" class="errore"></div>
                         <label style="margin-top:10px;" for="pwd">Password</label>
                         <div class="horizontalflex">
-                            <input type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
+                            <input class="textinput" type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
                             <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i>
                         </div>
                         <div id="errorePassword" class="errore"></div>
-                        <div style="margin-top:10px; margin-bottom:10px;"class="horizontalflex">
+                        <div style="margin-top:10px; margin-bottom:20px;"class="horizontalflex">
                             <label for="ricordami">Ricorda la mia email</label>
                             <input type="checkbox" id="ricordami" name="ricordami">
                         </div>
-                        <input type="submit" id="accedi" name="accedi" value="Accedi">
+                        <input class="btn" type="submit" id="acc" name="accedi" value="Accedi">
                     </div> 
                 </form>
-                <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>
+                <p id="registered">Non sei registrato?<button id="cliccaqui" onClick="cambiaModalità(false)">Registrati</button></p>
             </div>
 
             <div id="registrati" style="display: none";>Registrati

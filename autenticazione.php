@@ -5,7 +5,7 @@ if(!(isset($_SESSION['redirect'])))  //lo faccio per non mettere sempre $_SESSIO
     $_SESSION['redirect']=null;
 
      
-if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_GET['registrati']))) {// Recupera il nuovo valore dal campo di input del modulo
+if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['registrati']))) {// Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
@@ -26,7 +26,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_GET['registrati']))) {// 
     $password2=null;  
 }
 
-if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_GET['accedi']))) {// Recupera il nuovo valore dal campo di input del modulo
+if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $username=$_SESSION['username'];
     $pwd=$_POST['pwd']; 
@@ -36,7 +36,8 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_GET['accedi']))) {// Recu
     }
     if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
         header("Location: $_SESSION[redirect]");
-    } 
+    } else 
+        header("Location: account.php");
 } else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
     $username=null;
     $pwd=null; 
@@ -104,5 +105,6 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_GET['accedi']))) {// Recu
         </div>  <!--Devo chiudere i 2 div-->
     </div>
     <?php require "footer.html"; ?>
+    <script src="script/cookie.js"></script>  
 </body>
 </html>       

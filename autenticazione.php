@@ -39,19 +39,22 @@ if (isset($_POST['accedi'])) {// Recupera i valori dai campi di input del form a
     <div class="container">    
         <div class="whitebox">
             <div id="accedi">
-                <h3 id="text_accedi">Accedi</h3>
+                <h3 class="title">Accedi</h3>
                 <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">   
                         <label for="usernameAccedi">Email</label>
                         <input type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
                         <div id="erroreEmailAccedi" class="errore"></div>
-                        <label for="pwd">Password</label>
+                        <label style="margin-top:10px;" for="pwd">Password</label>
                         <div class="horizontalflex">
                             <input type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
                             <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i>
                         </div>
                         <div id="errorePassword" class="errore"></div>
-                        <label>Ricorda la mia email: <input type="checkbox" id="ricordami" name="ricordami"></label>
+                        <div style="margin-top:10px; margin-bottom:10px;"class="horizontalflex">
+                            <label for="ricordami">Ricorda la mia email</label>
+                            <input type="checkbox" id="ricordami" name="ricordami">
+                        </div>
                         <input type="submit" id="accedi" name="accedi" value="Accedi">
                     </div> 
                 </form>

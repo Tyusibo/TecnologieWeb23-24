@@ -6,15 +6,6 @@ $_SESSION['change']=false;  //valori di default che mi fa capire che in autentic
 //login e non quella della registrazione(true)
 //entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
 /*tramite i 2 form capisco se reindirizzare al login o alla registrazione e imposto redirect per tornare a prenota dopo il login/la registrazione*/
-if (isset($_GET['accedi'])) {
-    $_SESSION['redirect']="prenota.php"; 
-    header("Location: autenticazione.php");
-} 
-if (isset($_GET['registrati'])) {
-    $_SESSION['redirect']="prenota.php"; 
-    header("Location: autenticazione.php");
-    $_SESSION['change']=true;
-}    
 ?>
 <html lang="it">
 <head>
@@ -29,12 +20,7 @@ if (isset($_GET['registrati'])) {
     <?php
     if(empty($_SESSION['username'])){  //se non loggato ?>
         <p>Pagina riservata agli utenti autenticati. <br/> 
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET">
-			    <label>Effettua l'<input type="submit" id="accedi" name="accedi" value="accesso">oppure</label></form>
-            </br>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET">
-                <label><input type="submit" id="registrati" name="registrati" value="registrati">per continuare</label>
-            </form>
+            Effettua l'<button id="accedi">accesso</button> oppure la <button id="registrati">registrazione</button> per continuare.
         </p>
         <?php } else /*se loggato*/if ($_SERVER["REQUEST_METHOD"] == "POST") {  //se hai effettuato una prenotazione ?>
                 <p>Prenotazione effettuata con successo!
@@ -81,5 +67,6 @@ if (isset($_GET['registrati'])) {
         <?php } //parentesi dell'else ?>  
     
     <?php require "footer.php"; ?>
+    <script src="redirect.js"></script>
 </body>
 </html>

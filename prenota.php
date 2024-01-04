@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$_SESSION['redirect']=null;   //tutte le pagine devono rendere redirect=null e solo prenota.php deve cambiare quando serve
-if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capisco se reindirizzare al login o
-    alla registrazione e imposto redirect per tornare a prenota dopo il login/la registrazione*/
-    if (isset($_GET['accedi'])) {
-           $_SESSION['redirect']="prenota.php"; 
-            header("Location: autenticazione.php");
-    } 
-    if (isset($_GET['registrati'])) {
+$_SESSION['redirect']=null;   
+/*tramite i 2 form capisco se reindirizzare al login o alla registrazione e imposto redirect per tornare a prenota dopo il login/la registrazione*/
+if ((isset($_GET['registrati']) )|| (isset($_GET['registrati']))) {
         $_SESSION['redirect']="prenota.php"; 
-         header("Location: autenticazione.php");
-    }    
-}
+        header("Location: autenticazione.php");
+} 
+  
 ?>
 <html lang="it">
 <head>

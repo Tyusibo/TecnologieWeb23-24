@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();     
-if (($_SERVER["REQUEST_METHOD"] == "POST") &&  isset($_POST['registrati'])) {// Recupera i valori dai campi di input del form registrati
+if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form registrati
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
@@ -14,7 +14,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") &&  isset($_POST['registrati'])) {// 
     } else 
         header("Location: account.php");
 } 
-if (isset($_POST['accedi'])) {// Recupera i valori dai campi di input del form accedi
+if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form accedi
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $username=$_POST['username']; 
     $pwd=$_POST['pwd']; 
@@ -39,23 +39,26 @@ if (isset($_POST['accedi'])) {// Recupera i valori dai campi di input del form a
     <div class="container">    
         <div class="whitebox">
             <div id="accedi">
-                <h3 id="text_accedi">Accedi</h3>
+                <h3 class="title">Accedi</h3>
                 <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">   
                         <label for="usernameAccedi">Email</label>
-                        <input type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
+                        <input class="textinput" type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
                         <div id="erroreEmailAccedi" class="errore"></div>
-                        <label for="pwd">Password</label>
+                        <label style="margin-top:10px;" for="pwd">Password</label>
                         <div class="horizontalflex">
-                            <input type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
+                            <input class="textinput" type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
                             <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i>
                         </div>
                         <div id="errorePassword" class="errore"></div>
-                        <label>Ricorda la mia email: <input type="checkbox" id="ricordami" name="ricordami"></label>
-                        <input type="submit" id="accedi" name="accedi" value="Accedi">
+                        <div style="margin-top:10px; margin-bottom:20px;"class="horizontalflex">
+                            <label for="ricordami">Ricorda la mia email</label>
+                            <input type="checkbox" id="ricordami" name="ricordami">
+                        </div>
+                        <input class="btn" type="submit" id="acc" name="accedi" value="Accedi">
                     </div> 
                 </form>
-                <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>
+                <p id="registered">Non sei registrato?<button id="cliccaqui" onClick="cambiaModalità(false)">Registrati</button></p>
             </div>
 
             <div id="registrati" style="display: none";>Registrati
@@ -83,7 +86,7 @@ if (isset($_POST['accedi'])) {// Recupera i valori dai campi di input del form a
                     <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo (isset($pwd1)) ? $pwd1 : ""; ?>">
                     <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>
                     <div id="errorePassword2" class="errore"></div>
-                    <input type="submit" id="registrati" name="registrati" value="Registrati">
+                    <input type="submit" id="reg" name="reg" value="Registrati">
                 </form>
                 <p id="registered">Sei già registrato? Premi <button onClick="cambiaModalità(true)">qui</button> per accedere</p>
             </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+$_SESSION['redirect']=null;
 if (($_SERVER["REQUEST_METHOD"] === 'GET') && (isset($_GET['esci']))) { /*tramite form con metodo get capisco se è stata effettuata una richiesta di logout e la gestisco*/
         session_destroy();
         header("Location: homepage.php");  //per ricreare la sessione e inizializzare i valori
@@ -20,11 +21,7 @@ if (($_SERVER["REQUEST_METHOD"] === 'GET') && (isset($_GET['esci']))) { /*tramit
 </head>
 <body>
     <?php require "header.php"; ?>
-    <div style="height: 100px; background-color: black"></div> <!--lo stile per mostrare il contenuto dopo l'header e perchè i cazzoni mettono il css nei documenti php-->
     <div class="container">
-        <div id="logobox">
-            <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
-        </div>
         <div class="whitebox">
         <?php 
         if((!(isset($_SESSION['username']))) && (!(isset($x)))){  //se non loggato  

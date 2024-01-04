@@ -28,7 +28,7 @@
   border-top: 1px solid #848788;
 }
 
-a{ /* cafonata */
+.footer a{
   text-decoration: none;
   color: #848788
 }
@@ -41,6 +41,8 @@ a{ /* cafonata */
 
 .fprinc{
   padding: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -50,6 +52,7 @@ a{ /* cafonata */
   display: flex;
   flex-direction: column;
   width: 15%;
+  margin-top: 12px;
 }
 .coll-2{
   display: flex;

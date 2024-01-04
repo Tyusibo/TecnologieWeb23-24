@@ -9,27 +9,35 @@ body{
 }
 
 .container{
-    height: 600px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 150px;
+    padding-bottom: 100px;
     background-image: url(../img/homebackg.jpg);
 }
 
-#logobox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .whitebox{
+    width: 500px;
     margin: 25px;
     padding: 25px;
     background-color: white;
     border-radius: 25px;
     box-shadow: 10px 10px 30px;
+}
+
+.verticalflex {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.horizontalflex{
+    display: flex;
+}
+
+#pwd{
+    flex-grow: 1;
 }
 
 #registrati{
@@ -38,16 +46,35 @@ body{
     margin-bottom: 25px;
 }
 
-#accedi{
+#text_accedi{
     font-size: 25px;
-    font-weight: 400;
+    font-weight: 900;
     margin-bottom: 25px;
+    margin-top: 0; 
 }
-
 
 #registered{
     font-size: 15px;
     font-weight: 400;
+}
+
+.whitebox label{
+    display: block;
+}
+
+.whitebox input{
+    border: 0;
+    border-bottom: 1px solid black;
+}
+
+.horizontalflex i{
+    padding-left: 2px;
+    border-bottom: 1px solid black;
+}
+
+.whitebox input:focus-visible{
+    border: 0;
+    border-bottom: 1px solid black;
 }
 
 

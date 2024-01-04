@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!(isset($_SESSION['redirect']))) //lo faccio per non mettere sempre $_SESSION['redirect']=null; annullando il reindirizzamento di prenota
-    $_SESSION['redirect']=null;
-
- 
-if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisco se è stata effettuata una richiesta di logout e la gestisco*/
-    if (isset($_GET['submit'])) {
+if (($_SERVER["REQUEST_METHOD"] === 'GET') && (isset($_GET['esci']))) { /*tramite form con metodo get capisco se è stata effettuata una richiesta di logout e la gestisco*/
         session_destroy();
+        header("Location: homepage.php");  //per ricreare la sessione e inizializzare i valori
         unset($_SESSION['username']);  //rimuovo gli attributi legati all'autenticazione
-        header("Location: account.php");  //per ricreare la sessione e inizializzare i valori
-    }
-    
+        $x=false; //Se non faccio così dopo l'unset di $_SESSION['username'] mi farà sempre header("Location: autenticazione.php"); 
 }
-
-
 ?>
 <html lang="it">
 <head>
@@ -35,13 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisc
         </div>
         <div class="whitebox">
         <?php 
-        if(!(isset($_SESSION['username']))){  //se non loggato  
+        if((!(isset($_SESSION['username']))) && (!(isset($x)))){  //se non loggato  
            header("Location: autenticazione.php"); 
     }
     else{  //se loggato
         echo "<p>Benvenuto $_SESSION[username] !";?>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">
-			<input type="submit"  name="submit" id="submit" value="Esci">
+			<input type="submit"  name="esci" id="esci" value="Esci">
         </form>
         <?php 
     }

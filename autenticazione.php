@@ -31,8 +31,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
     $username=$_SESSION['username'];
     $pwd=$_POST['pwd']; 
     if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {
-        setcookie('nome_utente', $username, time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
-        setcookie('password', $pwd, time() + (30 * 24 * 60 * 60));
+        setcookie('nome_utente', $_POST['usernameAccedi'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
     }
     if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
         header("Location: $_SESSION[redirect]");
@@ -49,7 +48,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Registrati</title>
     <link rel="stylesheet" type="text/css" href="css/autenticazione.css">
-    <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
 <body>
     <?php require "header.php"; ?>
     <div style="height: 100px; background-color: black"></div>
@@ -105,6 +104,6 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
     </div>
     <?php require "footer.html"; ?>
     <script src="script/autenticazione.js" defer></script>
-    <script src="script/cookie.js"></script>  
+    <script src="script/cookie.js"></script>
 </body>
 </html>       

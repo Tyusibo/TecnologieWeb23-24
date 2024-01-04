@@ -1,10 +1,8 @@
 function setCookie() {
     var usernameCookie = getCookie('nome_utente');
-    var passwordCookie = getCookie('password');
     
     if (usernameCookie && passwordCookie) {
-        document.getElementById('username').value = decodeURIComponent(usernameCookie);
-        document.getElementById('pwd').value = decodeURIComponent(passwordCookie);
+        document.getElementById('usernameAccedi').value = decodeURIComponent(usernameCookie);
     }
 }
 

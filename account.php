@@ -50,6 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisc
     </div>
     
     <?php require "footer.html"; ?>
-    <script src="script/cookie.js"></script>     
+       
 </body>
 </html>

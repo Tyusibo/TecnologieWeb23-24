@@ -20,8 +20,7 @@ body{
 .whitebox{
     width: 500px;
     margin: 25px;
-    padding: 25px;
-    padding-left: 30px;
+    padding: 25px 30px;
     background-color: white;
     border-radius: 25px;
     box-shadow: 10px 10px 30px;
@@ -68,7 +67,7 @@ body{
     display: block;
 }
 
-.whitebox input{
+.textinput{
     border: 0;
     border-bottom: 1px solid black;
     padding: 5px;
@@ -81,6 +80,45 @@ body{
 
 .whitebox input:focus{
     outline: none;
+}
+
+.btn{
+    z-index: 2;
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #fa6400;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: 13px 23px;
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+#cliccaqui{
+    color: #fa6400;
+    margin-left: 5px;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 

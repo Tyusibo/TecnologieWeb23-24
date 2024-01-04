@@ -5,7 +5,7 @@ if(!(isset($_SESSION['redirect'])))  //lo faccio per non mettere sempre $_SESSIO
     $_SESSION['redirect']=null;
 
      
-if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo di input del modulo
+if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_GET['registrati']))) {// Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {// Recupera il nuovo valore dal campo
     $password2=null;  
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal campo di input del modulo
+if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_GET['accedi']))) {// Recupera il nuovo valore dal campo di input del modulo
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $username=$_SESSION['username'];
     $pwd=$_POST['pwd']; 
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal camp
                 <i class="fa-sharp fa-solid fa-eye" onclick="mostraPasswordAccedi()" id="mostra"></i></label>
                 <div id="errorePassword" class="errore"></div>
                 <label>Ricordami<input type="checkbox" id="ricordami" name="ricordami"></label>
-                <input type="submit" value="Invia">
+                <input type="submit" id="accedi" name="accedi" value="Accedi">
             </form>
             <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>
         </div>
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal camp
                     <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
                     <i class="fa-sharp fa-solid fa-eye" onclick="mostraPasswordRegistrati(2)" id="mostra2"></i></label>
                     <div id="errorePassword2" class="errore"></div>
-                    <input type="submit" value="Registrati">
+                    <input type="submit" id="registrati" name="registrati" value="Registrati">
                 </form>
                 <p id="registered">Sei già registrato? Premi <button onClick="cambiaModalità(true)">qui</button> per registrati</p>
             </div>

@@ -2,6 +2,17 @@
 <?php
 session_start();
 $_SESSION['redirect']=null;
+if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capisco se reindirizzare al login o
+    alla registrazione e imposto redirect per tornare alla homepage dopo il login/la registrazione*/
+    if (isset($_GET['accedi'])) {
+           $_SESSION['redirect']="homepage.php#galleria"; 
+            header("Location: account.php");
+    } 
+    if (isset($_GET['registrati'])) {
+        $_SESSION['redirect']="homepage.php#galleria"; 
+         header("Location: registrati.php");
+ }    
+}
 ?>
 <html lang="it">
 <head>

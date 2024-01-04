@@ -2,9 +2,9 @@
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
-    <header class="headertransition sticky" id="myHeader">
-        <div class="header">
 
+<header class="headertransition sticky" id="myHeader">
+        <div class="header">
             <div class="colonna1">
                 <a href="homepage.php" target="_top" class="logo">
                     <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
@@ -33,17 +33,10 @@
                     </ul>
                 </nav>  
             </div>
-
-            <div class="colonna3">
-                
-                <a href="account.php" target="_top" class="account"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px;"></i></a>
-            </div>
-        
         </div>
-        
-    </header>
-    <script src="script/StickyHeader.js"></script>
-
+         <!--Se si potrà mettere qualcosa che non da fastidio al contenuto delle pagine che caricano l'header -->
+</header>
+<script src="script/stickyHeader.js"></script>  <!--Se messo prima non funzionerà perchè non conosce gli id-->
 
 
 

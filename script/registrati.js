@@ -9,6 +9,11 @@ document.head.appendChild(scriptTag);
 
 function validaModulo(nomeModulo) {
     var error=false;
+    var simulatedEvent = {
+        target: {
+            value: pwd1.value
+        }
+    };
     document.getElementById("erroreNome").innerText ="";
     document.getElementById("erroreCognome").innerText ="";
     document.getElementById("erroreEmail").innerText ="";
@@ -49,31 +54,13 @@ function validaModulo(nomeModulo) {
         document.getElementById("errorePassword1").innerText = "Devi inserire una password";
         nomeModulo.pwd1.focus();
         error=true;
-    } else if (nomeModulo.pwd1.value.length<8) {
-            document.getElementById("errorePassword1").innerText = "La password deve essere almeno lunga 8 caratteri";
-            nomeModulo.pwd1.focus();
-            error=true;
-            } else if (nomeModulo.pwd1.value.length>20) {
-                document.getElementById("errorePassword1").innerText = "La password non deve essere più lunga di 20 caratteri";
-                nomeModulo.pwd1.focus();
-                error=true;
-                } else if (!/[A-Z]/.test(nomeModulo.pwd1.value)) {
-                    document.getElementById("errorePassword1").innerText = "La password deve contenere almeno una lettera maiuscola";
-                    nomeModulo.pwd1.focus();
-                    error=true;
-                    } else if (!/[a-z]/.test(nomeModulo.pwd1.value)) {
-                        document.getElementById("errorePassword1").innerText = "La password deve contenere almeno una lettera minuscola";
-                        nomeModulo.pwd1.focus();
-                        error=true;
-                        } else if (!/[0-9]/.test(nomeModulo.pwd1.value)) {
-                            document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un numero";
-                            nomeModulo.pwd1.focus();
-                            error=true;
-                            } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(nomeModulo.pwd1.value)) {
-                                document.getElementById("errorePassword1").innerText = "La password deve contenere almeno un carattere speciale";
-                                nomeModulo.pwd1.focus();
-                                error=true;
-                            }
+    } else{
+        // Chiamare verificaPassword con l'oggetto evento simulato
+        error=verificaPassword(simulatedEvent);
+        if(error)
+            document.getElementById("errorePassword1").innerText = "Controlla il formato da rispettare per la password";
+    }
+
     if (nomeModulo.pwd2.value == "") {
         document.getElementById("errorePassword2").innerText = "Devi inserire la password di conferma";
         nomeModulo.pwd2.focus();
@@ -86,6 +73,47 @@ function validaModulo(nomeModulo) {
         }
     
     return !error;
+}
+
+function verificaPassword(event){
+    var error=false;
+    var minuscola=document.getElementById("minuscola");
+    var maiuscola=document.getElementById("maiuscola");
+    var numero=document.getElementById("numero");
+    var speciale=document.getElementById("speciale");
+    var lun_min=document.getElementById("lun_min");
+    var lun_max=document.getElementById("lun_max");
+    if (!/[a-z]/.test(event.target.value)){
+        minuscola.classList.add("errore");
+        error=true;
+    } else 
+        minuscola.classList.remove("errore");
+    if (!/[A-Z]/.test(event.target.value)){
+        maiuscola.classList.add("errore");
+        error=true;
+    } else 
+        maiuscola.classList.remove("errore");
+    if (!/[0-9]/.test(event.target.value)) {
+        numero.classList.add("errore");
+        error=true;
+    } else 
+        numero.classList.remove("errore");
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(event.target.value)){
+        speciale.classList.add("errore");
+        error=true;
+    } else 
+        speciale.classList.remove("errore");
+    if (event.target.value.length<8){
+        lun_min.classList.add("errore");
+        error=true;
+    } else 
+        lun_min.classList.remove("errore");
+    if (event.target.value.length>20){
+        lun_max.classList.add("errore");
+        error=true;
+    } else 
+        lun_max.classList.remove("errore"); 
+    return error;
 }
 
 function soloNumeri(event){
@@ -138,6 +166,8 @@ function soloCaratteri(event){
        
     return false;
 }
+
+
 
 function mostraPassword(number) {
     var icona=document.getElementById("mostra"+number);

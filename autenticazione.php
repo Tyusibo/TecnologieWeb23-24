@@ -64,7 +64,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
                 <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="">
                 <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i></label>
                 <div id="errorePassword" class="errore"></div>
-                <label>Ricordami<input type="checkbox" id="ricordami" name="ricordami"></label>
+                <label>Ricorda la mia email: <input type="checkbox" id="ricordami" name="ricordami"></label>
                 <input type="submit" id="accedi" name="accedi" value="Accedi">
             </form>
             <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>

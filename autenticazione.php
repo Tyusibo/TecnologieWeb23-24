@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 <?php
-session_start();
-if(!(isset($_SESSION['redirect'])))  //lo faccio per non mettere sempre $_SESSION['redirect']=null; annullando il reindirizzamento di prenota
-    $_SESSION['redirect']=null;
-
-     
-if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['registrati']))) {// Recupera il nuovo valore dal campo di input del modulo
+session_start();     
+if (($_SERVER["REQUEST_METHOD"] == "POST") &&  isset($_POST['registrati'])) {// Recupera i valori dai campi di input del form registrati
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
-    $username=$_SESSION['username'];
+    $username=$_POST['username']; 
     $numero=$_POST['numero']; 
-    $password1=$_POST['pwd1']; 
-    $password2=$_POST['pwd2'];
-    if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
+    $pwd=$_POST['pwd1']; 
+    $pwd1=$_POST['pwd2'];
+    if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
         header("Location: $_SESSION[redirect]");
     } else 
         header("Location: account.php");
-} else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
-    $nome=null; 
-    $cognome=null; 
-    $username=null;
-    $numero=null; 
-    $password1=null; 
-    $password2=null;  
-}
-
-if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Recupera il nuovo valore dal campo di input del modulo
+} 
+if (isset($_POST['accedi'])) {// Recupera i valori dai campi di input del form accedi
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
-    $username=$_SESSION['username'];
+    $username=$_POST['username']; 
     $pwd=$_POST['pwd']; 
-    if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {
+    if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
         setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
     }
-    if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
+    if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
         header("Location: $_SESSION[redirect]");
     } else 
         header("Location: account.php");
-} else {   //altrimenti se si è caricata la pagina per la prima volta e non tramite post self, inizializzo il valore dei campi per non generare errori
-    $username=null;
-    $pwd=null; 
-}
+} 
 ?>
 <html lang="it">
 <head>
@@ -59,9 +44,9 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
         <div class="whitebox">
         <div id="accedi">Accedi
             <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label>Inserisci la tua email<input type="text" size="30" id="usernameAccedi" name="username" value=""/></label>
+                <label>Inserisci la tua email<input type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>"></label>
                 <div id="erroreEmailAccedi" class="errore"></div>
-                <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="">
+                <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
                 <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i></label>
                 <div id="errorePassword" class="errore"></div>
                 <label>Ricorda la mia email: <input type="checkbox" id="ricordami" name="ricordami"></label>
@@ -72,13 +57,13 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
 
         <div id="registrati" style="display: none";>Registrati
                 <form onSubmit="return validaModuloRegistrati(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                    <label>Inserisci il tuo nome: <input type="text" size="15" name="nome" value="<?php echo $nome?>"onkeydown="return soloCaratteri(event)"></label>
+                    <label>Inserisci il tuo nome: <input type="text" size="15" name="nome" value="<?php echo (isset($nome)) ? $nome : ""; ?>"onkeydown="return soloCaratteri(event)"></label>
                     <div id="erroreNome" class="errore"></div>
-                    <label>Inserisci il tuo cognome: <input type="text" size="15" name="cognome" value="<?php echo $cognome?>"onkeydown="return soloCaratteri(event)"></label>
+                    <label>Inserisci il tuo cognome: <input type="text" size="15" name="cognome" value="<?php echo (isset($cognome)) ? $cognome : ""; ?>"onkeydown="return soloCaratteri(event)"></label>
                     <div id="erroreCognome" class="errore"></div>
-                    <label>Inserisci la tua email: <input type="text" size="30" name="username" value="<?php echo $username?>"></label>
+                    <label>Inserisci la tua email: <input type="text" size="30" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>"></label>
                     <div id="erroreEmailRegistrati" class="errore"></div>
-                    <label>Inserisci il tuo numero <small>(Includi il prefisso)</small>: <input type="text" size="13" name="numero" value="<?php echo $numero?>" onkeydown="return soloNumeri(event)"></label>
+                    <label>Inserisci il tuo numero <small>(Includi il prefisso)</small>: <input type="text" size="13" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)"></label>
                     <div id="erroreNumero" class="errore"></div>
                     <label>Scegli una password, deve contenere almeno: </br><small>
                         <ul id="requisitiPassword" style="display: none;">
@@ -89,10 +74,10 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
                                 <li id="lun_min">Essere lunga minimo 8 caratteri</li>
                                 <li id="lun_max">Essere lunga massimo 20 caratteri</li>
                         </ul></small>
-                    <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" oninput="verificaPassword(event)" onblur="nascondiRequisti(event)">
+                    <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>" oninput="verificaPassword(event)" onblur="nascondiRequisti(event)">
                     <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i></label>
                     <div id="errorePassword1" class="errore"></div>
-                    <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
+                    <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo (isset($pwd1)) ? $pwd1 : ""; ?>">
                     <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i></label>
                     <div id="errorePassword2" class="errore"></div>
                     <input type="submit" id="registrati" name="registrati" value="Registrati">

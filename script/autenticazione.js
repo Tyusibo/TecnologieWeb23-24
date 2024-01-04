@@ -80,10 +80,10 @@ function validaModuloRegistrati(nomeModulo) {
         document.getElementById("erroreCognome").innerText = "Devi inserire un cognome";
         error=true;
     }
-    if (nomeModulo.usernameRegistrati.value == "") {
+    if (nomeModulo.username.value == "") {
         document.getElementById("erroreEmailRegistrati").innerText = "Devi inserire un'email";
         error=true;
-    } else if (!(validator.isEmail(nomeModulo.usernameRegistrati.value))) {
+    } else if (!(validator.isEmail(nomeModulo.username.value))) {
             document.getElementById("erroreEmailRegistrati").innerText = "L'indirizzo email non è valido";
             error=true;
         }
@@ -118,8 +118,6 @@ function validaModuloRegistrati(nomeModulo) {
 }
 
 function verificaPassword(event){
-    requisiti=document.getElementById("requisitiPassword");
-    requisiti.style.display="block";
     var error=false;
     var minuscola=document.getElementById("minuscola");
     var maiuscola=document.getElementById("maiuscola");
@@ -160,10 +158,6 @@ function verificaPassword(event){
     return error;
 }
 
-function nascondiRequisti(event){
-    var requisiti=document.getElementById("requisitiPassword");
-    requisiti.style.display="none";
-}
 
 function soloNumeri(event){
     var tasto;

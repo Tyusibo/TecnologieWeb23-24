@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+$_SESSION['redirect']=null;
 if (($_SERVER["REQUEST_METHOD"] === 'GET') && (isset($_GET['esci']))) { /*tramite form con metodo get capisco se è stata effettuata una richiesta di logout e la gestisco*/
         session_destroy();
         header("Location: homepage.php");  //per ricreare la sessione e inizializzare i valori

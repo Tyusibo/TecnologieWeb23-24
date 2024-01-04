@@ -14,22 +14,22 @@
             <div class="colonna2">
                 <nav>
                     <ul id="navlist">
-                        <li id="home"><a href="homepage.php" target="_top">Homepage</a></li>
-                        <li id="chisiamo"><a href="<?php if($currentPage=== 'homepage.php')
+                        <li id="home_h"><a href="homepage.php" target="_top">Homepage</a></li>
+                        <li id="chisiamo_h"><a href="<?php if($currentPage=== 'homepage.php')
                                                 echo '#chiSiamo';
                                             else
                                                 echo 'homepage.php#chiSiamo'            
                                     ?>" 
                         target="_top">Chi Siamo</a></li>
-                        <li id="servizi"><a href="<?php if($currentPage=== 'homepage.php')
+                        <li id="servizi_h"><a href="<?php if($currentPage=== 'homepage.php')
                                                 echo '#servizi';
                                             else
                                                 echo 'homepage.php#servizi'            
                                     ?>" 
                          target="_top">Servizi</a></li>
-                        <li id="contattaci"><a href="#footerplaceholder" target="_top">Contattaci</a></li>
-                        <li id="galleria"><a href="galleria.php" target="_top">Galleria</a></li>
-                        <li id="prenota"><a href="prenota.php" target="_top" class="bottone">Prenota</a></li>
+                        <li id="contattaci_h"><a href="#footerplaceholder" target="_top">Contattaci</a></li>
+                        <li id="galleria_h"><a href="galleria.php" target="_top">Galleria</a></li>
+                        <li id="prenota-H"><a href="prenota.php" target="_top" class="bottone">Prenota</a></li>
                     </ul>
                 </nav>  
             </div>

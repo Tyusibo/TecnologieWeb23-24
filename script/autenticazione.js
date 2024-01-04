@@ -118,7 +118,7 @@ function validaModuloRegistrati(nomeModulo) {
 }
 
 function verificaPassword(event){
-    var requisiti=document.getElementById("requisitiPassword");
+    requisiti=document.getElementById("requisitiPassword");
     requisiti.style.display="block";
     var error=false;
     var minuscola=document.getElementById("minuscola");
@@ -160,10 +160,11 @@ function verificaPassword(event){
     return error;
 }
 
-function nascondiRequisti(){
+function nascondiRequisti(event){
     var requisiti=document.getElementById("requisitiPassword");
     requisiti.style.display="none";
 }
+
 function soloNumeri(event){
     var tasto;
     tasto = event.key;

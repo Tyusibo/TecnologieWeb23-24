@@ -89,7 +89,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
                                 <li id="lun_min">Essere lunga minimo 8 caratteri</li>
                                 <li id="lun_max">Essere lunga massimo 20 caratteri</li>
                         </ul></small>
-                    <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" oninput="verificaPassword(event)" onblur="nascondiRequisti()">
+                    <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" oninput="verificaPassword(event)" onblur="nascondiRequisti(event)">
                     <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i></label>
                     <div id="errorePassword1" class="errore"></div>
                     <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">
@@ -97,7 +97,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
                     <div id="errorePassword2" class="errore"></div>
                     <input type="submit" id="registrati" name="registrati" value="Registrati">
                 </form>
-                <p id="registered">Sei già registrato? Premi <button onClick="cambiaModalità(true)">qui</button> per registrati</p>
+                <p id="registered">Sei già registrato? Premi <button onClick="cambiaModalità(true)">qui</button> per accedere</p>
             </div>
 
         </div>  <!--Devo chiudere i 2 div-->

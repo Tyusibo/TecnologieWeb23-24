@@ -1,5 +1,7 @@
+<?php //$currentPage = basename($_SERVER['PHP_SELF']);  è inutile perchè già lo fa header.php?> 
+
 <link rel="stylesheet" type="text/css" href="css/footer.css">
-<script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script> <!--per le icone-->
 
 <footer id="footerplaceholder" class="footer">
         <div class="fprinc">
@@ -17,12 +19,21 @@
             <div class="coll-3">
                 <h3>LINK UTILI</h3>
                 <ul>
-                    <li><a href="homepage.php">Homepage</a></li>
-                    <li><a href="homepage.php#chiSiamo">Chi Siamo</a></li>
-                    <li><a href="homepage.php#servizi">Servizi</a></li>
-                    <li><a href="galleria.php">Galleria</a></li>
-                    <li><a href="prenota.php">Prenota</a></li>
-                    <li><a href="account.php">Account</a></li>
+                    <li id="home_h"><a href="<?php if($currentPage=== 'homepage.php')
+                                                echo '#home';
+                                            else
+                                                echo 'homepage.php';?>">Homepage</a></li>
+                    <li id="chisiamo_h"><a href="<?php if($currentPage=== 'homepage.php')
+                                                echo '#chiSiamo';
+                                            else
+                                                echo 'homepage.php#chiSiamo';?>">Chi Siamo</a></li>
+                    <li id="servizi_h"><a href="<?php if($currentPage=== 'homepage.php')
+                                                echo '#servizi';
+                                            else
+                                                echo 'homepage.php#servizi';?>">Servizi</a></li>
+                    <li id="galleria_h"><a href="galleria.php">Galleria</a></li>
+                    <li id="prenota_h"><a href="prenota.php">Prenota</a></li>
+                    <li id="account_h"><a href="account.php">Account</a></li>
                 </ul>
             </div>
             <div class="coll-4">
@@ -43,3 +54,5 @@
             </div>
         </div>
 </footer>    
+
+<script src="script/scroll.js"></script>  <!--Se messo prima non funzionerà perchè non conosce gli id-->

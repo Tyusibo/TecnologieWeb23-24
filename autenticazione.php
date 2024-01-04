@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-session_start();     
+session_start();
 if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form registrati
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
@@ -34,6 +34,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
     <title>Gentlemen's Cut Registrati</title>
     <link rel="stylesheet" type="text/css" href="css/autenticazione.css">
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
+    
 <body>
     <?php require "header.php"; ?>
     <div class="container">    
@@ -55,7 +56,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                             <label for="ricordami">Ricorda la mia email</label>
                             <input type="checkbox" id="ricordami" name="ricordami">
                         </div>
-                        <input type="submit" id="accedi" name="accedi" value="Accedi">
+                        <input type="submit" id="acc" name="acc" value="Accedi">
                     </div> 
                 </form>
                 <p id="registered">Non sei registrato? Premi <button onClick="cambiaModalità(false)">qui</button> per registrati </p>
@@ -93,8 +94,15 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
 
         </div>  <!--Devo chiudere i 2 div-->
     </div>
-    <?php require "footer.html"; ?>
-    <script src="script/autenticazione.js" defer></script>
-    <script src="script/cookie.js"></script>
+    <script src="script/cookie.js"></script> 
+    <script src="script/autenticazione.js"></script> <!--Non posso aggiungere defer perchè altrimenti
+    le istruzioni sottostanti genererebbero un'errore dovuto al fatto di non conoscere la funzione cambiaModalità()-->
+    <?php
+    if($_SESSION['change']==true){  //valore impostato a true solo se si vuole accedere alla parte della registrazione di autenticazione.php
+    ?><script>
+    cambiaModalità(false);
+    </script><?php
+    } 
+    require "footer.php"; ?>
 </body>
 </html>       

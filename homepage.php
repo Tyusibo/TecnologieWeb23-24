@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <?php
-session_start();
-$_SESSION['redirect']=null;
-if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capisco se reindirizzare al login o
-    alla registrazione e imposto redirect per tornare alla homepage dopo il login/la registrazione*/
-    if (isset($_GET['accedi'])) {
-           $_SESSION['redirect']="homepage.php#galleria"; 
-            header("Location: account.php");
-    } 
-    if (isset($_GET['registrati'])) {
-        $_SESSION['redirect']="homepage.php#galleria"; 
-         header("Location: registrati.php");
- }    
-}
+session_start(); //avvio la sessione
+$_SESSION['redirect']=null;  //valore di default che mi fa capire che in autenticazione.php non devo fare redirect particolari
+$_SESSION['change']=false;  //valori di default che mi fa capire che in autenticazione.php devo mostrare la parte del 
+//login e non quella della registrazione(true)
+//entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
+if (isset($_GET['accedi'])) {
+    $_SESSION['redirect']="homepage.php"; 
+    header("Location: autenticazione.php");
+} 
+if (isset($_GET['registrati'])) {
+    $_SESSION['redirect']="homepage.php"; 
+    header("Location: autenticazione.php");
+    $_SESSION['change']=true;
+} 
 ?>
 <html lang="it">
 <head>
@@ -24,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=initMap">
     </script>
-    <script src="script/caricaMappa.js"></script>
 </head>
 
 <body>
@@ -127,43 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
 
         </div>
     </section>
-    <script>
-        let cont = 3;
-        let currentOffset = 0;
-        const imageContainer = document.getElementById('imageContainer');
-        const imageSlider = document.getElementById('imageSlider');
-        const images = document.querySelectorAll('.test img');
-        const imageWidth = 432 + 10; // Larghezza dell'immagine più il margine
-
-        function showSlide() {
-            var imag=document.getElementById("imag"+cont);
-            imag.classList.remove("acti");
-            var imag2 = document.getElementById("imag"+( cont-3 ) );
-            imag2.classList.add("acti"); 
-            imageSlider.style.transform = `translateX(-${currentOffset}px)`;
-        }
-
-        function prevSlide() {
-            if (currentOffset > 0) {
-                currentOffset -= imageWidth;
-                cont -= 1;
-                showSlide();
-            } else{
-                currentOffset = 3 * imageWidth;
-            }
-        }
-
-        function nextSlide() {
-            if (currentOffset < (imageWidth * (images.length - 1))) {
-                currentOffset += imageWidth;
-                cont =+1;
-                showSlide();
-            } else{
-                currentOffset = 0;
-            }
-        }
-    </script>
-
 
 
     <div class="test" id="imageContainer">
@@ -179,10 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
         <div class="arrow" onclick="nextSlide()">›</div>
     </div>
 
-   
-
-    
-
-    <?php require "footer.html"; ?> 
+    <script src="script/homepage.js"></script>
+    <?php require "footer.php"; ?> 
 </body>
 </html>

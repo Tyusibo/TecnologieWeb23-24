@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <?php
-session_start();
-$_SESSION['redirect']=null;   
+session_start(); 
+$_SESSION['redirect']=null;  //valore di default che mi fa capire che in autenticazione.php non devo fare redirect particolari
+$_SESSION['change']=false;  //valori di default che mi fa capire che in autenticazione.php devo mostrare la parte del 
+//login e non quella della registrazione(true)
+//entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
 /*tramite i 2 form capisco se reindirizzare al login o alla registrazione e imposto redirect per tornare a prenota dopo il login/la registrazione*/
-if ((isset($_GET['registrati']) )|| (isset($_GET['registrati']))) {
-        $_SESSION['redirect']="prenota.php"; 
-        header("Location: autenticazione.php");
+if (isset($_GET['accedi'])) {
+    $_SESSION['redirect']="prenota.php"; 
+    header("Location: autenticazione.php");
 } 
-  
+if (isset($_GET['registrati'])) {
+    $_SESSION['redirect']="prenota.php"; 
+    header("Location: autenticazione.php");
+    $_SESSION['change']=true;
+}    
 ?>
 <html lang="it">
 <head>
@@ -73,6 +80,6 @@ if ((isset($_GET['registrati']) )|| (isset($_GET['registrati']))) {
                         
         <?php } //parentesi dell'else ?>  
     
-    <?php require "footer.html"; ?>
+    <?php require "footer.php"; ?>
 </body>
 </html>

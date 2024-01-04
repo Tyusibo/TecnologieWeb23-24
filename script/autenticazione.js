@@ -18,18 +18,17 @@ function cambiaModalità(mod){
     }
 }
 function validaModuloAccedi(nomeModulo) {
+    console.log(3);
     var error=false;
 
-    document.getElementById("erroreEmail").innerText ="";
+    document.getElementById("erroreEmailAccedi").innerText ="";
     document.getElementById("errorePassword").innerText ="";
 
-    if (nomeModulo.username.value == "") {
-        document.getElementById("erroreEmail").innerText = "Devi inserire un'email";
-        nomeModulo.username.focus();
+    if (nomeModulo.usernameAccedi.value == "") {
+        document.getElementById("erroreEmailAccedi").innerText = "Devi inserire un'email";
         error=true;
-    } else if (!(validator.isEmail(nomeModulo.username.value))) {
-            document.getElementById("erroreEmail").innerText = "L'indirizzo email non è valido";
-            nomeModulo.username.focus();
+    } else if (!(validator.isEmail(nomeModulo.usernameAccedi.value))) {
+            document.getElementById("erroreEmailAccedi").innerText = "L'indirizzo email non è valido";
             error=true;
         }
     
@@ -43,9 +42,9 @@ function validaModuloAccedi(nomeModulo) {
     return !error;
 }
 
-function mostraPasswordAccedi() {
-    var icona=document.getElementById("mostra");
-    var passwordInput = document.getElementById("pwd");
+function mostraPassword(number) {
+    var icona=document.getElementById("mostra"+number);
+    var passwordInput = document.getElementById("pwd"+number);
     if(passwordInput.type =="text"){
         passwordInput.type="password";
         icona.classList.remove("fa-mask-face");
@@ -60,7 +59,6 @@ function mostraPasswordAccedi() {
 }
 
 
-
 function validaModuloRegistrati(nomeModulo) {
     var error=false;
     var simulatedEvent = {
@@ -70,43 +68,36 @@ function validaModuloRegistrati(nomeModulo) {
     };
     document.getElementById("erroreNome").innerText ="";
     document.getElementById("erroreCognome").innerText ="";
-    document.getElementById("erroreEmail").innerText ="";
+    document.getElementById("erroreEmailRegistrati").innerText ="";
     document.getElementById("erroreNumero").innerText ="";
     document.getElementById("errorePassword1").innerText ="";
     document.getElementById("errorePassword2").innerText ="";
     if (nomeModulo.nome.value == "") {
         document.getElementById("erroreNome").innerText ="Devi inserire un nome";
-        nomeModulo.nome.focus();
         error=true;
     }
     if (nomeModulo.cognome.value == "") {
         document.getElementById("erroreCognome").innerText = "Devi inserire un cognome";
-        nomeModulo.cognome.focus();
         error=true;
     }
-    if (nomeModulo.username.value == "") {
-        document.getElementById("erroreEmail").innerText = "Devi inserire un'email";
-        nomeModulo.username.focus();
+    if (nomeModulo.usernameRegistrati.value == "") {
+        document.getElementById("erroreEmailRegistrati").innerText = "Devi inserire un'email";
         error=true;
-    } else if (!(validator.isEmail(nomeModulo.username.value))) {
-            document.getElementById("erroreEmail").innerText = "L'indirizzo email non è valido";
-            nomeModulo.username.focus();
+    } else if (!(validator.isEmail(nomeModulo.usernameRegistrati.value))) {
+            document.getElementById("erroreEmailRegistrati").innerText = "L'indirizzo email non è valido";
             error=true;
         }
     
     if (nomeModulo.numero.value == "") {
         document.getElementById("erroreNumero").innerText = "Devi inserire un numero" ;
-        nomeModulo.numero.focus();
         error=true;
     } else if (nomeModulo.numero.value.length<10) {
             document.getElementById("erroreNumero").innerText = "Il numero deve contenere almeno 10 caratteri";
-            nomeModulo.numero.focus();
             error=true;
         }
     
     if (nomeModulo.pwd1.value == "") {
         document.getElementById("errorePassword1").innerText = "Devi inserire una password";
-        nomeModulo.pwd1.focus();
         error=true;
     } else{
         // Chiamare verificaPassword con l'oggetto evento simulato
@@ -117,12 +108,9 @@ function validaModuloRegistrati(nomeModulo) {
 
     if (nomeModulo.pwd2.value == "") {
         document.getElementById("errorePassword2").innerText = "Devi inserire la password di conferma";
-        nomeModulo.pwd2.focus();
         error=true;
     } else if (nomeModulo.pwd1.value != nomeModulo.pwd2.value) {
             document.getElementById("errorePassword2").innerText = "Le due password non corrispondono";
-            nomeModulo.pwd2.focus();    
-            nomeModulo.pwd2.select();
             error=true;
         }
     
@@ -223,18 +211,3 @@ function soloCaratteri(event){
 
 
 
-function mostraPasswordRegistrati(number) {
-    var icona=document.getElementById("mostra"+number);
-    var passwordInput = document.getElementById("pwd"+number);
-    if(passwordInput.type =="text"){
-        passwordInput.type="password";
-        icona.classList.remove("fa-mask-face");
-        icona.classList.add("fa-mustache"); 
-    }
-    else{
-        passwordInput.type="text";
-        icona.classList.remove("fa-mustache"); 
-        icona.classList.add("fa-mask-face");
-    }
-    passwordInput.focus();
-}

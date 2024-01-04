@@ -6,7 +6,7 @@ if(!(isset($_SESSION['redirect'])))  //lo faccio per non mettere sempre $_SESSIO
 
      
 if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['registrati']))) {// Recupera il nuovo valore dal campo di input del modulo
-    $_SESSION['username']  = $_POST['usernameRegistrati'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
+    $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
     $username=$_SESSION['username'];
@@ -27,11 +27,11 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['registrati']))) {//
 }
 
 if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Recupera il nuovo valore dal campo di input del modulo
-    $_SESSION['username']  = $_POST['usernameAccedi'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
+    $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $username=$_SESSION['username'];
     $pwd=$_POST['pwd']; 
     if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {
-        setcookie('nome_utente', $_POST['usernameAccedi'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
+        setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
     }
     if($_SESSION['redirect']!=null){   //se dopo la post, redirect non è null la richiesta proviene da prenota.php
         header("Location: $_SESSION[redirect]");
@@ -59,7 +59,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
         <div class="whitebox">
         <div id="accedi">Accedi
             <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <label>Inserisci la tua email<input type="text" size="30" id="usernameAccedi" name="usernameAccedi" value=""/></label>
+                <label>Inserisci la tua email<input type="text" size="30" id="usernameAccedi" name="username" value=""/></label>
                 <div id="erroreEmailAccedi" class="errore"></div>
                 <label>Inserisci la tua password:<input type="password" size="20" id="pwd" name="pwd" value="">
                 <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i></label>
@@ -76,12 +76,12 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
                     <div id="erroreNome" class="errore"></div>
                     <label>Inserisci il tuo cognome: <input type="text" size="15" name="cognome" value="<?php echo $cognome?>"onkeydown="return soloCaratteri(event)"></label>
                     <div id="erroreCognome" class="errore"></div>
-                    <label>Inserisci la tua email: <input type="text" size="30" id="usernameRegistrati" name="usernameRegistrati" value="<?php echo $username?>"></label>
+                    <label>Inserisci la tua email: <input type="text" size="30" name="username" value="<?php echo $username?>"></label>
                     <div id="erroreEmailRegistrati" class="errore"></div>
                     <label>Inserisci il tuo numero <small>(Includi il prefisso)</small>: <input type="text" size="13" name="numero" value="<?php echo $numero?>" onkeydown="return soloNumeri(event)"></label>
                     <div id="erroreNumero" class="errore"></div>
                     <label>Scegli una password, deve contenere almeno: </br><small>
-                        <ul>
+                        <ul id="requisitiPassword" style="display: none;">
                                 <li id="minuscola">Una lettera maiuscola</li>
                                 <li id="maiuscola">Una lettera minuscola</li>
                                 <li id="numero">Un numero</li>
@@ -89,7 +89,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
                                 <li id="lun_min">Essere lunga minimo 8 caratteri</li>
                                 <li id="lun_max">Essere lunga massimo 20 caratteri</li>
                         </ul></small>
-                    <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" oninput="verificaPassword(event)">
+                    <input type="password" size="20" id="pwd1" name="pwd1" value="<?php echo $password1?>" oninput="verificaPassword(event)" onblur="nascondiRequisti()">
                     <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i></label>
                     <div id="errorePassword1" class="errore"></div>
                     <label>Digita la password di conferma:<input type="password" size="20" id="pwd2" name="pwd2" value="<?php echo $password2?>">

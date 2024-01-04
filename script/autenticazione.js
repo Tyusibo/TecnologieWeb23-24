@@ -47,13 +47,13 @@ function mostraPassword(number) {
     var passwordInput = document.getElementById("pwd"+number);
     if(passwordInput.type =="text"){
         passwordInput.type="password";
-        icona.classList.remove("fa-mask-face");
-        icona.classList.add("fa-mustache"); 
+        icona.classList.remove("fa-eye-slash");
+        icona.classList.add("fa-eye"); 
     }
     else{
         passwordInput.type="text";
-        icona.classList.remove("fa-mustache"); 
-        icona.classList.add("fa-mask-face");
+        icona.classList.remove("fa-eye"); 
+        icona.classList.add("fa-eye-slash");
     }
     passwordInput.focus();
 }
@@ -118,6 +118,8 @@ function validaModuloRegistrati(nomeModulo) {
 }
 
 function verificaPassword(event){
+    var requisiti=document.getElementById("requisitiPassword");
+    requisiti.style.display="block";
     var error=false;
     var minuscola=document.getElementById("minuscola");
     var maiuscola=document.getElementById("maiuscola");
@@ -158,6 +160,10 @@ function verificaPassword(event){
     return error;
 }
 
+function nascondiRequisti(){
+    var requisiti=document.getElementById("requisitiPassword");
+    requisiti.style.display="none";
+}
 function soloNumeri(event){
     var tasto;
     tasto = event.key;

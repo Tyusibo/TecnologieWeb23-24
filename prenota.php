@@ -6,11 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
     alla registrazione e imposto redirect per tornare a prenota dopo il login/la registrazione*/
     if (isset($_GET['accedi'])) {
            $_SESSION['redirect']="prenota.php"; 
-            header("Location: account.php");
+            header("Location: autenticazione.php");
     } 
     if (isset($_GET['registrati'])) {
         $_SESSION['redirect']="prenota.php"; 
-         header("Location: registrati.php");
+         header("Location: autenticazione.php");
     }    
 }
 ?>

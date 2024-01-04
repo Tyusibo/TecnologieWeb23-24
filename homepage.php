@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
 
 <body>
 
-<?php require "header.html"; ?>
+<?php require "header.php"; ?>
 
     <section class="home" id="home" >
         <div class="div_home">
@@ -121,41 +121,62 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
 
         </div>
     </section>
+    <script>
+        let cont = 3;
+        let currentOffset = 0;
+        const imageContainer = document.getElementById('imageContainer');
+        const imageSlider = document.getElementById('imageSlider');
+        const images = document.querySelectorAll('.test img');
+        const imageWidth = 432 + 10; // Larghezza dell'immagine più il margine
 
-    <section id="galleria" class="galleria">
-        <?php if(empty($_SESSION['username'])){ /* se non sei loggato vedi i contenuti di default */
-            echo "<p>Ciao, per una galleria personalizzata accedi al tuo"; ?> 
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET"><input type="submit" id="accedi" name="accedi" value="account"></form>oppure
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="GET"><input type="submit" id="registrati" name="registrati" value="registrati">  
-            </form>
-            <h1>GALLERIA</h1>
-            <div class="test">
-                <img src="img/barber_bg.jpeg" alt="Immagine 1">
-                <img src="img/barber_bg.jpeg" alt="Immagine 2">
-                <img src="img/barber_bg.jpeg" alt="Immagine 3">
-                <img src="img/barber_bg.jpeg" alt="Immagine 4">
-                <img src="img/barber_bg.jpeg" alt="Immagine 5">
-                <img src="img/barber_bg.jpeg" alt="Immagine 6">
-                <img src="img/barber_bg.jpeg" alt="Immagine 7">
-                <img src="img/barber_bg.jpeg" alt="Immagine 8">
-                <img src="img/barber_bg.jpeg" alt="Immagine 9">
-            </div>
-        <?php } else { /* se sei loggato vedi i contenuti personalizzati */
-            echo "<p>Ciao $_SESSION[username]! Ecco di seguito i tuoi contenuti personalizzati, puoi esprimere le tue preferenze sulla
-            pagina dedicata al tuo <a href=account.php>account</a>"; ?>
-            <div class="test">
-            <img src="img/barber_bg.jpeg" alt="Immagine 1">
-            <img src="img/barber_bg.jpeg" alt="Immagine 2">
-            <img src="img/barber_bg.jpeg" alt="Immagine 3">
-            <img src="img/barber_bg.jpeg" alt="Immagine 4">
-            <img src="img/barber_bg.jpeg" alt="Immagine 5">
-            <img src="img/barber_bg.jpeg" alt="Immagine 6">
-            <img src="img/barber_bg.jpeg" alt="Immagine 7">
-            <img src="img/barber_bg.jpeg" alt="Immagine 8">
-            <img src="img/barber_bg.jpeg" alt="Immagine 9">
+        function showSlide() {
+            var imag=document.getElementById("imag"+cont);
+            imag.classList.remove("acti");
+            var imag2 = document.getElementById("imag"+( cont-3 ) );
+            imag2.classList.add("acti"); 
+            imageSlider.style.transform = `translateX(-${currentOffset}px)`;
+        }
+
+        function prevSlide() {
+            if (currentOffset > 0) {
+                currentOffset -= imageWidth;
+                cont -= 1;
+                showSlide();
+            } else{
+                currentOffset = 3 * imageWidth;
+            }
+        }
+
+        function nextSlide() {
+            if (currentOffset < (imageWidth * (images.length - 1))) {
+                currentOffset += imageWidth;
+                cont =+1;
+                showSlide();
+            } else{
+                currentOffset = 0;
+            }
+        }
+    </script>
+
+
+
+    <div class="test" id="imageContainer">
+        <div id="imageSlider">
+            <img src="img/barber_bg.jpeg" alt="Immagine 1" id="imag1" class="a">
+            <img src="img/homebackg.jpg" alt="Immagine 2" id="imag2" class="a">
+            <img src="img/logoQuadrato.jpg" alt="Immagine 3" id="imag3" class="a">
+            <img src="img/barber_bg.jpeg" alt="Immagine 4" class="a acti" id="imag4">
+            <img src="img/homebackg.jpg" alt="Immagine 5" class="a acti" id="imag5">
+            <img src="img/logoQuadrato.jpg" alt="Immagine 6" class="a acti" id="imag6">
         </div>
-        <?php } /* chiudo la parentesi dell'else */ ?> 
-    </section>
+        <div class="arrow" onclick="prevSlide()">‹</div>
+        <div class="arrow" onclick="nextSlide()">›</div>
+    </div>
+
+   
+
+    
+
     <?php require "footer.html"; ?> 
 </body>
 </html>

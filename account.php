@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') { /*tramite form con metodo get capisc
     <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php require "header.html"; ?>
+    <?php require "header.php"; ?>
     <div style="height: 100px; background-color: black"></div> <!--lo stile per mostrare il contenuto dopo l'header e perchè i cazzoni mettono il css nei documenti php-->
     <div class="container">
         <div id="logobox">

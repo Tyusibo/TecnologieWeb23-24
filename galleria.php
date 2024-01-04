@@ -11,8 +11,8 @@ $_SESSION['redirect']=null;
     <link rel="stylesheet" type="text/css" href="css/galleria.css">
 </head>
 <body>
-    <?php require "header.html"; ?>
-    <div style="height: 100px;"></div>  
+    <?php require "header.php"; ?>
+    <div style="height: 100px"></div>
     <?php require "footer.html"; ?>
 </body>
 </html>

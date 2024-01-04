@@ -22,8 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {  /*tramite form con metodo get capis
     <link rel="stylesheet" type="text/css" href="css/prenota.css">
 </head>
 <body>
-    <?php require "header.html"; ?>
-    <div style="height: 100px;"></div>
+    <?php require "header.php"; ?>
+    <div style="height: 100px"></div>
     <?php
     if(empty($_SESSION['username'])){  //se non loggato ?>
         <p>Pagina riservata agli utenti autenticati. <br/> 

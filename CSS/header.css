@@ -87,19 +87,19 @@ nav ul li a {
 }
 
 @media (max-width: 940px) {
-    #chisiamo {
+    #chisiamo_h {
         display: none;
     }
 }
 
 @media (max-width: 835px) {
-    #contattaci {
+    #contattaci_h {
         display: none;
     }
 }
 
 @media (max-width: 730px) {
-    #servizi {
+    #servizi_h {
         display: none;
     }
 }

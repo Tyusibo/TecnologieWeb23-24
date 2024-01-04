@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {// Recupera il nuovo valore dal camp
     <script src="script/autenticazione.js" defer></script>
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script>
 <body>
-    <?php require "header.html"; ?>
+    <?php require "header.php"; ?>
     <div style="height: 100px; background-color: black"></div>
     <div class="container">    
         <div id="logobox">

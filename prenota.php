@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 </head>
 
 <body>
-    <?php require "header.html"; ?>
+    <?php require "header.php"; ?>
     <div style="height: 100px"></div>
     <?php
     if(empty($_SESSION['username'])){

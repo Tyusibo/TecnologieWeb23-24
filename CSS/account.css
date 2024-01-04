@@ -18,13 +18,6 @@ body{
     background-image: url(../img/homebackg.jpg);
 }
 
-#logobox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .whitebox{
     margin: 25px;
     padding: 25px;

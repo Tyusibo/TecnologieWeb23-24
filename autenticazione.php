@@ -51,11 +51,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['accedi']))) {// Rec
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
 <body>
     <?php require "header.php"; ?>
-    <div style="height: 100px; background-color: black"></div>
     <div class="container">    
-        <div id="logobox">
-            <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
-        </div>
         <div class="whitebox">
         <div id="accedi">Accedi
             <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">

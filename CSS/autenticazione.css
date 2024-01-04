@@ -9,20 +9,13 @@ body{
 }
 
 .container{
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 150px;
+    padding-bottom: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url(../img/homebackg.jpg);
-}
-
-#logobox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .whitebox{

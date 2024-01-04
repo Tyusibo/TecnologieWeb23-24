@@ -107,16 +107,24 @@ body{
     padding-right: 100px;
     padding-bottom: 100px;
     padding-top: 50px;
-    gap: 200px;
+    gap: 15%;
 }
 .chiSiamo .content{
-    text-align: justify;
-    align-items: center;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     font-size: 25px;
 }
+.chiSiamo .mapImg {
+    width: 40%;
+    height: 100%;
+}
 .chiSiamo .mapImg #map{
-    height: 400px;  /* The height is 400 pixels */
-    width: 600px;  /* The width is the width of the web page */
+    min-width: 400px;
+    min-height: 400px;
+    max-height: 400px; 
+    max-width: 600px;  
 }
 .chiSiamo ul{
     padding-inline-start: 0;
@@ -124,6 +132,7 @@ body{
 }
 .chiSiamo li{
     margin-bottom: 20px;
+    white-space: nowrap;
 }
 .lista{
     color: #1e1e1e;
@@ -131,6 +140,38 @@ body{
     margin-left: 20px;
     display: inline-flex;
 }
+
+@media (max-width: 1000px){
+    .content{
+        gap: 50px;
+        width: 100% !important;
+        flex-direction: row !important;
+        align-items: center;
+    }
+    .mapImg{
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+    }
+    .row{
+        flex-direction: column;
+    }
+    #map{
+        width: 600px;
+        height: 400px;
+    }
+    .verticalflex{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .chiSiamo ul{
+        margin-bottom: 0;
+    }
+
+}
+
+
 #headerContainer {
     z-index: 10;
 }
@@ -186,7 +227,7 @@ hr {
     width: 45%;
     flex-direction: column;
 }
-.div_serv h2,h3{
+.div_serv h2, .div_serv h3{
     color: white;
     font-weight: 500;
     margin-block-end: 10px;
@@ -236,3 +277,6 @@ hr {
     font-size: 24px;
     margin: auto 10px; /* Aggiunto margine alle frecce per una migliore visualizzazione */
 }
+
+
+

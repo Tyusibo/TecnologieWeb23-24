@@ -1,15 +1,16 @@
 > installare postgresql 
-
-> aprire SQL Shell 
-
+>installare PostegreSQL estensione in vsCode
+> aprire SQL Shell o aprire l'estensione PostegreSQLExplorer (l'ultima nella colonna estensioni)
+e scrivere:
 -creazione utente sql per la conessione:
 CREATE USER www;
 ALTER USER www WITH PASSWORD 'tw2024';
+ALTER USER www WITH SUPERUSER;  //i permessi
 
 - creazione db:
 CREATE DATABASE gruppo21;
 
--accedi al db appena creato con l'utente appena creato
+-accedi al db appena creato con l'utente appena creato  
 \c gruppo21 www (dopo ti chiede la password)
 
 - creazione tabella utenti:

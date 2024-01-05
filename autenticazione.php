@@ -9,22 +9,45 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
     $numero=$_POST['numero']; 
     $pwd=$_POST['pwd1']; 
     $pwd1=$_POST['pwd2'];
-    if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
-        header("Location: $_SESSION[redirect]");
-    } else 
-        header("Location: account.php");
+
+    //check se l'username(email) già esiste
+    if(username_exist($username)){
+        echo "username(email) già esistente. <br/>";
+    }else{
+        if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
+            echo "utente inserito OK! ";
+            if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
+                header("Location: $_SESSION[redirect]");
+            } else 
+                header("Location: account.php");
+        }else
+            echo "utente non inserito FAIL! ";
+    }
 } 
+
 if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form accedi
     $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
-    $username=$_POST['username']; 
-    $pwd=$_POST['pwd']; 
-    if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
-        setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
-    }
-    if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
-        header("Location: $_SESSION[redirect]");
-    } else 
-        header("Location: account.php");
+    $username= $_POST['username']; 
+    $pwd= $_POST['pwd']; 
+
+    $stored_hash_pwd = get_pwd($username);
+    if(!$stored_hash_pwd){
+        echo "L'utente $username non esiste<br/>";
+    }else{
+        if(password_verify($pwd, $stored_hash_pwd)){
+
+            if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
+                setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
+            }
+            if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
+                header("Location: $_SESSION[redirect]");
+            } else 
+                header("Location: account.php");
+
+        }else{
+            echo "Login Fail! password diverse<br/>";
+        }
+    }  
 } 
 ?>
 <html lang="it">
@@ -47,7 +70,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                         <div id="erroreEmailAccedi" class="errore"></div>
                         <label style="margin-top:10px;" for="pwd">Password</label>
                         <div class="horizontalflex">
-                            <input class="textinput" type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
+                            <input class="textinput" type="password" size="20" id="pwd" name="pwd" value="">
                             <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i>
                         </div>
                         <div id="errorePassword" class="errore"></div>
@@ -55,7 +78,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                             <label for="ricordami">Ricorda la mia email</label>
                             <input type="checkbox" id="ricordami" name="ricordami">
                         </div>
-                        <input class="btn" type="submit" id="acc" name="accedi" value="Accedi">
+                        <input class="btn" type="submit" id="acc" name="acc" value="Accedi">
                     </div> 
                 </form>
                 <p id="registered">Non sei registrato?<button id="cliccaqui" onClick="cambiaModalità(false)">Registrati</button></p>
@@ -72,7 +95,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                     <label>Inserisci il tuo numero <small>(Includi il prefisso)</small>: <input type="text" size="13" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)"></label>
                     <div id="erroreNumero" class="errore"></div>
                     <label>Scegli una password, deve contenere almeno: </br><small>
-                        <ul id="requisitiPassword" style="display: none;">
+                        <ul id="requisitiPassword" >
                                 <li id="minuscola">Una lettera maiuscola</li>
                                 <li id="maiuscola">Una lettera minuscola</li>
                                 <li id="numero">Un numero</li>
@@ -98,3 +121,63 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
     <script src="script/cookie.js"></script>
 </body>
 </html>       
+
+<?php
+    function get_pwd($username){ // se metto $user si prende quello di db_conncection
+   		require "db_connection.php";
+   		//CONNESSIONE AL DB
+		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+		$sql = "SELECT password_hash FROM utenti WHERE username=$1;";
+		$prep = pg_prepare($db, "sqlPassword", $sql); 
+		$ret = pg_execute($db, "sqlPassword", array($username));
+		if(!$ret) {
+			echo "ERRORE QUERY: " . pg_last_error($db);
+			return false; 
+		}
+		else{
+			if ($row = pg_fetch_assoc($ret)){ 
+				$stored_hash = $row['password_hash'];
+				return $stored_hash;
+			}
+			else{
+				return false;
+			}
+   		}
+   	}
+    function username_exist($username){
+        require "db_connection.php";
+        $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+        $sql = "SELECT username FROM public.utenti WHERE username=$1;";
+        $prep = pg_prepare($db, "sqlUsername", $sql);
+        $ret = pg_execute($db, "sqlUsername", array($username));
+        if(!$ret) {
+            echo "ERRORE QUERY: " . pg_last_error($db);
+            return false; 
+        }
+        else{
+            if ($row = pg_fetch_assoc($ret)){ 
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+    }
+    function insert_utente($nome, $cognome, $numero, $username, $pwd){
+        require "db_connection.php";
+        $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+        $hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO public.utenti(nome, cognome, numero, username, password_hash)
+                        VALUES($1, $2, $3, $4, $5); ";
+        $prep = pg_prepare($db, "insertUser", $sql);
+        $ret = pg_execute($db, "insertUser", array($nome, $cognome, $numero, $username, $hashed_pwd));
+        if(!$ret) {
+            echo "ERRORE QUERY: " . pg_last_error($db);
+            return false; 
+        }
+        else{
+            return true;
+        }
+    }
+?>

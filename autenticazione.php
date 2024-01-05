@@ -12,7 +12,8 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
 
     //check se l'username(email) già esiste
     if(username_exist($username)){
-        echo "username(email) già esistente. <br/>";
+        $_SESSION['change']=true;
+        $_SESSION['error']='alreadyRegistered';
     }else{
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
             echo "utente inserito OK! ";
@@ -32,7 +33,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
 
     $stored_hash_pwd = get_pwd($username);
     if(!$stored_hash_pwd){
-        echo "L'utente $username non esiste<br/>";
+        $_SESSION['error']='notRegistered';
     }else{
         if(password_verify($pwd, $stored_hash_pwd)){
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
@@ -44,7 +45,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                 header("Location: account.php");
             $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }else{
-            echo "Login Fail! password diverse<br/>";
+            $_SESSION['error']='invalidPassword';
         }
     }  
 } 
@@ -70,7 +71,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                         <div id="erroreEmailAccedi" class="errore"></div>
                         <label style="margin-top:10px;" for="pwd">Password</label>
                         <div class="horizontalflex">
-                            <input class="textinput" type="password" size="20" id="pwd" name="pwd" value="">
+                            <input class="textinput" type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
                             <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i>
                         </div>
                         <div id="errorePassword" class="errore"></div>
@@ -125,7 +126,15 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
     cambiaModalità(false);
     </script><?php
     } 
-    require "footer.php"; ?>
+    require "footer.php"; 
+    if(isset($_SESSION['error']))
+        if($_SESSION['error']=="notRegistered"){
+            ?> <script>console.log(3);document.getElementById("erroreEmailAccedi").innerText ="Questa email non è registrata";</script><?php }
+        elseif($_SESSION['error']=="invalidPassword"){
+                ?> <script>console.log(3);document.getElementById("errorePassword").innerText ="Password errata";</script><?php }
+                elseif($_SESSION['error']=="alreadyRegistered"){
+                    ?> <script>console.log(3);document.getElementById("erroreEmailRegistrati").innerText ="Questa email è già registrata";</script><?php }      
+    ?>
 </body>
 </html>       
 

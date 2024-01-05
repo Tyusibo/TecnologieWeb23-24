@@ -1,13 +1,18 @@
 > installare postgresql 
 
 > aprire SQL Shell 
-    -creazione utente sql per la conessione:
 
+-creazione utente sql per la conessione:
 CREATE USER www;
 ALTER USER www WITH PASSWORD 'tw2024';
 
-    - creazione tabella utenti:
+- creazione db:
+CREATE DATABASE gruppo21;
 
+-accedi al db appena creato con l'utente appena creato
+\c gruppo21 www (dopo ti chiede la password)
+
+- creazione tabella utenti:
 DROP TABLE IF EXISTS utenti cascade;
 CREATE TABLE IF NOT EXISTS utenti (
     id SERIAL PRIMARY KEY,

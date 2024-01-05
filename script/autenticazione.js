@@ -7,6 +7,7 @@ scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validat
 // Aggiungi l'elemento script all'elemento head del documento
 document.head.appendChild(scriptTag);
 function cambiaModalità(mod){
+    console.log("miao");
     var accedi=document.getElementById("accedi");
     var registrati=document.getElementById("registrati");
     if(mod){

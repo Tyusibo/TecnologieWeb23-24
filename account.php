@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <?php
-session_start();
-$_SESSION['redirect']=null;
-if (isset($_GET['esci'])) { /*Se è stata effettuata una richiesta di logout la gestisco*/
-        session_destroy();
-        header("Location: homepage.php");  //rendirizzo a homepage, che sarà lui a ricreare la sessione e inizializzare i valori
-        unset($_SESSION['username']);  //rimuovo gli attributi legati all'autenticazione
-        $redirect=false; //Se non faccio così dopo l'unset di $_SESSION['username'] mi farà sempre header("Location: autenticazione.php"); di riga 26
-}
+session_start(); 
+$_SESSION['redirect']=null;  //valore di default che mi fa capire che in autenticazione.php non devo fare redirect particolari
+$_SESSION['change']=false;  //valori di default che mi fa capire che in autenticazione.php devo mostrare la parte del 
+//login e non quella della registrazione(true)
+//entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
 ?>
 <html lang="it">
 <head>
@@ -21,19 +18,18 @@ if (isset($_GET['esci'])) { /*Se è stata effettuata una richiesta di logout la 
     <div class="container">
         <div class="whitebox">
             <?php 
-            if((!(isset($_SESSION['username']))) && (!(isset($redirect))))  //se non loggato e $redirect mi serve per capire se devo andare su 
-                //autenticazione o ignorarlo perchè devo andare su homepage
+            if(!(isset($_SESSION['username'])))  //se non loggato
             header("Location: autenticazione.php"); 
             else{  //se loggato
                 echo "<p>Benvenuto $_SESSION[username] !";?>
-                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">  <!--form per gestire il log out-->
-                    <input type="submit" name="esci" id="esci" value="Esci">
+                <p>Premi <button id="esci">qui</button> per uscire</p>
                 </form>
                 <?php 
             }
             ?>
         </div>  <!--Devo chiudere i 2 div-->
     </div>
-    <?php require "footer.html"; ?> 
+    <?php require "footer.php"; ?> 
+    <script src="script/esci.js"></script>
 </body>
 </html>

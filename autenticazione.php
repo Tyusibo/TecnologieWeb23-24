@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
 session_start();
-require "pagineAusiliarie/funzioniDatabase.php";
 if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form registrati
+    require "database/autenticazioneDatabase.php";  //Includo le funzioni database solo se serve
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
     $username=$_POST['username']; 
@@ -11,41 +11,41 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
     $pwd1=$_POST['pwd2'];
 
     //check se l'username(email) già esiste
-    if(username_exist($username)){
-        $_SESSION['change']=true;
-        $_SESSION['error']='alreadyRegistered';
-    }else{
+    if(username_exist($username)){  //se già esiste
+        $_SESSION['change']=true;   //per andare in modalità registrazione
+        $_SESSION['error']='alreadyRegistered';  //messaggio di errore
+    }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
-            echo "utente inserito OK! ";
             if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
             $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
-        }else
+        }else  //se ha restituito false è fallita
             echo "utente non inserito FAIL! ";
     }
 } 
 
 if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form accedi
+    require "database/autenticazioneDatabase.php";  //Includo le funzioni database solo se serve
     $username= $_POST['username']; 
     $pwd= $_POST['pwd']; 
 
-    $stored_hash_pwd = get_pwd($username);
-    if(!$stored_hash_pwd){
-        $_SESSION['error']='notRegistered';
-    }else{
-        if(password_verify($pwd, $stored_hash_pwd)){
+    $stored_hash_pwd = get_pwd($username);  //prelevo la password dell'utente con email fornita
+    if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
+        $_SESSION['error']='notRegistered'; //messaggio di errore
+    }else{  //l'utente era registrato e quindi devo controllare la password
+        if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
                 setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
             }
-            if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
+            if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default altrimenti quello stabilito
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
             $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }else{
-            $_SESSION['error']='invalidPassword';
+            $_SESSION['error']='invalidPassword';  //messaggio di errore
         }
     }  
 } 

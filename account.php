@@ -27,11 +27,11 @@ if(!(isset($_SESSION['username'])))  //se non loggato
             <p id="esci">Premi <button id="esci">qui</button> per uscire</p>            
         </section>
         <div id="contenuti">
-        Varia in base a quello premuto
         </div>
         </div>  <!--Devo chiudere i 2 div-->
     </div>
     <?php require "footer.php"; ?> 
+    <script src="script/account.js"></script>
     <script src="ajax/esci.js"></script>
 </body>
 </html>

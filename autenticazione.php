@@ -2,7 +2,6 @@
 <?php
 session_start();
 if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form registrati
-    $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
     $username=$_POST['username']; 
@@ -20,13 +19,13 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
+            $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }else
             echo "utente non inserito FAIL! ";
     }
 } 
 
 if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form accedi
-    $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
     $username= $_POST['username']; 
     $pwd= $_POST['pwd']; 
 
@@ -35,7 +34,6 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
         echo "L'utente $username non esiste<br/>";
     }else{
         if(password_verify($pwd, $stored_hash_pwd)){
-
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
                 setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
             }
@@ -43,7 +41,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
-
+            $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }else{
             echo "Login Fail! password diverse<br/>";
         }

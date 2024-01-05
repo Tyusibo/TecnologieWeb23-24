@@ -25,6 +25,7 @@ if (isset($_GET['registrati'])) {
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=initMap">
     </script>
+    
 </head>
 
 <body>
@@ -128,21 +129,25 @@ if (isset($_GET['registrati'])) {
         </div>
     </section>
 
-
-    <div class="test" id="imageContainer">
-        <div id="imageSlider">
-            <img src="img/barber_bg.jpeg" alt="Immagine 1" id="imag1" class="a">
-            <img src="img/homebackg.jpg" alt="Immagine 2" id="imag2" class="a">
-            <img src="img/logoQuadrato.jpg" alt="Immagine 3" id="imag3" class="a">
-            <img src="img/barber_bg.jpeg" alt="Immagine 4" class="a acti" id="imag4">
-            <img src="img/homebackg.jpg" alt="Immagine 5" class="a acti" id="imag5">
-            <img src="img/logoQuadrato.jpg" alt="Immagine 6" class="a acti" id="imag6">
+    <section class="sec_gallery">
+        <h1>LE NOSTRE PROPOSTE</h1>
+        <div class="galleria">
+            <div class="galleria_in">
+                <img src="img/barber_bg.jpeg" alt="Immagine 1">
+                <img src="img/barber_bg.jpeg" alt="Immagine 2">
+                <img src="img/barber_bg.jpeg" alt="Immagine 3">
+                <img src="img/barber_bg.jpeg" alt="Immagine 4">
+                <img src="img/barber_bg.jpeg" alt="Immagine 5">
+                <img src="img/barber_bg.jpeg" alt="Immagine 6">
+            </div>
+            <div class="freccia dietro"><i class="fa-solid fa-arrow-left"></i></div>
+            <div class="freccia avanti"><i class="fa-solid fa-arrow-right"></i></div>
         </div>
-        <div class="arrow" onclick="prevSlide()">‹</div>
-        <div class="arrow" onclick="nextSlide()">›</div>
-    </div>
+    </section>
 
+    <script src="script/galleria.js"></script>
     <script src="script/homepage.js"></script>
     <?php require "footer.php"; ?> 
+
 </body>
 </html>

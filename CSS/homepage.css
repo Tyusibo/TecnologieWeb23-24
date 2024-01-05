@@ -82,7 +82,7 @@ body{
     color: white;
     padding-top: 100px;
 }
-.chiSiamo h1{
+.chiSiamo h1, .sec_gallery h1{
     color: black;
     text-align: center;
     margin: 0;
@@ -252,32 +252,39 @@ hr {
 
 
 
-.galleria{
-    margin-top: 50px;
-    margin-bottom: 50px;
+.galleria {
+    margin-top: 30px;
+    overflow: hidden;
+    position: relative;
 }
-
-.test img {
-    width: 30%;
-    margin-right: 10px;
-}
-
-.acti{
-    display: none;
-}
-
-#imageSlider {
+.galleria_in {
     display: flex;
-    overflow: hidden; /* Nasconde la barra di scorrimento */
-    animation: scroll 20s linear infinite; /* Aggiunge l'animazione di scorrimento automatico in loop */
+    transition: transform 0.5s ease;
 }
-
-
-.arrow {
+.galleria_in img {
+    margin-right: 8px;
+    width: 33%;
+    height: auto;
+}
+.freccia {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    font-size: 24px;
-    margin: auto 10px; /* Aggiunto margine alle frecce per una migliore visualizzazione */
+    color: white;
+    font-size: 32px;
 }
-
-
-
+.dietro {
+    left: 20px;
+}
+.avanti {
+    right: 20px;
+}
+.sec_gallery{
+    background-image: url(../img/white\ background.svg);
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: 450px;
+    padding-top: 70px;
+    padding-bottom: 120px;
+}

@@ -30,6 +30,6 @@ $_SESSION['change']=false;  //valori di default che mi fa capire che in autentic
         </div>  <!--Devo chiudere i 2 div-->
     </div>
     <?php require "footer.php"; ?> 
-    <script src="script/esci.js"></script>
+    <script src="ajax/esci.js"></script>
 </body>
 </html>

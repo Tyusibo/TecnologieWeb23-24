@@ -67,6 +67,6 @@ $_SESSION['change']=false;  //valori di default che mi fa capire che in autentic
         <?php } //parentesi dell'else ?>  
     
     <?php require "footer.php"; ?>
-    <script src="redirect.js"></script>
+    <script src="ajax/redirect.js"></script>
 </body>
 </html>

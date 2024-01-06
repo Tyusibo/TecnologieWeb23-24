@@ -83,6 +83,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                     </div> 
                 </form>
                 <p id="registered">Non sei registrato?<button class="linkbutton" id="cliccaqui" onClick="cambiaModalità(false)">Registrati</button></p>
+                <script src="script/accesso.js"></script>
             </div>
 
             <div id="registrati" style="display: none";>
@@ -130,14 +131,14 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                 <div class="horizontalflex spaced">
                     <p id="registered">Sei già registrato?</p>
                     <button class="linkbutton" onClick="cambiaModalità(true)">Accedi</button>
+                    <script src="script/registrazione.js"></script>
                 </div>
             </div>
 
         </div>  <!--Devo chiudere i 2 div-->
     </div>
     <script src="script/cookie.js"></script> 
-    <script src="script/autenticazione.js"></script> <!--Non posso aggiungere defer perchè altrimenti
-    le istruzioni sottostanti genererebbero un'errore dovuto al fatto di non conoscere la funzione cambiaModalità()-->
+    <script src="script/autenticazione.js"></script> 
     <?php
     if($_SESSION['change']==true){  //valore impostato a true solo se si vuole accedere alla parte della registrazione di autenticazione.php
     ?><script>

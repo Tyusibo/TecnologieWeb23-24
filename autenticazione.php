@@ -17,7 +17,7 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
 
     if(username_exist($username)){  //controllo se l'username già esiste
         ?><script defer src="script/cambiaModalità.js"></script>
-        <script defer src="script/emailRegistrata.js"></script><?php
+        <script defer src="database/emailRegistrata.js"></script><?php
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){  //va nel then se va a buon fine
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare
@@ -35,7 +35,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
     $pwd= $_POST['pwd']; 
     $stored_hash_pwd = get_pwd($username);  //provo a prelevare la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
-        ?><script defer src="script/emailNonRegistrata.js"></script><?php
+        ?><script defer src="database/emailNonRegistrata.js"></script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
         if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato setto il cookie
@@ -47,7 +47,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 header("Location: account.php");
             $_SESSION['username']  = $username;  
         }else{  //l'utente era registrato, ma la password fornita non coincide con quella salvata sul database
-            ?><script defer src="script/passwordErrata.js"></script><?php
+            ?><script defer src="database/passwordErrata.js"></script><?php
         }
     }  
 } 
@@ -56,9 +56,10 @@ if(isset($_POST['acc'])) {//analogamente per accedi
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gentlemen's Cut Registrati</title>
+    <title>Gentlemen's Cut Autenticazione</title>
     <link rel="stylesheet" type="text/css" href="css/autenticazione.css">
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
+</head>
 <body>
     <?php require "header.php"; ?>
     <div class="container">    
@@ -130,7 +131,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 </form>
                 <div class="horizontalflex spaced">
                     <p>Sei già registrato?<button class="linkbutton" id="cliccaqui2">Accedi</button></p>
-                    <script src="script/registrati.js" defer></script>
+                    <script src="script/registrati.js"></script>
                 </div>
             </div>
         </div>  <!--Devo chiudere i 2 div container e whitebox-->

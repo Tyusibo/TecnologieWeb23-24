@@ -63,6 +63,6 @@ $_SESSION['redirect']=null;
         <?php } //parentesi dell'else ?>  
     
     <?php require "footer.php"; ?>
-    <script src="ajaxScript/redirect.js"></script>
+    <script src="ajax/redirect.js"></script>
 </body>
 </html>

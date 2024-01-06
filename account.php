@@ -29,6 +29,6 @@ if(!(isset($_SESSION['username'])))  //se non loggato
     </div>
     <?php require "footer.php"; ?> 
     <script src="script/account.js"></script>
-    <script src="ajaxScript/esci.js"></script>
+    <script src="ajax/esci.js"></script>
 </body>
 </html>

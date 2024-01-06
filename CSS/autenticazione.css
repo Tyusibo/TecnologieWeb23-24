@@ -36,14 +36,8 @@ body{
     display: flex;
 }
 
-#pwd{
+.grow{
     flex-grow: 1;
-}
-
-#registrati{
-    font-size: 25px;
-    font-weight: 400;
-    margin-bottom: 25px;
 }
 
 .title{
@@ -65,6 +59,10 @@ body{
 
 .whitebox label{
     display: block;
+}
+
+.spaced{
+    margin-top: 10px;
 }
 
 .textinput{
@@ -112,7 +110,7 @@ body{
     width: auto;
 }
 
-#cliccaqui{
+.linkbutton{
     color: #fa6400;
     margin-left: 5px;
     border: 0;

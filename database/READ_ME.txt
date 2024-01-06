@@ -1,4 +1,4 @@
-> installare postgresql 
+>installare postgresql 
 >installare PostegreSQL estensione in vsCode
 > aprire SQL Shell o aprire l'estensione PostegreSQLExplorer (l'ultima nella colonna estensioni)
 e scrivere:
@@ -10,7 +10,7 @@ ALTER USER www WITH SUPERUSER;  //i permessi
 - creazione db:
 CREATE DATABASE gruppo21;
 
--accedi al db appena creato con l'utente appena creato  
+-accedi al db appena creato con l'utente appena creato  (SOLO SU SQL SHELL non su vs code) 
 \c gruppo21 www (dopo ti chiede la password)
 
 - creazione tabella utenti:
@@ -25,7 +25,3 @@ CREATE TABLE IF NOT EXISTS utenti (
 );
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO www;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO www;
-
-
-//in caso l'utente www non riuscisse ad accede al db 
-GRANT CONNECT ON DATABASE nome_db TO www;

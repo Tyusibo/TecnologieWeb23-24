@@ -17,10 +17,8 @@ if (isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     $pwd1=$_POST['pwd2'];
 
     if(username_exist($username)){  //controllo se l'username già esiste
-        ?><script src="script/emailRegistrata.js"></script><?php
-        if($_SESSION['change']==true){
-            ?><script src="script/cambiaModalità.js"></script><?php
-        }
+        ?><script src="script/emailRegistrata.js"></script>
+        <script src="script/cambiaModalità.js"></script><?php
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare

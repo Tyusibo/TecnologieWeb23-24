@@ -19,6 +19,12 @@ function cambiaModalità(mod){
     }
 }
 
+document.getElementById("cliccaqui1").addEventListener("click", function() {
+    cambiaModalità(false);
+});
+document.getElementById("cliccaqui2").addEventListener("click", function() {
+    cambiaModalità(true);
+});
 
 function mostraPassword(number) {
     var icona=document.getElementById("mostra"+number);

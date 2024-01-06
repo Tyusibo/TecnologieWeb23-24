@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
-//login e non quella della registrazione(true)
-//entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
-/*tramite i 2 form capisco se reindirizzare al login o alla registrazione e imposto redirect per tornare a prenota dopo il login/la registrazione*/
+$_SESSION['redirect']=null;  
+$_SESSION['change']=false;
 ?>
 <html lang="it">
 <head>

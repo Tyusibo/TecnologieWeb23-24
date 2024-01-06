@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <?php
-session_start(); //avvio la sessione
-//login e non quella della registrazione(true)
-//entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
-if (isset($_GET['accedi'])) {
-    $_SESSION['redirect']="homepage.php"; 
-    header("Location: autenticazione.php");
-} 
-if (isset($_GET['registrati'])) {
-    $_SESSION['redirect']="homepage.php"; 
-    header("Location: autenticazione.php");
-    $_SESSION['change']=true;
-} 
+session_start();
+$_SESSION['redirect']=null;  
+$_SESSION['change']=false;
 ?>
 <html lang="it">
 <head>

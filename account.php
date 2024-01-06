@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
-//login e non quella della registrazione(true)
-//entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
+$_SESSION['redirect']=null;    
+$_SESSION['change']=false;
 if(!(isset($_SESSION['username'])))  //se non loggato
     header("Location: autenticazione.php"); 
 ?>

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
-if(isset($_SESSION['change'])){  //messo a true solo da script ajax esterni a questo file
-    ?><script src="script/cambiaModalità.js"></script>
+if(isset($_SESSION['change'])){  //messo a true (settato) solo da script ajax esterni a questo file per passare a registrazione
+    ?><script defer src="script/cambiaModalità.js"></script> 
     <?php
     unset($_SESSION['change']);  //per non creare bug
 }
-//unica pagina che non dove alterariore SESSION[redirect] e [change]
-if (isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
+if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     require "database/registrati.php";  
-    $nome=$_POST['nome'];   // Recupera i valori dai campi di input del form registrati
+    $nome=$_POST['nome'];   // Recupero i valori dai campi di input del form per farlo sticky
     $cognome=$_POST['cognome']; 
     $username=$_POST['username']; //username e pwd hanno gli stessi nomi delle variabili per l'accesso per mantenere i valori
     $numero=$_POST['numero']; 
@@ -17,10 +16,10 @@ if (isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     $pwd1=$_POST['pwd2'];
 
     if(username_exist($username)){  //controllo se l'username già esiste
-        ?><script src="script/emailRegistrata.js"></script>
-        <script src="script/cambiaModalità.js"></script><?php
+        ?><script defer src="script/cambiaModalità.js"></script>
+        <script defer src="script/emailRegistrata.js"></script><?php
     }else{  //se non esiste lo inserisco
-        if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
+        if(insert_utente($nome, $cognome, $numero, $username, $pwd)){  //va nel then se va a buon fine
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare
                 header("Location: $_SESSION[redirect]");
             } else 
@@ -30,25 +29,25 @@ if (isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     }
 } 
 
-if (isset($_POST['acc'])) {//analogamente per accedi
+if(isset($_POST['acc'])) {//analogamente per accedi
     require "database/accedi.php"; 
-    $username= $_POST['username']; 
+    $username=$_POST['username']; 
     $pwd= $_POST['pwd']; 
     $stored_hash_pwd = get_pwd($username);  //provo a prelevare la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
-        ?><script src="script/emailNonRegistrata.js"></script><?php
+        ?><script defer src="script/emailNonRegistrata.js"></script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
         if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato setto il cookie
                 setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); //valido per 30 giorni
             }
-            if(isset($_SESSION['redirect'])){  
+            if($_SESSION['redirect']!=null){  
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
-            $_SESSION['username']  = $_POST['username'];  
+            $_SESSION['username']  = $username;  
         }else{  //l'utente era registrato, ma la password fornita non coincide con quella salvata sul database
-            ?><script src="script/passwordErrata.js"></script><?php
+            ?><script defer src="script/passwordErrata.js"></script><?php
         }
     }  
 } 

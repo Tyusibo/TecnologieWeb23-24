@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form registrati
-    require "database/registrati.php.php";  
+    require "database/registrati.php";  
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
     $username=$_POST['username']; 
@@ -13,7 +13,7 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
     //check se l'username(email) già esiste
     if(username_exist($username)){  //se già esiste
         $_SESSION['change']=true;   //per andare in modalità registrazione
-        ?> <script defer>console.log(3);document.getElementById("erroreEmailRegistrati").innerText ="Questa email è già registrata";</script><?php
+        ?> <script>console.log(3);document.getElementById("erroreEmailRegistrati").innerText ="Questa email è già registrata";</script><?php
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
             if(isset($_SESSION['redirect'])){   //se è settato, contiene la pagina a cui reindirizzare
@@ -33,7 +33,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
 
     $stored_hash_pwd = get_pwd($username);  //prelevo la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
-        ?> <script defer>console.log(3);document.getElementById("erroreEmailAccedi").innerText ="Questa email non è registrata";</script><?php
+        ?> <script>console.log(3);document.getElementById("erroreEmailAccedi").innerText ="Questa email non è registrata";</script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
         if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
@@ -45,7 +45,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                 header("Location: account.php");
             $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }else{
-            ?> <script defer>console.log(3);document.getElementById("errorePassword").innerText ="Password errata";</script><?php
+            ?> <script>console.log(3);document.getElementById("errorePassword").innerText ="Password errata";</script><?php
         }
     }  
 } 
@@ -64,7 +64,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
         <div class="whitebox">
             <div id="accedi">
                 <h3 class="title">Accedi</h3>
-                <form onSubmit="return validaModuloAccedi(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                <form id="accediForm" onSubmit="return validaModuloAccedi(this)" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">   
                         <label for="usernameAccedi">Email</label>
                         <input class="textinput" type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
@@ -72,7 +72,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                         <label class="spaced" for="pwd">Password</label>
                         <div class="horizontalflex">
                             <input class="textinput grow" type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
-                            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword('')" id="mostra"></i>
+                            <i class="fa-sharp fa-solid fa-eye" id="mostra"></i>
                         </div>
                         <div id="errorePassword" class="errore"></div>
                         <div style="margin-bottom:20px;" class="spaced horizontalflex">
@@ -88,19 +88,19 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
 
             <div id="registrati" style="display: none";>
                 <h3 class="title">Registrati</h3>
-                <form onSubmit="return validaModuloRegistrati(this);" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                <form id="registratiForm" onSubmit="return validaModuloRegistrati(this)" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">
                         <label>Nome</label>
-                        <input class="textinput" type="text" size="15" name="nome" value="<?php echo (isset($nome)) ? $nome : ""; ?>"onkeydown="return soloCaratteri(event)">
+                        <input class="textinput" type="text" size="15" id="nome" name="nome" value="<?php echo (isset($nome)) ? $nome : ""; ?>">
                         <div id="erroreNome" class="errore"></div>
                         <label class="spaced">Cognome</label>
-                        <input class="textinput" type="text" size="15" name="cognome" value="<?php echo (isset($cognome)) ? $cognome : ""; ?>"onkeydown="return soloCaratteri(event)">
+                        <input class="textinput" type="text" size="15" id="cognome" name="cognome" value="<?php echo (isset($cognome)) ? $cognome : ""; ?>">
                         <div id="erroreCognome" class="errore"></div>
                         <label class="spaced">Email</label>
-                        <input class="textinput" type="text" size="30" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
+                        <input class="textinput" type="text" size="30" id="username" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
                         <div id="erroreEmailRegistrati" class="errore"></div>
                         <label class="spaced">Numero<small>(Includi il prefisso)</small></label>
-                        <input class="textinput" type="text" size="13" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)">
+                        <input class="textinput" type="text" size="13" id="numero" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)">
                         <div id="erroreNumero" class="errore"></div>
                         <label class="spaced">Scegli una password, deve contenere almeno: </label>
                         <small>
@@ -114,14 +114,14 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                             </ul>
                         </small>
                         <div class="horizontalflex">
-                            <input class="textinput grow" type="password" size="20" id="pwd1" name="pwd1" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>" oninput="verificaPassword(event)" onblur="nascondiRequisti(event)">
-                            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(1)" id="mostra1"></i>
+                            <input class="textinput grow" type="password" size="20" id="pwd1" name="pwd1" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
+                            <i class="fa-sharp fa-solid fa-eye" id="mostra1"></i>
                         </div>
                         <div id="errorePassword1" class="errore"></div>
                         <label class="spaced">Digita la password di conferma:</label>
                         <div class="horizontalflex">
                             <input class="textinput grow" type="password" size="20" id="pwd2" name="pwd2" value="<?php echo (isset($pwd1)) ? $pwd1 : ""; ?>">
-                            <i class="fa-sharp fa-solid fa-eye" onclick="mostraPassword(2)" id="mostra2"></i>
+                            <i class="fa-sharp fa-solid fa-eye" id="mostra2"></i>
                         </div>
                         <div id="errorePassword2" class="errore"></div>
                         <div style="margin-bottom:20px; width:100%"></div> <!--PLACEHOLDER può essere sostituito-->

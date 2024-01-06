@@ -56,6 +56,7 @@ function validaModuloRegistrati(nomeModulo) {
     return !error;
 }
 
+
 function verificaPassword(event){
     var error=false;
     var minuscola=document.getElementById("minuscola");
@@ -96,6 +97,9 @@ function verificaPassword(event){
         lun_max.classList.remove("errore"); 
     return error;
 }
+document.getElementById("pwd1").addEventListener("input", function() {
+    verificaPassword(event);
+});
 
 function soloNumeri(event){
     var tasto;
@@ -123,7 +127,9 @@ function soloNumeri(event){
     }
 }
 
-
+document.getElementById("numero").addEventListener("keydown", function() {
+    return soloNumeri(event);
+});
 
 function soloCaratteri(event){
     var tasto = event.key;
@@ -147,6 +153,14 @@ function soloCaratteri(event){
        
     return false;
 }
+document.getElementById("nome").addEventListener("keydown", function() {
+    return soloCaratteri(event);
+});
+
+document.getElementById("cognome").addEventListener("keydown", function() {
+    return soloCaratteri(event);
+});
+
 
 
 

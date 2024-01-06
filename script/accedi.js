@@ -1,5 +1,4 @@
 function validaModuloAccedi(nomeModulo) {
-    console.log(3);
     var error=false;
 
     document.getElementById("erroreEmailAccedi").innerText ="";
@@ -12,11 +11,8 @@ function validaModuloAccedi(nomeModulo) {
             document.getElementById("erroreEmailAccedi").innerText = "L'indirizzo email non è valido";
             error=true;
         }
-    
-    
     if (nomeModulo.pwd.value == "") {
         document.getElementById("errorePassword").innerText = "Devi inserire una password";
-        nomeModulo.pwd.focus();
         error=true;
     } 
    
@@ -26,7 +22,7 @@ function validaModuloAccedi(nomeModulo) {
 function setCookie() {
     var usernameCookie = getCookie('nome_utente');
     
-    if (usernameCookie && passwordCookie) {
+    if (usernameCookie) {
         document.getElementById('usernameAccedi').value = decodeURIComponent(usernameCookie);
     }
 }

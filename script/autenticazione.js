@@ -36,6 +36,17 @@ function mostraPassword(number) {
     passwordInput.focus();
 }
 
+document.getElementById("mostra").addEventListener("click", function() {
+    mostraPassword('');
+});
+
+document.getElementById("mostra1").addEventListener("click", function() {
+    mostraPassword(1);
+});
+document.getElementById("mostra2").addEventListener("click", function() {
+    mostraPassword(2);
+});
+
 
 
 

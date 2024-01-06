@@ -10,37 +10,26 @@ function initMap() {
 
 initMap();
 
-let cont = 3;
-let currentOffset = 0;
-const imageContainer = document.getElementById('imageContainer');
-const imageSlider = document.getElementById('imageSlider');
-const images = document.querySelectorAll('.test img');
-const imageWidth = 432 + 10; // Larghezza dell'immagine più il margine
+const imageContainer = document.querySelector('.galleria_in');
+const prevButton = document.querySelector('.dietro');
+const nextButton = document.querySelector('.avanti');
+let currentIndex = 0;
 
-function showSlide() {
-    var imag=document.getElementById("imag"+cont);
-    imag.classList.remove("acti");
-    var imag2 = document.getElementById("imag"+( cont-3 ) );
-    imag2.classList.add("acti"); 
-    imageSlider.style.transform = `translateX(-${currentOffset}px)`;
-}
-
-function prevSlide() {
-    if (currentOffset > 0) {
-        currentOffset -= imageWidth;
-        cont -= 1;
-        showSlide();
-    } else{
-        currentOffset = 3 * imageWidth;
+prevButton.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateGallery();
     }
-}
+});
 
-function nextSlide() {
-    if (currentOffset < (imageWidth * (images.length - 1))) {
-        currentOffset += imageWidth;
-        cont =+1;
-        showSlide();
-    } else{
-        currentOffset = 0;
+nextButton.addEventListener('click', () => {
+    if (currentIndex < 3) {
+        currentIndex++;
+        updateGallery();
     }
+});
+
+function updateGallery() {
+    const offset = -currentIndex * 33;
+    imageContainer.style.transform = `translateX(${offset}%)`;
 }

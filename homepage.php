@@ -133,7 +133,6 @@ $_SESSION['redirect']=null;
         </div>
     </section>
 
-    <script src="script/galleria.js"></script>
     <script src="script/homepage.js"></script>
     <?php require "footer.php"; ?> 
 

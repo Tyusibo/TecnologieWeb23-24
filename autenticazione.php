@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
-session_start();
+session_start(); 
+if(isset($_SESSION['change'])){  //messo a true solo da script ajax esterni a questo file
+    ?><script src="script/cambiaModalità.js"></script>
+    <?php
+    unset($_SESSION['change']);  //per non creare bug
+}
 //unica pagina che non dove alterariore SESSION[redirect] e [change]
 if (isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     require "database/registrati.php";  
@@ -12,8 +17,10 @@ if (isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     $pwd1=$_POST['pwd2'];
 
     if(username_exist($username)){  //controllo se l'username già esiste
-        
-        ?><script src="script/cambiaModalità.js"></script><script src="script/emailRegistrata.js"></script><?php
+        ?><script src="script/emailRegistrata.js"></script><?php
+        if($_SESSION['change']==true){
+            ?><script src="script/cambiaModalità.js"></script><?php
+        }
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare

@@ -2,7 +2,6 @@
 <?php
 session_start(); 
 $_SESSION['redirect']=null;  
-$_SESSION['change']=false;
 ?>
 <html lang="it">
 <head>

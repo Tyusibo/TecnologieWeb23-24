@@ -2,7 +2,6 @@
 <?php
 session_start(); 
 $_SESSION['redirect']=null;    
-$_SESSION['change']=false;
 if(!(isset($_SESSION['username'])))  //se non loggato
     header("Location: autenticazione.php"); 
 ?>

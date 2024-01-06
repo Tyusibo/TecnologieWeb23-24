@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
-$_SESSION['redirect']=null;  //valore di default che mi fa capire che in autenticazione.php non devo fare redirect particolari
-$_SESSION['change']=false;  //valori di default che mi fa capire che in autenticazione.php devo mostrare la parte del 
 //login e non quella della registrazione(true)
 //entrambe le variabili non vengono alterate in autenticazione.php ma vengono inizializzate in ogni altra pagina
 if(!(isset($_SESSION['username'])))  //se non loggato

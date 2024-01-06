@@ -16,7 +16,7 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
         ?> <script defer>console.log(3);document.getElementById("erroreEmailRegistrati").innerText ="Questa email è già registrata";</script><?php
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
-            if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
+            if(isset($_SESSION['redirect'])){   //se è settato, contiene la pagina a cui reindirizzare
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
@@ -39,7 +39,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
                 setcookie('nome_utente', $_POST['username'], time() + (30 * 24 * 60 * 60)); // Cookie valido per 30 giorni
             }
-            if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default altrimenti quello stabilito
+            if(isset($_SESSION['redirect'])){   //se è settato, contiene la pagina a cui reindirizzare
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
@@ -136,10 +136,10 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
             </div>
         </div>  <!--Devo chiudere i 2 div container e whitebox-->
     </div>
-    <script src="script/autenticazione.js" defer></script> 
+    <script src="script/autenticazione.js"></script> 
     <?php
-    if($_SESSION['change']==true){  //valore impostato a true solo se si vuole accedere alla parte della registrazione di autenticazione.php
-    ?><script>
+    if(isset($_SESSION['change'])){  //se è settato si vuole accedere a registrati e non ad accedi
+    ?><script >
     cambiaModalità(false);
     </script><?php
     } 

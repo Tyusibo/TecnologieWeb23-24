@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form registrati
-    require "database/autenticazioneDatabase.php";  //Includo le funzioni database solo se serve
+    require "database/registrazioneDatabase.php";  
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
     $username=$_POST['username']; 
@@ -27,7 +27,7 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
 } 
 
 if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form accedi
-    require "database/autenticazioneDatabase.php";  //Includo le funzioni database solo se serve
+    require "database/autenticazioneDatabase.php"; 
     $username= $_POST['username']; 
     $pwd= $_POST['pwd']; 
 

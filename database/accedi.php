@@ -1,6 +1,6 @@
 <?php
     function get_pwd($username){ 
-   		require "dbConnection.php";  
+		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
 		$sql = "SELECT password_hash FROM utenti WHERE username=$1;";  //prende la password dell'utente passato come parametro salvata nel database
 		pg_prepare($db, "sqlPassword", $sql); //prepara la query e le da il nome sqlPassword

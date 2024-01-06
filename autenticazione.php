@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form registrati
-    require "database/registrazioneDatabase.php";  
+    require "database/registrati.php.php";  
     $nome=$_POST['nome']; 
     $cognome=$_POST['cognome']; 
     $username=$_POST['username']; 
@@ -13,7 +13,7 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
     //check se l'username(email) già esiste
     if(username_exist($username)){  //se già esiste
         $_SESSION['change']=true;   //per andare in modalità registrazione
-        $_SESSION['error']='alreadyRegistered';  //messaggio di errore
+        ?> <script defer>console.log(3);document.getElementById("erroreEmailRegistrati").innerText ="Questa email è già registrata";</script><?php
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd)){
             if($_SESSION['redirect']!=null){   //solo se dopo la post redirect è null devo fare il reindirizzamento di default
@@ -27,13 +27,13 @@ if (isset($_POST['reg'])) {// Recupera i valori dai campi di input del form regi
 } 
 
 if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form accedi
-    require "database/autenticazioneDatabase.php"; 
+    require "database/accedi.php"; 
     $username= $_POST['username']; 
     $pwd= $_POST['pwd']; 
 
     $stored_hash_pwd = get_pwd($username);  //prelevo la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
-        $_SESSION['error']='notRegistered'; //messaggio di errore
+        ?> <script defer>console.log(3);document.getElementById("erroreEmailAccedi").innerText ="Questa email non è registrata";</script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
         if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato
@@ -45,7 +45,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                 header("Location: account.php");
             $_SESSION['username']  = $_POST['username'];  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }else{
-            $_SESSION['error']='invalidPassword';  //messaggio di errore
+            ?> <script defer>console.log(3);document.getElementById("errorePassword").innerText ="Password errata";</script><?php
         }
     }  
 } 
@@ -83,7 +83,7 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                     </div> 
                 </form>
                 <p id="registered">Non sei registrato?<button class="linkbutton" id="cliccaqui" onClick="cambiaModalità(false)">Registrati</button></p>
-                <script src="script/accesso.js"></script>
+                <script src="script/accedi.js" defer></script>
             </div>
 
             <div id="registrati" style="display: none";>
@@ -131,14 +131,12 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
                 <div class="horizontalflex spaced">
                     <p id="registered">Sei già registrato?</p>
                     <button class="linkbutton" onClick="cambiaModalità(true)">Accedi</button>
-                    <script src="script/registrazione.js"></script>
+                    <script src="script/registrati.js" defer></script>
                 </div>
             </div>
-
-        </div>  <!--Devo chiudere i 2 div-->
+        </div>  <!--Devo chiudere i 2 div container e whitebox-->
     </div>
-    <script src="script/cookie.js"></script> 
-    <script src="script/autenticazione.js"></script> 
+    <script src="script/autenticazione.js" defer></script> 
     <?php
     if($_SESSION['change']==true){  //valore impostato a true solo se si vuole accedere alla parte della registrazione di autenticazione.php
     ?><script>
@@ -146,15 +144,8 @@ if (isset($_POST['acc'])) {// Recupera i valori dai campi di input del form acce
     </script><?php
     } 
     require "footer.php"; 
-    if(isset($_SESSION['error']))
-        if($_SESSION['error']=="notRegistered"){
-            ?> <script>console.log(3);document.getElementById("erroreEmailAccedi").innerText ="Questa email non è registrata";</script><?php }
-        elseif($_SESSION['error']=="invalidPassword"){
-                ?> <script>console.log(3);document.getElementById("errorePassword").innerText ="Password errata";</script><?php }
-                elseif($_SESSION['error']=="alreadyRegistered"){
-                    ?> <script>console.log(3);document.getElementById("erroreEmailRegistrati").innerText ="Questa email è già registrata";</script><?php }      
-    ?>
+ 
+?>
 </body>
 </html>       
-
 

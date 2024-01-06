@@ -9,7 +9,7 @@ function esci() {
     };
 
     // Apre la connessione e invia una richiesta POST al server
-    xmlhttp.open("POST", "pagineAusiliarie/esci.php", true);
+    xmlhttp.open("POST", "ajaxPagine/esci.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("");
 }

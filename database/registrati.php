@@ -1,6 +1,6 @@
 <?php
     function username_exist($username){
-        require "dbConnection.php";
+        require "connectionString.php";
         $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
         $sql = "SELECT username FROM public.utenti WHERE username=$1;"; 
         pg_prepare($db, "sqlUsername", $sql);

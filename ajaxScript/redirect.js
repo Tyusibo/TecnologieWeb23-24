@@ -7,7 +7,7 @@ function redirect(mode) {
         }
     };
     // Apre la connessione e invia una richiesta POST al server
-    xmlhttp.open("POST", "pagineAusiliarie/redirect.php", true);
+    xmlhttp.open("POST", "ajaxPagine/redirect.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("mod=" + mode + "&currentPageName=" + currentPageName);
 }

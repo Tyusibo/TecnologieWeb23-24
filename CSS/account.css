@@ -20,7 +20,19 @@ body{
     box-shadow: 10px 10px 30px;
 }
 
-#contenuti{
+#sezioni{
     float: right;
+}
+
+#sezioneDati{
+    
+}
+
+#sezionePrenotazioni{
+    display: none; 
+}
+
+#sezionePreferenze{
+    display: none; 
 }
 

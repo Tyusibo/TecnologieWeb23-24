@@ -2,7 +2,8 @@
 <?php
 session_start(); 
 require "database/account.php";
-$_SESSION['redirect']=null;    
+require "database/nome.php";
+$_SESSION['redirect']=null;     
 if(!(isset($_SESSION['username'])))  //se non loggato
     header("Location: autenticazione.php"); 
 ?>
@@ -19,7 +20,7 @@ if(!(isset($_SESSION['username'])))  //se non loggato
         <div class="whitebox">
             <div id="contenuti">  <!--Voglio che la section id lista sta sempre a sinistra e quello dopo sta alla sua destra-->
                 <section id="lista">
-                    <?php require "database/nome.php";
+                    <?php 
                     $nome=getNome($_SESSION["username"]);
                     echo "<p>Benvenuto $nome !";?>
                     <nav>
@@ -31,19 +32,19 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                         </ul>
                     </nav>           
                 </section>
-                <section id="sezioni">  <!--Per ora ho messo che questa sezione che le contiene tutte float:right-->
+                <section id="sezioni">  <!--Per ora ho messo che questa sezione che le contiene tutte ed è float:right-->
                     <section id="sezioneDati">
                         <?php $dati=getDati($_SESSION["username"]);?>
-                        <p>Il tuo nome <?php echo $dati['nome'];?></p>
-                        <p>Il tuo cognome <?php echo $dati['cognome'];?></p>
-                        <p>La tua email <?php echo $dati['username'];?></p>
-                        <p>Il tuo numero <?php echo $dati['numero'];?></p>
+                        <p>Il tuo nome: <?php echo $dati['nome'];?></p>
+                        <p>Il tuo cognome: <?php echo $dati['cognome'];?></p>
+                        <p>La tua email: <?php echo $dati['username'];?></p>
+                        <p>Il tuo numero: <?php echo $dati['numero'];?></p>
                     </section>
                     <section id="sezionePrenotazioni">
                         <?php $prenotazioni=getPrenotazioni($_SESSION["username"]);
                         if($prenotazioni==false){
-                            echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione
-                            <a href=prenota.php>Qui</a> puoi effettuarne una";
+                            echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione</p>
+                            <p><a href=prenota.php>Qui</a> puoi effettuarne una";
                         } else {
                                 //vedi le prenotazioni
                         }
@@ -52,15 +53,14 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                     <section id="sezionePreferenze">
                         <?php $preferenze=getPreferenze($_SESSION["username"]);
                         if($preferenze==false){
-                            echo "<p>Sembra che tu non abbia mai espresso una preferenza
-                            <a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi";
+                            echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
+                            <p><a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi";
                         } else {
                             //vedi le preferenze
                         }
                         ?>
                     </section>
                 </section>
-            
             </div>
         </div>  <!--Devo chiudere i 2 div-->
     </div>

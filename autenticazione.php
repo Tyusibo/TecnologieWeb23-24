@@ -17,17 +17,17 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     $pwd1=$_POST['pwd1']; 
     $pwd2=$_POST['pwd2'];
 
-    if(username_exist($username)){  //controllo se l'username già esiste
+    if(username_exist($usernameRegistrati)){  //controllo se l'username già esiste
         ?><script defer src="script/cambiaModalità.js"></script>
         <script defer src="database/emailRegistrata.js"></script><?php
     }else{  //se non esiste lo inserisco
-        if(insert_utente($nome, $cognome, $numero, $username, $pwd)){  //va nel then se va a buon fine
+        if(insert_utente($nome, $cognome, $numero, $usernameRegistrati, $pwd)){  //va nel then se va a buon fine
             setcookie('nuovoUtente', true, time() + (30 * 24 * 60 * 60)); //valido per 30 giorni
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");  //altrimenti riporta ad account (comportamento di default)
-            $_SESSION['username']  = $username;  //per rendere effettiva l'autenticazione anche nelle altre pagine
+            $_SESSION['username']  = $usernameRegistrati;  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }
     }
 } 

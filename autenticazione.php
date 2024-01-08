@@ -12,7 +12,7 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     require "database/registrati.php";  
     $nome=$_POST['nome'];   // Recupero i valori dai campi di input del form per farlo sticky
     $cognome=$_POST['cognome']; 
-    $usernameRegistrati=$_POST['username']; //username e pwd hanno gli stessi nomi delle variabili per l'accesso per mantenere i valori
+    $usernameRegistrati=$_POST['username']; 
     $numero=$_POST['numero']; 
     $pwd1=$_POST['pwd1']; 
     $pwd2=$_POST['pwd2'];
@@ -21,8 +21,8 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
         ?><script defer src="script/cambiaModalità.js"></script>
         <script defer src="database/emailRegistrata.js"></script><?php
     }else{  //se non esiste lo inserisco
-        if(insert_utente($nome, $cognome, $numero, $usernameRegistrati, $pwd)){  //va nel then se va a buon fine
-            setcookie('nuovoUtente', true, time() + (30 * 24 * 60 * 60)); //valido per 30 giorni
+        if(insert_utente($nome, $cognome, $numero, $usernameRegistrati, $pwd1)){  //va nel then se va a buon fine
+            setcookie('nuovoUtente', true, time() + (60 * 24)); 
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare
                 header("Location: $_SESSION[redirect]");
             } else 
@@ -34,9 +34,9 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
 
 if(isset($_POST['acc'])) {//analogamente per accedi
     require "database/accedi.php"; 
-    $username=$_POST['username']; 
+    $usernameAccedi=$_POST['username']; 
     $pwd= $_POST['pwd']; 
-    $stored_hash_pwd = get_pwd($username);  //provo a prelevare la password dell'utente con email fornita
+    $stored_hash_pwd = get_pwd($usernameAccedi);  //provo a prelevare la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
         ?><script defer src="database/emailNonRegistrata.js"></script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
@@ -48,7 +48,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
-            $_SESSION['username']  = $username;  
+            $_SESSION['username']  = $usernameAccedi;  
         }else{  //l'utente era registrato, ma la password fornita non coincide con quella salvata sul database
             ?><script defer src="database/passwordErrata.js"></script><?php
         }
@@ -72,7 +72,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 <form id="accediForm" onSubmit="return validaModuloAccedi(this)" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">   
                         <label for="usernameAccedi">Email</label>
-                        <input class="textinput" type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
+                        <input class="textinput" type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($usernameAccedi)) ? $usernameAccedi : ""; ?>">
                         <div id="erroreEmailAccedi" class="errore"></div>
                         <label class="spaced" for="pwd">Password</label>
                         <div class="horizontalflex">
@@ -101,7 +101,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                         <input class="textinput" type="text" size="15" id="cognome" name="cognome" value="<?php echo (isset($cognome)) ? $cognome : ""; ?>">
                         <div id="erroreCognome" class="errore"></div>
                         <label class="spaced">Email</label>
-                        <input class="textinput" type="text" size="30" id="username" name="username" value="<?php echo (isset($usernameRegistrati)) ? $usernameRegistrati : ""; ?>">
+                        <input class="textinput" type="text" size="30" id="usernameRegistrati" name="username" value="<?php echo (isset($usernameRegistrati)) ? $usernameRegistrati : ""; ?>">
                         <div id="erroreEmailRegistrati" class="errore"></div>
                         <label class="spaced">Numero<small>(Includi il prefisso)</small></label>
                         <input class="textinput" type="text" size="13" id="numero" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)">

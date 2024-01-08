@@ -19,7 +19,7 @@
         }
     }
     function insert_utente($nome, $cognome, $numero, $username, $pwd){
-        require "dbConnection.php";
+        require "connectionString.php";
         $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
         $hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
         $sql = "INSERT INTO public.utenti(nome, cognome, numero, username, password_hash)

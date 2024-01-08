@@ -59,12 +59,12 @@ function validaModuloRegistrati(nomeModulo) {
 
 function verificaPassword(event){
     var error=false;
-    var minuscola=document.getElementById("minuscola");
-    var maiuscola=document.getElementById("maiuscola");
-    var numero=document.getElementById("numero");
-    var speciale=document.getElementById("speciale");
-    var lun_min=document.getElementById("lun_min");
-    var lun_max=document.getElementById("lun_max");
+    var minuscola=document.getElementById("mancataMinuscola");
+    var maiuscola=document.getElementById("mancataMaiuscola");
+    var numero=document.getElementById("mancatoNumero");
+    var speciale=document.getElementById("mancatoSpeciale");
+    var lun_min=document.getElementById("lunMin");
+    var lun_max=document.getElementById("lunMax");
     if (!/[a-z]/.test(event.target.value)){
         minuscola.classList.add("errore");
         error=true;

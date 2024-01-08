@@ -109,7 +109,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                             <option value="+1">+1</option>
                             <option value="+39">+39</option>
                         </select>
-                        <input class="textinput" type="text" size="13" id="numero" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)">
+                        <input class="textinput" type="tel" size="13" id="numero" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)">
                         <div id="erroreNumero" class="errore"></div>
                         <label class="spaced">Scegli una password, deve contenere almeno: </label>
                         <small>

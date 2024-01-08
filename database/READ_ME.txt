@@ -23,5 +23,14 @@ CREATE TABLE IF NOT EXISTS utenti (
     username VARCHAR(100) UNIQUE,
     password_hash VARCHAR(255)
 );
+DROP TABLE IF EXISTS prenotazioni cascade;
+CREATE TABLE IF NOT EXISTS prenotazioni (
+    id SERIAL PRIMARY KEY,
+    orario_appuntamento time(0), significa che non si vogliono includere i secondi
+    data_appuntamento date,
+    //invece di time(0) e date c'è timestamp(0) che contiene entrambe ma penso sia difficile da costruire
+    messaggio VARCHAR(200),
+    username VARCHAR(100) 
+);
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO www;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO www;

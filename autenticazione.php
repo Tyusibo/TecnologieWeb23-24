@@ -103,7 +103,12 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                         <label class="spaced">Email</label>
                         <input class="textinput" type="text" size="30" id="usernameRegistrati" name="username" value="<?php echo (isset($usernameRegistrati)) ? $usernameRegistrati : ""; ?>">
                         <div id="erroreEmailRegistrati" class="errore"></div>
-                        <label class="spaced">Numero<small>(Includi il prefisso)</small></label>
+                        <label class="spaced">Numero</label>
+                        <select id="prefisso" name="prefisso" onchange="selezionaPrefisso()">
+                            <option>Seleziona il prefisso</option>
+                            <option value="+1">+1</option>
+                            <option value="+39">+39</option>
+                        </select>
                         <input class="textinput" type="text" size="13" id="numero" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)">
                         <div id="erroreNumero" class="errore"></div>
                         <label class="spaced">Scegli una password, deve contenere almeno: </label>

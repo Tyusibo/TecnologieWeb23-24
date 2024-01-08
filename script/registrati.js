@@ -101,30 +101,36 @@ document.getElementById("pwd1").addEventListener("input", function() {
     verificaPassword(event);
 });
 
+function selezionaPrefisso() {
+    var selectElement = document.getElementById("prefisso");
+    var selectedValue = selectElement.value;
+    var numero = document.getElementById("numero");
+    if(selectedValue!="Seleziona il prefisso"){
+            numero.value=selectedValue;
+            document.getElementById("erroreNumero").innerText ="";
+    }
+}
+
+
 function soloNumeri(event){
+    document.getElementById("erroreNumero").innerText ="";
     var tasto;
     tasto = event.key;
     var campo = event.target.value;
-    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control") || ((tasto=="+") && (campo.indexOf("+") === -1)))
-        return true;
-    if (("0123456789").indexOf(tasto) > -1){
-        if (campo.length < 13) {
-            return true;
-    } else {
-        alert("Il numero di telefono non può superare i 13 caratteri");
+    if (campo.length==0) {
+        document.getElementById("erroreNumero").innerText ="Scegli prima il prefisso";
         return false;
     }
-        }
-        else {
-            alert("il campo accetta solo numeri e il carattere + come primo carattere");
+    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control"))
+        return true;
+    if (("0123456789").indexOf(tasto) > -1){
+        if (campo.length==14) {
+            document.getElementById("erroreNumero").innerText ="Il numero da te inserito supera il limite consentito";
             return false;
-        }
-    if(campo.length===0){
-
-        event.target.value = tasto.toUpperCase();
-
-        event.preventDefault();aaaa
+    } else {
+        return true;        
     }
+    } else return false;
 }
 
 document.getElementById("numero").addEventListener("keydown", function() {

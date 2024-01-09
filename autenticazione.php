@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION["username"]))   //questa pagina è accessibile solo se non loggati ma questo if mi fa prevenire il caso in cui
     header ("Location account.php");     //l'utente modifichi intenzionalmente l'url
 if(isset($_COOKIE["nomeUtente"])){
-    $username=$_COOKIE["nomeUtente"];
+    $usernameAccedi=$_COOKIE["nomeUtente"];
 }
 if(isset($_SESSION['change'])){  //messo a true (settato) solo da script ajax esterni a questo file per passare a registrazione
     ?><script defer src="script/cambiaModalità.js"></script> 

@@ -24,6 +24,7 @@
         $hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
         $sql = "INSERT INTO public.utenti(nome, cognome, numero, username, password_hash)
                         VALUES($1, $2, $3, $4, $5); ";
+        $result=pg_query_params($db, $sql,array($nome, $cognome, $numero, $username, $hashed_pwd));
         pg_prepare($db, "insertUser", $sql);
         $ret = pg_execute($db, "insertUser", array($nome, $cognome, $numero, $username, $hashed_pwd));
         if(!$ret) {

@@ -21,9 +21,8 @@ CREATE TABLE IF NOT EXISTS utenti (
 DROP TABLE IF EXISTS prenotazioni_andrea cascade;
 CREATE TABLE IF NOT EXISTS prenotazioni_andrea (
     id_prenotazione_1 SERIAL PRIMARY KEY,
-    orario_appuntamento time(0), significa che non si vogliono includere i secondi
+    orario_appuntamento time(0),
     data_appuntamento date,
-    //invece di time(0) e date c'è timestamp(0) che contiene entrambe ma penso sia difficile da costruire
     messaggio VARCHAR(200),
     id_utente INTEGER REFERENCES utenti(id_utente),
 );

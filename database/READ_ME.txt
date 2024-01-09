@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS utenti (
     cognome VARCHAR(50),
     numero VARCHAR(20),
     username VARCHAR(100) UNIQUE,
-    password_hash VARCHAR(255)
+    password_hash VARCHAR(255),
     pref_1 VARCHAR(20),
     pref_2 VARCHAR(20),
-    pref_3 VARCHAR(20),
+    pref_3 VARCHAR(20)
 );
 DROP TABLE IF EXISTS prenotazioni_andrea cascade;
 CREATE TABLE IF NOT EXISTS prenotazioni_andrea (
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS prenotazioni_andrea (
     orario_appuntamento time(0),
     data_appuntamento date,
     messaggio VARCHAR(200),
-    id_utente INTEGER REFERENCES utenti(id_utente),
+    id_utente INTEGER REFERENCES utenti(id_utente)
 );
 DROP TABLE IF EXISTS prenotazioni_francesco cascade;
 CREATE TABLE IF NOT EXISTS prenotazioni_francesco (
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS prenotazioni_francesco (
     orario_appuntamento time(0),
     data_appuntamento date,
     messaggio VARCHAR(200),
-    id_utente INTEGER REFERENCES utenti(id_utente),
+    id_utente INTEGER REFERENCES utenti(id_utente)
 );
 DROP TABLE IF EXISTS prenotazioni_rocco cascade;
 CREATE TABLE IF NOT EXISTS prenotazioni_rocco (
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS prenotazioni_rocco (
     orario_appuntamento time(0),
     data_appuntamento date,
     messaggio VARCHAR(200),
-    id_utente INTEGER REFERENCES utenti(id_utente),
+    id_utente INTEGER REFERENCES utenti(id_utente)
 );
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO www;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO www;

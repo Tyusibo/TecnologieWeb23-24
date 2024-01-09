@@ -1,36 +1,47 @@
->installare postgresql 
->installare PostegreSQL estensione in vsCode
-> aprire SQL Shell o aprire l'estensione PostegreSQLExplorer (l'ultima nella colonna estensioni)
-e scrivere:
--creazione utente sql per la conessione:
 CREATE USER www;
 ALTER USER www WITH PASSWORD 'tw2024';
-ALTER USER www WITH SUPERUSER;  //i permessi
+ALTER USER www WITH SUPERUSER; 
 
-- creazione db:
 CREATE DATABASE gruppo21;
 
--accedi al db appena creato con l'utente appena creato  (SOLO SU SQL SHELL non su vs code) 
-\c gruppo21 www (dopo ti chiede la password)
+\c gruppo21 www
 
-- creazione tabella utenti:
 DROP TABLE IF EXISTS utenti cascade;
 CREATE TABLE IF NOT EXISTS utenti (
-    id SERIAL PRIMARY KEY,
+    id_utente SERIAL PRIMARY KEY,
     nome VARCHAR(50),
     cognome VARCHAR(50),
     numero VARCHAR(20),
     username VARCHAR(100) UNIQUE,
     password_hash VARCHAR(255)
+    pref_1 VARCHAR(20),
+    pref_2 VARCHAR(20),
+    pref_3 VARCHAR(20),
 );
-DROP TABLE IF EXISTS prenotazioni cascade;
-CREATE TABLE IF NOT EXISTS prenotazioni (
-    id SERIAL PRIMARY KEY,
+DROP TABLE IF EXISTS prenotazioni_andrea cascade;
+CREATE TABLE IF NOT EXISTS prenotazioni_andrea (
+    id_prenotazione_1 SERIAL PRIMARY KEY,
     orario_appuntamento time(0), significa che non si vogliono includere i secondi
     data_appuntamento date,
     //invece di time(0) e date c'è timestamp(0) che contiene entrambe ma penso sia difficile da costruire
     messaggio VARCHAR(200),
-    username VARCHAR(100) 
+    id_utente INTEGER REFERENCES utenti(id_utente),
+);
+DROP TABLE IF EXISTS prenotazioni_francesco cascade;
+CREATE TABLE IF NOT EXISTS prenotazioni_francesco (
+    id_prenotazione_2 SERIAL PRIMARY KEY,
+    orario_appuntamento time(0),
+    data_appuntamento date,
+    messaggio VARCHAR(200),
+    id_utente INTEGER REFERENCES utenti(id_utente),
+);
+DROP TABLE IF EXISTS prenotazioni_rocco cascade;
+CREATE TABLE IF NOT EXISTS prenotazioni_rocco (
+    id_prenotazione_3 SERIAL PRIMARY KEY,
+    orario_appuntamento time(0),
+    data_appuntamento date,
+    messaggio VARCHAR(200),
+    id_utente INTEGER REFERENCES utenti(id_utente),
 );
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO www;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO www;

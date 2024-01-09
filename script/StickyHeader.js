@@ -11,4 +11,16 @@ function myFunction() {
   }
 }
 
+function showRectangle() {
+  var overlay = document.getElementById('overlay');
+  overlay.style.display = 'flex';
+}
 
+function hideRectangle() {
+  var overlay = document.getElementById('overlay');
+  overlay.style.display = 'none';
+}
+
+function goToAccountPage() {
+  window.location.href = 'account.php';
+}

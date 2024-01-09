@@ -3,7 +3,7 @@
 session_start();
 $_SESSION['redirect']=null;  
 ?>
-<html lang="it">
+<html lang="it" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

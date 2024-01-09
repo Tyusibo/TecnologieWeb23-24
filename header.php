@@ -33,7 +33,7 @@
                 </nav>  
             </div>
             <div class="colonna3"> 
-                <a href="account.php" class="account"i onmouseover="showRectangle()" onmouseout="hideRectangle()"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
+                <a href="account.php" class="account"i onmouseover="showRectangle()"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
                 <div id="overlay">
                     <div id="rectangle">
                         <p>Ciao!</p>

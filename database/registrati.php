@@ -3,7 +3,7 @@
         require "connectionString.php";
         $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
         $sql = "SELECT username FROM public.utenti WHERE username=$1;"; 
-        $username = pg_escape_literal($username);
+        //$username = pg_escape_literal($username);
         $ret=pg_query_params($db, $sql,array($username));
         if(!$ret) {
             echo "ERRORE QUERY: " . pg_last_error($db);
@@ -30,8 +30,8 @@
         $cognome = pg_escape_literal($cognome);
         $numero = pg_escape_literal($numero);
         $username = pg_escape_literal($username);
-        $pwd = pg_escape_literal($pwd);
-        $hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);*/
+        $pwd = pg_escape_literal($pwd);*/
+        $hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
         $ret=pg_query_params($db, $sql,array($nome, $cognome, $numero, $username, $hashed_pwd));
         if(!$ret) {
             echo "ERRORE QUERY: " . pg_last_error($db);

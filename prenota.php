@@ -25,6 +25,10 @@ $_SESSION['redirect']=null;
                 </p>
                 <?php } else {  //se loggato ma non ha ancora effettuato una prenotazione
                     echo "<p>Ciao $_SESSION[username] !";?>    
+                    <p>Scegli il tuo barbiere</p>
+                    <button id="andrea">Andrea</button>
+                    <button id="rocco">Rocco</button>
+                    <button id="francesco">Francesco</button>
                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype=“multipart/form-data”>
                         <label for="data">Seleziona una data:</label>
                         <input type="date" id="data" value="<?php echo $data ?>" name="data" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 week')); ?>" required>
@@ -64,5 +68,6 @@ $_SESSION['redirect']=null;
     
     <?php require "footer.php"; ?>
     <script src="ajax/redirect.js"></script>
+    <script src="ajax/prenotazione.js"></script>
 </body>
 </html>

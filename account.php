@@ -6,9 +6,6 @@ require "database/nome.php";
 $_SESSION['redirect']=null;     
 if(!(isset($_SESSION['username'])))  //se non loggato
     header("Location: autenticazione.php"); 
-if(isset($_COOKIE["nuovoUtente"])){
-        echo"CIaooooooooooooooooo";
-}
 ?>
 <html lang="it" dir="ltr">
 <head>

@@ -3,7 +3,7 @@
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
 		$sql = "SELECT password_hash FROM utenti WHERE username=$1;";  //prende la password dell'utente passato come parametro salvata nel database
-        $username = pg_escape_literal($username);
+		//$username = pg_escape_literal($username);
 		$ret=pg_query_params($db, $sql,array($username));
 		if(!$ret) {      //se la query non va a buon fine
 			echo "ERRORE QUERY: " . pg_last_error($db);

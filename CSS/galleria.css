@@ -1,4 +1,60 @@
 body{
     margin: 0px;
     padding: 0px;
+    background-color: black;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-size: 64px;
+}
+.gallery{
+    display: flex;
+}
+.gal-1{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+}
+.galint{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gal-2{
+    display: flex;
+    width: 85%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.category{
+    font-size: 16px !important;
+    text-align: center;
+    width: 150px !important;
+    color: white !important;
+    border: 1px solid white !important;
+    padding: 15px !important;
+    margin-bottom: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.category:hover{
+    background-color: #fa6400;
+    border: 1px solid #fa6400 !important;
+    color: white;
+}
+
+.active{
+    background-color: #fa6400 !important;
+    border: 1px solid #fa6400 !important;
+    color: white;
+}
+
+.galimg{
+    width: 29% !important;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }

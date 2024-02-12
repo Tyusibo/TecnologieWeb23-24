@@ -65,6 +65,8 @@ function all(){
     active.forEach(function(button) {
         button.classList.remove("active");
     });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function active(button){

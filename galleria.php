@@ -9,21 +9,21 @@ $_SESSION['redirect']=null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Galleria</title>
-    <link rel="stylesheet" type="text/css" href="css/galleria.css">
+    <link rel="stylesheet" type="text/css" href="CSS/galleria.css">
     <script src="script/galleria.js" crossorigin="anonymous"></script> 
 </head>
 <body>
     <?php require "header.php"; ?>
     <div style="height: 100px"></div>
 
-    <h1>I NOSTRI TAGLI</h1>
+    <h1 id="gallery">I NOSTRI TAGLI</h1>
 
-    <div class="gallery">
+    <div class="gallery" >
         <div class="gal-1">
             <div class="galint">
-                <button class="category active" id="all" onclick="dispAll()">ALL</button>
-                <button class="category"  id="buzzcat" onclick="buzz()">BUZZ CUT</button>
-                <button class="category"  id="frenchcat" onclick="french()">FRENCH CROP</button>
+                <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
+                <button class="category"  id="buzzcat" onclick="buzz()" href="#gallery">BUZZ CUT</button>
+                <button class="category"  id="frenchcat" onclick="french()" href="#gallery">FRENCH CROP</button>
                 <button class="category"  id="curtainscat" onclick="curtains()">CURTAINS</button>
                 <button class="category"  id="sidecat" onclick="side()">SIDE PART</button>
                 <button class="category"  id="mohawkcat" onclick="mohawk()">MOHAWK</button>

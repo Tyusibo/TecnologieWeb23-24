@@ -16,6 +16,8 @@ if(!(isset($_SESSION['username'])))  //se non loggato
 </head>
 <body>
     <?php require "header.php"; ?>
+    <?php require "database/id.php"; 
+    $id=getId($_SESSION['username']);?>
     <div class="container">
         <div class="whitebox">
             <div id="contenuti">  <!--Voglio che la section id lista sta sempre a sinistra e quello dopo sta alla sua destra-->
@@ -41,14 +43,29 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                         <p>Il tuo numero: <?php echo $dati['numero'];?></p>
                     </section>
                     <section id="sezionePrenotazioni">
-                        <?php $prenotazioni=getPrenotazioni($_SESSION["username"]);
-                        if($prenotazioni==false){
-                            echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione</p>
-                            <p><a href=prenota.php>Qui</a> puoi effettuarne una";
-                        } else {
-                                //vedi le prenotazioni
+                    <?php
+                    $nome = array("andrea","rocco","francesco");
+                    $nessunaPrenotazione = true;
+
+                    foreach ($nome as $barbiere) {
+                        $prenotazioni = getPrenotazioni($id, $barbiere);
+                        if($prenotazioni){
+                            $nessunaPrenotazione=false;
+                            echo "<p>Barbiere: $barbiere</p>";
+                            while ($row = pg_fetch_assoc($prenotazioni)) {
+                                echo "<p>Data: " . $row["data_appuntamento"] . "</p>";
+                                echo "<p>Orario: " . substr($row["orario_appuntamento"], 0, 5) . "</p>";
+                                echo "<button onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
+                            }
                         }
-                        ?>
+                    }
+
+
+                    if ($nessunaPrenotazione) {
+                        echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione</p>";
+                        echo "<p><a href='prenota.php'>Qui</a> puoi effettuarne una</p>";
+                    }
+                    ?>
                     </section>
                     <section id="sezionePreferenze">
                         <?php $preferenze=getPreferenze($_SESSION["username"]);
@@ -67,5 +84,6 @@ if(!(isset($_SESSION['username'])))  //se non loggato
     <?php require "footer.php"; ?> 
     <script src="script/account.js"></script>
     <script src="ajax/esci.js"></script>
+    <script src="ajax/cancellaPrenotazione.js"></script>
 </body>
 </html>

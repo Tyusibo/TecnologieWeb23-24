@@ -20,25 +20,25 @@ CREATE TABLE IF NOT EXISTS utenti (
 );
 DROP TABLE IF EXISTS prenotazioni_andrea cascade;
 CREATE TABLE IF NOT EXISTS prenotazioni_andrea (
-    id_prenotazione_1 SERIAL PRIMARY KEY,
-    orario_appuntamento time(0),
-    data_appuntamento date,
+    id_prenotazione SERIAL PRIMARY KEY,
+    orario_appuntamento TIME,
+    data_appuntamento DATE,
     messaggio VARCHAR(200),
     id_utente INTEGER REFERENCES utenti(id_utente)
 );
 DROP TABLE IF EXISTS prenotazioni_francesco cascade;
 CREATE TABLE IF NOT EXISTS prenotazioni_francesco (
-    id_prenotazione_2 SERIAL PRIMARY KEY,
-    orario_appuntamento time(0),
-    data_appuntamento date,
+    id_prenotazione SERIAL PRIMARY KEY,
+    orario_appuntamento TIME,
+    data_appuntamento DATE,
     messaggio VARCHAR(200),
     id_utente INTEGER REFERENCES utenti(id_utente)
 );
 DROP TABLE IF EXISTS prenotazioni_rocco cascade;
 CREATE TABLE IF NOT EXISTS prenotazioni_rocco (
-    id_prenotazione_3 SERIAL PRIMARY KEY,
-    orario_appuntamento time(0),
-    data_appuntamento date,
+    id_prenotazione SERIAL PRIMARY KEY,
+    orario_appuntamento TIME,
+    data_appuntamento DATE,
     messaggio VARCHAR(200),
     id_utente INTEGER REFERENCES utenti(id_utente)
 );

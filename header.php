@@ -34,12 +34,6 @@
             </div>
             <div class="colonna3"> 
                 <a href="account.php" class="account"i onmouseover="showRectangle()"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
-                <div id="overlay">
-                    <div id="rectangle">
-                        <p>Ciao!</p>
-                        <button onclick="goToAccountPage()">Vai a account.php</button>
-                    </div>
-                </div>
                 <!--30 px a sinistra perchè la foto è ritagliata male-->
             </div>
         </div>

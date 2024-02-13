@@ -20,10 +20,6 @@ body{
     box-shadow: 10px 10px 30px;
 }
 
-#sezioni{
-    float: right;
-}
-
 #sezionePrenotazioni{
     display: none; 
 }

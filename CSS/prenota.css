@@ -2,3 +2,11 @@ body{
     margin: 0px;
     padding: 0px;
 }
+
+.red{
+    background-color: red;
+}
+
+.yellow{
+    background-color: yellow;
+}

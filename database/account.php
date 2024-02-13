@@ -14,23 +14,20 @@
 			return pg_fetch_assoc($ret); 	
 		}	
    	}
-	function getPrenotazioni($username){ 
+	function getPrenotazioni($id,$barbiere){ 
 		require "connectionString.php"; 
-		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
-		/*
-		$sql = "SELECT id,orario_appuntamento,data_appuntamento FROM public.prenotazioni WHERE username=$1;";   //da cambiare
-		$ret=pg_query_params($db, $sql,array($username)); 
-		if(!$ret) {     
-			echo "ERRORE QUERY: " . pg_last_error($db);
-			pg_close($db);
-			return false; 
-		}
-		else{
-			pg_close($db);
-			return pg_fetch_assoc($ret); 	
-		}
-		*/ return false;	
+		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error()); 
+		$nome_tabella = "prenotazioni_" . $barbiere;
+		$sql = "SELECT id_prenotazione, data_appuntamento,orario_appuntamento FROM " . $nome_tabella . "  WHERE id_utente = $1 ORDER BY data_appuntamento, orario_appuntamento;";
+		$ret=pg_query_params($db, $sql,array($id));
+		pg_close($db);
+		if(pg_num_rows($ret)==0)
+			return false;
+		return $ret;	
    	}
+	
+
+	
 
 	function getPreferenze($username){ 
 		require "connectionString.php"; 

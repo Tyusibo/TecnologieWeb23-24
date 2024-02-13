@@ -38,7 +38,7 @@ $_SESSION['redirect']=null;
         <?php } //parentesi dell'else ?>  
     
     <?php require "footer.php";?>
-    <script src="ajax/redirect.js"></script>
-    <script src="ajax/prenotazione.js"></script>
+    <script src="pagineAusiliarie/redirect.js"></script>
+    <script src="script/prenota.js"></script>
 </body>
 </html>

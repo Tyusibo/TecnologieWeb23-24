@@ -7,6 +7,10 @@ body{
     background-color: red;
 }
 
-.yellow{
+.green{
+    background-color: green;
+}
+
+.active{
     background-color: yellow;
 }

@@ -9,17 +9,12 @@ document.getElementById("francesco").addEventListener("click", function() {
 });
 
 function mostraData(nome) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {        
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("datePicker").style.display = "block";
-            orari();
-            }
-        };
-
-    xmlhttp.open("POST", "ajax/data.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("barber=" + nome);
+    var andrea=document.getElementById("andrea"); andrea.classList.remove("active");   
+    var rocco=document.getElementById("rocco"); rocco.classList.remove("active");
+    var francesco=document.getElementById("francesco");  francesco.classList.remove("active");
+    var elemento=document.getElementById(nome);  elemento.classList.add("active");
+    document.getElementById("datePicker").style.display = "block";
+    orari();
 }
 
 document.getElementById("data").addEventListener("change", function() {
@@ -27,6 +22,7 @@ document.getElementById("data").addEventListener("change", function() {
 });
 
 function orari() {
+    var barbiere=attivo();
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
     data=document.getElementById("date").value;
@@ -36,11 +32,12 @@ function orari() {
         }
     };
 
-    xmlhttp.open("POST", "database/orari.php", true);
+    xmlhttp.open("POST", "database/prenota.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("data=" + data);
+    xmlhttp.send("barbiere=" + barbiere + "&data=" + data);
 }
  function prenota(event){
+    var barbiere=attivo();
     data=document.getElementById("date").value;
     var orario = event.target.value;
     var xmlhttp = new XMLHttpRequest();
@@ -51,10 +48,26 @@ function orari() {
             }
         };
 
-    xmlhttp.open("POST", "database/orari.php", true);
+    xmlhttp.open("POST", "database/prenota.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("data=" + data + "&orario=" + orario); 
+    xmlhttp.send("barbiere=" + barbiere + "&data=" + data + "&orario=" + orario); 
  }
+
+
+ function attivo() {
+    var nome = ["andrea", "rocco", "francesco"];
+    var i = 0;
+    while (i < 3) {
+        var barbiere = nome[i];
+        var elemento = document.getElementById(barbiere);
+        if (elemento.classList.contains("active")) {
+            return barbiere;
+        }
+        i++;
+    }
+    // Se nessun elemento ha la classe "active"
+    return null;
+}
 
 
  

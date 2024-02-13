@@ -3,6 +3,8 @@
 session_start(); 
 require "database/account.php";
 require "database/nome.php";
+require "database/id.php"; 
+$id=getId($_SESSION['username']);
 $_SESSION['redirect']=null;     
 if(!(isset($_SESSION['username'])))  //se non loggato
     header("Location: autenticazione.php"); 
@@ -16,8 +18,6 @@ if(!(isset($_SESSION['username'])))  //se non loggato
 </head>
 <body>
     <?php require "header.php"; ?>
-    <?php require "database/id.php"; 
-    $id=getId($_SESSION['username']);?>
     <div class="container">
         <div class="whitebox">
             <div id="contenuti">  <!--Voglio che la section id lista sta sempre a sinistra e quello dopo sta alla sua destra-->
@@ -84,6 +84,5 @@ if(!(isset($_SESSION['username'])))  //se non loggato
     <?php require "footer.php"; ?> 
     <script src="script/account.js"></script>
     <script src="ajax/esci.js"></script>
-    <script src="ajax/cancellaPrenotazione.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ if(isset($_SESSION['change'])){  //messo a true (settato) solo da script ajax es
     <?php unset($_SESSION['change']);  //per non creare bug
 }
 if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
-    require "database/registrati.php";  
+    require "database/autenticazione.php";  
     $nome=$_POST['nome'];   // Recupero i valori dai campi di input del form per farlo sticky
     $cognome=$_POST['cognome']; 
     $usernameRegistrati=$_POST['username']; 
@@ -21,7 +21,7 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
 
     if(username_exist($usernameRegistrati)){  //controllo se l'username già esiste
         ?><script defer src="script/cambiaModalità.js"></script>
-        <script defer src="database/emailRegistrata.js"></script><?php
+        <script defer src="script/emailRegistrata.js"></script><?php
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $usernameRegistrati, $pwd1)){  //va nel then se va a buon fine
             setcookie('nuovoUtente', true, time() + (60 * 24)); 
@@ -35,12 +35,12 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
 } 
 
 if(isset($_POST['acc'])) {//analogamente per accedi
-    require "database/accedi.php"; 
+    require "database/autenticazione.php"; 
     $usernameAccedi=$_POST['username']; 
     $pwd= $_POST['pwd']; 
     $stored_hash_pwd = get_pwd($usernameAccedi);  //provo a prelevare la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
-        ?><script defer src="database/emailNonRegistrata.js"></script><?php
+        ?><script defer src="script/emailNonRegistrata.js"></script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
         if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato setto il cookie
@@ -52,7 +52,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 header("Location: account.php");
             $_SESSION['username']  = $usernameAccedi;  
         }else{  //l'utente era registrato, ma la password fornita non coincide con quella salvata sul database
-            ?><script defer src="database/passwordErrata.js"></script><?php
+            ?><script defer src="script/passwordErrata.js"></script><?php
         }
     }  
 } 

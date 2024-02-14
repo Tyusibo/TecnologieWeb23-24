@@ -1,48 +1,11 @@
-function buzz() {
+function stile(event){
+    var stileId = event.target.id;
     all();
-    var Imgs = document.querySelectorAll('.galimg.buzz');
-    Imgs.forEach(function(img) {
+    var Img = document.querySelectorAll('.galimg.'+stileId);
+    Img.forEach(function(img) {
         img.style.display = 'block';
     });
-    var button = document.getElementById("buzzcat");
-    active(button);
-}
-
-function french() {
-    all();
-    var Imgs = document.querySelectorAll('.galimg.french');
-    Imgs.forEach(function(img) {
-        img.style.display = 'block';
-    });
-    var button = document.getElementById("frenchcat");
-    active(button);
-}
-function curtains(){
-    all();
-    var Imgs = document.querySelectorAll('.galimg.curtains');
-    Imgs.forEach(function(img) {
-        img.style.display = 'block';
-    });
-    var button = document.getElementById("curtainscat");
-    active(button);
-}
-function side(){
-    all();
-    var Imgs = document.querySelectorAll('.galimg.side');
-    Imgs.forEach(function(img) {
-        img.style.display = 'block';
-    });
-    var button = document.getElementById("sidecat");
-    active(button);
-}
-function mohawk(){
-    all();
-    var Imgs = document.querySelectorAll('.galimg.mohawk');
-    Imgs.forEach(function(img) {
-        img.style.display = 'block';
-    });
-    var button = document.getElementById("mohawkcat");
-    active(button);
+    event.target.classList.add('active');
 }
 
 function dispAll(){
@@ -52,7 +15,7 @@ function dispAll(){
         img.style.display = 'block';
     });
     var button = document.getElementById("all");
-    active(button);
+    button.classList.add('active');
 }
 
 function all(){
@@ -69,9 +32,8 @@ function all(){
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function active(button){
-    button.classList.add("active");
+
+function preferenze(){
+    var elemnto = document.getElementsByClassName('active');
+    
 }
-
-
-

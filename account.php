@@ -73,7 +73,9 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                             echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
                             <p><a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi";
                         } else {
-                            //vedi le preferenze
+                            echo "<p>Preferenza 1: " . $preferenze["pref_1"] . "</p>";
+                            echo "<p>Preferenza 2: " . $preferenze["pref_2"] . "</p>";
+                            echo "<p>Preferenza 3: " . $preferenze["pref_3"] . "</p>";
                         }
                         ?>
                     </section>

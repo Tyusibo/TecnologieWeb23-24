@@ -1,6 +1,7 @@
 body{
     margin: 0px;
     padding: 0px;
+    font-family: "Bitter", "Palatino Linotype", Times;
 }
 
 .div_home:before{

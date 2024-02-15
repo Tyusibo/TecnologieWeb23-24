@@ -22,15 +22,24 @@ function updateGallery() {
     imageContainer.style.transform = `translateX(${offset}%)`;
 }
 
-function initMap() {
-    // The location of Uluru
-    var uluru = {lat: 40.77248001098633, lng: 14.789327621459961};
-    // The map, centered at Uluru
+function geoloc(){
+    navigator.geolocation.getCurrentPosition(initMap, initMapErr);
+}
+ 
+function initMap(position) {
+    var shopLocation = {lat: 40.77248001098633, lng: 14.789327621459961};
     var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 10, center: uluru});
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({position: uluru, map: map});
-    }
+        document.getElementById('map'), {zoom: 10, center: shopLocation});
+ 
+    
+    const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
+    var marker = new google.maps.Marker({position: shopLocation, map: map});
+    var userMarker = new google.maps.Marker({position: userLocation, map: map});
+}
 
-initMap();
-
+ function initMapErr(positionErr){
+    var shopLocation = {lat: 40.77248001098633, lng: 14.789327621459961};
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 10, center: shopLocation});
+    var marker = new google.maps.Marker({position: shopLocation, map: map});
+}

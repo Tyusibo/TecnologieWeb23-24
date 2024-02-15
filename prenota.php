@@ -25,8 +25,7 @@ $_SESSION['redirect']=null;
                     oppure vai al tuo <a href="account.php">account</a> per gestire le tue prenotazioni.
                 </p>
                 <?php } else {  //se loggato ma non ha ancora effettuato una prenotazione
-                    echo "<h1>PRENOTA ORA</h1>";
-                    echo "<p>Ciao $_SESSION[username] !";?>
+                    echo "<h1>PRENOTA ORA</h1>";?>
                     
                     <div class="prenota_main">
                         <h2>SCEGLI IL TUO BARBIERE</h2>

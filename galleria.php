@@ -2,7 +2,9 @@
 <?php
 //buzz cut //french crop //curtains cut //Side Part Cut //MOHAWK cut
 session_start(); 
-$_SESSION['redirect']=null;  
+$_SESSION['redirect']=null;
+require "database/id.php"; 
+$id=getId($_SESSION['username']);  
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -18,7 +20,7 @@ $_SESSION['redirect']=null;
     <div style="height: 100px"></div>
     <div class="sezione1">
         <h1 id="gallery">I NOSTRI TAGLI</h1>
-        <button id="aggiungi" class="addbutt" onclick="preferenze()">Aggiungi Preferenza</button>
+        <?php echo "<button id='aggiungi' class='addbutt' onclick='preferenze($id)'>Aggiungi Preferenza</button>"; ?>
     </div>
     
 

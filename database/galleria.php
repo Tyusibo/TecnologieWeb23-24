@@ -3,7 +3,7 @@ session_start(); //essenziale per usare $_SESSION['username'] in setPreferenza
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["preferenza"])){
         $preferenza=$_POST["preferenza"];
-        if(isset($_POST["username"])){
+        if(isset($_POST["id"])){
             $id=$_POST["id"];
             setPreferenza($preferenza,$id);
         }
@@ -11,14 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }	
 
-function setPreferenza($preferenza){ 
-    $disponibile=preferenzePiene();
-
+function setPreferenza($preferenza,$id){ 
+    $disponibile=preferenzaDisponibile();
+    $pref = "pref_" . $disponibile;
+    echo "$pref";   
     require "connectionString.php"; 
     $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error()); 
-
-    $sql = "UPDATE utenti SET $disponibile = '$1' WHERE username = '$2'";
-    $ret=pg_query_params($db, $sql,array($preferenza, $_SESSION['username']));
+    
+    $sql = "UPDATE utenti SET $pref = $1 WHERE id_utente = $2";
+    $ret=pg_query_params($db, $sql,array($preferenza, $id));
 
     if(!$ret)   
         echo "ERRORE QUERY: " . pg_last_error($db);
@@ -29,6 +30,7 @@ function setPreferenza($preferenza){
 function controllaPreferenza($preferenza){ 
     require "connectionString.php"; 
     $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error()); 
+
     $sql = "SELECT pref_1,pref_2,pref_3 FROM utenti WHERE username=$1;";
     $ret=pg_query_params($db, $sql,array($_SESSION['username']));
     if(!$ret){

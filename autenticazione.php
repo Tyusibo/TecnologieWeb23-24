@@ -90,7 +90,6 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                     </div> 
                 </form>
                 <p>Non sei registrato?<button class="linkbutton" id="cliccaqui1">Registrati</button></p>
-                <script src="script/accedi.js"></script>
             </div>
             <div id="registrati">
                 <h3 class="title">Registrati</h3>
@@ -141,7 +140,6 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 </form>
                 <div class="horizontalflex spaced">
                     <p>Sei già registrato?<button class="linkbutton" id="cliccaqui2">Accedi</button></p>
-                    <script src="script/registrati.js"></script>
                 </div>
             </div>
         </div>  <!--Devo chiudere i 2 div container e whitebox-->

@@ -15,8 +15,10 @@ function stile(event){
             console.log(prova);
             if(prova[2]=="f"){
                 addPref.textContent="non scelto";
+                addPref.disabled=true;
             } else {
                 addPref.textContent="scelto";
+                addPref.disabled=false;
             }
             addPref.style.display="block";
             }
@@ -57,6 +59,17 @@ function all(){
 
 
 function preferenze(){
-    var elemnto = document.getElementsByClassName('active');
-    
+    var elemento = document.getElementsByClassName('active')[0];
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+            var addPref = document.getElementById('aggiungi');
+            addPref.textContent="Scelto ora";
+        };
+    }
+
+    xmlhttp.open("POST", "database/galleria.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("preferenza=" + elemento.value); 
+
 }

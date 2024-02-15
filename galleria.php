@@ -11,6 +11,7 @@ $_SESSION['redirect']=null;
     <title>Gentlemen's Cut Galleria</title>
     <link rel="stylesheet" type="text/css" href="CSS/galleria.css">
     <script src="script/galleria.js" crossorigin="anonymous"></script> 
+    <?php require "condiviso.php"; ?>
 </head>
 <body>
     <?php require "header.php"; ?>

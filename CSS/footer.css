@@ -92,28 +92,6 @@ a:hover{
   transition: all 0.5s ease;
 }
 
-.bottone{
-  cursor: pointer;
-  font-family: Times;
-  background-color: transparent;
-  z-index: 2;
-  font-size: 18px !important;
-  font-weight: 600;
-  justify-content: center;
-  color: #fa6400;
-  border: 1px solid #fa6400;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.bottone:hover{
-  z-index: 2;
-  color: white;
-  background-color: #fa6400;
-  transition: all 0.3s ease;
-}
-
-
 @media (max-width: 1350px) {
   .coll-1 {
       width: 200px;

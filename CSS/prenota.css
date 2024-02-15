@@ -1,16 +1,116 @@
 body{
     margin: 0px;
     padding: 0px;
+    background-color: black;
+    background-image: url(../img/white\ background.svg);
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: 450px;
+}
+h1{
+    color: white;
+    font-size: 64px;
+    text-align: center;
+}
+h2{
+    text-align: center;
+    font-size: 24px;
 }
 
+.prenota_main{
+    background-color: white;
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 400px;
+    margin-bottom: 70px;
+    align-content: center;
+    padding: 70px;
+    border: 1px solid transparent;
+    border-radius: 100px;
+}
+.barbieri{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.barbutton{
+    background-color: white;
+    font-weight: 600;
+    color: #ff8330;
+    border: 2px solid #ff8330;
+    border-radius: 100px;
+    width: 90px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+.barbutton:hover{
+    background-color: #ff8330;
+    color: white;
+}
+.date{
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.date > input{
+    padding: 10px;
+    cursor: pointer;
+    border: 0px;
+    font-size: 32px;
+    width: 200px;
+}
+#orari{
+    display: flex !important;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#orari button{
+    padding: 10px 15px 10px 15px;
+    font-size: 16px;
+    
+}
+
+
 .red{
-    background-color: red;
+    background-color: lightgray;
+    border: 0px;
 }
 
 .green{
-    background-color: green;
+    background-color: #ff8330;
+    cursor: pointer;
+    border: 0px;
 }
 
 .active{
-    background-color: yellow;
+    background-color: #ff8330;
+    color: white;
+}
+
+.freccia{
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+}
+#sinistra{
+    top: 11px;
+    left: -30px;
+    display: none;
+}
+#destra{
+    top: 15px;
+    right: -30px;
+}
+#datePicker {
+    position: relative;
+    display: inline-block;
+}
+
+#datePicker input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
 }

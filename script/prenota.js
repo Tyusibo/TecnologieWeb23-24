@@ -1,3 +1,4 @@
+
 document.getElementById("andrea").addEventListener("click", function() {
     mostraData("andrea");
 });
@@ -7,6 +8,8 @@ document.getElementById("rocco").addEventListener("click", function() {
 document.getElementById("francesco").addEventListener("click", function() {
     mostraData("francesco");
 });
+var prova=document.getElementById("andrea");
+prova.click();
 
 function mostraData(nome) {
     var andrea=document.getElementById("andrea"); andrea.classList.remove("active");   
@@ -70,4 +73,30 @@ function orari() {
 }
 
 
- 
+function precedente() {
+    var input = document.getElementById("date");
+    var date = new Date(input.value);
+    date.setDate(date.getDate() - 1);
+    input.valueAsDate = date;
+
+    //Disattivo freccia sinistra se non posso andare dietro ulteriormente
+    var dataAttuale = new Date();
+    if((date.getDate()) == dataAttuale.getDate() ){
+        var sinistra = document.getElementById('sinistra');
+        sinistra.style.display = 'none'; 
+    }
+    orari();
+}
+
+
+
+function prossimo() {
+    var input = document.getElementById("date");
+    var date = new Date(input.value);
+    date.setDate(date.getDate() + 1);
+    input.valueAsDate = date;
+    orari();
+
+    var sinistra = document.getElementById('sinistra');
+    sinistra.style.display = 'block';
+}

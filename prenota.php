@@ -24,16 +24,25 @@ $_SESSION['redirect']=null;
                     oppure vai al tuo <a href="account.php">account</a> per gestire le tue prenotazioni.
                 </p>
                 <?php } else {  //se loggato ma non ha ancora effettuato una prenotazione
-                    echo "<p>Ciao $_SESSION[username] !";?>    
-                    <p>Scegli il tuo barbiere</p>
-                    <button id="andrea">Andrea</button>
-                    <button id="rocco">Rocco</button>
-                    <button id="francesco">Francesco</button>
-                    <div id="datePicker" style="display: none;">
-                        <?php $data=date("Y-m-d"); /*fa vedere il formato giusto*/ ?>  
-                        <input type="date" onchange=orari() id="date" value="<?php echo $data ?>" name="data" min="<?php echo date('d-m-Y'); ?>" max="<?php echo date('d-m-Y', strtotime('+1 week')); ?> ">
+                    echo "<h1>PRENOTA ORA</h1>";
+                    echo "<p>Ciao $_SESSION[username] !";?>
+                    
+                    <div class="prenota_main">
+                        <h2>SCEGLI IL TUO BARBIERE</h2>
+                        <div class="barbieri">
+                            <button class="barbutton" id="andrea">Andrea</button>
+                            <button class="barbutton" id="rocco">Rocco</button>
+                            <button class="barbutton" id="francesco">Francesco</button>
+                        </div>
+                        <div class="date" id="datePicker" >
+                            <?php $data=date("Y-m-d"); /*fa vedere il formato giusto*/ ?>  
+                            <input type="date" onchange=orari() id="date" value="<?php echo $data ?>" name="data" min="<?php echo $data; ?>" max="<?php echo date('d-m-Y', strtotime('+1 week')); ?> " readonly>
+                            <span class="freccia" id="sinistra" onclick="precedente()">&#9664;</span>
+                            <span class="freccia" id="destra" onclick="prossimo()">&#9654;</span>
+                        </div>
+                        <div id="orari"></div> <!--Gli orari si possono gestire nel css con .orari ul-->
+
                     </div>
-                    <div id="orari"></div> <!--Gli orari si possono gestire nel css con .orari ul-->
                         
         <?php } //parentesi dell'else ?>  
     

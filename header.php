@@ -43,7 +43,6 @@
                         ?>
                     </span>
                 </div>
-                <!--30 px a sinistra perchè la foto è ritagliata male-->
             </div>
         </div>
 </header>

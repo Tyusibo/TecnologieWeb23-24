@@ -30,7 +30,13 @@
 
 .footer a{
   text-decoration: none;
-  color: #848788
+  color: #848788;
+  transition: all 0.5s ease;
+}
+
+.footer a:hover{
+  color: #fa6400;
+  transition: all 0.5s ease;
 }
 
 .fa.ficon{
@@ -85,11 +91,6 @@
 }
 .footer form{
   margin-block-start: 1em;
-}
-
-a:hover{
-  color: #fa6400;
-  transition: all 0.5s ease;
 }
 
 @media (max-width: 1350px) {

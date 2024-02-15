@@ -6,7 +6,28 @@ function stile(event){
         img.style.display = 'block';
     });
     event.target.classList.add('active');
+    var addPref = document.getElementById('aggiungi');
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+            var prova = this.responseText;
+            console.log(prova);
+            if(prova[2]=="f"){
+                addPref.textContent="non scelto";
+            } else {
+                addPref.textContent="scelto";
+            }
+            addPref.style.display="block";
+            }
+        };
+
+    xmlhttp.open("POST", "database/galleria.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("preferenza=" + event.target.textContent); 
+
 }
+
 
 function dispAll(){
     all();
@@ -30,6 +51,8 @@ function all(){
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    var addPref = document.getElementById('aggiungi');
+    addPref.style.display="none";
 }
 
 

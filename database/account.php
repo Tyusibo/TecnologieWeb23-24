@@ -96,8 +96,6 @@
 	function cancellaPreferenza($preferenza,$id){ 
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error()); 
-		echo $preferenza; 
-		echo $id; 
 		$sql = "UPDATE utenti SET $preferenza = $1 WHERE id_utente = $2";
 		$ret=pg_query_params($db, $sql,array(NULL,$id));
 		if(!$ret) {     

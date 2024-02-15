@@ -3,10 +3,12 @@ session_start(); //essenziale per usare $_SESSION['username'] in setPreferenza
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["preferenza"])){
         $preferenza=$_POST["preferenza"];
-        setPreferenza($preferenza);
-    }	
-    else
-        preferenzePiene();	
+        if(isset($_POST["username"])){
+            $id=$_POST["id"];
+            setPreferenza($preferenza,$id);
+        }
+        controllaPreferenza($preferenza);
+    }
 }	
 
 function setPreferenza($preferenza){ 

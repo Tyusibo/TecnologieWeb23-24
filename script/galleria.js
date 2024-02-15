@@ -58,7 +58,7 @@ function all(){
 }
 
 
-function preferenze(){
+function preferenze(id){
     var elemento = document.getElementsByClassName('active')[0];
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
@@ -70,6 +70,6 @@ function preferenze(){
 
     xmlhttp.open("POST", "database/galleria.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("preferenza=" + elemento.value); 
+    xmlhttp.send("preferenza=" + elemento.value + "&id=" + id); 
 
 }

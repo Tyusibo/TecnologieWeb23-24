@@ -53,7 +53,6 @@ function cancellaPrenotazione(barbiere,id){
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
             window.location.href = "account.php";
-            sezioni(2);
             }
         };
 
@@ -61,6 +60,20 @@ function cancellaPrenotazione(barbiere,id){
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("barbiere=" + barbiere + "&id=" + id); 
  }
+
+ function cancellaPreferenza(preferenza,id){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            }
+        };
+
+    xmlhttp.open("POST", "database/account.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("preferenza=" + preferenza + "&id=" + id); 
+ }
+
 
 
 

@@ -122,3 +122,42 @@ nav ul li a {
     border-radius: 10px;
     text-align: center;
 }
+
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /*popup*/
+  .popup .popuptext {
+    visibility: hidden;
+    min-width: 160px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 20px;
+    position: absolute;
+    z-index: 1;
+    top: 130%;
+    right: -25%;
+    margin-left: -80px;
+  }
+  
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 6%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent white transparent;
+  }
+
+  .popup .show {
+    visibility: visible;
+    animation: fadeIn 1s;
+  }

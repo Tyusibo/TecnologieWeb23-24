@@ -67,6 +67,12 @@
 			$barbiere=$_POST["barbiere"];
 			$id=$_POST["id"];
 			cancellaPrenotazione($barbiere,$id);
+		} else {
+			if(isset($_POST["preferenza"])&& isset($_POST["id"])){
+				$preferenza=$_POST["preferenza"];
+				$id=$_POST["id"];
+				cancellaPreferenza($preferenza,$id);	
+			}
 		}
 	}
 
@@ -76,6 +82,22 @@
 		$nome_tabella = "prenotazioni_" . $barbiere;
         $sql = "DELETE FROM $nome_tabella WHERE id_prenotazione = $1";
 		$ret=pg_query_params($db, $sql,array($id));
+		if(!$ret) {     
+			echo "ERRORE QUERY: " . pg_last_error($db);
+			pg_close($db);
+			return false; 
+		}
+		else{
+			pg_close($db);
+			return; 	
+		}		
+	}
+
+	function cancellaPreferenza($preferenza,$id){ 
+		require "connectionString.php"; 
+		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error()); 
+		$sql = "UPDATE utenti SET $preferenza = $1 WHERE id_utente = $2";
+		$ret=pg_query_params($db, $sql,array(NULL,$id));
 		if(!$ret) {     
 			echo "ERRORE QUERY: " . pg_last_error($db);
 			pg_close($db);

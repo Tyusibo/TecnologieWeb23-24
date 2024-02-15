@@ -17,7 +17,7 @@ $_SESSION['redirect']=null;
     <div style="height: 100px"></div>
     <div class="sezione1">
         <h1 id="gallery">I NOSTRI TAGLI</h1>
-        <button class="addbutt" onclick="preferenze()">Aggiungi Preferenza</button>
+        <button id="aggiungi" class="addbutt" onclick="preferenze()">Aggiungi Preferenza</button>
     </div>
     
 

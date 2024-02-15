@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script> <!--per le icone-->
+<script src="script/header.js"></script>  
 
 <header class="headertransition sticky" id="myHeader">
         <div class="header">
@@ -33,13 +34,22 @@
                 </nav>  
             </div>
             <div class="colonna3"> 
-                <a href="account.php" class="account"i onmouseover="showRectangle()"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
+                <div class="account popup" onmouseover="showRectangle()"><a href="account.php"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
+                    <span class="popuptext" id="myPopup"> 
+                        <?php   if(isset($_SESSION['username']) )
+                                    echo "Benvenuto, " . $_SESSION['username'];
+                                else
+                                    echo "Non sei ancora Loggato";
+                        ?>
+                    </span>
+                </div>
                 <!--30 px a sinistra perchè la foto è ritagliata male-->
             </div>
         </div>
 </header>
 <script src="script/stickyHeader.js"></script>  <!--Se messi prima non funzioneranno perchè non conosceranno gli id-->
 <script src="script/scroll.js"></script>  
+
 
 
 

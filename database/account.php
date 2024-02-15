@@ -90,7 +90,8 @@
 		else{
 			pg_close($db);
 			return; 	
-		}		
+		}	
+		$_SESSION['mode']="prenotazione";	
 	}
 
 	function cancellaPreferenza($preferenza,$id){ 

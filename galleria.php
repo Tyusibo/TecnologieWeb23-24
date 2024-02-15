@@ -3,8 +3,11 @@
 //buzz cut //french crop //curtains cut //Side Part Cut //MOHAWK cut
 session_start(); 
 $_SESSION['redirect']=null;
-require "database/id.php"; 
-$id=getId($_SESSION['username']);  
+require "database/id.php";  
+if(isset($_SESSION['username']))
+    $id=getId($_SESSION['username']);  
+else
+    $id="a";
 ?>
 <html lang="it" dir="ltr">
 <head>

@@ -76,6 +76,12 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                             $nessunaPreferenza=true;
                             $i=1;
                             $numeroPrefenze=4;
+                            $nome = array();
+                            while($i<$numeroPrefenze){
+                                if(isset($preferenze["pref_".$i.""]))
+                                    
+                                $i+=1;
+                                }  
                             while($i<$numeroPrefenze){
                             echo "<p>Preferenza ".$i.": " . (isset($preferenze["pref_".$i.""]) ? $preferenze["pref_".$i.""] : "non espressa") . "<button onclick='cancellaPreferenza(\"pref_".$i."\", $id)'>Cancella</button></p>"
                             ;

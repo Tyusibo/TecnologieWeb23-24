@@ -73,20 +73,24 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                             echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
                             <p><a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi";
                         } else {
-                            $nessunaPreferenza=true;
                             $i=1;
                             $numeroPrefenze=4;
                             $nome = array();
                             while($i<$numeroPrefenze){
                                 if(isset($preferenze["pref_".$i.""]))
-                                    
+                                    $nome[$i]=$i;    
                                 $i+=1;
-                                }  
-                            while($i<$numeroPrefenze){
-                            echo "<p>Preferenza ".$i.": " . (isset($preferenze["pref_".$i.""]) ? $preferenze["pref_".$i.""] : "non espressa") . "<button onclick='cancellaPreferenza(\"pref_".$i."\", $id)'>Cancella</button></p>"
-                            ;
-                            $i+=1;
-                            }                 
+                                } 
+                            $i=0; 
+                            if(empty($nome))
+                                echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
+                                <p><a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi"; 
+                            else 
+                                foreach($nome as $i){
+                                echo "<p>Preferenza ".$i.": " . (isset($preferenze["pref_".$i.""]) ? $preferenze["pref_".$i.""] : "non espressa") . "<button onclick='cancellaPreferenza(\"pref_".$i."\", $id)'>Cancella</button></p>"
+                                ;
+                                $i+=1;
+                                }                 
                         }
                         ?>
                     </section>

@@ -15,10 +15,10 @@ function stile(event){
             console.log(prova);
             if(prova[2]=="f"){
                 addPref.textContent="non scelto";
-                addPref.disabled=true;
+                addPref.disabled=false;
             } else {
                 addPref.textContent="scelto";
-                addPref.disabled=false;
+                addPref.disabled=true;
             }
             addPref.style.display="block";
             }
@@ -27,7 +27,6 @@ function stile(event){
     xmlhttp.open("POST", "database/galleria.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("preferenza=" + event.target.textContent); 
-
 }
 
 
@@ -58,18 +57,19 @@ function all(){
 }
 
 
-function preferenze(){
-    var elemento = document.getElementsByClassName('active')[0];
+function preferenze(id){
+    var elemento = document.getElementsByClassName('active');
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
+            console.log(this.textContent);
             var addPref = document.getElementById('aggiungi');
-            addPref.textContent="Scelto ora";
+            addPref.textContent="Scelto";
+            addPref.disabled=true;
         };
     }
 
     xmlhttp.open("POST", "database/galleria.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("preferenza=" + elemento.value); 
-
+    xmlhttp.send("preferenza=" + elemento[0].textContent  + "&id=" + id); 
 }

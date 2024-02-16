@@ -45,7 +45,6 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
                         ?>
                     </span>
                 </div>
-                <!--30 px a sinistra perchè la foto è ritagliata male-->
             </div>
         </div>
 </header>

@@ -8,12 +8,15 @@ $_SESSION['redirect']=null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Homepage</title>
+    
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
     <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=initMap">
+    <script defer src="script/homepage.js"></script>
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=geoloc"> //geoloc viene eseguito al termine del parse dell'intera pagina grazie a defer
     </script>
     
+    <?php require "condiviso.php"; ?>
 </head>
 
 <body>
@@ -133,7 +136,6 @@ $_SESSION['redirect']=null;
         </div>
     </section>
 
-    <script defer src="script/homepage.js"></script>
     <?php require "footer.php"; ?> 
 
 </body>

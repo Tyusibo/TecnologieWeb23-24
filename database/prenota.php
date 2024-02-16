@@ -19,8 +19,8 @@
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
 		$nome_tabella = "prenotazioni_" . $barbiere;
-		$sql = "INSERT INTO " . $nome_tabella . " (data_appuntamento, orario_appuntamento, messaggio, id_utente) VALUES ($1,$2,$3,$4);";
-		$ret=pg_query_params($db, $sql,array($data,$orario,"messaggio",$id));
+		$sql = "INSERT INTO " . $nome_tabella . " (data_appuntamento, orario_appuntamento, id_utente) VALUES ($1,$2,$3);";
+		$ret=pg_query_params($db, $sql,array($data,$orario,$id));
 		if(!$ret)   
 			echo "ERRORE QUERY: " . pg_last_error($db);
 		pg_close($db);

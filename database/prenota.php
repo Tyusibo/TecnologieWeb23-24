@@ -55,7 +55,10 @@
 					if (in_array($ora_confronto, $orari_prenotati)) {
 						echo '<button class="red" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
 					} else {
-						echo '<button onclick="prenota(event)" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';  
+						if(isset($_SESSION['username']))
+							echo '<button onclick="prenota(event)" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';  
+						else
+							echo '<button onclick="popup()" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
 					}
 				}
 				pg_close($db);

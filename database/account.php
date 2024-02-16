@@ -20,7 +20,7 @@
 		$nome_tabella = "prenotazioni_" . $barbiere;
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
-		$sql = "SELECT id_prenotazione, data_appuntamento,orario_appuntamento FROM " . $nome_tabella . "  WHERE id_utente AND data_appuntamento >= $2  = $1 ORDER BY data_appuntamento, orario_appuntamento;";
+		$sql = "SELECT id_prenotazione, data_appuntamento,orario_appuntamento FROM " . $nome_tabella . "  WHERE id_utente=$1 AND data_appuntamento >= $2  ORDER BY data_appuntamento, orario_appuntamento;";
 		$ret=pg_query_params($db, $sql,array($id,$data_odierna));
 		if(!$ret) {     
 			echo "ERRORE QUERY: " . pg_last_error($db);

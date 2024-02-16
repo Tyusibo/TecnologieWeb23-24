@@ -5,6 +5,8 @@
   color: white;
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 .footer li{
   margin-bottom: 20px;
@@ -17,7 +19,7 @@
   font-weight: 500;
 }
 
-.copy{
+.footer .copy{
   display: flex;
   justify-content: space-between;
   color: #848788;
@@ -39,13 +41,13 @@
   transition: all 0.5s ease;
 }
 
-.fa.ficon{
+.footer .fa.ficon{
   margin-left: 15px;
   font-size: 24px;
 }
 
 
-.fprinc{
+.footer .fprinc{
   padding: 100px;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -54,29 +56,29 @@
   justify-content: space-between;
 }
 
-.coll-1{
+.footer .col-1{
   display: flex;
   flex-direction: column;
   width: 15%;
   margin-top: 12px;
 }
-.coll-2{
+.footer .col-2{
   display: flex;
   flex-direction: column;
   width: 20%;
 }
-.coll-3{
+.footer .col-3{
   display: flex;
   flex-direction: column;
   width: 15%;
 }
-.coll-4{
+.footer .col-4{
   display: flex;
   flex-direction: column;
   width: 30%;
 }
 
-.fform{
+.footer .fform{
   color: white;
   width: 90%;
   max-width: 90%;
@@ -86,7 +88,7 @@
   margin-bottom: 20px;
   resize: none;
 }
-.fform::placeholder{
+.footer .fform::placeholder{
   color: white;
 }
 .footer form{
@@ -94,24 +96,24 @@
 }
 
 @media (max-width: 1350px) {
-  .coll-1 {
+  .footer .col-1 {
       width: 200px;
   }
 }
 @media (max-width: 1000px) {
-  .fprinc{
+  .footer .fprinc{
     flex-wrap: wrap;
   }
-  .coll-1 {
+  .footer .col-1 {
       width: 50%;
   }
-  .coll-2 {
+  .footer .col-2 {
     width: 50%;
   }
-  .coll-3 {
+  .footer .col-3 {
     width: 50%;
   }
-  .coll-4 {
+  .footer .col-4 {
     width: 50%;
   }
 }

@@ -15,8 +15,6 @@ $_SESSION['redirect']=null;
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=geoloc"> //geoloc viene eseguito al termine del parse dell'intera pagina grazie a defer
     </script>
-    
-    <?php require "condiviso.php"; ?>
 </head>
 
 <body>
@@ -27,7 +25,7 @@ $_SESSION['redirect']=null;
         <div class="div_home">
             <h1 id="welcome">Benvenuto da Gentlemen's Cut</h1>
             <h2 class="welcome2">"Dove l'eleganza incontra la precisione"</h2>
-            <a href="#" class="btn">
+            <a href="prenota.php" class="btn">
                 <span>Prenota Subito</span>
             </a>
         </div>

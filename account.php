@@ -24,13 +24,13 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                 <section id="lista">
                     <?php 
                     $nome=getNome($_SESSION["username"]);
-                    echo "<p>Benvenuto $nome !";?>
+                    echo "<p>Benvenuto $nome!";?>
                     <nav>
                         <ul>
                             <li><p id="dati">I miei dati</p></li>
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
                             <li><p id="preferenze">Le mie preferenze</p></li>
-                            <li><p id="esci">Premi <button id="esci">qui</button> per uscire</p></li> 
+                            <li><p id="esci">Premi <button class="linkbutton" id="esci">qui</button> per uscire</p></li> 
                         </ul>
                     </nav>           
                 </section>
@@ -52,11 +52,15 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                         if($prenotazioni){
                             $nessunaPrenotazione=false;
                             echo "<p>Barbiere: $barbiere</p>";
+                            echo "<div class=\"flex\">";
                             while ($row = pg_fetch_assoc($prenotazioni)) {
+                                echo "<div class=\"card\">";
                                 echo "<p>Data: " . $row["data_appuntamento"] . "</p>";
                                 echo "<p>Orario: " . substr($row["orario_appuntamento"], 0, 5) . "</p>";
-                                echo "<button onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
+                                echo "<button class=\"cancbutton\" onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
+                                echo "</div>";
                             }
+                            echo "</div>";
                         }
                     }
 

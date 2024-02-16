@@ -19,6 +19,56 @@ body{
     box-shadow: 10px 10px 30px;
 }
 
+ul{
+    padding: 0;
+}
+
+li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li p{
+    cursor: pointer;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card{
+    flex-shrink: 0;
+    background-color: rgb(224, 224, 224);
+    border: 1px solid #fa6400;
+    border-radius: 3px;
+    padding: 10px   ;
+}
+
+.card p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancbutton{
+    padding: 5px 20px;
+    margin: 0 auto 8px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+        background-color: #fa6400;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: "Bitter", "Palatino Linotype", Times;
+}
+
 #sezionePrenotazioni{
     display: none; 
 }

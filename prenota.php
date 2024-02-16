@@ -9,14 +9,13 @@ $_SESSION['redirect']=null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Prenota</title>  
     <link rel="stylesheet" type="text/css" href="css/prenota.css">
-    <?php require "condiviso.php"; ?>
 </head>
 <body>
     <?php require "header.php"; ?>
     <div style="height: 100px"></div>
     <?php
     if(empty($_SESSION['username'])){  //se non loggato ?>
-        <p>Pagina riservata agli utenti autenticati. <br/> 
+        <p id = "noLog">Pagina riservata agli utenti autenticati. <br/> 
             Effettua l'<button id="accedi">accesso</button> oppure la <button id="registrati">registrazione</button> per continuare.
         </p>
         <?php } else /*se loggato*/if ($_SERVER["REQUEST_METHOD"] == "POST") {  //se hai effettuato una prenotazione ?>

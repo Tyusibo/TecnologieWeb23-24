@@ -1,15 +1,76 @@
+/* CSS condiviso da tutte le pagine */
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Bitter", "Palatino Linotype", Times;
+}
+
+.bottone{
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 2;
+    font-size: 18px !important;
+    font-weight: 600;
+    justify-content: center;
+    color: #fa6400;
+    border: 1px solid #fa6400;
+    border-radius: 5px;
+    padding: 13px 23px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: "Bitter", "Palatino Linotype", Times;
+}
+
+.bottone:hover{
+    z-index: 2;
+    color: white;
+    background-color: #fa6400;
+    transition: all 0.3s ease;
+}
+
+.btn{
+    z-index: 2;
+    align-items: center;
+    background-color: #fa6400;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    margin: 0;
+    padding: 13px 23px;
+    text-decoration: none;
+    font-family: "Bitter", "Palatino Linotype", Times;
+}
+
+.linkbutton{
+    color: #fa6400;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: "Bitter", "Palatino Linotype", Times;
+    font-size: 16px;
+}
+
+/* CSS specifico dell'header */
+
 .headertransition{
     transition: all ease 0.5s;
 }
 
-.sticky {
+.headerfixed {
     z-index: 200;
     position: fixed;
     top: 0;
     width: 100%;
 }
 
-.header{
+.headerflex{
     display: flex;
     padding-left: 30px;
     padding-right: 30px;
@@ -23,13 +84,13 @@
     margin-right: 100px;
 }
 
-nav ul {
+header nav ul {
     margin: 0;
     padding: 0;
     z-index: 2;
 }
 
-nav ul li {
+header nav ul li {
     display: inline-block;
     margin-left: 0px;
     margin-right: 20px;
@@ -38,46 +99,26 @@ nav ul li {
     font-size: 18px;
 }
 
-nav ul li a {
+header nav ul li a {
     color: #ffffff;
     text-decoration: none;
     z-index: 2;
     transition: all 0.5s ease;
 }
 
-nav ul li a:hover{
+header nav ul li a:hover{
     color: #fa6400;
     transition: all 0.5s ease;
 }
 
-.bottone{
-    cursor: pointer;
-    background-color: transparent;
-    z-index: 2;
-    font-size: 18px !important;
-    font-weight: 600;
-    justify-content: center;
-    color: #fa6400;
-    border: 1px solid #fa6400;
-    border-radius: 5px;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .bottone:hover{
-    z-index: 2;
-    color: white;
-    background-color: #fa6400;
-    transition: all 0.3s ease;
-  }
-
-.colonna1{
+header .colonna1{
     width: 15%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
-.colonna2{
+
+header .colonna2{
     width: 70%;
     flex: 1;
     display: flex;
@@ -85,14 +126,15 @@ nav ul li a:hover{
     flex-wrap: nowrap;
     justify-content: center;
 }
-.colonna3{
+
+header .colonna3{
     width: 15%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-#navlist{
+header #navlist{
     white-space: nowrap;
 }
 
@@ -103,30 +145,30 @@ nav ul li a:hover{
     margin-left: 30px;
 }
 
-.account{
+header .account{
     align-self: center;
 }
 
 @media (max-width: 1150px) {
-    .colonna1 {
+    header .colonna1 {
         width: 230px;
     }
 }
 
 @media (max-width: 940px) {
-    #chisiamo_h {
+    header #chisiamo_h {
         display: none;
     }
 }
 
 @media (max-width: 835px) {
-    #contattaci_h {
+    header #contattaci_h {
         display: none;
     }
 }
 
 @media (max-width: 730px) {
-    #servizi_h {
+    header #servizi_h {
         display: none;
     }
 }

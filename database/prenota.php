@@ -58,7 +58,7 @@
 						if(isset($_SESSION['username']))
 							echo '<button onclick="prenota(event)" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';  
 						else
-							echo '<button onclick="popup()" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
+							echo '<button onclick="apriPopup()" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
 					}
 				}
 				pg_close($db);

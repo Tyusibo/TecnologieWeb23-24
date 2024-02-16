@@ -105,3 +105,8 @@ function apriPopup() {
     var popup = document.getElementById("popup-prenota");
     popup.style.display = "flex"; // Mostra il popup
 }
+
+function chiudiPopup(){
+    var popup = document.getElementById("popup-prenota");
+    popup.style.display = "none"; // Mostra il popup
+}

@@ -37,7 +37,8 @@ $_SESSION['redirect']=null;
 
     <div class="popup-sfondo" id="popup-prenota">
         <div class="popup-contenuto">
-            <p>Per effettuare una prenotazione, è necessario autenticarsi.</p> 
+            <span class="popup-chiudi" onclick="chiudiPopup()">X</span>
+            <p style="margin-top: 50px">Per effettuare una prenotazione, è necessario autenticarsi.</p> 
             <p class="p-bottoni"><button class="barbutton no-margin" id="accedi">Accedi</button> <button class="barbutton no-margin" id="registrati">Registrati</button></p>
         </div>
     </div>

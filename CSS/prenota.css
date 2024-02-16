@@ -146,3 +146,10 @@ h2{
     padding: 40px;
 }
 
+.popup-chiudi{
+    position: fixed;
+    right: 35%;
+    color: rgb(144, 144, 144);
+    cursor: pointer;
+}
+

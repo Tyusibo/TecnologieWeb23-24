@@ -37,8 +37,8 @@ $_SESSION['redirect']=null;
     
     <div class="popup-sfondo" id="popup-prenota">
         <div class="popup-contenuto">
-            <span class="popup-chiudi" onclick="chiudiPopup()">X</span>
-            <p style="margin-top: 50px">Per effettuare una prenotazione, è necessario autenticarsi.</p> 
+            <div class="chiudiflex"><span class="popup-chiudi" onclick="chiudiPopup()">&#215;</span></div>
+            <p id="noLog">Per effettuare una prenotazione è necessario autenticarsi.</p> 
             <p class="p-bottoni"><button class="barbutton no-margin" id="accedi">Accedi</button> <button class="barbutton no-margin" id="registrati">Registrati</button></p>
         </div>
     </div>  
@@ -47,7 +47,7 @@ $_SESSION['redirect']=null;
     
     <div class="popup-sfondo" id="popup-prenotazione">
         <div class="popup-contenuto">
-            <span class="popup-chiudi" onclick="chiudiPopupPrenota()">X</span>
+            <div class="chiudiflex"><span class="popup-chiudi" onclick="chiudiPopupPrenota()">&#215;</span></div>
             <p class="effettuata">Prenotazione effettuata con successo ✓</p>
             <p class="p-bottoni"><button class="barbutton no-margin black" onclick="chiudiPopupPrenota()">Nuova Prenotazione</button> <button class="barbutton no-margin black" onclick="redirectAccount()">Vedi Prenotazioni</button></p>
         </div>

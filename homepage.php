@@ -122,12 +122,19 @@ $_SESSION['redirect']=null;
         <h1>LE NOSTRE PROPOSTE</h1>
         <div class="galleria">
             <div class="galleria_in">
-                <img src="img/barber_bg.jpeg" alt="Immagine 1">
-                <img src="img/barber_bg.jpeg" alt="Immagine 2">
-                <img src="img/barber_bg.jpeg" alt="Immagine 3">
-                <img src="img/barber_bg.jpeg" alt="Immagine 4">
-                <img src="img/barber_bg.jpeg" alt="Immagine 5">
-                <img src="img/barber_bg.jpeg" alt="Immagine 6">
+            <?php 
+            if(isset($_SESSION["username"])){
+                    require "database/homepage.php";
+                    getPreferenze($_SESSION["username"]);
+            } else {
+                    echo"<img src=img/barber_bg.jpeg alt=Immagine 1>";
+                    echo"<img src=img/barber_bg.jpeg alt=Immagine 2>";
+                    echo"<img src=img/barber_bg.jpeg alt=Immagine 3>";
+                    echo"<img src=img/barber_bg.jpeg alt=Immagine 4>";
+                    echo"<img src=img/barber_bg.jpeg alt=Immagine 5>";
+                    echo"<img src=img/barber_bg.jpeg alt=Immagine 6>";
+            }
+            ?>
             </div>
             <div class="freccia dietro"><i class="fa-solid fa-arrow-left"></i></div>
             <div class="freccia avanti"><i class="fa-solid fa-arrow-right"></i></div>

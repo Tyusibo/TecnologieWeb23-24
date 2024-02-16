@@ -34,9 +34,9 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                         </ul>
                     </nav>           
                 </section>
-                <section id="sezioni">  <!--Per ora ho messo che questa sezione che le contiene tutte ed è float:right-->
+                <section id="sezioni"> 
                     <section id="sezioneDati">
-                        <?php $dati=getDati($_SESSION["username"]);?>
+                        <?php getDati($_SESSION["username"]);?>
                     </section>
                     <section id="sezionePrenotazioni">
                     <?php

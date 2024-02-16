@@ -14,39 +14,49 @@ $_SESSION['redirect']=null;
     <?php require "header.php"; ?>
     <div style="height: 100px"></div>
     <?php
-    if(empty($_SESSION['username'])){  //se non loggato ?>
-        <p id = "noLog">Pagina riservata agli utenti autenticati. <br/> 
-            Effettua l'<button id="accedi">accesso</button> oppure la <button id="registrati">registrazione</button> per continuare.
-        </p>
-        <?php } else /*se loggato*/if ($_SERVER["REQUEST_METHOD"] == "POST") {  //se hai effettuato una prenotazione ?>
-                <p>Prenotazione effettuata con successo!
-                    Clicca <a href="prenota.php">qui</a> per effettuarne un'altra
-                    oppure vai al tuo <a href="account.php">account</a> per gestire le tue prenotazioni.
-                </p>
-                <?php } else {  //se loggato ma non ha ancora effettuato una prenotazione
-                    echo "<h1>PRENOTA ORA</h1>";?>
-                    
-                    <div class="prenota_main">
-                        <h2>SCEGLI IL TUO BARBIERE</h2>
-                        <div class="barbieri">
-                            <button class="barbutton" id="andrea">Andrea</button>
-                            <button class="barbutton" id="rocco">Rocco</button>
-                            <button class="barbutton" id="francesco">Francesco</button>
-                        </div>
-                        <div class="date" id="datePicker" >
-                            <?php $data=date("Y-m-d"); /*fa vedere il formato giusto*/ ?>  
-                            <input type="date" onchange=orari() id="date" value="<?php echo $data ?>" name="data" min="<?php echo $data; ?>" max="<?php echo date('d-m-Y', strtotime('+1 week')); ?> " readonly>
-                            <span class="freccia" id="sinistra" onclick="precedente()">&#9664;</span>
-                            <span class="freccia" id="destra" onclick="prossimo()">&#9654;</span>
-                        </div>
-                        <div id="orari"></div> <!--Gli orari si possono gestire nel css con .orari ul-->
-
-                    </div>
-                        
-        <?php } //parentesi dell'else ?>  
+   
+    echo "<h1>PRENOTA ORA</h1>";?>
     
+    <div class="prenota_main">
+        <h2>SCEGLI IL TUO BARBIERE</h2>
+        <div class="barbieri">
+            <button class="barbutton" id="andrea">Andrea</button>
+            <button class="barbutton" id="rocco">Rocco</button>
+            <button class="barbutton" id="francesco">Francesco</button>
+        </div>
+        <div class="date" id="datePicker" >
+            <?php $data=date("Y-m-d"); /*fa vedere il formato giusto*/ ?>  
+            <input type="date" onchange=orari() id="date" value="<?php echo $data ?>" name="data" min="<?php echo $data; ?>" max="<?php echo date('d-m-Y', strtotime('+1 week')); ?> " readonly>
+            <span class="freccia" id="sinistra" onclick="precedente()">&#9664;</span>
+            <span class="freccia" id="destra" onclick="prossimo()">&#9654;</span>
+        </div>
+        <div id="orari"></div> <!--Gli orari si possono gestire nel css con .orari ul-->
+
+    </div>    
+
+    
+    <div class="popup-sfondo" id="popup-prenota">
+        <div class="popup-contenuto">
+            <span class="popup-chiudi" onclick="chiudiPopup()">X</span>
+            <p style="margin-top: 50px">Per effettuare una prenotazione, è necessario autenticarsi.</p> 
+            <p class="p-bottoni"><button class="barbutton no-margin" id="accedi">Accedi</button> <button class="barbutton no-margin" id="registrati">Registrati</button></p>
+        </div>
+    </div>  
+
+
+    
+    <div class="popup-sfondo" id="popup-prenotazione">
+        <div class="popup-contenuto">
+            <span class="popup-chiudi" onclick="chiudiPopupPrenota()">X</span>
+            <p class="effettuata">Prenotazione effettuata con successo ✓</p>
+            <p class="p-bottoni"><button class="barbutton no-margin black" onclick="chiudiPopupPrenota()">Nuova Prenotazione</button> <button class="barbutton no-margin black" onclick="redirectAccount()">Vedi Prenotazioni</button></p>
+        </div>
+	</div>
+
     <?php require "footer.php";?>
     <script src="pagineAusiliarie/redirect.js"></script>
     <script src="script/prenota.js"></script>
+
+
 </body>
 </html>

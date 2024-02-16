@@ -39,17 +39,11 @@ else
         </div>
         <div class="gal-2">
             <?php 
-            
-                for($i = 1; $i<6; $i++)
-                    echo '<img  class="galimg buzz" src="img/gallery/img'.$i.'.jpg" >' ;
-                for($i = 6; $i<11; $i++)
-                    echo '<img  class="galimg french" src="img/gallery/img'.$i.'.jpg" >' ;
-                for($i = 11; $i<16; $i++)
-                    echo '<img  class="galimg curtains" src="img/gallery/img'.$i.'.jpg" >' ;
-                for($i = 16; $i<21; $i++)
-                    echo '<img  class="galimg side" src="img/gallery/img'.$i.'.jpg" >' ;
-                for($i = 21; $i<26; $i++)
-                    echo '<img  class="galimg mohawk" src="img/gallery/img'.$i.'.jpg" >' ;
+                $stili = array("BUZZ CUT","FRENCH CROP","CURTAINS","SIDE PART","MOHAWK");
+                $stili_classi = array("buzz","french","curtains","side","mohawk");
+                for($i = 0; $i<5; $i++)
+                    for($j = 1; $j<6; $j++)
+                        echo '<img  class="galimg '.$stili_classi[$i].'" src="img/gallery/'.$stili[$i].'/img'.$j.'.jpg" >' ;
 
             ?>
         </div>

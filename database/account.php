@@ -10,36 +10,55 @@
 			return false; 
 		}
 		else{
+			$row=pg_fetch_assoc($ret); 
+			echo "<p>Il tuo nome: $row[nome]</p>";
+			echo "<p>Il tuo cognome: $row[cognome]</p>";
+			echo "<p>La tua email:  $row[username]</p>";
+			echo "<p>Il tuo numero: $row[numero]</p>";
 			pg_close($db);
-			return pg_fetch_assoc($ret); 	
+			return; 	
 		}	
    	}
 
-	function getPrenotazioni($id,$barbiere){ 
+	function getPrenotazioni($id){ 
+		$nome = array("andrea","rocco","francesco");
+	   	$nessunaPrenotazione = false;
+		$data_odierna = date('Y-m-d'); 
 		require "connectionString.php"; 
-		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error()); 
-		$nome_tabella = "prenotazioni_" . $barbiere;
-		$sql = "SELECT id_prenotazione, data_appuntamento,orario_appuntamento FROM " . $nome_tabella . "  WHERE id_utente = $1 ORDER BY data_appuntamento, orario_appuntamento;";
-		$ret=pg_query_params($db, $sql,array($id));
-		if(!$ret) {     
-			echo "ERRORE QUERY: " . pg_last_error($db);
-			pg_close($db);
-			return false; 
-		}
-		else{
-			if(pg_num_rows($ret)==0)
-				return false;
-			pg_close($db);
-			return $ret;	
-		}
-			
+		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+		foreach ($nome as $barbiere) {
+			$nome_tabella = "prenotazioni_" . $barbiere;
+            $sql = "SELECT id_prenotazione, data_appuntamento,orario_appuntamento FROM " . $nome_tabella . "  WHERE id_utente=$1 AND data_appuntamento >= $2  ORDER BY data_appuntamento, orario_appuntamento;";
+			$ret=pg_query_params($db, $sql,array($id,$data_odierna));
+			if(!$ret) {     
+				echo "ERRORE QUERY: " . pg_last_error($db);
+				pg_close($db);
+				return false; 
+			}
+			else{
+				if(pg_num_rows($ret)!=0){
+					$nessunaPrenotazione=true;
+					echo "<p>Barbiere: $barbiere</p>";
+					while ($row = pg_fetch_assoc($ret)) {
+						echo "<p>Data: " . $row["data_appuntamento"] . "</p>";
+						echo "<p>Orario: " . substr($row["orario_appuntamento"], 0, 5) . "</p>";
+						echo "<button onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
+					}
+				}	
+			}          
+		} 
+		pg_close($db);
+		if (!$nessunaPrenotazione) {
+			echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione</p>";
+			echo "<p><a href='prenota.php'>Qui</a> puoi effettuarne una</p>";
+		}	
    	}
 	
-	function getPreferenze($username){ 
+	function getPreferenze($id){ 
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
-		$sql = "SELECT pref_1,pref_2,pref_3 FROM utenti WHERE username=$1;";
-		$ret=pg_query_params($db, $sql,array($username)); 
+		$sql = "SELECT pref_1,pref_2,pref_3 FROM utenti WHERE id_utente=$1;";
+		$ret=pg_query_params($db, $sql,array($id)); 
 		if(!$ret) {     
 			echo "ERRORE QUERY: " . pg_last_error($db);
 			pg_close($db);
@@ -48,19 +67,29 @@
 		else{  
             $row = pg_fetch_assoc($ret);
 			$i=1;
-			while($i<4){
-				if(is_null($row["pref_" . $i])){
-					unset($row['pref_' . $i]);
-					break;
-					}
+			$numeroPrefenze=4;
+			$nome = array();
+			while($i<$numeroPrefenze){
+				if(isset($row["pref_".$i.""]))
+					$nome[$i]=$i;    
 				$i+=1;
+				}  
+			if(empty($nome))
+				echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
+				<p><a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi"; 
+			else{
+				$i=1;
+				while($i<$numeroPrefenze){
+					if(isset($row["pref_".$i.""]))
+					echo "<p>Preferenza ".$i.": " . $row["pref_".$i.""] . "<button onclick='cancellaPreferenza(\"pref_".$i."\", $id)'>Cancella</button></p>";
+					else
+					echo "<p>Preferenza ".$i.": non espressa <button onclick='cancellaPreferenza(\"pref_".$i."\", $id)'>Cancella</button></p>";
+					$i+=1;
+				}
 			}
-			pg_close($db);
-			if(empty($row))
-				return false;
-			return $row;
         } 
    	}
+
 	
 	if($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if(isset($_POST["barbiere"])&& isset($_POST["id"])){
@@ -89,9 +118,9 @@
 		}
 		else{
 			pg_close($db);
+			getPrenotazioni(1);
 			return; 	
 		}	
-		$_SESSION['mode']="prenotazione";	
 	}
 
 	function cancellaPreferenza($preferenza,$id){ 
@@ -105,6 +134,7 @@
 			return false; 
 		}
 		else{
+			getPreferenze($id);
 			pg_close($db);
 			return; 	
 		}		

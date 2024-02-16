@@ -47,7 +47,7 @@ function orari() {
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
             orari();
-            alert("Prenotato");
+            apriPupupPrenota();
             }
         };
 
@@ -81,7 +81,7 @@ function precedente() {
 
     //Disattivo freccia sinistra se non posso andare dietro ulteriormente
     var dataAttuale = new Date();
-    if((date.getDate()) == dataAttuale.getDate() ){
+    if((date.getDate() == dataAttuale.getDate())  && (date.getMonth() == dataAttuale.getMonth()) && (date.getFullYear() == dataAttuale.getFullYear()) ){
         var sinistra = document.getElementById('sinistra');
         sinistra.style.display = 'none'; 
     }
@@ -99,4 +99,39 @@ function prossimo() {
 
     var sinistra = document.getElementById('sinistra');
     sinistra.style.display = 'block';
+}
+
+function apriPopup() {
+    var popup = document.getElementById("popup-prenota");
+    popup.style.display = "flex"; // Mostra il popup
+}
+
+function chiudiPopup(){
+    var popup = document.getElementById("popup-prenota");
+    popup.style.display = "none"; // Mostra il popup
+}
+
+function chiudiPopupPrenota(){
+    var popup = document.getElementById("popup-prenotazione");
+    popup.style.display = "none"; // Mostra il popup
+}
+
+function apriPupupPrenota(){
+    var popup = document.getElementById("popup-prenotazione");
+    popup.style.display = "flex"; // Mostra il popup
+}
+
+function redirectAccount(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.href = "account.php";
+            }
+        };
+
+    xmlhttp.open("POST", "pagineAusiliarie/redirectprenota.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("");
+
+    
 }

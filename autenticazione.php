@@ -4,45 +4,45 @@ session_start();
 if(isset($_SESSION["username"]))   //questa pagina è accessibile solo se non loggati ma questo if mi fa prevenire il caso in cui
     header ("Location account.php");     //l'utente modifichi intenzionalmente l'url
 if(isset($_COOKIE["nomeUtente"])){
-    $usernameAccedi=$_COOKIE["nomeUtente"];
+    $username=$_COOKIE["nomeUtente"];  //si mette anche a registrati
 }
 if(isset($_SESSION['change'])){  //messo a true (settato) solo da script ajax esterni a questo file per passare a registrazione
-    ?><script defer src="script/cambiaModalità.js"></script> 
+    ?><script defer>cambiaModalità(false)</script>     
     <?php unset($_SESSION['change']);  //per non creare bug
 }
 if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     require "database/autenticazione.php";  
     $nome=$_POST['nome'];   // Recupero i valori dai campi di input del form per farlo sticky
     $cognome=$_POST['cognome']; 
-    $usernameRegistrati=$_POST['username']; 
+    $username=$_POST['username']; 
     $numero=$_POST['numero']; 
     $pwd1=$_POST['pwd1']; 
     $pwd2=$_POST['pwd2'];
 
-    if(username_exist($usernameRegistrati)){  //controllo se l'username già esiste
+    if(username_exist($username)){  //controllo se l'username già esiste
         ?><script defer src="script/cambiaModalità.js"></script>
         <script defer src="script/emailRegistrata.js"></script><?php
     }else{  //se non esiste lo inserisco
-        if(insert_utente($nome, $cognome, $numero, $usernameRegistrati, $pwd1)){  //va nel then se va a buon fine
+        if(insert_utente($nome, $cognome, $numero, $username, $pwd1)){  //va nel then se va a buon fine
             setcookie('nuovoUtente', true, time() + (60 * 24)); 
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");  //altrimenti riporta ad account (comportamento di default)
-            $_SESSION['username']  = $usernameRegistrati;  //per rendere effettiva l'autenticazione anche nelle altre pagine
+            $_SESSION['username']  = $username;  //per rendere effettiva l'autenticazione anche nelle altre pagine
         }
     }
 } 
 
 if(isset($_POST['acc'])) {//analogamente per accedi
     require "database/autenticazione.php"; 
-    $usernameAccedi=$_POST['username']; 
-    $pwd= $_POST['pwd']; 
-    $stored_hash_pwd = get_pwd($usernameAccedi);  //provo a prelevare la password dell'utente con email fornita
+    $username=$_POST['username']; 
+    $pwd1= $_POST['pwd1']; 
+    $stored_hash_pwd = get_pwd($username);  //provo a prelevare la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
         ?><script defer src="script/emailNonRegistrata.js"></script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
-        if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
+        if(password_verify($pwd1, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato setto il cookie
                 setcookie('nomeUtente', $_POST['username'], time() + (30 * 24 * 60 * 60)); //valido per 30 giorni
             }
@@ -50,7 +50,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 header("Location: $_SESSION[redirect]");
             } else 
                 header("Location: account.php");
-            $_SESSION['username']  = $usernameAccedi;  
+            $_SESSION['username']  = $username;  
         }else{  //l'utente era registrato, ma la password fornita non coincide con quella salvata sul database
             ?><script defer src="script/passwordErrata.js"></script><?php
         }
@@ -74,11 +74,11 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 <form id="accediForm" onSubmit="return validaModuloAccedi(this)" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">   
                         <label for="usernameAccedi">Email</label>
-                        <input class="textinput" type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($usernameAccedi)) ? $usernameAccedi : ""; ?>">
+                        <input class="textinput" type="text" size="30" id="usernameAccedi" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
                         <div id="erroreEmailAccedi" class="errore"></div>
                         <label class="spaced" for="pwd">Password</label>
                         <div class="horizontalflex">
-                            <input class="textinput grow" type="password" size="20" id="pwd" name="pwd" value="<?php echo (isset($pwd)) ? $pwd : ""; ?>">
+                            <input class="textinput grow" type="password" size="20" id="pwd" name="pwd1" value="<?php echo (isset($pwd1)) ? $pwd1 : ""; ?>">
                             <i class="fa-sharp fa-solid fa-eye" id="mostra"></i>
                         </div>
                         <div id="errorePassword" class="errore"></div>
@@ -102,7 +102,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                         <input class="textinput" type="text" size="15" id="cognome" name="cognome" value="<?php echo (isset($cognome)) ? $cognome : ""; ?>">
                         <div id="erroreCognome" class="errore"></div>
                         <label class="spaced">Email</label>
-                        <input class="textinput" type="text" size="30" id="usernameRegistrati" name="username" value="<?php echo (isset($usernameRegistrati)) ? $usernameRegistrati : ""; ?>">
+                        <input class="textinput" type="text" size="30" id="usernameRegistrati" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
                         <div id="erroreEmailRegistrati" class="errore"></div>
                         <label class="spaced">Numero</label>
                         <select id="prefisso" name="prefisso" onchange="selezionaPrefisso()">
@@ -145,7 +145,8 @@ if(isset($_POST['acc'])) {//analogamente per accedi
         </div>  <!--Devo chiudere i 2 div container e whitebox-->
     </div>
     <script src="script/autenticazione.js"></script> 
-    <?php require "footer.php";?>
+    <?php require "footer.php";
+    ?>
 </body>
 </html>       
 

@@ -1,4 +1,6 @@
-<?php $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente per poter realizzare l'effetto scroll 
+<?php 
+require "database/nome.php";
+$currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente per poter realizzare l'effetto scroll 
 //quando possibile (su homepage) ?> 
 
 <!-- condivisi da tutte le pagine -->
@@ -42,7 +44,7 @@
                 <div class="account popup" onmouseover="showRectangle()"><a href="account.php"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
                     <span class="popuptext" id="myPopup"> 
                         <?php   if(isset($_SESSION['username']) )
-                                    echo "Benvenuto, " . $_SESSION['username'];
+                                    echo "Benvenuto, " . getNome($_SESSION["username"]);
                                 else
                                     echo "Non sei ancora Loggato";
                         ?>

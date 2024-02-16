@@ -2,10 +2,10 @@
 <?php
 session_start(); 
 require "database/account.php";
-require "database/nome.php";
 require "database/id.php"; 
 $id=getId($_SESSION['username']);
 $_SESSION['redirect']=null;     
+ 
 if(!(isset($_SESSION['username'])))  //se non loggato
     header("Location: autenticazione.php"); 
 ?>
@@ -37,65 +37,14 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                 <section id="sezioni">  <!--Per ora ho messo che questa sezione che le contiene tutte ed è float:right-->
                     <section id="sezioneDati">
                         <?php $dati=getDati($_SESSION["username"]);?>
-                        <p>Il tuo nome: <?php echo $dati['nome'];?></p>
-                        <p>Il tuo cognome: <?php echo $dati['cognome'];?></p>
-                        <p>La tua email: <?php echo $dati['username'];?></p>
-                        <p>Il tuo numero: <?php echo $dati['numero'];?></p>
                     </section>
                     <section id="sezionePrenotazioni">
                     <?php
-                    $nome = array("andrea","rocco","francesco");
-                    $nessunaPrenotazione = true;
-
-                    foreach ($nome as $barbiere) {
-                        $prenotazioni = getPrenotazioni($id, $barbiere);
-                        if($prenotazioni){
-                            $nessunaPrenotazione=false;
-                            echo "<p>Barbiere: $barbiere</p>";
-                            echo "<div class=\"flex\">";
-                            while ($row = pg_fetch_assoc($prenotazioni)) {
-                                echo "<div class=\"card\">";
-                                echo "<p>Data: " . $row["data_appuntamento"] . "</p>";
-                                echo "<p>Orario: " . substr($row["orario_appuntamento"], 0, 5) . "</p>";
-                                echo "<button class=\"cancbutton\" onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
-                                echo "</div>";
-                            }
-                            echo "</div>";
-                        }
-                    }
-
-
-                    if ($nessunaPrenotazione) {
-                        echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione</p>";
-                        echo "<p><a href='prenota.php'>Qui</a> puoi effettuarne una</p>";
-                    }
+                    getPrenotazioni($id);
                     ?>
                     </section>
                     <section id="sezionePreferenze">
-                        <?php $preferenze=getPreferenze($_SESSION["username"]);
-                        if($preferenze==false){
-                            echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
-                            <p><a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi";
-                        } else {
-                            $i=1;
-                            $numeroPrefenze=4;
-                            $nome = array();
-                            while($i<$numeroPrefenze){
-                                if(isset($preferenze["pref_".$i.""]))
-                                    $nome[$i]=$i;    
-                                $i+=1;
-                                } 
-                            $i=0; 
-                            if(empty($nome))
-                                echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
-                                <p><a href=galleria.php>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi"; 
-                            else 
-                                foreach($nome as $i){
-                                echo "<p>Preferenza ".$i.": " . (isset($preferenze["pref_".$i.""]) ? $preferenze["pref_".$i.""] : "non espressa") . "<button onclick='cancellaPreferenza(\"pref_".$i."\", $id)'>Cancella</button></p>"
-                                ;
-                                $i+=1;
-                                }                 
-                        }
+                        <?php $preferenze=getPreferenze($id);
                         ?>
                     </section>
                 </section>
@@ -105,5 +54,14 @@ if(!(isset($_SESSION['username'])))  //se non loggato
     <?php require "footer.php"; ?> 
     <script src="script/account.js"></script>
     <script src="ajax/esci.js"></script>
+
+    <?php
+    if($_SESSION['prenota']==true){
+        ?> <script>sezioni(2)</script> 
+        
+        <?php
+        $_SESSION['prenota']=false;
+    }   ?> 
+    
 </body>
 </html>

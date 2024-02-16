@@ -5,6 +5,7 @@ require "database/account.php";
 require "database/id.php"; 
 $id=getId($_SESSION['username']);
 $_SESSION['redirect']=null;     
+ 
 if(!(isset($_SESSION['username'])))  //se non loggato
     header("Location: autenticazione.php"); 
 ?>
@@ -102,5 +103,14 @@ if(!(isset($_SESSION['username'])))  //se non loggato
     <?php require "footer.php"; ?> 
     <script src="script/account.js"></script>
     <script src="ajax/esci.js"></script>
+
+    <?php
+    if($_SESSION['prenota']==true){
+        ?> <script>sezioni(2)</script> 
+        
+        <?php
+        $_SESSION['prenota']=false;
+    }   ?> 
+    
 </body>
 </html>

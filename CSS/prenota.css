@@ -42,10 +42,18 @@ h2{
     color: #ff8330;
     border: 2px solid #ff8330;
     border-radius: 100px;
-    width: 90px;
+    min-width: 90px;
     padding: 10px;
     cursor: pointer;
     margin-bottom: 40px;
+}
+.black{
+    border-color: black;
+    color: black;
+    padding: 15px;
+}
+.black:hover{
+    background-color: black !important;
 }
 .no-margin{
     margin-bottom: 0px !important;
@@ -152,4 +160,8 @@ h2{
     color: rgb(144, 144, 144);
     cursor: pointer;
 }
-
+.effettuata{
+    color: green;
+    font-size: 24px;
+    font-weight: 600;
+}

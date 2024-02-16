@@ -24,13 +24,13 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                 <section id="lista">
                     <?php 
                     $nome=getNome($_SESSION["username"]);
-                    echo "<p>Benvenuto $nome !";?>
+                    echo "<p>Benvenuto $nome!";?>
                     <nav>
                         <ul>
                             <li><p id="dati">I miei dati</p></li>
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
                             <li><p id="preferenze">Le mie preferenze</p></li>
-                            <li><p id="esci">Premi <button id="esci">qui</button> per uscire</p></li> 
+                            <li><p id="esci">Premi <button class="linkbutton" id="esci">qui</button> per uscire</p></li> 
                         </ul>
                     </nav>           
                 </section>

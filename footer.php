@@ -5,10 +5,10 @@
 
 <footer id="footerplaceholder" class="footer">
         <div class="fprinc">
-            <div class="coll-1">
+            <div class="col-1">
                 <img src="img/logo_footer.png" alt="logo_bianco" width="200px" height="200px">
             </div>
-            <div class="coll-2">
+            <div class="col-2">
                 <h3>ORARI LAVORATIVI</h3>
                 <ul>
                     <li><span>Lunedì:</span> Chiuso</li>
@@ -16,27 +16,27 @@
                     <li><span>Domenica:</span> Chiuso</li>
                 </ul>
             </div>
-            <div class="coll-3">
+            <div class="col-3">
                 <h3>LINK UTILI</h3>
                 <ul>
-                    <li id="home_h"><a href="<?php if($currentPage=== 'homepage.php')
+                    <li id="home_f"><a href="<?php if($currentPage=== 'homepage.php')
                                                 echo '#home';
                                             else
                                                 echo 'homepage.php';?>">Homepage</a></li>
-                    <li id="chisiamo_h"><a href="<?php if($currentPage=== 'homepage.php')
+                    <li id="chisiamo_f"><a href="<?php if($currentPage=== 'homepage.php')
                                                 echo '#chiSiamo';
                                             else
                                                 echo 'homepage.php#chiSiamo';?>">Chi Siamo</a></li>
-                    <li id="servizi_h"><a href="<?php if($currentPage=== 'homepage.php')
+                    <li id="servizi_f"><a href="<?php if($currentPage=== 'homepage.php')
                                                 echo '#servizi';
                                             else
                                                 echo 'homepage.php#servizi';?>">Servizi</a></li>
-                    <li id="galleria_h"><a href="galleria.php">Galleria</a></li>
-                    <li id="prenota_h"><a href="prenota.php">Prenota</a></li>
-                    <li id="account_h"><a href="account.php">Account</a></li>
+                    <li id="galleria_f"><a href="galleria.php">Galleria</a></li>
+                    <li id="prenota_f"><a href="prenota.php">Prenota</a></li>
+                    <li id="account_f"><a href="account.php">Account</a></li>
                 </ul>
             </div>
-            <div class="coll-4">
+            <div class="col-4">
                 <h3>CONTATTACI</h3>
                 <form action="" method="POST">
                     <input type="text" placeholder="La tua E-mail" id="" class="fform">

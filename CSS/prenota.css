@@ -15,6 +15,11 @@ h1{
 h2{
     text-align: center;
     font-size: 24px;
+    margin-top: 0;
+}
+
+#noLog{
+    color: white;
 }
 
 .prenota_main{
@@ -27,9 +32,9 @@ h2{
     min-height: 400px;
     margin-bottom: 70px;
     align-content: center;
-    padding: 70px;
+    padding: 50px;
     border: 1px solid transparent;
-    border-radius: 100px;
+    border-radius: 40px;
 }
 .barbieri{
     display: flex;
@@ -38,6 +43,7 @@ h2{
 }
 .barbutton{
     background-color: white;
+    font-family: "Bitter", "Palatino Linotype", Times;
     font-weight: 600;
     color: #ff8330;
     border: 2px solid #ff8330;
@@ -45,7 +51,8 @@ h2{
     min-width: 90px;
     padding: 10px;
     cursor: pointer;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
 }
 .black{
     border-color: black;
@@ -89,6 +96,7 @@ h2{
 #orari button{
     padding: 10px 15px 10px 15px;
     font-size: 16px;
+    border-radius: 5px;
     
 }
 
@@ -107,6 +115,7 @@ h2{
 .active{
     background-color: #ff8330;
     color: white;
+    transition: all 0.3s ease;
 }
 
 .freccia{

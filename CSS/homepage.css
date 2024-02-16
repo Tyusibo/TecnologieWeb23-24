@@ -33,42 +33,10 @@
     margin-top: 50px;
 }
 
-
 .icona{
     color: #fa6400;
 }
-.btn{
-    z-index: 2;
-    align-items: center;
-    background-clip: padding-box;
-    background-color: #fa6400;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 1.25;
-    margin: 0;
-    min-height: 3rem;
-    padding: 13px 23px;
-    position: relative;
-    text-decoration: none;
-    transition: all 250ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    width: auto;
-}
-.btn:hover{
-    color: white;
-}
+
 .chiSiamo{
     background-image: url(../img/white\ background.svg);
     background-position: center center;
@@ -102,7 +70,7 @@
     padding-left: 100px;
     padding-right: 100px;
     padding-bottom: 100px;
-    padding-top: 50px;
+    padding-top: 20px;
     gap: 15%;
 }
 .chiSiamo .content{
@@ -124,7 +92,7 @@
 }
 .chiSiamo ul{
     padding-inline-start: 0;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 .chiSiamo li{
     margin-bottom: 20px;

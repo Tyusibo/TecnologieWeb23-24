@@ -3,12 +3,17 @@ require "database/nome.php";
 $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente per poter realizzare l'effetto scroll 
 //quando possibile (su homepage) ?> 
 
+<!-- condivisi da tutte le pagine -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script> <!--per le icone-->
 <script src="script/header.js"></script>  
 
-<header class="headertransition sticky" id="myHeader">
-        <div class="header">
+<header class="headertransition headerfixed" id="header">
+        <div class="headerflex">
             <div class="colonna1">
                 <a href="homepage.php" class="logo">
                     <img src="img/logo.png" alt="Gentlemen's Cut" width="200" height="100">
@@ -48,7 +53,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
             </div>
         </div>
 </header>
-<script src="script/stickyHeader.js"></script>  <!--Se messi prima non funzioneranno perchè non conosceranno gli id-->
+<script src="script/colorTransition.js"></script>  <!--Se messi prima non funzioneranno perchè non conosceranno gli id-->
 <script src="script/scroll.js"></script>  
 
 

@@ -12,9 +12,11 @@ function cambiaModalità(mod){
     if(mod){
         accedi.style.display = "block";
         registrati.style.display = "none";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
         accedi.style.display = "none";
         registrati.style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 

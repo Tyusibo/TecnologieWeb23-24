@@ -9,7 +9,6 @@ $_SESSION['redirect']=null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Prenota</title>  
     <link rel="stylesheet" type="text/css" href="css/prenota.css">
-    <?php require "condiviso.php"; ?>
 </head>
 <body>
     <?php require "header.php"; ?>

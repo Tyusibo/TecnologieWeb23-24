@@ -42,7 +42,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
         ?><script defer src="script/emailNonRegistrata.js"></script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password
-        if(password_verify($pwd, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
+        if(password_verify($pwd1, $stored_hash_pwd)){  //se è vero allora devo autenticare l'utente
             if (isset($_POST['ricordami']) && $_POST['ricordami'] == 'on') {  //se ricordami è spuntato setto il cookie
                 setcookie('nomeUtente', $_POST['username'], time() + (30 * 24 * 60 * 60)); //valido per 30 giorni
             }

@@ -16,11 +16,12 @@
    	}
 
 	function getPrenotazioni($id,$barbiere){ 
-		require "connectionString.php"; 
-		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error()); 
+		$data_odierna = date('Y-m-d'); 
 		$nome_tabella = "prenotazioni_" . $barbiere;
-		$sql = "SELECT id_prenotazione, data_appuntamento,orario_appuntamento FROM " . $nome_tabella . "  WHERE id_utente = $1 ORDER BY data_appuntamento, orario_appuntamento;";
-		$ret=pg_query_params($db, $sql,array($id));
+		require "connectionString.php"; 
+		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+		$sql = "SELECT id_prenotazione, data_appuntamento,orario_appuntamento FROM " . $nome_tabella . "  WHERE id_utente AND data_appuntamento >= $2  = $1 ORDER BY data_appuntamento, orario_appuntamento;";
+		$ret=pg_query_params($db, $sql,array($id,$data_odierna));
 		if(!$ret) {     
 			echo "ERRORE QUERY: " . pg_last_error($db);
 			pg_close($db);

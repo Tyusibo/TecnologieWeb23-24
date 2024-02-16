@@ -33,15 +33,26 @@ $_SESSION['redirect']=null;
         </div>
         <div id="orari"></div> <!--Gli orari si possono gestire nel css con .orari ul-->
 
-    </div>                      
+    </div>    
 
+    <!--
     <div class="popup-sfondo" id="popup-prenota">
         <div class="popup-contenuto">
             <span class="popup-chiudi" onclick="chiudiPopup()">X</span>
             <p style="margin-top: 50px">Per effettuare una prenotazione, è necessario autenticarsi.</p> 
             <p class="p-bottoni"><button class="barbutton no-margin" id="accedi">Accedi</button> <button class="barbutton no-margin" id="registrati">Registrati</button></p>
         </div>
-    </div>
+    </div>  -->
+
+
+    
+    <div class="popup-sfondo" id="popup-prenotazione">
+        <div class="popup-contenuto">
+            <span class="popup-chiudi" onclick="chiudiPopupPrenota()">X</span>
+            <p class="effettuata">Prenotazione effettuata con successo ✓</p>
+            <p class="p-bottoni"><button class="barbutton no-margin black" onclick="chiudiPopupPrenota()">Nuova Prenotazione</button> <button class="barbutton no-margin black" onclick="redirectAccount()">Vedi Prenotazioni</button></p>
+        </div>
+	</div>
 
     <?php require "footer.php";?>
     <script src="pagineAusiliarie/redirect.js"></script>

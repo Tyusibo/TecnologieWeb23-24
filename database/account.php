@@ -39,11 +39,15 @@
 				if(pg_num_rows($ret)!=0){
 					$nessunaPrenotazione=true;
 					echo "<p>Barbiere: $barbiere</p>";
+					echo "<div class=\"flex\">";
 					while ($row = pg_fetch_assoc($ret)) {
+						echo "<div class=\"card\">";
 						echo "<p>Data: " . $row["data_appuntamento"] . "</p>";
 						echo "<p>Orario: " . substr($row["orario_appuntamento"], 0, 5) . "</p>";
-						echo "<button onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
+						echo "<button class=\"cancbutton\" onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
+						echo "</div>";
 					}
+					echo "</div>";
 				}	
 			}          
 		} 

@@ -38,12 +38,14 @@ nav ul li p{
     gap: 10px;
 }
 
-.card{
+.card{ 
+    width: 140px;  /*minimo per contenere date "larghe" come 0000-00-00*/
+    height: 130px;
     flex-shrink: 0;
     background-color: rgb(224, 224, 224);
     border: 1px solid #fa6400;
     border-radius: 3px;
-    padding: 10px   ;
+    padding: 10px;
 }
 
 .card p{

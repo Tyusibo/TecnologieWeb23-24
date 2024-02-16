@@ -34,7 +34,7 @@ function initMap(position) {
     
     const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
     var marker = new google.maps.Marker({position: shopLocation, map: map});
-    var userMarker = new google.maps.Marker({position: userLocation, map: map});
+    var userMarker = new google.maps.Marker({position: userLocation, icon: "https://maps.gstatic.com/mapfiles/ms2/micons/man.png", map: map});
 }
 
  function initMapErr(positionErr){

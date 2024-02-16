@@ -2,7 +2,6 @@
 <?php
 session_start(); 
 require "database/account.php";
-require "database/nome.php";
 require "database/id.php"; 
 $id=getId($_SESSION['username']);
 $_SESSION['redirect']=null;     

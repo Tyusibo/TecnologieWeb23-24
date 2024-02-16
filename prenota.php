@@ -15,8 +15,8 @@ $_SESSION['redirect']=null;
     <?php require "header.php"; ?>
     <div style="height: 100px"></div>
     <?php
-    echo "<h1>PRENOTA ORA</h1>";
-    echo "<p>Ciao $_SESSION[username] !";?>
+   
+    echo "<h1>PRENOTA ORA</h1>";?>
     
     <div class="prenota_main">
         <h2>SCEGLI IL TUO BARBIERE</h2>
@@ -33,10 +33,19 @@ $_SESSION['redirect']=null;
         </div>
         <div id="orari"></div> <!--Gli orari si possono gestire nel css con .orari ul-->
 
+    </div>                      
+
+    <div class="popup-sfondo" id="popup-prenota">
+        <div class="popup-contenuto">
+            <p>Per effettuare una prenotazione, è necessario autenticarsi.</p> 
+            <p class="p-bottoni"><button class="barbutton no-margin" id="accedi">Accedi</button> <button class="barbutton no-margin" id="registrati">Registrati</button></p>
+        </div>
     </div>
-                            
+
     <?php require "footer.php";?>
     <script src="pagineAusiliarie/redirect.js"></script>
     <script src="script/prenota.js"></script>
+
+
 </body>
 </html>

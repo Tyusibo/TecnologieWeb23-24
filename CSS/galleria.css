@@ -8,6 +8,7 @@ h1{
     color: white;
     text-align: center;
     font-size: 64px;
+    font-weight: 600;
 }
 .gallery{
     display: flex;

@@ -81,7 +81,7 @@ function precedente() {
 
     //Disattivo freccia sinistra se non posso andare dietro ulteriormente
     var dataAttuale = new Date();
-    if((date.getDate()) == dataAttuale.getDate() ){
+    if((date.getDate() == dataAttuale.getDate())  && (date.getMonth() == dataAttuale.getMonth()) && (date.getFullYear() == dataAttuale.getFullYear()) ){
         var sinistra = document.getElementById('sinistra');
         sinistra.style.display = 'none'; 
     }
@@ -99,4 +99,9 @@ function prossimo() {
 
     var sinistra = document.getElementById('sinistra');
     sinistra.style.display = 'block';
+}
+
+function apriPopup() {
+    var popup = document.getElementById("popup-prenota");
+    popup.style.display = "flex"; // Mostra il popup
 }

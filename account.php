@@ -36,34 +36,10 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                 <section id="sezioni">  <!--Per ora ho messo che questa sezione che le contiene tutte ed è float:right-->
                     <section id="sezioneDati">
                         <?php $dati=getDati($_SESSION["username"]);?>
-                        <p>Il tuo nome: <?php echo $dati['nome'];?></p>
-                        <p>Il tuo cognome: <?php echo $dati['cognome'];?></p>
-                        <p>La tua email: <?php echo $dati['username'];?></p>
-                        <p>Il tuo numero: <?php echo $dati['numero'];?></p>
                     </section>
                     <section id="sezionePrenotazioni">
                     <?php
-                    $nome = array("andrea","rocco","francesco");
-                    $nessunaPrenotazione = true;
-
-                    foreach ($nome as $barbiere) {
-                        $prenotazioni = getPrenotazioni($id, $barbiere);
-                        if($prenotazioni){
-                            $nessunaPrenotazione=false;
-                            echo "<p>Barbiere: $barbiere</p>";
-                            while ($row = pg_fetch_assoc($prenotazioni)) {
-                                echo "<p>Data: " . $row["data_appuntamento"] . "</p>";
-                                echo "<p>Orario: " . substr($row["orario_appuntamento"], 0, 5) . "</p>";
-                                echo "<button onclick='cancellaPrenotazione(\"" . $barbiere . "\", \"" . $row["id_prenotazione"] . "\")'>Cancella</button>";
-                            }
-                        }
-                    }
-
-
-                    if ($nessunaPrenotazione) {
-                        echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione</p>";
-                        echo "<p><a href='prenota.php'>Qui</a> puoi effettuarne una</p>";
-                    }
+                    $prenotazioni = getPrenotazioni($id);
                     ?>
                     </section>
                     <section id="sezionePreferenze">

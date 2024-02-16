@@ -100,3 +100,8 @@ function prossimo() {
     var sinistra = document.getElementById('sinistra');
     sinistra.style.display = 'block';
 }
+
+function apriPopup() {
+    var popup = document.getElementById("popup-prenota");
+    popup.style.display = "flex"; // Mostra il popup
+}

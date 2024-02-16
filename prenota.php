@@ -45,9 +45,18 @@ $_SESSION['redirect']=null;
                     </div>
                         
         <?php } //parentesi dell'else ?>  
-    
+
+        <div class="popup-sfondo" id="popup-prenota">
+            <div class="popup-contenuto">
+                <p>Per effettuare una prenotazione, è necessario autenticarsi.</p> 
+                <p class="p-bottoni"><button class="barbutton no-margin" id="accedi">Accedi</button> <button class="barbutton no-margin" id="registrati">Registrati</button></p>
+            </div>
+        </div>
+
     <?php require "footer.php";?>
     <script src="pagineAusiliarie/redirect.js"></script>
     <script src="script/prenota.js"></script>
+
+
 </body>
 </html>

@@ -230,6 +230,14 @@ hr {
     height: auto;
 }
 .freccia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

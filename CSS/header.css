@@ -27,10 +27,8 @@ button{
 }
 
 .bottone:hover{
-    z-index: 2;
     color: white;
     background-color: #fa6400;
-    transition: all 0.3s ease;
 }
 
 .btn{
@@ -113,7 +111,6 @@ header nav ul li a {
 
 header nav ul li a:hover{
     color: #fa6400;
-    transition: all 0.5s ease;
 }
 
 header .colonna1{
@@ -145,7 +142,6 @@ header #navlist{
 
 .fa-user:before {
     content: "\f007";
-    vertical-align: -webkit-baseline-middle;
     color: white;
     margin-left: 30px;
 }

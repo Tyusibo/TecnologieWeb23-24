@@ -20,10 +20,6 @@ function mostraData(nome) {
     orari();
 }
 
-document.getElementById("data").addEventListener("change", function() {
-    orari();
-});
-
 function orari() {
     var barbiere=attivo();
     var xmlhttp = new XMLHttpRequest();

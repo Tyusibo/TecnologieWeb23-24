@@ -18,10 +18,6 @@ h2{
     margin-top: 0;
 }
 
-#noLog{
-    color: white;
-}
-
 .prenota_main{
     background-color: white;
     display: flex;
@@ -34,7 +30,7 @@ h2{
     align-content: center;
     padding: 50px;
     border: 1px solid transparent;
-    border-radius: 40px;
+    border-radius: 25px;
 }
 .barbieri{
     display: flex;
@@ -47,8 +43,8 @@ h2{
     font-weight: 600;
     color: #ff8330;
     border: 2px solid #ff8330;
-    border-radius: 100px;
-    min-width: 90px;
+    border-radius: 10px;
+    width: 100px;
     padding: 10px;
     cursor: pointer;
     margin-bottom: 30px;
@@ -58,6 +54,7 @@ h2{
     border-color: black;
     color: black;
     padding: 15px;
+    width: auto !important;
 }
 .black:hover{
     background-color: black !important;
@@ -66,10 +63,7 @@ h2{
     margin-bottom: 0px !important;
     margin-top: 10px;
 }
-.barbutton:hover{
-    background-color: #ff8330;
-    color: white;
-}
+
 .p-bottoni{
     gap: 30px;
     display: flex;
@@ -157,20 +151,44 @@ h2{
 
 .popup-contenuto {
     border: 0px soldi transparent;
-    border-radius: 50px;
+    border-radius: 25px;
     background-color: #fff; 
     text-align: center;
     padding: 40px;
 }
 
+.popup-contenuto .barbutton{
+    padding: 15px;
+}
+
+.popup-contenuto .barbutton:hover{
+    background-color: #ff8330;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.chiudiflex{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .popup-chiudi{
-    position: fixed;
+    margin-top: -20px;
+    margin-right: -10px;
     right: 35%;
     color: rgb(144, 144, 144);
     cursor: pointer;
+    font-size: 30px;
 }
 .effettuata{
     color: green;
     font-size: 24px;
     font-weight: 600;
+    margin-top: 20px;
+}
+
+#noLog{
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 20px;
 }

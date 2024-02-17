@@ -2,6 +2,7 @@
 <?php
 session_start();
 $_SESSION['redirect']=null;  
+require "database/homepage.php";
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -35,9 +36,7 @@ $_SESSION['redirect']=null;
     <section class="chiSiamo" id="chiSiamo">
         <h1>CHI SIAMO</h1>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Riempimi
         </p>
 
         <hr>
@@ -59,7 +58,6 @@ $_SESSION['redirect']=null;
                                                                                                 Martedì-Sabato: 9:00 - 19:00 <br>
                                                                                                 Domenica: Chiuso</span></li>
                     </ul>
-                    <a href="#" class="bottone"><span>Contattaci Ora</span></a>
                 </div>
             </div>
 
@@ -124,15 +122,9 @@ $_SESSION['redirect']=null;
             <div class="galleria_in">
             <?php 
             if(isset($_SESSION["username"])){
-                    require "database/homepage.php";
                     getPreferenze($_SESSION["username"]);
             } else {
-                    echo"<img src=img/barber_bg.jpeg alt=Immagine 1>";
-                    echo"<img src=img/barber_bg.jpeg alt=Immagine 2>";
-                    echo"<img src=img/barber_bg.jpeg alt=Immagine 3>";
-                    echo"<img src=img/barber_bg.jpeg alt=Immagine 4>";
-                    echo"<img src=img/barber_bg.jpeg alt=Immagine 5>";
-                    echo"<img src=img/barber_bg.jpeg alt=Immagine 6>";
+                    nessunaPreferenza();
             }
             ?>
             </div>

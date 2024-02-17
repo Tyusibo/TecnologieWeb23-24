@@ -16,7 +16,7 @@
             $numero_immagini=6;
             $preferenze_espresse=0;
 			$numeroPrefenze=4;
-			$nome = array();
+			$stile = array();
 			while($i<$numeroPrefenze){
 				if(isset($row["pref_".$i.""])){
 					$stile[$preferenze_espresse]=$row["pref_".$i.""];    
@@ -25,19 +25,20 @@
                 $i+=1;
             }  
 			if($preferenze_espresse==0){
-                echo"<img src=img/barber_bg.jpeg alt=Immagine 1>";
-                echo"<img src=img/barber_bg.jpeg alt=Immagine 2>";
-                echo"<img src=img/barber_bg.jpeg alt=Immagine 3>";
-                echo"<img src=img/barber_bg.jpeg alt=Immagine 4>";
-                echo"<img src=img/barber_bg.jpeg alt=Immagine 5>";
-                echo"<img src=img/barber_bg.jpeg alt=Immagine 6>"; 
+                nessunaPreferenza();
+				return;
             }
 			else{
 				$i=0;
                 $preferenze_per_tipo=$numero_immagini/$preferenze_espresse;
 				while($i<$preferenze_espresse){
+						$random = array();
                         for($j=0;$j<=$preferenze_per_tipo;$j++){
-                            echo '<img src="img/gallery/'.$stile[$i].'/img'.$j.'.jpg" >' ;
+							do {
+								$immagine_casuale=rand(1,5);
+							} while (in_array($immagine_casuale, $random));
+							$random[$j]=$immagine_casuale;
+                            echo '<img src="img/gallery/'.$stile[$i].'/img'.$immagine_casuale.'.jpg" >' ;
                         }
                         $i+=1;   
                     }
@@ -46,4 +47,13 @@
                 return;
 			}
         } 
+		function nessunaPreferenza(){
+            $numero_immagini=5;
+			$stili = array("BUZZ CUT","FRENCH CROP","CURTAINS","SIDE PART","MOHAWK");
+			for($i = 0; $i<$numero_immagini; $i++)
+					echo '<img  src="img/gallery/'.$stili[$i].'/img'.rand(1,5).'.jpg" >' ;
+		}
+		function random(){
+            $random=rand(1,5);
+		}
 ?>

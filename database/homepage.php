@@ -33,7 +33,7 @@
                 $preferenze_per_tipo=$numero_immagini/$preferenze_espresse;
 				while($i<$preferenze_espresse){
 						$random = array();
-                        for($j=0;$j<=$preferenze_per_tipo;$j++){
+                        for($j=0;$j<$preferenze_per_tipo;$j++){
 							do {
 								$immagine_casuale=rand(1,5);
 							} while (in_array($immagine_casuale, $random));

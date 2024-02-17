@@ -44,7 +44,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
                 <div class="account popup" onmouseover="showRectangle()"><a href="account.php"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
                     <span class="popuptext" id="myPopup"> 
                         <?php   if(isset($_SESSION['username']) ){
-                                    echo "<p>Benvenuto, " . getNome($_SESSION["username"])."</p>";
+                                    echo "<p>Benvenuto,&nbsp;&nbsp;" . getNome($_SESSION["username"])."</p>";
                                     echo "<p><a href=account.php class=linkbutton>Account</a></p>";
                                     echo "<p><button class=linkbutton id=esci>Esci</button></p>";
                                 }

@@ -56,11 +56,11 @@ if(!(isset($_SESSION['username'])))  //se non loggato
     <script src="ajax/esci.js"></script>
 
     <?php
-    if($_SESSION['prenota']==true){
+    if(isset($_SESSION['prenota'])){
         ?> <script>sezioni(2)</script> 
         
         <?php
-        $_SESSION['prenota']=false;
+        unset($_SESSION['prenota']);
     }   ?> 
     
 </body>

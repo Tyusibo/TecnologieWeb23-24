@@ -35,7 +35,7 @@
 		$sql = "SELECT orario_appuntamento FROM " . $nome_tabella . " WHERE data_appuntamento = $1 ORDER BY orario_appuntamento;";
 		$ret=pg_query_params($db, $sql,array($data));
 		$orario_inizio = strtotime('09:00');
-		$orario_fine = strtotime('19:00');
+		$orario_fine = strtotime('18:30');
 		$intervallo = 30 * 60; // 30 minuti in secondi
 		if(!$ret) { 
 			echo "ERRORE QUERY: " . pg_last_error($db);

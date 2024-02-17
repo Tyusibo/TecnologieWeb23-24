@@ -44,13 +44,13 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
                 <div class="account popup" onmouseover="showRectangle()"><a href="account.php"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
                     <span class="popuptext" id="myPopup"> 
                         <?php   if(isset($_SESSION['username']) ){
-                                    echo "Benvenuto, " . getNome($_SESSION["username"]);
-                                    echo "<p>Premi <a href=account.php class=linkbutton>qui</a> per gestire il tuo account</p>";
-                                    echo "<p id=esci>Premi <button class=linkbutton id=esci>qui</button> per uscire</p>";
+                                    echo "<p>Benvenuto, " . getNome($_SESSION["username"])."</p>";
+                                    echo "<p><a href=account.php class=linkbutton>Account</a></p>";
+                                    echo "<p><button class=linkbutton id=esci>Esci</button></p>";
                                 }
                                 else{
-                                    echo "Non ti sei ancora autenticato";
-                                    echo "<p>Premi <a href=autenticazione.php class=linkbutton>qui</a> per effettuare l'autenticazione</p>";
+                                    echo "<p>Non ti sei ancora autenticato</p>";
+                                    echo "<p><a href=autenticazione.php class=linkbutton>Login in/Sign in</a></p>";
                                 }
 
                         

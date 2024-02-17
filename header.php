@@ -10,8 +10,6 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script> <!--per le icone-->
-<script src="script/header.js"></script>  
-
 <header class="headertransition headerfixed" id="header">
         <div class="headerflex">
             <div class="colonna1">
@@ -62,7 +60,8 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
 </header>
 <script src="script/colorTransition.js"></script>  <!--Se messi prima non funzioneranno perchè non conosceranno gli id-->
 <script src="script/scroll.js"></script>  
-<script src="pagineAusiliarie/esci.js"></script> 
+<script src="script/header.js"></script>  
+
 
 
 

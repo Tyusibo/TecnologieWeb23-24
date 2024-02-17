@@ -59,6 +59,7 @@ button{
     cursor: pointer;
     font-family: "Bitter", "Palatino Linotype", Times;
     font-size: 16px;
+    text-decoration: none   ;
 }
 
 /* CSS specifico dell'header */

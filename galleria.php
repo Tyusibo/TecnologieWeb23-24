@@ -16,6 +16,7 @@ else
     <title>Gentlemen's Cut Galleria</title>
     <link rel="stylesheet" type="text/css" href="CSS/galleria.css">
     <script src="script/galleria.js" crossorigin="anonymous"></script> 
+    <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
 </head>
 <body>
     <?php require "header.php"; ?>
@@ -31,6 +32,7 @@ else
             <div class="galint">
                 <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
                 <button class="category"  id="buzz" onclick="stile(event)" href="#gallery">BUZZ CUT</button>
+                <i class="fa-sharp fa-solid fa-eye" id="mostra1"></i>
                 <button class="category"  id="french" onclick="stile(event)" href="#gallery">FRENCH CROP</button>
                 <button class="category"  id="curtains" onclick="stile(event)">CURTAINS</button>
                 <button class="category"  id="side" onclick="stile(event)">SIDE PART</button>

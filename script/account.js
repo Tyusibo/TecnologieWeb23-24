@@ -27,6 +27,9 @@ function sezioni(sezione){
         }
 }
 
+document.getElementById("esciAccount").addEventListener("click", function() {
+    esci();
+});  //sta in header.js
 
 function cancellaPrenotazione(barbiere,id){
     var xmlhttp = new XMLHttpRequest();

@@ -5,9 +5,9 @@ session_start();
 $_SESSION['redirect']=null;
 require "database/id.php";  
 if(isset($_SESSION['username']))
-    $id=getId($_SESSION['username']);  
+    $id=getId($_SESSION['username']);
 else
-    $id="a";
+    $id='a';
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -15,7 +15,6 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Galleria</title>
     <link rel="stylesheet" type="text/css" href="CSS/galleria.css">
-    <script src="script/galleria.js" crossorigin="anonymous"></script> 
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
 </head>
 <body>
@@ -23,10 +22,7 @@ else
     <div style="height: 100px"></div>
     <div class="sezione1">
         <h1 id="gallery">I NOSTRI TAGLI</h1>
-        <?php echo "<button id='aggiungi' class='addbutt' onclick='preferenze($id)'>Aggiungi Preferenza</button>"; ?>
     </div>
-    
-
     <div class="gallery" >
         <div class="gal-1">
             <div class="galint">
@@ -35,23 +31,23 @@ else
                 </div>
                 <div class="flex">
                     <button class="category"  id="buzz" onclick="stile(event)" href="#gallery">BUZZ CUT</button>
-                    <i class="fa fa-star"></i>
+                    <i id="star_1" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="french" onclick="stile(event)" href="#gallery">FRENCH CROP</button>
-                    <i class="fa fa-star"></i>
+                    <i id="star_2" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="curtains" onclick="stile(event)">CURTAINS</button>
-                    <i class="fa fa-star"></i>
+                    <i id="star_3" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="side" onclick="stile(event)">SIDE PART</button>
-                    <i class="fa fa-star"></i>
+                    <i id="star_4" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="mohawk" onclick="stile(event)">MOHAWK</button>
-                    <i class="fa fa-star"></i>
+                    <i id="star_5" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
                 </div>
             </div>
         </div>
@@ -66,15 +62,16 @@ else
             ?>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-    <?php require "footer.php"; ?>
+    <script src="script/galleria.js"></script> 
+    <?php require "footer.php"; 
+    if(isset($_SESSION["username"])){
+        ?>
+        <script>
+            var id_utente = "<?php echo $id; ?>";
+            mostra(id_utente);
+        </script>
+        <?php
+    }
+?>
 </body>
 </html>

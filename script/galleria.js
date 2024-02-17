@@ -6,27 +6,6 @@ function stile(event){
         img.style.display = 'block';
     });
     event.target.classList.add('active');
-    var addPref = document.getElementById('aggiungi');
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {        
-        if (this.readyState == 4 && this.status == 200) {
-            var prova = this.responseText;
-            console.log(prova);
-            if(prova[2]=="f"){
-                addPref.textContent="non scelto";
-                addPref.disabled=false;
-            } else {
-                addPref.textContent="scelto";
-                addPref.disabled=true;
-            }
-            addPref.style.display="block";
-            }
-        };
-
-    xmlhttp.open("POST", "database/galleria.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("preferenza=" + event.target.textContent); 
 }
 
 
@@ -52,24 +31,72 @@ function all(){
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    var addPref = document.getElementById('aggiungi');
-    addPref.style.display="none";
 }
 
 
-function preferenze(id){
-    var elemento = document.getElementsByClassName('active');
+function aggiungiPreferenza(id,preferenza){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.textContent);
-            var addPref = document.getElementById('aggiungi');
-            addPref.textContent="Scelto";
-            addPref.disabled=true;
+            if(this.responseText=="full")
+                alert("tutte piene");
+            else
+                mostra(id);
         };
     }
 
     xmlhttp.open("POST", "database/galleria.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("preferenza=" + elemento[0].textContent  + "&id=" + id); 
+    xmlhttp.send("id=" + id + "&preferenza=" + preferenza + "&mode=" + "aggiungi"); 
 }
+
+function rimuoviPreferenza(id,preferenza){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+        };
+    }
+
+    xmlhttp.open("POST", "database/galleria.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("id=" + id + "&preferenza=" + preferenza + "&mode=" + "rimuovi"); 
+}
+
+function mostra(id){
+    var elemento = document.getElementsByClassName('star');
+    var stili = ["BUZZ CUT", "FRENCH CROP", "CURTAINS", "SIDE PART", "MOHAWK"];
+    for (var i = 0; i < elemento.length; i++) {
+        elemento[i].classList.add('fa-star-o');
+    } 
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+            var parti = this.responseText.split('\n');
+            for(i=0;i<(parti.length-1);i++){
+                var posizione=stili.indexOf(parti[i]);
+                var stella=document.getElementById("star_"+(posizione+1));
+                stella.classList.remove('fa-star-o');
+                stella.classList.add('fa-star');
+            }
+        };
+    }
+    xmlhttp.open("POST", "database/galleria.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("id=" + id); 
+}
+
+function gestisciPreferenza(id_utente,event){
+    var stili = ["BUZZ CUT", "FRENCH CROP", "CURTAINS", "SIDE PART", "MOHAWK"];
+    var classe=event.target.classList;
+    var id=event.target.id;
+    var splitted = id.split('_');
+    if(classe[2]=="fa-star-o"){  
+        aggiungiPreferenza(id_utente, stili[splitted[1]-1],event);        
+    }
+    else{
+        rimuoviPreferenza(id_utente, stili[splitted[1]-1],event);
+        event.target.classList.remove('fa-star');
+        event.target.classList.add('fa-star-o');
+    }
+}
+

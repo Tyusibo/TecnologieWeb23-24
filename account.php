@@ -24,7 +24,7 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                 <section id="lista">
                     <?php 
                     $nome=getNome($_SESSION["username"]);
-                    echo "<p>Benvenuto $nome!";?>
+                    echo "<h3>Benvenuto $nome!</h3>";?>
                     <nav>
                         <ul>
                             <li><p id="dati">I miei dati</p></li>

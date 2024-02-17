@@ -6,6 +6,10 @@ body{
     font-family: "Bitter", "Palatino Linotype", Times;
 }
 
+button{
+    font-family: "Bitter", "Palatino Linotype", Times;
+}
+
 .bottone{
     cursor: pointer;
     background-color: transparent;

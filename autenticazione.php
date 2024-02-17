@@ -6,10 +6,6 @@ if(isset($_SESSION["username"]))   //questa pagina è accessibile solo se non lo
 if(isset($_COOKIE["nomeUtente"])){
     $username=$_COOKIE["nomeUtente"];  //si mette anche a registrati
 }
-if(isset($_SESSION['change'])){  //messo a true (settato) solo da script ajax esterni a questo file per passare a registrazione
-    ?><script defer>cambiaModalità(false)</script>     
-    <?php unset($_SESSION['change']);  //per non creare bug
-}
 if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     require "database/autenticazione.php";  
     $nome=$_POST['nome'];   // Recupero i valori dai campi di input del form per farlo sticky
@@ -146,6 +142,10 @@ if(isset($_POST['acc'])) {//analogamente per accedi
     </div>
     <script src="script/autenticazione.js"></script> 
     <?php require "footer.php";
+    if(isset($_SESSION['change'])){  //messo a true (settato) solo da script ajax esterni a questo file per passare a registrazione
+        ?><script>cambiaModalità(false)</script>     
+        <?php unset($_SESSION['change']);  //per non creare bug
+    }
     ?>
 </body>
 </html>       

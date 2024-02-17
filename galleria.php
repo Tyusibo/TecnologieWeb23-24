@@ -30,13 +30,29 @@ else
     <div class="gallery" >
         <div class="gal-1">
             <div class="galint">
-                <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
-                <button class="category"  id="buzz" onclick="stile(event)" href="#gallery">BUZZ CUT</button>
-                <i class="fa-sharp fa-solid fa-eye" id="mostra1"></i>
-                <button class="category"  id="french" onclick="stile(event)" href="#gallery">FRENCH CROP</button>
-                <button class="category"  id="curtains" onclick="stile(event)">CURTAINS</button>
-                <button class="category"  id="side" onclick="stile(event)">SIDE PART</button>
-                <button class="category"  id="mohawk" onclick="stile(event)">MOHAWK</button>
+                <div class="flex">
+                    <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
+                </div>
+                <div class="flex">
+                    <button class="category"  id="buzz" onclick="stile(event)" href="#gallery">BUZZ CUT</button>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="flex">
+                    <button class="category"  id="french" onclick="stile(event)" href="#gallery">FRENCH CROP</button>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="flex">
+                    <button class="category"  id="curtains" onclick="stile(event)">CURTAINS</button>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="flex">
+                    <button class="category"  id="side" onclick="stile(event)">SIDE PART</button>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="flex">
+                    <button class="category"  id="mohawk" onclick="stile(event)">MOHAWK</button>
+                    <i class="fa fa-star"></i>
+                </div>
             </div>
         </div>
         <div class="gal-2">

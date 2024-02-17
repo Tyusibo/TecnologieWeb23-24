@@ -62,6 +62,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
 </header>
 <script src="script/colorTransition.js"></script>  <!--Se messi prima non funzioneranno perchè non conosceranno gli id-->
 <script src="script/scroll.js"></script>  
+<script src="pagineAusiliarie/esci.js"></script> 
 
 
 

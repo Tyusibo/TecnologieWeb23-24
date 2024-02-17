@@ -44,7 +44,7 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                     ?>
                     </section>
                     <section id="sezionePreferenze">
-                        <?php $preferenze=getPreferenze($id);
+                        <?php getPreferenze($id);
                         ?>
                     </section>
                 </section>

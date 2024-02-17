@@ -40,7 +40,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
                     </ul>
                 </nav>  
             </div>
-            <div class="colonna3"> 
+            <div onmouseout="hideRectangle()" class="colonna3"> 
                 <div class="account popup" onmouseover="showRectangle()"><a href="account.php"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
                     <span class="popuptext" id="myPopup"> 
                         <?php   if(isset($_SESSION['username']) )

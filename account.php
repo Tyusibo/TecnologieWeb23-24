@@ -30,7 +30,7 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                             <li><p id="dati">I miei dati</p></li>
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
                             <li><p id="preferenze">Le mie preferenze</p></li>
-                            <li><p id="esci">Premi <button class="linkbutton" id="esci">qui</button> per uscire</p></li> 
+                            <li><p id="esciAccount">Premi <button class="linkbutton" id="esci">qui</button> per uscire</p></li> 
                         </ul>
                     </nav>           
                 </section>
@@ -53,7 +53,8 @@ if(!(isset($_SESSION['username'])))  //se non loggato
     </div>
     <?php require "footer.php"; ?> 
     <script src="script/account.js"></script>
-    <script src="ajax/esci.js"></script>
+    <script src="pagineAusiliarie/esci.js"></script>  
+
 
     <?php
     if(isset($_SESSION['prenota'])){

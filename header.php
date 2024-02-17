@@ -43,10 +43,17 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
             <div onmouseout="hideRectangle()" class="colonna3"> 
                 <div class="account popup" onmouseover="showRectangle()"><a href="account.php"><i class="fa-sharp fa-solid fa-user" style="font-size: 24px; margin-left: -30px; margin-top: -7px;"></i></a>
                     <span class="popuptext" id="myPopup"> 
-                        <?php   if(isset($_SESSION['username']) )
+                        <?php   if(isset($_SESSION['username']) ){
                                     echo "Benvenuto, " . getNome($_SESSION["username"]);
-                                else
-                                    echo "Non sei ancora Loggato";
+                                    echo "<p>Premi <a href=account.php class=linkbutton>qui</a> per gestire il tuo account</p>";
+                                    echo "<p id=esci>Premi <button class=linkbutton id=esci>qui</button> per uscire</p>";
+                                }
+                                else{
+                                    echo "Non ti sei ancora autenticato";
+                                    echo "<p>Premi <a href=autenticazione.php class=linkbutton>qui</a> per effettuare l'autenticazione</p>";
+                                }
+
+                        
                         ?>
                     </span>
                 </div>
@@ -55,6 +62,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
 </header>
 <script src="script/colorTransition.js"></script>  <!--Se messi prima non funzioneranno perchè non conosceranno gli id-->
 <script src="script/scroll.js"></script>  
+
 
 
 

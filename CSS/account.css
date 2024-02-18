@@ -87,7 +87,6 @@ hr {
 }
 
 .accbutton{
-    width: fit-content;
     padding: 5px 20px;
     margin: 0;
     display: flex;
@@ -102,6 +101,14 @@ hr {
         text-decoration: none;
         font-size: 16px;
         font-family: "Bitter", "Palatino Linotype", Times;
+}
+
+button.accbutton{
+    width: 102px; /*i button considerano come width la somma di dimensione, padding, bordi e margini*/
+}
+
+a.accbutton{
+    width: 60px;
 }
 
 .flexdati{

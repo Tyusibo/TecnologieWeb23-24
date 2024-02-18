@@ -27,7 +27,7 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
                     ?>
                     <nav>
                         <ul>
-                            <li><p id="dati">I miei dati</p></li>
+                            <li><p class="active" id="dati">I miei dati</p></li>
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
                             <li><p class="space" id="preferenze">Le mie preferenze</p></li>
                             <div class="space"></div>

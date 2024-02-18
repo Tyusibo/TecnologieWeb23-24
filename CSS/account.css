@@ -3,7 +3,9 @@
     font-weight: 600;
     margin: 0;
 }
-
+.active{
+    color:#fa6400;
+}
 hr {
     border: 0.5px solid #bdc5d1; /* colore e stile del bordo del divider */
     margin: 20px 0; /* spaziatura sopra e sotto il divider */

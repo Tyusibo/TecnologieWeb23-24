@@ -56,7 +56,7 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
         <?php unset($_SESSION['prenota']);  /* per non creare bug */  }   
     if(isset($_SESSION['preferenza'])){  //se è settato vuol dire che si proviene da galleria e si vogliono visualizzare le preferenze
         ?> <script>sezioni(3)</script> 
-        <?php unset($_SESSION['preferenza']);  /* per non creare bug */  }
+        <?php unset($_SESSION['prenota']);  /* per non creare bug */  }
     ?> 
 </body>
 </html>

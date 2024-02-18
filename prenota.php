@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
-$_SESSION['redirect']=null;  
+$_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.php 
+require "database/id.php"; 
+if(isset($_SESSION['username']))
+    $id=getId($_SESSION['username']);
+else
+    $id=0;  //serve per far capire agli script php che l'utente non è loggato
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -17,20 +22,19 @@ $_SESSION['redirect']=null;
     <div class="prenota_main">
         <h2>SCEGLI IL TUO BARBIERE</h2>
         <div class="barbieri">
-            <button class="barbutton" id="andrea">Andrea</button>
-            <button class="barbutton" id="rocco">Rocco</button>
-            <button class="barbutton" id="francesco">Francesco</button>
+            <button onclick="mostraData('andrea', <?php echo $id; ?>)" class="barbutton" id="andrea">Andrea</button>
+            <button onclick="mostraData('rocco',<?php echo $id; ?>)"class="barbutton" id="rocco">Rocco</button>
+            <button onclick="mostraData('francesco',<?php echo $id; ?>)"class="barbutton" id="francesco">Francesco</button>
         </div>
-        <div class="date" id="datePicker" >
-            <?php $data=date("Y-m-d"); /*fa vedere il formato giusto*/ ?>  
-            <input type="date" onchange=orari() id="date" value="<?php echo $data ?>" name="data" min="<?php echo $data; ?>" max="<?php echo date('d-m-Y', strtotime('+1 week')); ?> " readonly>
+        <div class="date" id="datePicker">
+            <?php $data=date("Y-m-d"); ?>  
+            <input type="date" onchange="orari(<?php echo $id; ?>)" id="date" value="<?php echo $data; ?>" name="data" min="<?php echo $data; ?>" readonly>
             <span class="freccia" id="sinistra" onclick="precedente()">&#9664;</span>
             <span class="freccia" id="destra" onclick="prossimo()">&#9654;</span>
         </div>
-        <div id="orari"></div> <!--Gli orari si possono gestire nel css con .orari ul-->
-
-    </div>    
-
+        <div id="orari"></div>
+    </div> 
+    
     
     <div class="popup-sfondo" id="popup-prenota">
         <div class="popup-contenuto">
@@ -53,7 +57,5 @@ $_SESSION['redirect']=null;
     <?php require "footer.php";?>
     <script src="pagineAusiliarie/redirect.js"></script>
     <script src="script/prenota.js"></script>
-
-
 </body>
 </html>

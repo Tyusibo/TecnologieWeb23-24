@@ -1,5 +1,5 @@
 <?php
-	function getPreferenze($username){ 
+	function contenutiPersonalizzati($username){ 
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
 

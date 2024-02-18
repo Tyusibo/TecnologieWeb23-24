@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$_SESSION['redirect']=null;  
+$_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/homepage.php";
 ?>
 <html lang="it" dir="ltr">
@@ -122,7 +122,7 @@ require "database/homepage.php";
             <div class="galleria_in">
             <?php 
             if(isset($_SESSION["username"])){
-                    getPreferenze($_SESSION["username"]);
+                    contenutiPersonalizzati($_SESSION["username"]);
             } else {
                     nessunaPreferenza();
             }

@@ -1,73 +1,52 @@
+var inizializzazione=document.getElementById("andrea");  //per avere di default il primo barbiere selezionato
+inizializzazione.click();
 
-document.getElementById("andrea").addEventListener("click", function() {
-    mostraData("andrea");
-});
-document.getElementById("rocco").addEventListener("click", function() {
-    mostraData("rocco");
-});
-document.getElementById("francesco").addEventListener("click", function() {
-    mostraData("francesco");
-});
-var prova=document.getElementById("andrea");
-prova.click();
+function attivo() {
+    var barbiere=document.getElementsByClassName("active");
+    if(barbiere.length==1)  //sarà sempre 1 o nessuno 
+        return barbiere[0];  //ritorno l'elemento attivo
+    return false;
+ }
 
-function mostraData(nome) {
-    var andrea=document.getElementById("andrea"); andrea.classList.remove("active");   
-    var rocco=document.getElementById("rocco"); rocco.classList.remove("active");
-    var francesco=document.getElementById("francesco");  francesco.classList.remove("active");
-    var elemento=document.getElementById(nome);  elemento.classList.add("active");
-    document.getElementById("datePicker").style.display = "block";
-    orari();
+function mostraData(nome,id_utente) {  //per visualizzare la data e gli orari quando si seleziona un barbiere 
+    var elementoAttivo=attivo();
+    if(elementoAttivo!=false)
+        elementoAttivo.classList.remove("active"); 
+
+    var nuovoAttivo=document.getElementById(nome);  nuovoAttivo.classList.add("active");
+
+    orari(id_utente);   //per aggiornare gli orari disponibili in base al barbiere e alla data
 }
 
-function orari() {
-    var barbiere=attivo();
+function orari(id_utente){
+    var barbiere=attivo();  
+    var data=document.getElementById("date").value;  //per avere la data selezionata
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
-    data=document.getElementById("date").value;
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("orari").style.display="block";
         document.getElementById("orari").innerHTML = this.responseText;
         }
     };
-
     xmlhttp.open("POST", "database/prenota.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("barbiere=" + barbiere + "&data=" + data);
+    xmlhttp.send("barbiere=" + barbiere.id + "&data=" + data + "&id_utente=" + id_utente);
 }
- function prenota(event){
+ function prenota(event,id_utente){
     var barbiere=attivo();
-    data=document.getElementById("date").value;
-    var orario = event.target.value;
+    var data=document.getElementById("date").value;
+    var orario = event.target.value;  //per avere l'orario del bottone selezionato
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
-            orari();
+            orari();  //per aggiornare gli orari
             apriPupupPrenota();
             }
         };
 
     xmlhttp.open("POST", "database/prenota.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("barbiere=" + barbiere + "&data=" + data + "&orario=" + orario); 
+    xmlhttp.send("barbiere=" + barbiere.id + "&data=" + data + "&orario=" + orario + "&id_utente=" + id_utente); 
  }
-
-
- function attivo() {
-    var nome = ["andrea", "rocco", "francesco"];
-    var i = 0;
-    while (i < 3) {
-        var barbiere = nome[i];
-        var elemento = document.getElementById(barbiere);
-        if (elemento.classList.contains("active")) {
-            return barbiere;
-        }
-        i++;
-    }
-    // Se nessun elemento ha la classe "active"
-    return null;
-}
-
 
 function precedente() {
     var input = document.getElementById("date");
@@ -125,9 +104,7 @@ function redirectAccount(){
             }
         };
 
-    xmlhttp.open("POST", "pagineAusiliarie/redirectprenota.php", true);
+    xmlhttp.open("POST", "pagineAusiliarie/redirectPrenota.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("");
-
-    
+    xmlhttp.send("");   
 }

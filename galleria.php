@@ -2,7 +2,7 @@
 <?php
 //buzz cut //french crop //curtains cut //Side Part Cut //MOHAWK cut
 session_start(); 
-$_SESSION['redirect']=null;
+$_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/id.php";  
 if(isset($_SESSION['username']))
     $id=getId($_SESSION['username']);

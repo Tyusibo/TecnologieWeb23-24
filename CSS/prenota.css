@@ -81,6 +81,7 @@ h2{
     border: 0px;
     font-size: 32px;
     width: 200px;
+    color: black;
 }
 #orari{
     display: flex !important;
@@ -96,7 +97,7 @@ h2{
 }
 
 
-.red{
+.unavailable{
     background-color: lightgray;
     border: 0px;
 }

@@ -10,9 +10,9 @@
 			return false; 
 		}
 		else{
-			$row = pg_fetch_assoc($ret);
+			$nome = pg_fetch_assoc($ret);
 			pg_close($db);
-            return $row['nome']; 	
+            return $nome['nome']; 	
 		}	
    	}
 ?>

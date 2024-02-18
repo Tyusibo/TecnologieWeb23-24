@@ -2,14 +2,11 @@
 	session_start(); //essenziale per usare $_SESSION['username'] in setOrario
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if(isset($_POST["barbiere"])&& isset($_POST["data"])){
-			$barbiere=$_POST["barbiere"];
-			$data=$_POST["data"];
 			if(isset($_POST["orario"])){
-				$orario=$_POST["orario"];
-				setOrario($barbiere,$data,$orario);
+				setOrario($_POST["barbiere"],$_POST["data"],$_POST["orario"]);
 			}
 			else
-				getOrari($barbiere,$data);
+				getOrari($_POST["barbiere"],$_POST["data"]);
 		}		
 	}	
 

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
+if(!(isset($_SESSION['username'])))  //se non loggato
+    header("Location: autenticazione.php"); 
 require "database/account.php";
 require "database/id.php"; 
 $id=getId($_SESSION['username']);
 $_SESSION['redirect']=null;     
- 
-if(!(isset($_SESSION['username'])))  //se non loggato
-    header("Location: autenticazione.php"); 
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -36,16 +35,13 @@ if(!(isset($_SESSION['username'])))  //se non loggato
                 </section>
                 <section id="sezioni"> 
                     <section id="sezioneDati">
-                        <?php getDati($_SESSION["username"]);?>
+                        <?php getDati($id);?>
                     </section>
                     <section id="sezionePrenotazioni">
-                    <?php
-                    getPrenotazioni($id);
-                    ?>
+                        <?php getPrenotazioni($id);?>
                     </section>
                     <section id="sezionePreferenze">
-                        <?php getPreferenze($id);
-                        ?>
+                        <?php getPreferenze($id);?>
                     </section>
                 </section>
             </div>

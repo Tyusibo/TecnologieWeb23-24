@@ -31,7 +31,7 @@ document.getElementById("esciAccount").addEventListener("click", function() {
     esci();
 });  //sta in header.js
 
-function cancellaPrenotazione(barbiere,id){
+function cancellaPrenotazione(barbiere,id_prenotazione,id_utente){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
@@ -42,10 +42,10 @@ function cancellaPrenotazione(barbiere,id){
 
     xmlhttp.open("POST", "database/account.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("barbiere=" + barbiere + "&id=" + id); 
+    xmlhttp.send("barbiere=" + barbiere + "&id_prenotazione=" + id_prenotazione + "&id_utente=" + id_utente); 
  }
 
- function cancellaPreferenza(preferenza,id){
+ function cancellaPreferenza(preferenza,id_utente){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
@@ -56,7 +56,7 @@ function cancellaPrenotazione(barbiere,id){
 
     xmlhttp.open("POST", "database/account.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("preferenza=" + preferenza + "&id=" + id); 
+    xmlhttp.send("preferenza=" + preferenza + "&id_utente=" + id_utente); 
  }
 
 

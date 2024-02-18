@@ -10,9 +10,9 @@
 			return false; 
 		}
 		else{
-            $row=pg_fetch_assoc($ret);
+            $id=pg_fetch_assoc($ret);
             pg_close($db);
-            return $row["id_utente"];     
+            return $id["id_utente"];     
 		}
     }
 ?>

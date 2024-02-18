@@ -13,10 +13,7 @@ $_SESSION['redirect']=null;
 <body>
     <?php require "header.php"; ?>
     <div style="height: 100px"></div>
-    <?php
-   
-    echo "<h1>PRENOTA ORA</h1>";?>
-    
+        <h1>PRENOTA ORA</h1>;
     <div class="prenota_main">
         <h2>SCEGLI IL TUO BARBIERE</h2>
         <div class="barbieri">

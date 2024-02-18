@@ -18,7 +18,9 @@ else
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
 </head>
 <body>
-    <?php require "header.php"; ?>
+    <div class="header">
+        <?php require "header.php"; ?>
+    </div>
     <div style="height: 100px"></div>
     <div class="sezione1">
         <h1 id="gallery">I NOSTRI TAGLI</h1>
@@ -63,15 +65,40 @@ else
         </div>
     </div>
     <script src="script/galleria.js"></script> 
-    <?php require "footer.php"; 
-    if(isset($_SESSION["username"])){
+    <div id="footer">
+        <?php require "footer.php"; 
+        if(isset($_SESSION["username"])){
+            ?>
+            <script>
+                var id_utente = "<?php echo $id; ?>";
+                mostra(id_utente);
+            </script>
+            <?php
+        }
         ?>
-        <script>
-            var id_utente = "<?php echo $id; ?>";
-            mostra(id_utente);
-        </script>
-        <?php
-    }
-?>
+    </div>
+    
 </body>
+
+<script defer>
+    window.addEventListener('scroll', scrollFunction);
+
+    function scrollFunction() {
+        var footer = document.getElementById("footer");
+        var menu = document.querySelector('.galint');
+        var header = document.querySelector('.header');
+        var distance = footer.getBoundingClientRect().top + 250;
+        
+        console.log(distance);
+        console.log(window.pageYOffset)
+
+        if (window.innerHeight > distance) {
+            menu.style.position = "fixed";
+            menu.style.bottom = (footer.offsetHeight - 50) + "px"; // Aggiungi un po' di spazio tra il menu e il footer
+        } else {
+            menu.style.position = "fixed";
+            menu.style.bottom = "initial";
+        }
+    }
+</script>
 </html>

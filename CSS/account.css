@@ -1,6 +1,15 @@
-h3{
+#lista h3{
     font-size: 25px;
     font-weight: 600;
+    margin: 0;
+}
+
+hr {
+    border: 0.5px solid #bdc5d1; /* colore e stile del bordo del divider */
+    margin: 20px 0; /* spaziatura sopra e sotto il divider */
+    width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container{
@@ -12,24 +21,33 @@ h3{
 }
 
 .whitebox{
-    margin: 150px 25px;
+    margin: 150px 100px;
     padding: 25px;
     background-color: white;
     border-radius: 25px;
     box-shadow: 10px 10px 30px;
 }
 
-ul{
+#lista ul{
     padding: 0;
+    display: flex;
+    gap: 30px;
+    margin: 20px 0;
+    align-items: center;
 }
 
-li{
+#lista li{
     display: inline-block;
-    margin-right: 20px;
 }
 
-nav ul li p{
+#lista nav ul li p{
     cursor: pointer;
+    margin: 0;
+    transition: all ease 0.5s;
+}
+
+.space{
+    flex-grow: 1;
 }
 
 .flex{
@@ -56,7 +74,7 @@ nav ul li p{
 
 .cancbutton{
     padding: 5px 20px;
-    margin: 0 auto 8px ;
+    margin: 0 auto 0 ;
     display: flex;
     align-items: center;
     justify-content: center;

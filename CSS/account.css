@@ -74,8 +74,8 @@ hr {
     width: 140px;  /*minimo per contenere date "larghe" come 0000-00-00*/
     height: 130px;
     flex-shrink: 0;
-    background-color: rgb(224, 224, 224);
-    border: 1px solid #fa6400;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid #0000003b;
     border-radius: 3px;
     padding: 10px;
 }

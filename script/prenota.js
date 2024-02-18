@@ -38,8 +38,8 @@ function orari(id_utente){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
-            orari();  //per aggiornare gli orari
-            apriPupupPrenota();
+            orari(id_utente);  //per aggiornare gli orari
+            apriPopupPrenota();
             }
         };
 
@@ -91,7 +91,7 @@ function chiudiPopupPrenota(){
     popup.style.display = "none"; // Mostra il popup
 }
 
-function apriPupupPrenota(){
+function apriPopupPrenota(){
     var popup = document.getElementById("popup-prenotazione");
     popup.style.display = "flex"; // Mostra il popup
 }

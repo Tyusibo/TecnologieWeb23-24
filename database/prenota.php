@@ -21,8 +21,7 @@
 		if(!$ret)   
 			echo "ERRORE QUERY: " . pg_last_error($db);
 		pg_close($db);
-		return; 
-		
+		return; 	
 	}
 
     function getOrari($barbiere,$data,$id_utente){ 

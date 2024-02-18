@@ -1,3 +1,10 @@
+body{
+    background-image: url(../img/barberphoto2.jpg);
+    background-size: 100% auto;
+    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.3);
+    /* background-attachment: fixed; */
+}
+
 #lista h3{
     font-size: 25px;
     font-weight: 600;
@@ -19,7 +26,7 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/homebackg.jpg);
+    /* background-image: url(../img/homebackg.jpg); */
 }
 
 .whitebox{

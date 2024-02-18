@@ -159,26 +159,11 @@ document.getElementById("pwd1").addEventListener("input", function() {
     verificaPassword(event);
 });
 
-function selezionaPrefisso() {
-    var selectElement = document.getElementById("prefisso");
-    var selectedValue = selectElement.value;
-    var numero = document.getElementById("numero");
-    if(selectedValue!="Seleziona il prefisso"){
-            numero.value=selectedValue;
-            document.getElementById("erroreNumero").innerText ="";
-    }
-}
-
-
 function soloNumeri(event){
     document.getElementById("erroreNumero").innerText ="";
     var tasto;
     tasto = event.key;
     var campo = event.target.value;
-    if (campo.length==0) {
-        document.getElementById("erroreNumero").innerText ="Scegli prima il prefisso";
-        return false;
-    }
     if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control"))
         return true;
     if (("0123456789").indexOf(tasto) > -1){

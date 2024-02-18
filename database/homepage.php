@@ -26,6 +26,7 @@
             }  
 			if($preferenze_espresse==0){
                 nessunaPreferenza();
+				pg_close($db);
 				return;
             }
 			else{
@@ -35,7 +36,7 @@
 						$random = array();
                         for($j=0;$j<$preferenze_per_tipo;$j++){
 							do {
-								$immagine_casuale=rand(1,5);
+								$immagine_casuale=rand(1,6);
 							} while (in_array($immagine_casuale, $random));
 							$random[$j]=$immagine_casuale;
                             echo '<img src="img/gallery/'.$stile[$i].'/img'.$immagine_casuale.'.jpg" >' ;
@@ -53,7 +54,5 @@
 			for($i = 0; $i<$numero_immagini; $i++)
 					echo '<img  src="img/gallery/'.$stili[$i].'/img'.rand(1,5).'.jpg" >' ;
 		}
-		function random(){
-            $random=rand(1,5);
-		}
+
 ?>

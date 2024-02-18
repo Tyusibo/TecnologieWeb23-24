@@ -27,3 +27,8 @@ function esci() {
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("");
 }
+
+function mostraEsci(){
+  var elemento=document.getElementById("esci");
+  elemento.style.display="inline";  
+}

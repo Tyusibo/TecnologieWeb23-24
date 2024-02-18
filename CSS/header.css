@@ -231,3 +231,7 @@ header .account{
     visibility: visible;
     animation: fadeIn 1s;
   }
+
+  #esci{
+    display: none;
+  }

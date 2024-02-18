@@ -44,14 +44,12 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
                         <?php   if(isset($_SESSION['username']) ){
                                     echo "<p>Benvenuto,&nbsp;&nbsp;" . getNome($_SESSION["username"])."</p>";
                                     echo "<p><a href=account.php class=linkbutton>Account</a></p>";
-                                    echo "<p><button class=linkbutton id=esci>Esci</button></p>";
                                 }
                                 else{
                                     echo "<p>Non ti sei ancora autenticato</p>";
                                     echo "<p><a href=autenticazione.php class=linkbutton>Login in/Sign in</a></p>";
                                 }
-
-                        
+                                echo "<p><button class=linkbutton id=esci>Esci</button></p>";
                         ?>
                     </span>
                 </div>
@@ -61,6 +59,9 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
 <script src="script/colorTransition.js"></script>  <!--Se messi prima non funzioneranno perchè non conosceranno gli id-->
 <script src="script/scroll.js"></script>  
 <script src="script/header.js"></script>  
+<?php   if(isset($_SESSION['username']) ){
+                                    ?><script>mostraEsci()</script><?php
+                                }
 
 
 

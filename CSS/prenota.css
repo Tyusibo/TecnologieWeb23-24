@@ -34,7 +34,7 @@ h2{
     margin-right: auto;
     min-height: 400px;
     margin-bottom: 70px;
-    align-content: center;
+    justify-content: center;
     padding: 50px;
     border: 1px solid transparent;
     border-radius: 25px;

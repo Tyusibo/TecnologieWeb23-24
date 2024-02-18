@@ -55,9 +55,9 @@
 						echo '<button class="unavailable" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
 					} else {
 						if($id_utente!=0)
-							echo '<button onclick="prenota(event,' . $id_utente . ')" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
+							echo '<button onclick="prenota(event,' . $id_utente . ')" class="available" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
 						else
-							echo '<button onclick="apriPopup()" class="green" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
+							echo '<button onclick="apriPopup()" class="available" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
 					}
 				}
 				return;

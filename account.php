@@ -29,11 +29,13 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
                         <ul>
                             <li><p id="dati">I miei dati</p></li>
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
-                            <li><p id="preferenze">Le mie preferenze</p></li>
-                            <li><p><button class="linkbutton" id="esciAccount">Log out</button></p></li> 
+                            <li><p class="space" id="preferenze">Le mie preferenze</p></li>
+                            <div class="space"></div>
+                            <li><p><button class="accbutton" id="esciAccount">Log out</button></p></li> 
                         </ul>
                     </nav>           
                 </section>
+                <hr>
                 <section id="sezioni"> 
                     <section id="sezioneDati">
                         <?php getDati($id);?>

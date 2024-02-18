@@ -23,7 +23,7 @@
 
 	function getPrenotazioni($id_utente){ 
 		$nome = array("andrea","rocco","francesco");  //per scorrere tutte e 3 le tabelle di tutti e 3 i barbieri
-	   	$nessunaPrenotazione = false;  //se rimane a false non si ha una prenotazione con nessun barbiere
+	   	$nessunaPrenotazione = true;  //se rimane a false non si ha una prenotazione con nessun barbiere
 		$data_odierna = date('Y-m-d');   //per non visualizzare prenotazioni precedenti alla data odierna
 
 		require "connectionString.php"; 
@@ -43,7 +43,7 @@
 			}
 			else{
 				if(pg_num_rows($ret)!=0){  //se ci sono prenotazioni in quella tabella per quell'utente
-					$nessunaPrenotazione=true;  //messo almeno una volta a true significa che esistono prenotazioni
+					$nessunaPrenotazione=false;  //messo almeno una volta a true significa che esistono prenotazioni
 					echo "<p>Barbiere: $barbiere</p>";  //stampo il nome del barbiere una volta
 					echo "<div class=\"flex\">";
 					while ($prenotazione = pg_fetch_assoc($ret)) {
@@ -61,8 +61,8 @@
 				}	
 			}          
 		} 
-		if (!$nessunaPrenotazione) {  //se non si ha una prenotazione per nemmeno un barbiere
-			echo "<p>Sembra che tu non abbia effettuato neanche una prenotazione</p>";
+		if ($nessunaPrenotazione) {  //se non si ha una prenotazione per nemmeno un barbiere
+			echo "<p>Non hai effetuato prenotazioni</p>";
 			echo "<p><a href='prenota.php' class=linkbutton>Qui</a> puoi effettuarne una</p>";
 		}	
    	}
@@ -80,19 +80,20 @@
 		else{  
             $preferenza = pg_fetch_assoc($ret);
 			pg_close($db);
-			$i=1;
 			$numeroPrefenze=4;
 			$nessunaPrenotazione = true;  //se rimane a true non si ha nessuna preferenze
 			for($i=1;$i<$numeroPrefenze;$i+=1)
 				if(isset($preferenza["pref_".$i.""]))
 					$nessunaPrenotazione = false;    
-			if($nessunaPrenotazione)  //se è rimasto true allora non sono state espresse preferenze
-				echo "<p>Sembra che tu non abbia mai espresso una preferenza</p>
-				<p><a href=galleria.php class=linkbutton>Qui</a> puoi osservare i vari stili ed esprimerne quante ne vuoi"; 
+			if($nessunaPrenotazione){  //se è rimasto true allora non sono state espresse preferenze
+				echo "<p>Non hai preferenze espresse</p>";
+				echo "<p><a href=galleria.php class=linkbutton>Qui</a> puoi osservare i vari stili ed esprimerne fino a 3"; 
+			}
 			else{
-				for($i=1;$i<$numeroPrefenze;$i+=1){  //se non è vuoto allora lo scorro per mostrare le preferenze
+				for($i=1;$i<$numeroPrefenze;$i+=1){
 					if(isset($preferenza["pref_".$i.""]))  //se espressa
-					echo "<p>Preferenza ".$i.": " . $preferenza["pref_".$i.""] . "<button class=cancbutton onclick='cancellaPreferenza(\"pref_".$i."\", $id_utente)'>Cancella</button></p>";
+					echo "<p>Preferenza ".$i.": " . $preferenza["pref_".$i.""] . "<button class=cancbutton 
+					onclick='cancellaPreferenza(\"pref_".$i."\", $id_utente)'>Cancella</button></p>";
 					else  //se non espressa
 					echo "<p>Preferenza ".$i.": non espressa <a href=galleria.php class=cancbutton>Aggiungi</a></p>";
 				}
@@ -100,9 +101,9 @@
         } 
    	}
 
-	//questo script ha 2 funzioni che vengono chiamate tramite AJAX per cancellare una prenotazione o una preferenza
+	//sotto sono presenti 2 funzioni che vengono chiamate tramite AJAX per cancellare una prenotazione o una preferenza
 	if($_SERVER['REQUEST_METHOD'] === 'POST') {
-		if(isset($_POST["barbiere"]) && isset($_POST["id_prenotazione"])&& isset($_POST["id_utente"])){
+		if(isset($_POST["barbiere"]) && isset($_POST["id_prenotazione"] )&& isset($_POST["id_utente"])){
 			cancellaPrenotazione($_POST["barbiere"],$_POST["id_prenotazione"],$_POST["id_utente"]);
 		} else {
 			if(isset($_POST["preferenza"])&& isset($_POST["id_utente"])){
@@ -124,7 +125,7 @@
 		}
 		else{
 			pg_close($db);
-			getPrenotazioni($id_utente);
+			getPrenotazioni($id_utente);  //per riaggiornare la schermata
 			return; 	
 		}	
 	}
@@ -141,7 +142,7 @@
 		}
 		else{
 			pg_close($db);
-			getPreferenze($id_utente);
+			getPreferenze($id_utente);  //per riaggiornare la schermata
 			return; 	
 		}		
 	}

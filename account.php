@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
-if(!(isset($_SESSION['username'])))  //se non loggato
+if(!(isset($_SESSION['username'])))  //se non loggato porta ad autenticazione
     header("Location: autenticazione.php"); 
 require "database/account.php";
 require "database/id.php"; 
-$id=getId($_SESSION['username']);
-$_SESSION['redirect']=null;     
+$id=getId($_SESSION['username']);  
+$_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.php  
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -19,17 +19,18 @@ $_SESSION['redirect']=null;
     <?php require "header.php"; ?>
     <div class="container">
         <div class="whitebox">
-            <div id="contenuti">  <!--Voglio che la section id lista sta sempre a sinistra e quello dopo sta alla sua destra-->
+            <div id="contenuti"> 
                 <section id="lista">
                     <?php 
-                    $nome=getNome($_SESSION["username"]);
-                    echo "<h3>Benvenuto $nome!</h3>";?>
+                    $nome=getNome($_SESSION["username"]);  //getNome è incluso da header.php ed è presente in database/nome
+                    echo "<h3>Benvenuto $nome!</h3>";
+                    ?>
                     <nav>
                         <ul>
                             <li><p id="dati">I miei dati</p></li>
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
                             <li><p id="preferenze">Le mie preferenze</p></li>
-                            <li><p>Premi <button class="linkbutton" id="esciAccount">qui</button> per uscire</p></li> 
+                            <li><p><button class="linkbutton" id="esciAccount">Log out</button></p></li> 
                         </ul>
                     </nav>           
                 </section>
@@ -45,19 +46,17 @@ $_SESSION['redirect']=null;
                     </section>
                 </section>
             </div>
-        </div>  <!--Devo chiudere i 2 div-->
+        </div> 
     </div>
     <?php require "footer.php"; ?> 
     <script src="script/account.js"></script>
-
-
     <?php
-    if(isset($_SESSION['prenota'])){
+    if(isset($_SESSION['prenota'])){  //se è settato vuol dire che si proviene da prenota e si vogliono visualizzare le prenotazioni
         ?> <script>sezioni(2)</script> 
-        
-        <?php
-        unset($_SESSION['prenota']);
-    }   ?> 
-    
+        <?php unset($_SESSION['prenota']);  /* per non creare bug */  }   
+    if(isset($_SESSION['preferenza'])){  //se è settato vuol dire che si proviene da galleria e si vogliono visualizzare le preferenze
+        ?> <script>sezioni(3)</script> 
+        <?php unset($_SESSION['preferenza']);  /* per non creare bug */  }
+    ?> 
 </body>
 </html>

@@ -8,7 +8,7 @@ document.getElementById("preferenze").addEventListener("click", function() {
     sezioni(3);
 });
 
-function sezioni(sezione){
+function sezioni(sezione){  //questa funzione serve per mostrare la sezione desiderata e oscurare le altre
     var dati=document.getElementById("sezioneDati");
     var prenotazioni=document.getElementById("sezionePrenotazioni");
     var preferenze=document.getElementById("sezionePreferenze");
@@ -20,7 +20,7 @@ function sezioni(sezione){
         dati.style.display="none";
         prenotazioni.style.display="block";
         preferenze.style.display="none";
-        } else {
+        } else if(sezione==3){
             dati.style.display="none";
             prenotazioni.style.display="none";
             preferenze.style.display="block";
@@ -29,14 +29,14 @@ function sezioni(sezione){
 
 document.getElementById("esciAccount").addEventListener("click", function() {
     esci();
-});  //sta in header.js
+});  //la funzione è scritta in header.js poichè il comportamento è analogo ad esci dell'header (quello presente onmouse dell'omino)
 
 function cancellaPrenotazione(barbiere,id_prenotazione,id_utente){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
             var sezione=document.getElementById("sezionePrenotazioni");
-            sezione.innerHTML=this.responseText;
+            sezione.innerHTML=this.responseText;  //per aggiornare la sezione
             }
         };
 
@@ -50,7 +50,7 @@ function cancellaPrenotazione(barbiere,id_prenotazione,id_utente){
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
             var sezione=document.getElementById("sezionePreferenze");
-            sezione.innerHTML=this.responseText;
+            sezione.innerHTML=this.responseText;  //per aggiornare la sezione
             }
         };
 

@@ -76,16 +76,17 @@ h2{
     justify-content: center;
 }
 .date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .date > input{
     padding: 10px;
     cursor: pointer;
     border: 0px;
     font-size: 32px;
-    width: 200px;
+    width: 183px;
     color: black;
 }
 #orari{
@@ -120,22 +121,14 @@ h2{
 }
 
 .freccia{
-    position: absolute;
     font-size: 24px;
     cursor: pointer;
 }
 #sinistra{
-    top: 11px;
-    left: -30px;
-    display: none;
+    visibility: hidden;
 }
 #destra{
-    top: 15px;
-    right: -30px;
-}
-#datePicker {
-    position: relative;
-    display: inline-block;
+
 }
 
 #datePicker input[type="date"]::-webkit-calendar-picker-indicator {

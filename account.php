@@ -54,10 +54,10 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
     <script src="script/account.js"></script>
     <?php
     if(isset($_SESSION['prenota'])){  //se è settato vuol dire che si proviene da prenota e si vogliono visualizzare le prenotazioni
-        ?> <script>sezioni(2)</script> 
+        ?> <script>sezioni("prenotazioni",2)</script> 
         <?php unset($_SESSION['prenota']);  /* per non creare bug */  }   
     if(isset($_SESSION['preferenza'])){  //se è settato vuol dire che si proviene da galleria e si vogliono visualizzare le preferenze
-        ?> <script>sezioni(3)</script> 
+        ?> <script>sezioni("preferenze",3)</script> 
         <?php unset($_SESSION['prenota']);  /* per non creare bug */  }
     ?> 
 </body>

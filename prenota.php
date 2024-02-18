@@ -29,8 +29,8 @@ else
         <div class="date" id="datePicker">
             <?php $data=date("Y-m-d"); ?>  
             <input type="date" onchange="orari(<?php echo $id; ?>)" id="date" value="<?php echo $data; ?>" name="data" min="<?php echo $data; ?>" readonly>
-            <span class="freccia" id="sinistra" onclick="precedente()">&#9664;</span>
-            <span class="freccia" id="destra" onclick="prossimo()">&#9654;</span>
+            <span class="freccia" id="sinistra" onclick="precedente(<?php echo $id; ?>)"">&#9664;</span>
+            <span class="freccia" id="destra" onclick="prossimo(<?php echo $id; ?>)"">&#9654;</span>
         </div>
         <div id="orari"></div>
     </div> 

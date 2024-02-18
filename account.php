@@ -31,7 +31,7 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
                             <li><p class="space" id="preferenze">Le mie preferenze</p></li>
                             <div class="space"></div>
-                            <li><p><button class="cancbutton" id="esciAccount">Log out</button></p></li> 
+                            <li><p><button class="accbutton" id="esciAccount">Log out</button></p></li> 
                         </ul>
                     </nav>           
                 </section>

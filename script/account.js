@@ -1,18 +1,19 @@
 document.getElementById("dati").addEventListener("click", function() {
-    sezioni(event,1);
+    sezioni("dati",1);
 });
 document.getElementById("prenotazioni").addEventListener("click", function() {
-    sezioni(event,2);
+    sezioni("prenotazioni",2);
 });
 document.getElementById("preferenze").addEventListener("click", function() {
-    sezioni(event,3);
+    sezioni("preferenze",3);
 });
 
 
-function sezioni(event,sezione){  //questa funzione serve per mostrare la sezione desiderata e oscurare le altre
+function sezioni(categoria,sezione){  //questa funzione serve per mostrare la sezione desiderata e oscurare le altre
     var elementoAttivo=document.getElementsByClassName("active");
     elementoAttivo[0].classList.remove("active"); 
-    event.target.classList.add("active");       
+    var nuovoElementoAttivo=document.getElementById(categoria);
+    nuovoElementoAttivo.classList.add("active");      
 
 
     var dati=document.getElementById("sezioneDati");

@@ -12,7 +12,6 @@
 	}	
 
 	function setOrario($barbiere,$data,$orario,$id_utente){ 
-		echo "<button> $barbiere </button>";
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
 		$nome_tabella = "prenotazioni_" . $barbiere;

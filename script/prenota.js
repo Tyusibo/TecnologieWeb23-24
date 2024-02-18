@@ -38,6 +38,7 @@ function orari(id_utente){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
             orari(id_utente);  //per aggiornare gli orari
             apriPopupPrenota();
             }
@@ -48,7 +49,7 @@ function orari(id_utente){
     xmlhttp.send("barbiere=" + barbiere.id + "&data=" + data + "&orario=" + orario + "&id_utente=" + id_utente); 
  }
 
-function precedente() {
+function precedente(id_utente) {
     var input = document.getElementById("date");
     var date = new Date(input.value);
     date.setDate(date.getDate() - 1);
@@ -60,17 +61,17 @@ function precedente() {
         var sinistra = document.getElementById('sinistra');
         sinistra.style.display = 'none'; 
     }
-    orari();
+    orari(id_utente);
 }
 
 
 
-function prossimo() {
+function prossimo(id_utente) {
     var input = document.getElementById("date");
     var date = new Date(input.value);
     date.setDate(date.getDate() + 1);
     input.valueAsDate = date;
-    orari();
+    orari(id_utente);
 
     var sinistra = document.getElementById('sinistra');
     sinistra.style.display = 'block';

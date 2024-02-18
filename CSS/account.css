@@ -106,7 +106,7 @@ hr {
 
 .flexbarber{
     display: flex;
-    margin: 20px 0;
+    margin: 20px 0 10px;
 }
 
 .barber::first-letter{

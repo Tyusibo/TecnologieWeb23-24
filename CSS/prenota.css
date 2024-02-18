@@ -4,6 +4,9 @@ body{
     background-position: center center;
     background-repeat: repeat;
     background-size: 450px;
+
+    /*background-image: url(../img/barberphoto.jpg);
+    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.5);*/ /*da esterno a interno, offset 0 0, sfocatura 0, dimensione sufficientemente grande, colore*/
 }
 
 h1, h2{

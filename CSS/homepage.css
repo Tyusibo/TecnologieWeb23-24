@@ -158,16 +158,9 @@ hr {
     background-color: #000000;
     padding: 100px;
     text-align: center;
+    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.8);
 }
-.servizi::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8); /* Adjust the alpha (fourth parameter) for the overlay color and transparency */
-}
+
 
 .servizi h1{
     position: relative;

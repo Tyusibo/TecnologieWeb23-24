@@ -30,7 +30,7 @@ h1{
     justify-content: center;
 }
 .category{
-    font-family: "Bitter", "Palatino Linotype", Times;
+    font-family: "Bitter", system-ui;
     font-size: 16px !important;
     text-align: center;
     width: 150px !important;

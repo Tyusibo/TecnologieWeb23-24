@@ -118,6 +118,9 @@ require "database/homepage.php";
 
     <section class="sec_gallery">
         <h1>LE NOSTRE PROPOSTE</h1>
+        <p>
+            In base alle tue preferenze, ecco alcuni tagli che potrebbero piacerti
+        </p>
         <div class="galleria">
             <div class="galleria_in">
             <?php 

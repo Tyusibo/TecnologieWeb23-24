@@ -40,8 +40,14 @@ function aggiungiPreferenza(id,preferenza){
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText=="full")
                 alert("tutte piene");
-            else
-                mostra(id);
+            else{
+                var stili = ["BUZZ CUT", "FRENCH CROP", "CURTAINS", "SIDE PART", "MOHAWK"];
+                var pos = stili.indexOf(preferenza);
+                var stella = document.getElementById("star_" + (pos+1));
+
+                    stella.classList.remove('fa-star-o');
+                    stella.classList.add('fa-star');
+                }
         };
     }
 
@@ -91,10 +97,10 @@ function gestisciPreferenza(id_utente,event){
     var id=event.target.id;
     var splitted = id.split('_');
     if(classe[2]=="fa-star-o"){  
-        aggiungiPreferenza(id_utente, stili[splitted[1]-1],event);        
+        aggiungiPreferenza(id_utente, stili[splitted[1]-1]);        
     }
     else{
-        rimuoviPreferenza(id_utente, stili[splitted[1]-1],event);
+        rimuoviPreferenza(id_utente, stili[splitted[1]-1]);
         event.target.classList.remove('fa-star');
         event.target.classList.add('fa-star-o');
     }

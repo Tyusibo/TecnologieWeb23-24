@@ -40,13 +40,13 @@ h1{
     background-color: transparent;
     cursor: pointer;
     transition: all ease 0.5s;
+    border-radius: 5px;
 }
 
 .category:hover{
     background-color: #fa6400;
     border: 1px solid #fa6400 !important;
     color: white;
-    border-radius: 8px;
     transition: all ease 0.5s;
 }
 

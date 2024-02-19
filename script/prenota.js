@@ -53,7 +53,7 @@ function precedente(id_utente) {
     var input = document.getElementById("date");
     var date = new Date(input.value);
     date.setDate(date.getDate() - 1);
-    input.valueAsDate = date;
+    input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));;
 
     //Disattivo freccia sinistra se non posso andare dietro ulteriormente
     var dataAttuale = new Date();
@@ -70,7 +70,7 @@ function prossimo(id_utente) {
     var input = document.getElementById("date");
     var date = new Date(input.value);
     date.setDate(date.getDate() + 1);
-    input.valueAsDate = date;
+    input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));;
     orari(id_utente);
 
     

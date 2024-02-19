@@ -5,9 +5,9 @@ body{
     background-repeat: repeat;
     background-size: 450px; */
 
-    background-image: url(../img/account.jpg);
+    background-image: url(../img/Sedia-da-barbiere.jpg);
     background-size: 100% auto;
-    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.5); /*da esterno a interno, offset 0 0, sfocatura 0, dimensione sufficientemente grande, colore*/
+    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.55); /*da esterno a interno, offset 0 0, sfocatura 0, dimensione sufficientemente grande, colore*/
    /*  background-attachment: fixed; */
 }
 

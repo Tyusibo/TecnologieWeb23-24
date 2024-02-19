@@ -36,7 +36,7 @@ require "database/homepage.php";
     <section class="chiSiamo" id="chiSiamo">
         <h1>CHI SIAMO</h1>
         <p>
-            Riempimi
+            "Siamo un team di barbieri appassionati, dedicati a trasformare ogni taglio in un'opera d'arte."
         </p>
 
         <hr>
@@ -75,40 +75,40 @@ require "database/homepage.php";
             <div class="col-1">
                 <div class="single_service">
                     <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                    <h2 class="price">$12.00</h2>
+                    <p>Goditi un taglio di capelli senza tempo con il nostro servizio di taglio classico. I nostri esperti barbieri lavoreranno con cura per darti uno stile fresco e pulito che si adatti alla tua personalità e al tuo stile di vita.</p>
                 </div>
 
                 <div class="single_service">
-                    <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                    <h2 class="name">Taglio Classico + Barba</h2>
+                    <h2 class="price">$20.00</h2>
+                    <p>Rilassati e concediti il lusso di un taglio di capelli e una cura della barba con il nostro servizio combinato. Lascia che i nostri professionisti curino sia i tuoi capelli che la tua barba per un aspetto impeccabile e curato da capo a piedi.</p>
                 </div>
 
                 <div class="single_service">
-                    <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                    <h2 class="name">Taglio Classico + Rifinitura Barba</h2>
+                    <h2 class="price">$15.00</h2>
+                    <p>Mantieni un aspetto impeccabile con il nostro servizio che combina un taglio di capelli classico con una rifinitura della barba. I nostri esperti barbieri si prenderanno cura di ogni dettaglio per garantire che tu esca dal nostro salone con un look fresco e curato.</p>
                 </div>
 
             </div>
             <div class="col-2">
                 <div class="single_service">
-                    <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                    <h2 class="name">Taglio Bambino</h2>
+                    <h2 class="price">$10.00</h2>
+                    <p> Porta i tuoi piccoli nel nostro salone per un taglio di capelli personalizzato. I nostri barbieri esperti sapranno mettere a proprio agio i bambini e li coccoleranno mentre li aiutano a ottenere uno stile che li farà sentire al meglio.</p>
                 </div>
 
                 <div class="single_service">
-                    <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                    <h2 class="name">Shampoo e Trattamenti</h2>
+                    <h2 class="price">$10.00</h2>
+                    <p>Rilassati e lascia che i nostri esperti si prendano cura dei tuoi capelli con i nostri trattamenti shampoo e condizionanti. Utilizziamo prodotti di alta qualità per pulire, idratare e rivitalizzare i tuoi capelli per un aspetto sano e brillante.</p>
                 </div>
 
                 <div class="single_service">
-                    <h2 class="name">Taglio Classico</h2>
-                    <h2 class="price">$30.00</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque provident, magni voluptatibus doloribus nisi minima ab pariatur suscipit voluptates cum vitae possimus ad. Accusamus similique voluptate suscipit assumenda rerum?</p>
+                    <h2 class="name">Tinta per capelli</h2>
+                    <h2 class="price">$20.00</h2>
+                    <p>Esprimi te stesso e aggiungi un tocco di colore alla tua vita con il nostro servizio di tintura per capelli. Dai un tocco di originalità al tuo stile con una vasta gamma di colori e sfumature per adattarsi alla tua personalità unica. I nostri professionisti ti guideranno attraverso il processo per garantire risultati bellissimi e duraturi.</p>
                 </div>
 
             </div>

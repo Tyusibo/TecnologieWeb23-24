@@ -27,7 +27,7 @@ else
     </div>
     <div class="gallery" id="galleria">
         <div class="gal-1">
-            <div class="galint" id="prova">
+            <div class="galint">
                 <div class="flex">
                     <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
                 </div>
@@ -77,6 +77,14 @@ else
         }
         ?>
     </div>
+
+
+    <div class="popup-sfondo" id="popup-prenota">
+        <div class="popup-contenuto">
+            <div class="chiudiflex"><span class="popup-chiudi" onclick="chiudiPopup()">&#215;</span></div>
+            <p id="noPref">Hai già selezionato tre preferenze.</p> 
+        </div>
+    </div>  
     
 </body>
 </html>

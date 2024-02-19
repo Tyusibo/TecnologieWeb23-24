@@ -22,25 +22,29 @@
         }
     }
 
-    function username_exist($username){
+    function userExists($username,$numero){
         require "connectionString.php";
         $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
-        $sql = "SELECT username FROM utenti WHERE username=$1;"; 
-        $ret=pg_query_params($db, $sql,array($username));
+        $sql = "SELECT username,numero FROM utenti WHERE username=$1 OR numero=$2;"; 
+        $ret=pg_query_params($db, $sql,array($username,$numero));
         if(!$ret) {
             echo "ERRORE QUERY: " . pg_last_error($db);
             pg_close($db);
             return false; 
         }
         else{
-            if (pg_fetch_assoc($ret)){ 
-                pg_close($db);
-                return true;
+            $error=array();
+            while ($utente = pg_fetch_assoc($ret)) {  //scorro il risultato della query perchè ci possono essere 2 utenti:
+                //può essere un utente con quell'username e un utente con quel numero
+                if($utente["username"]==$username){
+                    $error["username"]=true;
+                }
+                if($utente["numero"]==$numero){
+                    $error["numero"]=true;
+                }
             }
-            else{
-                pg_close($db);
-                return false;
-            }
+            pg_close($db);
+            return $error;
         }
     }
     

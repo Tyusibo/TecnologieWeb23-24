@@ -32,13 +32,13 @@ function orari(id_utente){
     xmlhttp.send("barbiere=" + barbiere.id + "&data=" + data + "&id_utente=" + id_utente);
 }
  function prenota(event,id_utente){
+    event.target.disabled=true;  //per non creare un bug a seguito di un doppio click
     var barbiere=attivo();
     var data=document.getElementById("date").value;
     var orario = event.target.value;  //per avere l'orario del bottone selezionato
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
             orari(id_utente);  //per aggiornare gli orari
             apriPopupPrenota();
             }

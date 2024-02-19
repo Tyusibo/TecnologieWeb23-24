@@ -118,9 +118,14 @@ require "database/homepage.php";
 
     <section class="sec_gallery">
         <h1>LE NOSTRE PROPOSTE</h1>
-        <p>
-            In base alle tue preferenze, ecco alcuni tagli che potrebbero piacerti
-        </p>
+        <?php 
+            if(isset($_SESSION["username"])){
+                echo "<p>In base alle tue preferenze, ecco alcuni tagli che potrebbero piacerti</p>";
+                echo "<p>Loggato ma non hai preferenze</p>";
+            } else {
+                echo "<p>Non loggato</p>";
+            }
+        ?>
         <div class="galleria">
             <div class="galleria_in">
             <?php 

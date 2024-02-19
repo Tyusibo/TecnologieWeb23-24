@@ -25,9 +25,9 @@ else
     <div class="sezione1">
         <h1 id="gallery">I NOSTRI TAGLI</h1>
     </div>
-    <div class="gallery" >
+    <div class="gallery" id="galleria">
         <div class="gal-1">
-            <div class="galint">
+            <div class="galint" id="prova">
                 <div class="flex">
                     <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
                 </div>
@@ -81,7 +81,7 @@ else
 </body>
 
 <script defer>
-    window.addEventListener('scroll', scrollFunction);
+    /* window.addEventListener('scroll', scrollFunction);
 
     function scrollFunction() {
         var footer = document.getElementById("footer");
@@ -99,6 +99,38 @@ else
             menu.style.position = "fixed";
             menu.style.bottom = "initial";
         }
+    } */
+
+    /* document.addEventListener("scroll", function() {
+    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    var fixedElement = document.querySelector('.galint');
+    var stopPoint = 2935;
+    var altezza = document.getElementById('galleria').offsetHeight;
+
+    if (scrollPosition >= stopPoint) {
+        fixedElement.style.position = 'absolute';
+        fixedElement.style.top = (stopPoint + 265) + 'px'; // Fissa l'elemento al punto di stop
+    } else {
+        fixedElement.style.position = 'fixed';
+        fixedElement.style.top = '265px'; // Distanza originale dall'alto quando segue lo scroll
     }
+}); */
+
+document.addEventListener("scroll", function() {
+    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    var fixedElement = document.querySelector('.galint');
+    var div = document.getElementById('galleria');
+    var stopPoint = (div.offsetHeight - 400);
+    
+
+    if (scrollPosition >= stopPoint) {
+        fixedElement.style.position = 'absolute';
+        fixedElement.style.top = (stopPoint + 265) + 'px'; // Fissa l'elemento al punto di stop
+    } else {
+        fixedElement.style.position = 'fixed';
+        fixedElement.style.top = '265px'; // Distanza originale dall'alto quando segue lo scroll
+    }
+});
+
 </script>
 </html>

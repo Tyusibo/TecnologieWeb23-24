@@ -17,6 +17,7 @@ h1{
     justify-content: center;
 }
 .galint{
+    transition: all 0.5 ease;
     position: fixed;
     display: flex;
     flex-direction: column;

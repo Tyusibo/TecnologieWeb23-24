@@ -64,7 +64,7 @@ else
             ?>
         </div>
     </div>
-    <script defer src="script/galleria.js"></script> 
+    <script src="script/galleria.js"></script> 
     <div id="footer">
         <?php require "footer.php"; 
         if(isset($_SESSION["username"])){
@@ -77,6 +77,14 @@ else
         }
         ?>
     </div>
+
+
+    <div class="popup-sfondo" id="popup-prenota">
+        <div class="popup-contenuto">
+            <div class="chiudiflex"><span class="popup-chiudi" onclick="chiudiPopup()">&#215;</span></div>
+            <p id="noPref">Hai già selezionato tre preferenze.</p> 
+        </div>
+    </div>  
     
 </body>
 </html>

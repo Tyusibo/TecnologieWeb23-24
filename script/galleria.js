@@ -39,7 +39,7 @@ function aggiungiPreferenza(id,preferenza){
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText=="full")
-                alert("tutte piene");
+                apriPopup();
             else
                 mostra(id);
         };
@@ -115,3 +115,14 @@ document.addEventListener("scroll", function() {
         fixedElement.style.top = '265px'; // Distanza originale dall'alto quando segue lo scroll
     }
 });
+
+
+function apriPopup() {
+    var popup = document.getElementById("popup-prenota");
+    popup.style.display = "flex"; // Mostra il popup
+}
+
+function chiudiPopup(){
+    var popup = document.getElementById("popup-prenota");
+    popup.style.display = "none"; // Mostra il popup
+}

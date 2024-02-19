@@ -15,9 +15,15 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
     $pwd1=$_POST['pwd1']; 
     $pwd2=$_POST['pwd2'];
 
-    if(username_exist($username)){  //controllo se l'username già esiste
-        ?><script defer src="script/cambiaModalità.js"></script>
-        <script defer src="script/emailRegistrata.js"></script><?php
+    $error=userExists($username,$numero);
+    if(!empty($error)){  //controllo se l'username o il numero già esistono
+        if(isset($error["username"])){
+            ?><script defer src="script/emailRegistrata.js"></script><?php
+        }
+        if(isset($error["numero"])){
+            ?><script defer src="script/numeroRegistrato.js"></script><?php
+        }
+        ?><script defer src="script/cambiaModalità.js"></script><?php
     }else{  //se non esiste lo inserisco
         if(insert_utente($nome, $cognome, $numero, $username, $pwd1)){  //va nel then se va a buon fine
             setcookie('nuovoUtente', true, time() + (60 * 24)); 

@@ -110,7 +110,7 @@ document.addEventListener("scroll", function() {
     var scrollPosition = window.scrollY || document.documentElement.scrollTop;
     var fixedElement = document.querySelector('.galint');
     var div = document.getElementById('galleria');
-    var stopPoint = (div.offsetHeight - 400);
+    var stopPoint = (div.offsetHeight - 500);
     
 
     if (scrollPosition >= stopPoint) {

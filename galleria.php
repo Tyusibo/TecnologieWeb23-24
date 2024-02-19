@@ -4,10 +4,7 @@
 session_start(); 
 $_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/id.php";  
-if(isset($_SESSION['username']))
-    $id=getId($_SESSION['username']);
-else
-    $id='a';
+$id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
 ?>
 <html lang="it" dir="ltr">
 <head>

@@ -3,6 +3,8 @@
 session_start();
 $_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/homepage.php";
+require "database/id.php";
+$id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -120,8 +122,13 @@ require "database/homepage.php";
         <h1>LE NOSTRE PROPOSTE</h1>
         <?php 
             if(isset($_SESSION["username"])){
-                echo "<p>In base alle tue preferenze, ecco alcuni tagli che potrebbero piacerti</p>";
-                echo "<p>Loggato ma non hai preferenze</p>";
+                $stile=prelevaPreferenze($_SESSION["username"]);
+                $lunghezza=count($stile);
+                if($lunghezza==0){
+                    echo "<p>Loggato ma non hai preferenze</p>";
+                }else{
+                    echo "<p>In base alle tue preferenze, ecco alcuni tagli che potrebbero piacerti</p>";
+                }
             } else {
                 echo "<p>Non loggato</p>";
             }
@@ -130,7 +137,11 @@ require "database/homepage.php";
             <div class="galleria_in">
             <?php 
             if(isset($_SESSION["username"])){
-                    contenutiPersonalizzati($_SESSION["username"]);
+                    if($lunghezza==0){
+                        nessunaPreferenza();
+                    }else{
+                        contenutiPersonalizzati($stile,$lunghezza);
+                    }
             } else {
                     nessunaPreferenza();
             }

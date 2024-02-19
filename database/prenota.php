@@ -45,7 +45,18 @@
 				$orario_inizio = strtotime('09:00');
 				$orario_fine = strtotime('18:30');
 				$intervallo = 30 * 60; // 30 minuti in secondi
-				
+
+				if ($data === date('Y-m-d')) {  //se la data è quella odierna
+					$orario_attuale = strtotime(date('H:i')); // controllo l'orario attuale
+					if($orario_attuale>$orario_fine)
+						$orario_attuale=$orario_fine;  //nel caso in cui l'ora attuale è dopo le 18:30 allora nessuna è disponibile
+					for ($ora = $orario_inizio; $ora <= $orario_attuale; $ora += $intervallo) {  //elimino gli orari precedenti
+						//all'orario attuale
+						$ora_selezionata = date('H:i', $ora);
+						echo '<button class="unavailable" value="' . $ora_selezionata . '">' . $ora_selezionata . '</button>';
+					}
+					$orario_inizio=$ora; //per continuare bene il for successivo
+				} 
 				for ($ora = $orario_inizio; $ora <= $orario_fine; $ora += $intervallo) {
 					$ora_selezionata = date('H:i', $ora);
 					$ora_confronto = date('H:i:s', $ora);

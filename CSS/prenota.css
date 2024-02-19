@@ -86,8 +86,8 @@ h2{
     cursor: pointer;
     border: 0px;
     font-size: 32px;
-    width: 183px;
     color: black;
+    text-align: center;
 }
 #orari{
     display: flex !important;

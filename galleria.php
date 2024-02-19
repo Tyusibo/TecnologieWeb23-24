@@ -25,7 +25,7 @@ else
     <div class="sezione1">
         <h1 id="gallery">I NOSTRI TAGLI</h1>
     </div>
-    <div class="gallery" >
+    <div class="gallery" id="galleria">
         <div class="gal-1">
             <div class="galint">
                 <div class="flex">
@@ -77,28 +77,14 @@ else
         }
         ?>
     </div>
+
+
+    <div class="popup-sfondo" id="popup-prenota">
+        <div class="popup-contenuto">
+            <div class="chiudiflex"><span class="popup-chiudi" onclick="chiudiPopup()">&#215;</span></div>
+            <p id="noPref">Hai già selezionato tre preferenze.</p> 
+        </div>
+    </div>  
     
 </body>
-
-<script defer>
-    window.addEventListener('scroll', scrollFunction);
-
-    function scrollFunction() {
-        var footer = document.getElementById("footer");
-        var menu = document.querySelector('.galint');
-        var header = document.querySelector('.header');
-        var distance = footer.getBoundingClientRect().top + 250;
-        
-        console.log(distance);
-        console.log(window.pageYOffset)
-
-        if (window.innerHeight > distance) {
-            menu.style.position = "fixed";
-            menu.style.bottom = (footer.offsetHeight - 50) + "px"; // Aggiungi un po' di spazio tra il menu e il footer
-        } else {
-            menu.style.position = "fixed";
-            menu.style.bottom = "initial";
-        }
-    }
-</script>
 </html>

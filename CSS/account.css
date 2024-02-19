@@ -1,3 +1,10 @@
+body{
+    background-image: url(../img/barberphoto2.jpg);
+    background-size: 100% auto;
+    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.3);
+    /* background-attachment: fixed; */
+}
+
 #lista h3{
     font-size: 25px;
     font-weight: 600;
@@ -19,7 +26,7 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/homebackg.jpg);
+    /* background-image: url(../img/homebackg.jpg); */
 }
 
 .whitebox{
@@ -27,7 +34,7 @@ hr {
     padding: 25px;
     background-color: white;
     border-radius: 25px;
-    box-shadow: 10px 10px 30px;
+    box-shadow: 0px 0px 30px 5px;
 }
 
 #lista ul{
@@ -67,8 +74,8 @@ hr {
     width: 140px;  /*minimo per contenere date "larghe" come 0000-00-00*/
     height: 130px;
     flex-shrink: 0;
-    background-color: rgb(224, 224, 224);
-    border: 1px solid #fa6400;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid #0000003b;
     border-radius: 3px;
     padding: 10px;
 }
@@ -80,7 +87,6 @@ hr {
 }
 
 .accbutton{
-    width: fit-content;
     padding: 5px 20px;
     margin: 0;
     display: flex;
@@ -95,6 +101,14 @@ hr {
         text-decoration: none;
         font-size: 16px;
         font-family: "Bitter", "Palatino Linotype", Times;
+}
+
+button.accbutton{
+    width: 102px; /*i button considerano come width la somma di dimensione, padding, bordi e margini*/
+}
+
+a.accbutton{
+    width: 60px;
 }
 
 .flexdati{

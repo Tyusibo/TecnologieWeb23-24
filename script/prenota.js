@@ -59,7 +59,7 @@ function precedente(id_utente) {
     var dataAttuale = new Date();
     if((date.getDate() == dataAttuale.getDate())  && (date.getMonth() == dataAttuale.getMonth()) && (date.getFullYear() == dataAttuale.getFullYear()) ){
         var sinistra = document.getElementById('sinistra');
-        sinistra.style.display = 'none'; 
+        sinistra.style.visibility = 'hidden'; 
     }
     orari(id_utente);
 }
@@ -75,7 +75,7 @@ function prossimo(id_utente) {
 
     
     var sinistra = document.getElementById('sinistra');
-    sinistra.style.display = 'block';
+    sinistra.style.visibility = 'visible';
 }
 
 function apriPopup() {

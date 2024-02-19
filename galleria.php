@@ -27,7 +27,7 @@ else
     </div>
     <div class="gallery" id="galleria">
         <div class="gal-1">
-            <div class="galint" id="prova">
+            <div class="galint">
                 <div class="flex">
                     <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
                 </div>

@@ -73,6 +73,7 @@ function prossimo(id_utente) {
     input.valueAsDate = date;
     orari(id_utente);
 
+    
     var sinistra = document.getElementById('sinistra');
     sinistra.style.visibility = 'visible';
 }

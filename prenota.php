@@ -27,10 +27,10 @@ else
             <button onclick="mostraData('francesco',<?php echo $id; ?>)"class="barbutton" id="francesco">Francesco</button>
         </div>
         <div class="date" id="datePicker">
-            <?php $data=date("Y-m-d"); ?>  
-            <span class="freccia" id="sinistra" onclick="precedente(<?php echo $id; ?>)"">&#9664;</span>
-            <input type="date" onchange="orari(<?php echo $id; ?>)" id="date" value="<?php echo $data; ?>" name="data" min="<?php echo $data; ?>" readonly>
-            <span class="freccia" id="destra" onclick="prossimo(<?php echo $id; ?>)"">&#9654;</span>
+            <?php $data=date("Y-m-d"); ?> 
+            <i class="fa fa-angle-left freccia" id="sinistra" onclick="precedente(<?php echo $id; ?>)"></i>
+            <input type="date" onchange="orari(<?php echo $id; ?>)" id="date" value="<?php echo $data; ?>" name="data" readonly>
+            <i class="fa fa-angle-right freccia" id="destra" onclick="prossimo(<?php echo $id; ?>)"></i>
         </div>
         <div id="orari"></div>
     </div> 

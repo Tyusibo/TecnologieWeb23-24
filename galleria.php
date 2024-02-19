@@ -64,7 +64,7 @@ else
             ?>
         </div>
     </div>
-    <script src="script/galleria.js"></script> 
+    <script defer src="script/galleria.js"></script> 
     <div id="footer">
         <?php require "footer.php"; 
         if(isset($_SESSION["username"])){
@@ -79,58 +79,4 @@ else
     </div>
     
 </body>
-
-<script defer>
-    /* window.addEventListener('scroll', scrollFunction);
-
-    function scrollFunction() {
-        var footer = document.getElementById("footer");
-        var menu = document.querySelector('.galint');
-        var header = document.querySelector('.header');
-        var distance = footer.getBoundingClientRect().top + 250;
-        
-        console.log(distance);
-        console.log(window.pageYOffset)
-
-        if (window.innerHeight > distance) {
-            menu.style.position = "fixed";
-            menu.style.bottom = (footer.offsetHeight - 50) + "px"; // Aggiungi un po' di spazio tra il menu e il footer
-        } else {
-            menu.style.position = "fixed";
-            menu.style.bottom = "initial";
-        }
-    } */
-
-    /* document.addEventListener("scroll", function() {
-    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    var fixedElement = document.querySelector('.galint');
-    var stopPoint = 2935;
-    var altezza = document.getElementById('galleria').offsetHeight;
-
-    if (scrollPosition >= stopPoint) {
-        fixedElement.style.position = 'absolute';
-        fixedElement.style.top = (stopPoint + 265) + 'px'; // Fissa l'elemento al punto di stop
-    } else {
-        fixedElement.style.position = 'fixed';
-        fixedElement.style.top = '265px'; // Distanza originale dall'alto quando segue lo scroll
-    }
-}); */
-
-document.addEventListener("scroll", function() {
-    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    var fixedElement = document.querySelector('.galint');
-    var div = document.getElementById('galleria');
-    var stopPoint = (div.offsetHeight - 400);
-    
-
-    if (scrollPosition >= stopPoint) {
-        fixedElement.style.position = 'absolute';
-        fixedElement.style.top = (stopPoint + 265) + 'px'; // Fissa l'elemento al punto di stop
-    } else {
-        fixedElement.style.position = 'fixed';
-        fixedElement.style.top = '265px'; // Distanza originale dall'alto quando segue lo scroll
-    }
-});
-
-</script>
 </html>

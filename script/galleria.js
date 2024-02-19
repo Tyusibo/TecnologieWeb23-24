@@ -100,3 +100,18 @@ function gestisciPreferenza(id_utente,event){
     }
 }
 
+document.addEventListener("scroll", function() {
+    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    var fixedElement = document.querySelector('.galint');
+    var div = document.getElementById('galleria');
+    var stopPoint = (div.offsetHeight - 400);
+    
+
+    if (scrollPosition >= stopPoint) {
+        fixedElement.style.position = 'absolute';
+        fixedElement.style.top = (stopPoint + 265) + 'px'; // Fissa l'elemento al punto di stop
+    } else {
+        fixedElement.style.position = 'fixed';
+        fixedElement.style.top = '265px'; // Distanza originale dall'alto quando segue lo scroll
+    }
+});

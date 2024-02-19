@@ -227,6 +227,7 @@ hr {
 .galleria_in img {
     margin-right: 8px;
     width: 33%;
+    min-width: 33%;
     height: auto;
 }
 .freccia {

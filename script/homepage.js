@@ -11,7 +11,7 @@ prevButton.addEventListener('click', () => {
 });
 
 nextButton.addEventListener('click', () => {
-    if (currentIndex < 3) {
+    if (currentIndex < 2) {
         currentIndex++;
         updateGallery();
     }

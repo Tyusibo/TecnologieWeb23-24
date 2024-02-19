@@ -13,7 +13,7 @@
 		else{  
             $row = pg_fetch_assoc($ret);
 			$i=1;
-            $numero_immagini=6;
+            $numero_immagini=5;
             $preferenze_espresse=0;
 			$numeroPrefenze=4;
 			$stile = array();
@@ -30,29 +30,28 @@
 				return;
             }
 			else{
-				$i=0;
-                $preferenze_per_tipo=$numero_immagini/$preferenze_espresse;
-				while($i<$preferenze_espresse){
-						$random = array();
-                        for($j=0;$j<$preferenze_per_tipo;$j++){
-							do {
-								$immagine_casuale=rand(1,6);
-							} while (in_array($immagine_casuale, $random));
-							$random[$j]=$immagine_casuale;
-                            echo '<img src="img/gallery/'.$stile[$i].'/img'.$immagine_casuale.'.jpg" >' ;
-                        }
-                        $i+=1;   
-                    }
-				}
-                pg_close($db);
-                return;
+				$random = array(
+					array(),
+					array(),
+					array()
+				);
+				for($i=0;$i<$numero_immagini;$i+=1){
+					$pos=$i%$preferenze_espresse; //per scorrere a rotazione le preferenze
+					do {
+						$immagine_casuale=rand(1,5);
+					} while (in_array($immagine_casuale, $random[$pos]));
+					$random[$pos][$i]=$immagine_casuale;
+					echo '<img src="img/gallery/'.$stile[$pos].'/img'.$immagine_casuale.'.jpg" >' ;
 			}
         } 
+		pg_close($db);
+        return;
+	}
+}
 		function nessunaPreferenza(){
             $numero_immagini=5;
 			$stili = array("BUZZ CUT","FRENCH CROP","CURTAINS","SIDE PART","MOHAWK");
 			for($i = 0; $i<$numero_immagini; $i++)
 					echo '<img  src="img/gallery/'.$stili[$i].'/img'.rand(1,5).'.jpg" >' ;
 		}
-
 ?>

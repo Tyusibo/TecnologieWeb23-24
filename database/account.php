@@ -53,7 +53,7 @@
 					echo "<div class=\"flexcards\">";
 					while ($prenotazione = pg_fetch_assoc($ret)) {
 						echo "<div class=\"card\">";
-							echo "<div>Data: " . $prenotazione["data_appuntamento"] . "</div>";
+							echo "<div>Data: " . date("d-m-Y", strtotime($prenotazione["data_appuntamento"])) . "</div>";
 							echo "<div>Orario: " . substr($prenotazione["orario_appuntamento"], 0, 5) . "</div>"; 
 							 //substr per rimuovere i secondi, nel database è salvato in secondi
 							echo "<button class=accbutton 

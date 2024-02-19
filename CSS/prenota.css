@@ -120,9 +120,6 @@ h2{
 #sinistra{
     visibility: hidden;
 }
-#destra{
-
-}
 
 #datePicker input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;

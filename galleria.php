@@ -64,7 +64,7 @@ else
             ?>
         </div>
     </div>
-    <script defer src="script/galleria.js"></script> 
+    <script src="script/galleria.js"></script> 
     <div id="footer">
         <?php require "footer.php"; 
         if(isset($_SESSION["username"])){

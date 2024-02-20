@@ -1,5 +1,8 @@
 var inizializzazione=document.getElementById("andrea");  //per avere di default il primo barbiere selezionato
 inizializzazione.click();
+var dataGlobale=document.getElementById("date");  //lo usa precedente() per non andare prima della data di oggi
+
+
 
 function attivo() {
     var barbiere=document.getElementsByClassName("active");
@@ -56,7 +59,7 @@ function precedente(id_utente) {
     input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));;
 
     //Disattivo freccia sinistra se non posso andare dietro ulteriormente
-    var dataAttuale = new Date();
+    var dataAttuale = new Date(dataGlobale.value);
     if((date.getDate() == dataAttuale.getDate())  && (date.getMonth() == dataAttuale.getMonth()) && (date.getFullYear() == dataAttuale.getFullYear()) ){
         var sinistra = document.getElementById('sinistra');
         sinistra.style.visibility = 'hidden'; 

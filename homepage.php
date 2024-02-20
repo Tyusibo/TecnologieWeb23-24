@@ -4,7 +4,7 @@ session_start();
 $_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/homepage.php";
 require "database/id.php";
-$id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
+$id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -122,7 +122,7 @@ $id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
         <h1>LE NOSTRE PROPOSTE</h1>
         <?php 
             if(isset($_SESSION["username"])){
-                $stile=prelevaPreferenze($_SESSION["username"]);
+                $stile=prelevaPreferenze($id_utente);
                 $lunghezza=count($stile);
                 if($lunghezza==0){
                     echo "<p>Loggato ma non hai preferenze</p>";

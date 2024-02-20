@@ -4,7 +4,7 @@
 session_start(); 
 $_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/id.php";  
-$id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
+$id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -30,23 +30,23 @@ $id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
                 </div>
                 <div class="flex">
                     <button class="category"  id="buzz" onclick="stile(event)" href="#gallery">BUZZ CUT</button>
-                    <i id="star_1" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
+                    <i id="star_1" class="star fa" onclick="gestisciPreferenza(<?php echo $id_utente; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="french" onclick="stile(event)" href="#gallery">FRENCH CROP</button>
-                    <i id="star_2" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
+                    <i id="star_2" class="star fa" onclick="gestisciPreferenza(<?php echo $id_utente; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="curtains" onclick="stile(event)">CURTAINS</button>
-                    <i id="star_3" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
+                    <i id="star_3" class="star fa" onclick="gestisciPreferenza(<?php echo $id_utente; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="side" onclick="stile(event)">SIDE PART</button>
-                    <i id="star_4" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
+                    <i id="star_4" class="star fa" onclick="gestisciPreferenza(<?php echo $id_utente; ?>,event)"></i>
                 </div>
                 <div class="flex">
                     <button class="category"  id="mohawk" onclick="stile(event)">MOHAWK</button>
-                    <i id="star_5" class="star fa" onclick="gestisciPreferenza(<?php echo $id; ?>,event)"></i>
+                    <i id="star_5" class="star fa" onclick="gestisciPreferenza(<?php echo $id_utente; ?>,event)"></i>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@ $id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
         if(isset($_SESSION["username"])){
             ?>
             <script>
-                var id_utente = "<?php echo $id; ?>";
+                var id_utente = "<?php echo $id_utente; ?>";
                 mostra(id_utente);
             </script>
             <?php

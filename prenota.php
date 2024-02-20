@@ -3,7 +3,7 @@
 session_start(); 
 $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.php 
 require "database/id.php"; 
-$id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
+$id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
 ?>
 <html lang="it" dir="ltr">
 <head>
@@ -19,15 +19,19 @@ $id = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
     <div class="prenota_main">
         <h2>SCEGLI IL TUO BARBIERE</h2>
         <div class="barbieri">
-            <button onclick="mostraData('andrea', <?php echo $id; ?>)" class="barbutton" id="andrea">Andrea</button>
-            <button onclick="mostraData('rocco',<?php echo $id; ?>)"class="barbutton" id="rocco">Rocco</button>
-            <button onclick="mostraData('francesco',<?php echo $id; ?>)"class="barbutton" id="francesco">Francesco</button>
+            <button onclick="mostraData('andrea', <?php echo $id_utente; ?>)" class="barbutton" id="andrea">Andrea</button>
+            <button onclick="mostraData('rocco',<?php echo $id_utente; ?>)"class="barbutton" id="rocco">Rocco</button>
+            <button onclick="mostraData('francesco',<?php echo $id_utente; ?>)"class="barbutton" id="francesco">Francesco</button>
         </div>
         <div class="date" id="datePicker">
-            <?php $data=date("Y-m-d"); ?> 
-            <i class="fa fa-angle-left freccia" id="sinistra" onclick="precedente(<?php echo $id; ?>)"></i>
-            <input type="date" onchange="orari(<?php echo $id; ?>)" id="date" value="<?php echo $data; ?>" name="data" readonly>
-            <i class="fa fa-angle-right freccia" id="destra" onclick="prossimo(<?php echo $id; ?>)"></i>
+            <?php $data=date("Y-m-d"); 
+            $orario_attuale = strtotime(date('H:i')); // controllo l'orario attuale
+            if($orario_attuale>strtotime('18:30'))  //se è dopo le 18:30 di oggi allora passo al giorno successivo
+                $data=date("Y-m-d", strtotime($data . " +1 day"));
+             ?>
+            <i class="fa fa-angle-left freccia" id="sinistra" onclick="precedente(<?php echo $id_utente; ?>)"></i>
+            <input type="date" onchange="orari(<?php echo $id_utente; ?>)" id="date" value="<?php echo $data; ?>" name="data" readonly>
+            <i class="fa fa-angle-right freccia" id="destra" onclick="prossimo(<?php echo $id_utente; ?>)"></i>
         </div>
         <div id="orari"></div>
     </div> 

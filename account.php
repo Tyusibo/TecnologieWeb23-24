@@ -5,7 +5,7 @@ if(!(isset($_SESSION['username'])))  //se non loggato porta ad autenticazione
     header("Location: autenticazione.php"); 
 require "database/account.php";
 require "database/id.php"; 
-$id=getId($_SESSION['username']);  
+$id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;  //anche se in account $_SESSION["username] è sempre settato
 $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.php  
 ?>
 <html lang="it" dir="ltr">
@@ -38,13 +38,13 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
                 <hr>
                 <section id="sezioni"> 
                     <section id="sezioneDati">
-                        <?php getDati($id);?>
+                        <?php getDati($id_utente);?>
                     </section>
                     <section id="sezionePrenotazioni">
-                        <?php getPrenotazioni($id);?>
+                        <?php getPrenotazioni($id_utente);?>
                     </section>
                     <section id="sezionePreferenze">
-                        <?php getPreferenze($id);?>
+                        <?php getPreferenze($id_utente);?>
                     </section>
                 </section>
             </div>

@@ -1,10 +1,10 @@
 <?php
-function prelevaPreferenze($username){ 
+function prelevaPreferenze($id_utente){ 
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
 
-		$sql = "SELECT pref_1,pref_2,pref_3 FROM utenti WHERE username=$1;";
-		$ret=pg_query_params($db, $sql,array($username)); 
+		$sql = "SELECT pref_1,pref_2,pref_3 FROM utenti WHERE id_utente=$1;";
+		$ret=pg_query_params($db, $sql,array($id_utente)); 
 		if(!$ret) {     
 			echo "ERRORE QUERY: " . pg_last_error($db);
 			pg_close($db);

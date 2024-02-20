@@ -67,7 +67,7 @@
 			}          
 		} 
 		if ($nessunaPrenotazione) {  //se non si ha una prenotazione per nemmeno un barbiere
-			echo "<p>Non hai effetuato prenotazioni</p>";
+			echo "<p>Non hai effettuato prenotazioni</p>";
 			echo "<p><a href='prenota.php' class=linkbutton>Qui</a> puoi effettuarne una</p>";
 		}	
    	}

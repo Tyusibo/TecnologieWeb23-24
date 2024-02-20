@@ -2,7 +2,7 @@
 <?php
 session_start(); 
 if(isset($_SESSION["username"]))   //questa pagina è accessibile solo se non loggati ma questo if mi fa prevenire il caso in cui
-    header ("Location account.php");     //l'utente modifichi intenzionalmente l'url
+    header ("Location: account.php");     //l'utente modifichi intenzionalmente l'url
 if(isset($_COOKIE["nomeUtente"])){
     $username=$_COOKIE["nomeUtente"];  //si mette anche a registrati
 }

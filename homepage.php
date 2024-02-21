@@ -125,12 +125,12 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
                 $stile=prelevaPreferenze($id_utente);
                 $lunghezza=count($stile);
                 if($lunghezza==0){
-                    echo "<p>Loggato ma non hai preferenze</p>";
+                    echo "<p>Sei autenticato, ma siccome non hai espresso preferenze non possiamo mostrarti tagli che potrebbero piacerti</p>";
                 }else{
                     echo "<p>In base alle tue preferenze, ecco alcuni tagli che potrebbero piacerti</p>";
                 }
             } else {
-                echo "<p>Non loggato</p>";
+                echo "<p>Non essendo autenticato, non possiamo mostrarti tagli che potrebbero piacerti in base alle tue preferenze</p>";
             }
         ?>
         <div class="galleria">

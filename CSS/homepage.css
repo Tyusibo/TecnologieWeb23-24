@@ -197,6 +197,7 @@ hr {
     padding-bottom: 30px;
     border-bottom: 1px solid #848788;
     margin-bottom: 50px;
+    min-height: 100px;
 }
 .name{
     float: left;

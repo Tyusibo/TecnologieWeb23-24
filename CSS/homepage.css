@@ -260,3 +260,49 @@ hr {
     padding-top: 70px;
     padding-bottom: 120px;
 }
+
+.barbieri{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin: 50px 0px;
+}
+.barbiere{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 340px;
+    width: 340px;
+    background-position: center center;
+    background-size: cover;
+    box-shadow: inset 0px -100px 50px 10px rgba(0, 0, 0, 0.5);
+    transition: all ease 0.3s;
+    padding: 20px;
+
+}
+
+.barbiere:hover{
+    box-shadow: inset 0px -400px 50px 10px rgba(0, 0, 0, 0.5);
+
+}
+.barbiere:hover .barber_name{
+    color: #fa6400;
+}
+#sing1{
+    background-image: url(../img/barber1.webp);
+}
+#sing2{
+    background-image: url(../img/barber2.webp);
+}
+#sing3{
+    background-image: url(../img/barber3.webp);
+}
+.barber_title{
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.barber_name{
+    transition: all ease 0.3s;
+    font-size: 36px;
+    font-weight: 600;
+}

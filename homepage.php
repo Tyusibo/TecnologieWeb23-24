@@ -41,7 +41,23 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
             "Siamo un team di barbieri appassionati, dedicati a trasformare ogni taglio in un'opera d'arte."
         </p>
 
+        <div class="barbieri">
+            <div class="barbiere" id="sing1">
+                <span class="barber_title">BARBIERE</span>
+                <span class="barber_name">Andrea</span>
+            </div>
+            <div class="barbiere" id="sing2">
+                <span class="barber_title">BARBIERE</span>
+                <span class="barber_name">Francesco</span>
+            </div>
+            <div class="barbiere" id="sing3">
+                <span class="barber_title">BARBIERE</span>
+                <span class="barber_name">Rocco</span>
+            </div>
+        </div>
+
         <hr>
+
 
         <div class="row">
 

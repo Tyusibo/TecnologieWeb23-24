@@ -47,7 +47,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
                                 }
                                 else{
                                     echo "<p>Non ti sei ancora autenticato</p>";
-                                    echo "<p><a href=autenticazione.php class=linkbutton>Login in/Sign in</a></p>";
+                                    echo "<p><a href=autenticazione.php class=linkbutton>Log in/Sign in</a></p>";
                                 }
                                 echo "<p><button class=linkbutton id=esci>Esci</button></p>";
                         ?>

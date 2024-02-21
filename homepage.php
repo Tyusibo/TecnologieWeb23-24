@@ -16,7 +16,7 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
     <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
     <script defer src="script/homepage.js"></script>
     <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=geoloc"> //geoloc viene eseguito al termine del parse dell'intera pagina grazie a defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=geoloc&libraries=marker"> //geoloc viene eseguito al termine del parse dell'intera pagina grazie a defer
     </script>
 </head>
 

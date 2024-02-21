@@ -81,6 +81,7 @@ h2{
     font-size: 32px;
     color: black;
     text-align: center;
+    font-family: 'Lato';
 }
 #orari{
     display: flex !important;
@@ -92,7 +93,7 @@ h2{
     padding: 10px 15px 10px 15px;
     font-size: 16px;
     border-radius: 5px;
-    font-family : Arial !important;
+    font-family: 'Lato', Arial;
 }
 
 

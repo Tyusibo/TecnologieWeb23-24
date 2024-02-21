@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-//buzz cut //french crop //curtains cut //Side Part Cut //MOHAWK cut
+//buzz cut //french crop //curtains cut //side Part Cut //mohawk cut
 session_start(); 
 $_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/id.php";  
@@ -66,9 +66,9 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
         <?php require "footer.php"; 
         if(isset($_SESSION["username"])){
             ?>
-            <script>
+            <script> //se loggato mostra le stelle (preferenze) al caricamento della pagina
                 var id_utente = "<?php echo $id_utente; ?>";
-                mostra(id_utente);
+                mostra(id_utente);  
             </script>
             <?php
         }

@@ -6,7 +6,9 @@
 <footer id="footerplaceholder" class="footer">
         <div class="fprinc">
             <div class="col-1">
-                <img src="img/logo_footer.png" alt="logo_bianco" width="200px" height="200px">
+                <a href="homepage.php" class="logo">
+                    <img src="img/logo_footer.png" alt="logo_bianco" width="200" height="200px">
+                </a>
             </div>
             <div class="col-2">
                 <h3>ORARI LAVORATIVI</h3>

@@ -6,6 +6,14 @@ scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validat
 
 // Aggiungi l'elemento script all'elemento head del documento
 document.head.appendChild(scriptTag);
+
+document.getElementById("cliccaqui1").addEventListener("click", function() {
+    cambiaModalità(false);
+});
+document.getElementById("cliccaqui2").addEventListener("click", function() {
+    cambiaModalità(true);
+});
+
 function cambiaModalità(mod){
     var accedi=document.getElementById("accedi");
     var registrati=document.getElementById("registrati");
@@ -20,13 +28,6 @@ function cambiaModalità(mod){
     }
 }
 
-document.getElementById("cliccaqui1").addEventListener("click", function() {
-    cambiaModalità(false);
-});
-document.getElementById("cliccaqui2").addEventListener("click", function() {
-    cambiaModalità(true);
-});
-
 function mostraPassword(number) {
     var icona=document.getElementById("mostra"+number);
     var passwordInput = document.getElementById("pwd"+number);
@@ -40,13 +41,11 @@ function mostraPassword(number) {
         icona.classList.remove("fa-eye"); 
         icona.classList.add("fa-eye-slash");
     }
-    passwordInput.focus();
 }
 
 document.getElementById("mostra").addEventListener("click", function() {
     mostraPassword('');
 });
-
 document.getElementById("mostra1").addEventListener("click", function() {
     mostraPassword(1);
 });
@@ -81,13 +80,15 @@ function validaModuloRegistrati(nomeModulo) {
     } else if (!(validator.isEmail(nomeModulo.username.value))) {
             document.getElementById("erroreEmailRegistrati").innerText = "L'indirizzo email non è valido";
             error=true;
-        }
-    
+    }
     if (nomeModulo.numero.value == "") {
         document.getElementById("erroreNumero").innerText = "Devi inserire un numero" ;
         error=true;
-    } else if (nomeModulo.numero.value.length<10) {
-            document.getElementById("erroreNumero").innerText = "Il numero deve contenere almeno 10 caratteri";
+    } else if (nomeModulo.numero.value.length<9) {
+            document.getElementById("erroreNumero").innerText = "Il numero deve contenere almeno 9 caratteri";
+            error=true;
+        }else if (nomeModulo.numero.value.length>10) {
+            document.getElementById("erroreNumero").innerText = "Il numero non deve superare i 10 caratteri";
             error=true;
         }
     
@@ -114,6 +115,9 @@ function validaModuloRegistrati(nomeModulo) {
     return !error;
 }
 
+document.getElementById("pwd1").addEventListener("input", function() {
+    verificaPassword(event);
+});
 
 function verificaPassword(event){
     var error=false;
@@ -155,53 +159,25 @@ function verificaPassword(event){
         lun_max.classList.remove("errore"); 
     return error;
 }
-document.getElementById("pwd1").addEventListener("input", function() {
-    verificaPassword(event);
-});
-
-function soloNumeri(event){
-    document.getElementById("erroreNumero").innerText ="";
-    var tasto;
-    tasto = event.key;
-    var campo = event.target.value;
-    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control"))
-        return true;
-    if (("0123456789").indexOf(tasto) > -1){
-        if (campo.length==14) {
-            document.getElementById("erroreNumero").innerText ="Il numero da te inserito supera il limite consentito";
-            return false;
-    } else {
-        return true;        
-    }
-    } else return false;
-}
 
 document.getElementById("numero").addEventListener("keydown", function() {
     return soloNumeri(event);
 });
 
-function soloCaratteri(event){
+function soloNumeri(event) {
+    document.getElementById("erroreNumero").innerText = "";
     var tasto = event.key;
-    var campo = event.target.value;
-    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control")|| (tasto==" "))
+    if (tasto === "Delete" || tasto === "Enter" || tasto === "Backspace" || tasto === "Control") {
         return true;
-    if ((/^[a-zA-Z]+$/.test(tasto)) && tasto.length==1){
-        if(campo.length==0 || campo[campo.length-1]===" "){
-            event.target.value += tasto.toUpperCase();
-            event.preventDefault();
+    }
+    var numero = parseInt(tasto);
+    if (!isNaN(numero) && numero >= 0 && numero <= 9) {
+        return true;
     } else {
-        if (typeof event.target.value === 'string') {
-            console.log(tasto + tasto);
-            // Rendi il carattere minuscolo e aggiungilo al valore esistente
-            event.target.value += tasto.toLowerCase();
-            event.preventDefault();
-        }
+        return false;
     }
-    return true;
-    }
-       
-    return false;
 }
+
 document.getElementById("nome").addEventListener("keydown", function() {
     return soloCaratteri(event);
 });
@@ -209,6 +185,26 @@ document.getElementById("nome").addEventListener("keydown", function() {
 document.getElementById("cognome").addEventListener("keydown", function() {
     return soloCaratteri(event);
 });
+
+
+function soloCaratteri(event){
+    var tasto = event.key;
+    var campo = event.target.value;
+    if ((tasto=="Delete") || (tasto=="Enter") || (tasto=="Backspace") || (tasto=="Control")|| (tasto==" ") || (tasto=="Control"))
+        return true;
+    if ((/^[a-zA-Z]+$/.test(tasto)) && tasto.length==1){
+        if(campo.length==0 || campo[campo.length-1]===" "){
+            event.target.value += tasto.toUpperCase();
+            event.preventDefault();
+    } else {
+            event.target.value += tasto.toLowerCase();
+            event.preventDefault();
+            return true;
+        }
+    }
+    event.preventDefault(); 
+    return false;
+}
 
 function validaModuloAccedi(nomeModulo) {
     var error=false;
@@ -222,7 +218,8 @@ function validaModuloAccedi(nomeModulo) {
     } else if (!(validator.isEmail(nomeModulo.usernameAccedi.value))) {
             document.getElementById("erroreEmailAccedi").innerText = "L'indirizzo email non è valido";
             error=true;
-        }
+    }
+    
     if (nomeModulo.pwd.value == "") {
         document.getElementById("errorePassword").innerText = "Devi inserire una password";
         error=true;

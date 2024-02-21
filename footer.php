@@ -41,7 +41,7 @@
             <div class="col-4">
                 <h3>CONTATTACI</h3>
                 <form action="" method="POST">
-                    <input type="text" placeholder="La tua E-mail" id="" class="fform">
+                    <input type="text" placeholder="La tua E-mail" id="foot_contattaci_email" class="fform">
                     <textarea id="message" name="message" rows="4" cols="50" placeholder="Il tuo Messaggio" class="fform"></textarea>
                     <input type="submit" value="Contattaci Ora" class="bottone">
                 </form>

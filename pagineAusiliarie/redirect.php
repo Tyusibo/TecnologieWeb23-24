@@ -7,6 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if (isset($_POST["mod"]) && $_POST["mod"] === "true") {
         $_SESSION['change'] = true;
-    } //nessun else perchè è di default settato a false dalle altre pagine
+    } 
 }
 ?>

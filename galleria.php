@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-//buzz cut //french crop //curtains cut //side Part Cut //mohawk cut
 session_start(); 
 $_SESSION['redirect']=null;  //lo fa ogni pagina a eccezione di autenticazione.php  
 require "database/id.php";  
@@ -16,18 +15,14 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
     <link rel="icon" href="img/icon.png" type="image/png"/>
 </head>
 <body>
-    <div class="header">
-        <?php require "header.php"; ?>
-    </div>
-    <div style="height: 100px"></div>
-    <div class="sezione1">
-        <h1 id="gallery">I NOSTRI TAGLI</h1>
-    </div>
+    <?php require "header.php"; ?>
+    <div style="height: 100px"></div> <!-- placeholder per riempire lo spazio dell'header -->
+    <h1>I NOSTRI TAGLI</h1>
     <div class="gallery" id="galleria">
         <div class="gal-1">
-            <div class="galint">
-                <div class="flex">
-                    <button class="category active" id="all" onclick="dispAll()" href="#gallery" >ALL</button>
+            <div class="galint">  <!-- flex verticale per le categorie -->
+                <div class="flex"> <!-- flex orizzontale per affiancare le stelle (preferenze) -->
+                    <button class="category active" id="all" onclick="showAll()" href="#gallery" >ALL</button>
                 </div>
                 <div class="flex">
                     <button class="category"  id="buzz" onclick="stile(event)" href="#gallery">BUZZ CUT</button>
@@ -62,25 +57,24 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
             ?>
         </div>
     </div>
-    <script src="script/galleria.js"></script> 
-    <div id="footer">
-        <?php require "footer.php"; 
-        if(isset($_SESSION["username"])){
-            ?>
-            <script> //se loggato mostra le stelle (preferenze) al caricamento della pagina
-                var id_utente = "<?php echo $id_utente; ?>";
-                mostra(id_utente);  
-            </script>
-            <?php
-        }
-        ?>
-    </div>
+    <?php require "footer.php"; ?>
 
+    <script src="script/galleria.js"></script> 
+    <?php
+    if(isset($_SESSION["username"])){
+        ?>
+        <script> //se loggato mostra le stelle (preferenze) al caricamento della pagina
+            var id_utente = "<?php echo $id_utente; ?>";
+            mostra(id_utente);  
+        </script>
+        <?php
+    }
+    ?>
 
     <div class="popup-sfondo" id="popup-prenota">
         <div class="popup-contenuto">
             <div class="chiudiflex"><span class="popup-chiudi" onclick="chiudiPopup()">&#215;</span></div>
-            <p id="noPref">Hai già selezionato tre preferenze.</p> 
+            <p id="prefMax">Hai già selezionato tre preferenze.</p> 
         </div>
     </div>  
     

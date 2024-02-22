@@ -4,14 +4,14 @@
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if(isset($_POST["barbiere"]) && isset($_POST["data"]) && isset($_POST["id_utente"])){
 			if(isset($_POST["orario"])){
-				setOrario($_POST["barbiere"],$_POST["data"],$_POST["orario"],$_POST["id_utente"]);
+				prenota($_POST["barbiere"],$_POST["data"],$_POST["orario"],$_POST["id_utente"]);
 			}
 			else
 				getOrari($_POST["barbiere"],$_POST["data"],$_POST["id_utente"]);
 		}		
 	}	
 
-	function setOrario($barbiere,$data,$orario,$id_utente){ 
+	function prenota($barbiere,$data,$orario,$id_utente){ 
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
 		$nome_tabella = "prenotazioni_" . $barbiere;
@@ -26,6 +26,7 @@
     function getOrari($barbiere,$data,$id_utente){ 
 		require "connectionString.php"; 
 		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());  
+
 		$nome_tabella = "prenotazioni_" . $barbiere;
 		$sql = "SELECT orario_appuntamento FROM " . $nome_tabella . " WHERE data_appuntamento = $1 ORDER BY orario_appuntamento;";
 		//prelevo gli orari prenotati (già ordinati per ottimizzare la funzione) per quella data per quel barbiere
@@ -36,7 +37,7 @@
 			return false; 
 		}
 		else{ 
-				$orari_prenotati = array();
+				$orari_prenotati = array(); //vettore con orari prenotati
 				while ($row = pg_fetch_assoc($ret)) {
 					$orari_prenotati[] = $row['orario_appuntamento'];
 				}
@@ -54,6 +55,7 @@
 					}
 					$orario_inizio=$ora; //per continuare il for successivo da dove mi sono fermato
 				} 
+				
 				for ($ora = $orario_inizio; $ora <= $orario_fine; $ora += $intervallo) {
 					$ora_selezionata = date('H:i', $ora);
 					$ora_confronto = date('H:i:s', $ora);

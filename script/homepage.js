@@ -52,6 +52,6 @@ function initMap(position) {
  function initMapErr(positionErr){
     var shopLocation = {lat: 40.77248001098633, lng: 14.789327621459961};
     var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 10, center: shopLocation});
+        document.getElementById('map'), {zoom: 10, center: shopLocation, mapId: 'f6e6edb80243cb2e'});
     var marker = new google.maps.marker.AdvancedMarkerElement({map, position: shopLocation, title: 'Gentlemen\'s Cut'});
 }

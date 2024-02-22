@@ -51,16 +51,20 @@
     
     function insertUtente($nome, $cognome, $numero, $username, $pwd){
         $hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
-        
+
         require "connectionString.php";
         $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
 
         $sql = "INSERT INTO utenti(nome, cognome, numero, username, password_hash,pref_1,pref_2,pref_3)
                         VALUES($1, $2, $3, $4, $5, NULL, NULL, NULL); ";
         $ret=pg_query_params($db, $sql,array($nome, $cognome, $numero, $username, $hashedPassword));
-        if(!$ret) 
+        if(!$ret) {
             echo "ERRORE QUERY: " . pg_last_error($db);
-        pg_close($db);
-        return ;
+            pg_close($db);
+            return false;
+        } else {
+            pg_close($db);
+            return true;
+        }
     }
 ?>

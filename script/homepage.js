@@ -35,7 +35,8 @@ function initMap(position) {
     const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
     var marker = new google.maps.marker.AdvancedMarkerElement({
         map,
-        position: shopLocation
+        position: shopLocation,
+        title: 'Gentlemen\'s Cut'
     });
 
     const manIcon = document.createElement("img");
@@ -43,6 +44,7 @@ function initMap(position) {
     var userMarker = new google.maps.marker.AdvancedMarkerElement({
         map,
         position: userLocation,
+        title: 'Tu sei qui',
         content: manIcon
     });
 }
@@ -51,5 +53,5 @@ function initMap(position) {
     var shopLocation = {lat: 40.77248001098633, lng: 14.789327621459961};
     var map = new google.maps.Map(
         document.getElementById('map'), {zoom: 10, center: shopLocation});
-    var marker = new google.maps.Marker({position: shopLocation, map: map});
+    var marker = new google.maps.marker.AdvancedMarkerElement({map, position: shopLocation, title: 'Gentlemen\'s Cut'});
 }

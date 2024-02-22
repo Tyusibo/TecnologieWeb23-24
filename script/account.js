@@ -12,6 +12,7 @@ document.getElementById("preferenze").addEventListener("click", function() {
 function sezioni(categoria,sezione){  //questa funzione serve per mostrare la sezione desiderata e oscurare le altre
     var elementoAttivo=document.getElementsByClassName("active");
     elementoAttivo[0].classList.remove("active"); 
+    
     var nuovoElementoAttivo=document.getElementById(categoria);
     nuovoElementoAttivo.classList.add("active");      
 

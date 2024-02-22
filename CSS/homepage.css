@@ -195,7 +195,7 @@ hr {
     padding-bottom: 30px;
     border-bottom: 1px solid #848788;
     margin-bottom: 50px;
-    min-height: 100px;
+    min-height: 75px;
 }
 .name{
     float: left;
@@ -298,11 +298,11 @@ hr {
 }
 
 .recensioni{
-    background-image: url(../img/barber_bg.jpeg);
+    background-image: url(../img/reviewbg.jpg);
     background-size: 100% auto;
     padding: 100px;
     text-align: center;
-    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.8);
+    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.5);
 }
 
 .recensioni p{

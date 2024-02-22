@@ -99,15 +99,15 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
                 </div>
 
                 <div class="single_service">
-                    <h2 class="name">Taglio Classico + Barba</h2>
-                    <h2 class="price">$20.00</h2>
-                    <p>Rilassati e concediti il lusso di un taglio di capelli e una cura della barba con il nostro servizio combinato. Lascia che i nostri professionisti curino sia i tuoi capelli che la tua barba per un aspetto impeccabile e curato da capo a piedi.</p>
+                    <h2 class="name">Rifinitura Barba</h2>
+                    <h2 class="price">$7.00</h2>
+                    <p>Ottieni una rifinitura della barba perfetta dai nostri esperti barbieri. Con precisione e cura, modelleremo la tua barba per mostrare al meglio la tua personalità distintiva.</p>
                 </div>
 
                 <div class="single_service">
-                    <h2 class="name">Taglio Classico + Rifinitura Barba</h2>
+                    <h2 class="name">Taglio Classico + Barba</h2>
                     <h2 class="price">$15.00</h2>
-                    <p>Mantieni un aspetto impeccabile con il nostro servizio che combina un taglio di capelli classico con una rifinitura della barba. I nostri esperti barbieri si prenderanno cura di ogni dettaglio per garantire che tu esca dal nostro salone con un look fresco e curato.</p>
+                    <p>Mantieni un aspetto impeccabile con il nostro servizio completo. I nostri esperti barbieri si prenderanno cura di ogni dettaglio per garantire che tu esca dal nostro salone con un look curato e alla moda.</p>
                 </div>
 
             </div>
@@ -115,19 +115,19 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
                 <div class="single_service">
                     <h2 class="name">Taglio Bambino</h2>
                     <h2 class="price">$10.00</h2>
-                    <p> Porta i tuoi piccoli nel nostro salone per un taglio di capelli personalizzato. I nostri barbieri esperti sapranno mettere a proprio agio i bambini e li coccoleranno mentre li aiutano a ottenere uno stile che li farà sentire al meglio.</p>
+                    <p>Porta i tuoi piccoli nel nostro salone per un taglio di capelli personalizzato. I nostri barbieri esperti sapranno mettere a proprio agio i bambini mentre li aiutano a ottenere uno stile che li farà sentire al meglio.</p>
                 </div>
 
                 <div class="single_service">
                     <h2 class="name">Shampoo e Trattamenti</h2>
                     <h2 class="price">$10.00</h2>
-                    <p>Rilassati e lascia che i nostri esperti si prendano cura dei tuoi capelli con i nostri trattamenti shampoo e condizionanti. Utilizziamo prodotti di alta qualità per pulire, idratare e rivitalizzare i tuoi capelli per un aspetto sano e brillante.</p>
+                    <p>Rilassati e lascia che i nostri esperti si prendano cura dei tuoi capelli con i nostri trattamenti shampoo e condizionanti. Utilizziamo prodotti di alta qualità per pulire, idratare e rivitalizzare i tuoi capelli.</p>
                 </div>
 
                 <div class="single_service">
                     <h2 class="name">Tinta per capelli</h2>
                     <h2 class="price">$20.00</h2>
-                    <p>Esprimi te stesso e aggiungi un tocco di colore alla tua vita con il nostro servizio di tintura per capelli. Dai un tocco di originalità al tuo stile con una vasta gamma di colori e sfumature per adattarsi alla tua personalità unica. I nostri professionisti ti guideranno attraverso il processo per garantire risultati bellissimi e duraturi.</p>
+                    <p>Esprimi te stesso e aggiungi un tocco di colore alla tua vita con il nostro servizio di tintura per capelli. I nostri professionisti ti garantiranno risultati bellissimi e duraturi su una vasta gamma di colori e sfumature.</p>
                 </div>
 
             </div>
@@ -142,12 +142,12 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
                 $stile=prelevaPreferenze($id_utente);
                 $lunghezza=count($stile);
                 if($lunghezza==0){
-                    echo "<p>Sei autenticato, ma siccome non hai espresso preferenze non possiamo mostrarti tagli che potrebbero piacerti</p>";
+                    echo "<p>Ecco alcuni tagli che potrebbero piacerti. Aggiungi delle preferenze nella galleria per consigli più adatti a te</p>";
                 }else{
                     echo "<p>In base alle tue preferenze, ecco alcuni tagli che potrebbero piacerti</p>";
                 }
             } else {
-                echo "<p>Non essendo autenticato, non possiamo mostrarti tagli che potrebbero piacerti in base alle tue preferenze</p>";
+                echo "<p>Ecco alcuni tagli che potrebbero piacerti. Registrati e aggiungi delle preferenze per consigli più adatti a te</p>";
             }
         ?>
         <div class="galleria">

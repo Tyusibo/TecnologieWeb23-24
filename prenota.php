@@ -29,7 +29,6 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
             $orario_attuale = strtotime(date('H:i')); // controllo l'orario attuale
             if($orario_attuale>strtotime('18:30'))  //se è dopo le 18:30 di oggi allora passo al giorno successivo
                 $data=date("Y-m-d", strtotime($data . " +1 day"));
-            $data=date("Y-m-d", strtotime($data . " +5 day"));
              ?>
             <i class="fa fa-angle-left freccia" id="sinistra" onclick="precedente(<?php echo $id_utente; ?>)"></i>
             <input type="date" onchange="orari(<?php echo $id_utente; ?>)" id="date" value="<?php echo $data; ?>" name="data" readonly>

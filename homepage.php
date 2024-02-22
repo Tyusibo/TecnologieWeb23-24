@@ -230,7 +230,7 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
                 <br>
                 <div class="divprofilo">
                     <img class="profilo" src="img/profilo.jpg" alt="">
-                    <span>Andrea Russo</span>
+                    <span>Andrey Kiriyanov</span>
                 </div>
             </div>
             <div class="recensionicard">
@@ -240,7 +240,7 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
                 <br>
                 <div class="divprofilo">
                     <img class="profilo" src="img/profilo.jpg" alt="">
-                    <span>Alfonso Manzo</span>
+                    <span>Giuseppe Ruggiero</span>
                 </div>
             </div>
         </div>

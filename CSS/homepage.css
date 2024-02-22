@@ -54,7 +54,7 @@
 .chiSiamo h3{
     color: black;
 }
-.chiSiamo p{
+.chiSiamo p, .sec_gallery p{
     font-size: 20px;
     color: #77838f;
     text-align: center;
@@ -153,7 +153,6 @@ hr {
 
 
 .servizi{
-    position: relative;
     background-image: url(../img/barber_bg.jpeg);
     background-size: 100% auto;
     padding: 100px;
@@ -162,8 +161,7 @@ hr {
 }
 
 
-.servizi h1{
-    position: relative;
+.servizi h1, .recensioni h1{
     color: white;
     font-size: 48px;
     margin-block-start: 0;
@@ -206,16 +204,6 @@ hr {
     float: right;
 }
 
-.sec_gallery p{
-    font-size: 20px;
-    color: #77838f;
-    text-align: center;
-    max-width: 1124px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 65px;
-}
-
 .galleria {
     margin-top: 30px;
     overflow: hidden;
@@ -224,6 +212,7 @@ hr {
 .galleria_in {
     display: flex;
     transition: transform 0.5s ease;
+    margin-top: 35px;
 }
 .galleria_in img {
     margin-right: 8px;
@@ -293,7 +282,7 @@ hr {
     background-image: url(../img/barber1.webp);
 }
 #sing2{
-    background-image: url(../img/barber2.webp);
+    background-image: url(../img/barber4.png);
 }
 #sing3{
     background-image: url(../img/barber3.webp);
@@ -306,4 +295,46 @@ hr {
     transition: all ease 0.3s;
     font-size: 36px;
     font-weight: 600;
+}
+
+.recensioni{
+    background-image: url(../img/barber_bg.jpeg);
+    background-size: 100% auto;
+    padding: 100px;
+    text-align: center;
+    box-shadow: inset 0 0 0 10000px rgba(0,0,0,0.8);
+}
+
+.recensioni p{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    max-width: 1124px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.recensionibox{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+
+.recensionicard{
+    width: 20%;
+    height: 50px;
+    background-color: #848788;
+    border-radius: 10px;
+
+}
+
+.starbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fa6400;
+    font-size: 24px;
 }

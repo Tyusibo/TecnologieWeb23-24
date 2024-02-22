@@ -6,7 +6,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
 <!-- condivisi da tutte le pagine -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script> <!--per le icone-->
@@ -47,7 +47,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); //identifica la pagina corrente p
                                 }
                                 else{
                                     echo "<p>Non ti sei ancora autenticato</p>";
-                                    echo "<p><a href=autenticazione.php class=linkbutton>Login in/Sign in</a></p>";
+                                    echo "<p><a href=autenticazione.php class=linkbutton>Log in/Sign in</a></p>";
                                 }
                                 echo "<p><button class=linkbutton id=esci>Esci</button></p>";
                         ?>

@@ -11,12 +11,13 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Homepage</title>
+    <link rel="icon" href="img/icon.png" type="image/png"/>
     
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
     <script src="https://kit.fontawesome.com/bdeddbfb58.js" crossorigin="anonymous"></script>
     <script defer src="script/homepage.js"></script>
     <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&callback=geoloc"> //geoloc viene eseguito al termine del parse dell'intera pagina grazie a defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhb5BVVHcIArfuJCj79LeG87fZyoPPnfQ&loading=async&callback=geoloc&libraries=marker"> //geoloc viene eseguito al termine del parse dell'intera pagina grazie a defer
     </script>
 </head>
 
@@ -165,6 +166,23 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
             </div>
             <div class="freccia dietro"><i class="fa-solid fa-arrow-left"></i></div>
             <div class="freccia avanti"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+    </section>
+
+    <section class="recensioni">
+        <h1>COSA PENSANO DI NOI</h1>
+        <p>Lorem Ipsum</p>
+        <div class="starbox ">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+        </div>
+        <div class="recensionibox">
+            <div class="recensionicard"></div>
+            <div class="recensionicard"></div>
+            <div class="recensionicard"></div>
         </div>
     </section>
 

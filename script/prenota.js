@@ -1,8 +1,12 @@
 var inizializzazione=document.getElementById("andrea");  //per avere di default il primo barbiere selezionato
 inizializzazione.click();
 var dataGlobale=document.getElementById("date");  //lo usa precedente() per non andare prima della data di oggi
-
-
+var dataAttuale = new Date(dataGlobale.value);  //creo l'oggetto e controllo che non sia un giorno di chiusura
+if(dataAttuale.getDay()==0) //se è lunedì vado a martedì
+    dataAttuale.setDate(dataAttuale.getDate() + 2);
+else if(dataAttuale.getDay()==1)  //se è domenica vado a martedì
+    dataAttuale.setDate(dataAttuale.getDate() + 1);
+dataGlobale.valueAsDate = new Date(Date.UTC(dataAttuale.getFullYear(), dataAttuale.getMonth(), dataAttuale.getDate()));  //aggiorno l'elemento
 
 function attivo() {
     var barbiere=document.getElementsByClassName("active");
@@ -55,11 +59,13 @@ function orari(id_utente){
 function precedente(id_utente) {
     var input = document.getElementById("date");
     var date = new Date(input.value);
-    date.setDate(date.getDate() - 1);
-    input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));;
+    if(date.getDay()==2)  //se è martedì torno a sabato
+        date.setDate(date.getDate() - 3);
+    else
+        date.setDate(date.getDate() - 1);
+    input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
 
     //Disattivo freccia sinistra se non posso andare dietro ulteriormente
-    var dataAttuale = new Date(dataGlobale.value);
     if((date.getDate() == dataAttuale.getDate())  && (date.getMonth() == dataAttuale.getMonth()) && (date.getFullYear() == dataAttuale.getFullYear()) ){
         var sinistra = document.getElementById('sinistra');
         sinistra.style.visibility = 'hidden'; 
@@ -72,8 +78,11 @@ function precedente(id_utente) {
 function prossimo(id_utente) {
     var input = document.getElementById("date");
     var date = new Date(input.value);
-    date.setDate(date.getDate() + 1);
-    input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));;
+    if(date.getDay()==6)  //se è sabato vado a martedì
+        date.setDate(date.getDate() + 3);
+    else
+        date.setDate(date.getDate() + 1);
+    input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
     orari(id_utente);
 
     

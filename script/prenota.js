@@ -1,11 +1,14 @@
-var inizializzazione=document.getElementById("andrea");  //per avere di default il primo barbiere selezionato
-inizializzazione.click();
-var dataGlobale=document.getElementById("date");  //lo usa precedente() per non andare prima della data di oggi
+var barbiereIniziale=document.getElementById("andrea");  //per avere di default il primo barbiere selezionato
+barbiereIniziale.click();
+
+var dataGlobale=document.getElementById("date");  //prendo la data di oggi
+
 var dataAttuale = new Date(dataGlobale.value);  //creo l'oggetto e controllo che non sia un giorno di chiusura
 if(dataAttuale.getDay()==0) //se è lunedì vado a martedì
     dataAttuale.setDate(dataAttuale.getDate() + 2);
 else if(dataAttuale.getDay()==1)  //se è domenica vado a martedì
     dataAttuale.setDate(dataAttuale.getDate() + 1);
+
 dataGlobale.valueAsDate = new Date(Date.UTC(dataAttuale.getFullYear(), dataAttuale.getMonth(), dataAttuale.getDate()));  //aggiorno l'elemento
 
 function attivo() {
@@ -15,12 +18,13 @@ function attivo() {
     return false;
  }
 
-function mostraData(nome,id_utente) {  //per visualizzare la data e gli orari quando si seleziona un barbiere 
+function cambiaBarbiere(nome,id_utente) {  //per visualizzare la data e gli orari quando si seleziona un barbiere 
     var elementoAttivo=attivo();
     if(elementoAttivo!=false)
         elementoAttivo.classList.remove("active"); 
 
-    var nuovoAttivo=document.getElementById(nome);  nuovoAttivo.classList.add("active");
+    var nuovoAttivo=document.getElementById(nome);  
+    nuovoAttivo.classList.add("active");
 
     orari(id_utente);   //per aggiornare gli orari disponibili in base al barbiere e alla data
 }
@@ -28,21 +32,26 @@ function mostraData(nome,id_utente) {  //per visualizzare la data e gli orari qu
 function orari(id_utente){
     var barbiere=attivo();  
     var data=document.getElementById("date").value;  //per avere la data selezionata
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById("orari").innerHTML = this.responseText;
         }
     };
+
     xmlhttp.open("POST", "database/prenota.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("barbiere=" + barbiere.id + "&data=" + data + "&id_utente=" + id_utente);
 }
- function prenota(event,id_utente){
-    event.target.disabled=true;  //per non creare un bug a seguito di un doppio click
+
+
+function prenota(event,id_utente){
+    event.target.disabled=true;  //per bloccare eventuali doppi clock
     var barbiere=attivo();
     var data=document.getElementById("date").value;
     var orario = event.target.value;  //per avere l'orario del bottone selezionato
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {        
         if (this.readyState == 4 && this.status == 200) {
@@ -54,7 +63,7 @@ function orari(id_utente){
     xmlhttp.open("POST", "database/prenota.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("barbiere=" + barbiere.id + "&data=" + data + "&orario=" + orario + "&id_utente=" + id_utente); 
- }
+}
 
 function precedente(id_utente) {
     var input = document.getElementById("date");
@@ -65,7 +74,7 @@ function precedente(id_utente) {
         date.setDate(date.getDate() - 1);
     input.valueAsDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
 
-    //Disattivo freccia sinistra se non posso andare dietro ulteriormente
+    //Disattivo freccia sinistra se raggiungo la data attuale, che è stata stabilita all'inizio dello script
     if((date.getDate() == dataAttuale.getDate())  && (date.getMonth() == dataAttuale.getMonth()) && (date.getFullYear() == dataAttuale.getFullYear()) ){
         var sinistra = document.getElementById('sinistra');
         sinistra.style.visibility = 'hidden'; 
@@ -100,15 +109,16 @@ function chiudiPopup(){
     popup.style.display = "none"; // Mostra il popup
 }
 
+function apriPopupPrenota(){
+    var popup = document.getElementById("popup-prenotazione");
+    popup.style.display = "flex"; // Mostra il popup
+}
+
 function chiudiPopupPrenota(){
     var popup = document.getElementById("popup-prenotazione");
     popup.style.display = "none"; // Mostra il popup
 }
 
-function apriPopupPrenota(){
-    var popup = document.getElementById("popup-prenotazione");
-    popup.style.display = "flex"; // Mostra il popup
-}
 
 function redirectAccount(){
     var xmlhttp = new XMLHttpRequest();

@@ -171,7 +171,8 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
 
     <section class="recensioni">
         <h1>COSA PENSANO DI NOI</h1>
-        <p>Lorem Ipsum</p>
+        <hr>
+        <h2>4.7</h2>
         <div class="starbox ">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -179,10 +180,69 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
             <i class="fa fa-star"></i>
             <i class="fa fa-star-half-o"></i>
         </div>
+        <span id="numrecensioni">su 65 recensioni</span>
         <div class="recensionibox">
-            <div class="recensionicard"></div>
-            <div class="recensionicard"></div>
-            <div class="recensionicard"></div>
+            <div class="recensionicard">
+                <span class="spanrecensioni">Gentlemen's Cut offre un'esperienza di rasatura di alto livello.</span>
+                <br>
+                <i class="fa-sharp fa-solid fa-quote-right"></i>
+                <br>
+                <div class="divprofilo">
+                    <img class="profilo" src="img/profilo.jpg" alt="">
+                    <span>Francesco Spinelli</span>
+                </div>
+                
+            </div>
+            <div class="recensionicard">
+                <span class="spanrecensioni">L'ambiente elegante e l'attenzione ai dettagli mi hanno fatto sentire veramente apprezzato.</span>
+                <br>
+                <i class="fa-sharp fa-solid fa-quote-right"></i>
+                <br>
+                <div class="divprofilo">
+                    <img class="profilo" src="img/profilo.jpg" alt="">
+                    <span>Andrea Tudino</span>
+                </div>
+            </div>
+            <div class="recensionicard">
+                <span class="spanrecensioni">Il personale è competente e meticoloso, garantendo tagli e rifiniture impeccabili.</span>
+                <br>
+                <i class="fa-sharp fa-solid fa-quote-right"></i>
+                <br>
+                <div class="divprofilo">
+                    <img class="profilo" src="img/profilo.jpg" alt="">
+                    <span>Andrea Vicinanza</span>
+                </div>
+            </div>
+            <div class="recensionicard">
+                <span class="spanrecensioni">Gli stylist di Gentlemen's Cut sono aggiornati sulle ultime mode e sanno esattamente come personalizzare il servizio per adattarsi al tuo stile. </span>
+                <br>
+                <i class="fa-sharp fa-solid fa-quote-right"></i>
+                <br>
+                <div class="divprofilo">
+                    <img class="profilo" src="img/profilo.jpg" alt="">
+                    <span>Rocco Manna</span>
+                </div>
+            </div>
+            <div class="recensionicard">
+                <span class="spanrecensioni">Hanno sistemato la mia barba e i capelli in meno tempo del previsto, con risultati sorprendenti. Prezzi onesti per ciò che offrono.</span>
+                <br>
+                <i class="fa-sharp fa-solid fa-quote-right"></i>
+                <br>
+                <div class="divprofilo">
+                    <img class="profilo" src="img/profilo.jpg" alt="">
+                    <span>Andrea Russo</span>
+                </div>
+            </div>
+            <div class="recensionicard">
+                <span class="spanrecensioni">Oltre a un taglio eccellente, il personale ha offerto consigli utili su come mantenere il look. La cura del cliente qui va oltre il semplice appuntamento.</span>
+                <br>
+                <i class="fa-sharp fa-solid fa-quote-right"></i>
+                <br>
+                <div class="divprofilo">
+                    <img class="profilo" src="img/profilo.jpg" alt="">
+                    <span>Alfonso Manzo</span>
+                </div>
+            </div>
         </div>
     </section>
 

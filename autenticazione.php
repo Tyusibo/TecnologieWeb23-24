@@ -98,19 +98,19 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                 <h3 class="title">Registrati</h3>
                 <form id="registratiForm" onSubmit="return validaModuloRegistrati(this)" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="verticalflex">
-                        <label>Nome</label>
+                        <label for="nome">Nome</label>
                         <input class="textinput" type="text" size="15" id="nome" name="nome" value="<?php echo (isset($nome)) ? $nome : ""; ?>">
                         <div id="erroreNome" class="errore"></div>
-                        <label class="spaced">Cognome</label>
+                        <label for="cognome" class="spaced">Cognome</label>
                         <input class="textinput" type="text" size="15" id="cognome" name="cognome" value="<?php echo (isset($cognome)) ? $cognome : ""; ?>">
                         <div id="erroreCognome" class="errore"></div>
-                        <label class="spaced">Email</label>
+                        <label for="usernameRegistrati" class="spaced">Email</label>
                         <input class="textinput" type="text" size="30" id="usernameRegistrati" name="username" value="<?php echo (isset($username)) ? $username : ""; ?>">
                         <div id="erroreEmailRegistrati" class="errore"></div>
-                        <label class="spaced">Numero</label>
+                        <label for="numero" class="spaced">Numero</label>
                         <input class="textinput" type="tel" size="13" id="numero" name="numero" value="<?php echo (isset($numero)) ? $numero : ""; ?>" onkeydown="return soloNumeri(event)">
                         <div id="erroreNumero" class="errore"></div>
-                        <label class="spaced">Scegli una password, deve contenere almeno: </label>
+                        <label for="pwd1" class="spaced">Scegli una password, deve contenere almeno: </label>
                         <small>
                             <ul id="requisitiPassword">
                                 <li id="mancataMinuscola">Una lettera maiuscola</li>
@@ -126,7 +126,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
                             <i class="fa-sharp fa-solid fa-eye" id="mostra1"></i>
                         </div>
                         <div id="errorePassword1" class="errore"></div>
-                        <label class="spaced">Digita la password di conferma:</label>
+                        <label for="pwd2" class="spaced">Digita la password di conferma:</label>
                         <div class="horizontalflex">
                             <input class="textinput grow" type="password" size="20" id="pwd2" name="pwd2" value="<?php echo (isset($pwd2)) ? $pwd2 : ""; ?>">
                             <i class="fa-sharp fa-solid fa-eye" id="mostra2"></i>

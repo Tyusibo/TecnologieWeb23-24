@@ -11,19 +11,20 @@ function prelevaPreferenze($id_utente){
 			return false; 
 		}
 		else{  
-            $row = pg_fetch_assoc($ret);
+            $preferenze = pg_fetch_assoc($ret);
+			pg_close($db);
 			$i=1;
-            $preferenze_espresse=0;
+            $preferenze_espresse=0;  //inizializzo il contatore delle preferenze espresse
 			$numeroPrefenze=4;
-			$stile = array();
+			$stile = array();  //creo il vettore dove inserirò le preferenze non nulle dell'utente
 			while($i<$numeroPrefenze){
-				if(isset($row["pref_".$i.""])){
-					$stile[$preferenze_espresse]=$row["pref_".$i.""];    
+				if(isset($preferenze["pref_".$i.""])){
+					$stile[$preferenze_espresse]=$preferenze["pref_".$i.""];    
                     $preferenze_espresse+=1;
 				}
                 $i+=1;
             }  
-			return $stile;
+			return $stile; 
 		}
 }
 function contenutiPersonalizzati($stile,$preferenze_espresse){
@@ -32,14 +33,14 @@ function contenutiPersonalizzati($stile,$preferenze_espresse){
 		array(),
 		array(),
 		array()
-	);
+	);  //creo una matrice dove il singolo vettore è l'insieme dei valori randomici della singola preferenza dell'utente
 	for($i=0;$i<$numero_immagini;$i+=1){
 		$pos=$i%$preferenze_espresse; //per scorrere a rotazione le preferenze
 		do {
 			$immagine_casuale=rand(1,5);
-		} while (in_array($immagine_casuale, $random[$pos]));
-		$random[$pos][$i]=$immagine_casuale;
-		echo '<img src="img/gallery/'.$stile[$pos].'/img'.$immagine_casuale.'.jpg" >' ;
+		} while (in_array($immagine_casuale, $random[$pos]));  //controllo se l'immagine casuale della preferenza in questione è già stata caricata
+		$random[$pos][$i]=$immagine_casuale;  //salvo la nuova immagine randomica per essere sicuro di non ripeterla
+		echo '<img src="img/gallery/'.$stile[$pos].'/img'.$immagine_casuale.'.jpg" >' ;  
 		} 
 	return;
 }

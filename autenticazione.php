@@ -25,7 +25,7 @@ if(isset($_POST['reg'])) { //Se è stato premuto il submit del form registrati
         }
         ?><script defer src="script/cambiaModalità.js"></script><?php
     }else{  //se non esiste lo inserisco
-        if(insert_utente($nome, $cognome, $numero, $username, $pwd1)){  //va nel then se va a buon fine
+        if(insertUtente($nome, $cognome, $numero, $username, $pwd1)){  //va nel then se va a buon fine
             setcookie('nuovoUtente', true, time() + (60 * 24)); 
             if($_SESSION['redirect']!=null){   //se non è null, contiene la pagina a cui reindirizzare
                 header("Location: $_SESSION[redirect]");
@@ -40,7 +40,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
     require "database/autenticazione.php"; 
     $username=$_POST['username']; 
     $pwd1= $_POST['pwd1']; 
-    $stored_hash_pwd = get_pwd($username);  //provo a prelevare la password dell'utente con email fornita
+    $stored_hash_pwd = getPassword($username);  //provo a prelevare la password dell'utente con email fornita
     if(!$stored_hash_pwd){  //se mi trovo nel then vuol dire che l'utente non era registrato
         ?><script defer src="script/emailNonRegistrata.js"></script><?php
     }else{  //l'utente era registrato e quindi devo controllare la password

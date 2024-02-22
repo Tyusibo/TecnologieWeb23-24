@@ -66,6 +66,7 @@ if(isset($_POST['acc'])) {//analogamente per accedi
     <title>Gentlemen's Cut Autenticazione</title>
     <link rel="stylesheet" type="text/css" href="css/autenticazione.css">
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
+    <link rel="icon" href="img/icon.png" type="image/png"/>
 </head>
 <body>
     <?php require "header.php"; ?>

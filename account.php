@@ -14,6 +14,7 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentlemen's Cut Account</title>
     <link rel="stylesheet" type="text/css" href="css/account.css">
+    <link rel="icon" href="img/icon.png" type="image/png"/>
 </head>
 <body>
     <?php require "header.php"; ?>

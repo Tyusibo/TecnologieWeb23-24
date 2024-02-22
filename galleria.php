@@ -13,6 +13,7 @@ $id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;
     <title>Gentlemen's Cut Galleria</title>
     <link rel="stylesheet" type="text/css" href="CSS/galleria.css">
     <script src="https://kit.fontawesome.com/4a7d362a80.js" crossorigin="anonymous"></script> 
+    <link rel="icon" href="img/icon.png" type="image/png"/>
 </head>
 <body>
     <div class="header">

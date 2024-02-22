@@ -5,7 +5,7 @@ if(!(isset($_SESSION['username'])))  //se non loggato porta ad autenticazione
     header("Location: autenticazione.php"); 
 require "database/account.php";
 require "database/id.php"; 
-$id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;  //anche se in account $_SESSION["username] è sempre settato
+$id_utente = isset($_SESSION['username']) ? getId($_SESSION['username']) : 0;  //anche se in questa pagina $_SESSION["username] è sempre settato
 $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.php  
 ?>
 <html lang="it" dir="ltr">
@@ -30,9 +30,9 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
                         <ul>
                             <li><p class="active" id="dati">I miei dati</p></li>
                             <li><p id="prenotazioni">Le mie prenotazioni</p></li>
-                            <li><p class="space" id="preferenze">Le mie preferenze</p></li>
-                            <div class="space"></div>
-                            <li><p><button class="accbutton" id="esciAccount">Log out</button></p></li> 
+                            <li><p id="preferenze">Le mie preferenze</p></li>
+                            <li class="space"></li>
+                            <li><button class="accbutton" id="esciAccount">Log out</button></li> 
                         </ul>
                     </nav>           
                 </section>
@@ -57,9 +57,6 @@ $_SESSION['redirect']=null;   //lo fa ogni pagina a eccezione di autenticazione.
     if(isset($_SESSION['prenota'])){  //se è settato vuol dire che si proviene da prenota e si vogliono visualizzare le prenotazioni
         ?> <script>sezioni("prenotazioni",2)</script> 
         <?php unset($_SESSION['prenota']);  /* per non creare bug */  }   
-    if(isset($_SESSION['preferenza'])){  //se è settato vuol dire che si proviene da galleria e si vogliono visualizzare le preferenze
-        ?> <script>sezioni("preferenze",3)</script> 
-        <?php unset($_SESSION['prenota']);  /* per non creare bug */  }
     ?> 
 </body>
 </html>

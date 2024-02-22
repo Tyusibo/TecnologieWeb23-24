@@ -1,9 +1,0 @@
-Backup:
-su cmd amministratore
-"C:\Program Files\PostgreSQL\16\bin\pg_dump.exe" -U www -d gruppo21 -f "C:\Users\andre\Desktop\backup.sql"
-
-Restore:
-su sql shell
-CREATE DATABASE gruppo21 WITH OWNER = www;
-su cmd amministratore
-"C:\Program Files\PostgreSQL\16\bin\psql.exe" -d gruppo21 -U www -f "C:\Users\andre\Desktop\backup.sql"
